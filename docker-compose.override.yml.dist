@@ -1,0 +1,10 @@
+#version: '3'
+#
+#services:
+#    database:
+#        ports:
+#            - "5432"
+#
+#    mailer:
+#        image: schickling/mailcatcher
+#        ports: [1025, 1080]

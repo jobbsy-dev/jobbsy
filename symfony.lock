@@ -181,6 +181,9 @@
     "symfony/doctrine-bridge": {
         "version": "v6.0.1"
     },
+    "symfony/doctrine-messenger": {
+        "version": "v6.0.1"
+    },
     "symfony/dotenv": {
         "version": "v6.0.1"
     },
@@ -341,6 +344,9 @@
     "symfony/polyfill-php81": {
         "version": "v1.23.0"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.23.0"
+    },
     "symfony/process": {
         "version": "v6.0.0"
     },
@@ -433,6 +439,9 @@
             "config/packages/twig.yaml",
             "templates/base.html.twig"
         ]
+    },
+    "symfony/uid": {
+        "version": "v6.0.1"
     },
     "symfony/validator": {
         "version": "6.0",

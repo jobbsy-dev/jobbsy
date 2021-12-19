@@ -1,19 +1,43 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}SymfonyJobs - Job board for Symfony{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body style="background-color: #f3f4f6">
+{% block body %}
+    <div class="container">
+        <header class="py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4">
+                    <a class="text-dark text-decoration-none navbar-brand" style="font-size: 2rem" href="{{ path('job_index') }}">Symfony Jobs</a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <a class="btn btn-outline-primary" href="{{ path('job_new') }}">Post a job</a>
+                </div>
+            </div>
+        </header>
+    </div>
+    <main class="container">
+        {% block main %}{% endblock %}
+    </main>
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Back to top</a>
+            </p>
+            <p class="mb-1">Symfony Jobs, unofficial job board for Symfony</p>
+            <p class="mb-0">Symfony is a trademark please refer to <a href="https://symfony.com/trademark">Trademark and Logo Policy</a></p>
+        </div>
+    </footer>
+{% endblock %}
+</body>
 </html>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="employment_type.full_time">
+                <source>employment_type.full_time</source>
+                <target>Full time</target>
+            </trans-unit>
+            <trans-unit id="employment_type.part_time">
+                <source>employment_type.part_time</source>
+                <target>Part time</target>
+            </trans-unit>
+            <trans-unit id="employment_type.contract">
+                <source>employment_type.contract</source>
+                <target>Contract</target>
+            </trans-unit>
+            <trans-unit id="employment_type.temporary">
+                <source>employment_type.temporary</source>
+                <target>Temporary</target>
+            </trans-unit>
+            <trans-unit id="employment_type.seasonal">
+                <source>employment_type.seasonal</source>
+                <target>Seasonal</target>
+            </trans-unit>
+            <trans-unit id="employment_type.internship">
+                <source>employment_type.internship</source>
+                <target>Internship</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

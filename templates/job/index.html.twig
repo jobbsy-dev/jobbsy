@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Job index{% endblock %}
+
+{% block main %}
+    <div class="list-group">
+        {% for job in jobs %}
+            <a href="{{ job.url }}" class="list-group-item list-group-item-action py-3" target="_blank" rel="nofollow">
+                <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
+                    <div class="d-flex align-items-center">
+                        <img src="https://eu.ui-avatars.com/api/?background=random&name={{ job.organization|url_encode }}&size=70&length=1" alt="">
+                        <div class="ms-3">
+                            <h5 class="mb-0 text-primary">{{ job.title }}</h5>
+                            <small class="text-muted">{{ ('employment_type.' ~ job.employmentType.value)|trans }}</small>
+                            <div class="mt-1">
+                                <small class="text-muted">
+                                    <i class="fa fa-building"></i>
+                                    {{ job.organization }}
+                                </small>
+                                <small class="text-muted ms-3">
+                                    <i class="fa fa-map-marker-alt text-secondary"></i>
+                                    {{ job.location }}
+                                </small>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column align-items-start mt-2 mt-md-0 align-items-md-end">
+                        <div>
+                            {% for tag in job.tags %}
+                                <span class="badge bg-secondary">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                        <small class="text-muted mt-2">
+                            <i class="fa fa-calendar-alt"></i> {{ job.createdAt|date('d/m/Y') }}
+                        </small>
+                    </div>
+                </div>
+            </a>
+        {% else %}
+            <p class="text-center">No jobs</p>
+        {% endfor %}
+    </div>
+{% endblock %}
