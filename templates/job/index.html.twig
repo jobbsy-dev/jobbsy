@@ -7,7 +7,7 @@
         {% for job in jobs %}
             <a href="{{ job.url }}" class="list-group-item list-group-item-action py-3" target="_blank" rel="nofollow">
                 <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-start">
                         <img src="https://eu.ui-avatars.com/api/?background=random&name={{ job.organization|url_encode }}&size=70&length=1" alt="">
                         <div class="ms-3">
                             <h5 class="mb-0 text-primary">{{ job.title }}</h5>
@@ -22,7 +22,6 @@
                                     {{ job.location }}
                                 </small>
                             </div>
-
                         </div>
                     </div>
                     <div class="d-flex flex-column align-items-start mt-2 mt-md-0 align-items-md-end">
