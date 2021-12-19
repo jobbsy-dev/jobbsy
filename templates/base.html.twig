@@ -34,7 +34,13 @@
             <p class="float-end mb-1">
                 <a href="#">Back to top</a>
             </p>
-            <small class="mb-1 d-block">Unofficial job board for Symfony <a href="https://github.com/qdequippe/symfonyjobs" class="text-decoration-none text-dark ms-1" target="_blank" rel="nofollow"><i class="fab fa-github"></i></a></small>
+            <div class="d-flex">
+                <small class="mb-1 d-block">Unofficial job board for Symfony</small>
+                <small class="mx-1">&middot;</small>
+                <small><a href="https://github.com/qdequippe/symfonyjobs" class="text-decoration-none text-dark" target="_blank" rel="nofollow"><i class="fab fa-github"></i></a></small>
+                <small class="mx-1">&middot;</small>
+                <small><a href="{{ path('job_rss') }}" class="text-decoration-none text-dark ms-1"><i class="fa fa-rss-square"></i></a></small>
+            </div>
             <small class="mb-0">Symfony is a trademark please refer to <a href="https://symfony.com/trademark">Trademark and Logo Policy</a>.</small>
         </div>
     </footer>
