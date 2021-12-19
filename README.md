@@ -1,5 +1,5 @@
-Symfony Jobs
-============
+Job board for Symfony
+====================================
 
 Inspired by https://larajobs.com.
 
