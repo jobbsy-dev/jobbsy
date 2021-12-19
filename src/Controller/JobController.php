@@ -14,11 +14,14 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/')]
 class JobController extends AbstractController
 {
-    #[Route('/', name: 'job_index', methods: ['GET'])]
-    public function index(JobRepository $jobRepository): Response
+    #[
+        Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']),
+        Route('/rss.xml', name: 'job_rss', defaults: ['_format' => 'xml'], methods: ['GET']),
+    ]
+    public function index(JobRepository $jobRepository, string $_format): Response
     {
-        return $this->render('job/index.html.twig', [
-            'jobs' => $jobRepository->findBy([], ['createdAt' => 'DESC']),
+        return $this->render('job/index.'.$_format.'.twig', [
+            'jobs' => $jobRepository->findBy([], ['createdAt' => 'DESC'], 30),
         ]);
     }
 

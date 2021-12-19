@@ -5,7 +5,7 @@ Inspired by https://larajobs.com.
 
 Todo:
 
-- [ ] RSS feed
+- [x] RSS feed
 - [ ] API
 - [ ] User account
 - [ ] Allow edit, delete
