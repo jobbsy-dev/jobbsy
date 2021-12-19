@@ -10,12 +10,12 @@
                         <div class="ms-3">
                             <h5 class="mb-0 text-primary">{{ job.title }}</h5>
                             <small class="text-muted">{{ ('employment_type.' ~ job.employmentType.value)|trans }}</small>
-                            <div class="mt-1">
-                                <small class="text-muted">
+                            <div class="mt-1 d-flex flex-wrap justify-content-between">
+                                <small class="text-muted text-break me-2">
                                     <i class="fa fa-building"></i>
                                     {{ job.organization }}
                                 </small>
-                                <small class="text-muted ms-3">
+                                <small class="text-muted text-break">
                                     <i class="fa fa-map-marker-alt text-secondary"></i>
                                     {{ job.location }}
                                 </small>
