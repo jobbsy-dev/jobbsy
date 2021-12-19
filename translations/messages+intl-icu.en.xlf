@@ -26,6 +26,10 @@
                 <source>employment_type.internship</source>
                 <target>Internship</target>
             </trans-unit>
+            <trans-unit id="action.post_job">
+                <source>action.post_job</source>
+                <target>Post a Job</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
