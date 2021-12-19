@@ -1,6 +1,8 @@
 Symfony Jobs
 ============
 
+Inspired by https://larajobs.com.
+
 Todo:
 
 - [ ] RSS feed
