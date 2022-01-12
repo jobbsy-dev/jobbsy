@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>{{ 'rss.title'|trans }}</title>
+        <description>{{ 'rss.description'|trans }}</description>
+        <pubDate>{{ 'now'|date('r', timezone='GMT') }}</pubDate>
+        <lastBuildDate>{{ (jobs|last).publishedAt|default('now')|date('r', timezone='GMT') }}</lastBuildDate>
+        <link>{{ url('job_index') }}</link>
+        <language>{{ app.request.locale }}</language>
+
+        {% for job in jobs %}
+            <item>
+                <title>{{ job.title }}</title>
+                <link>{{ job.url }}</link>
+                <pubDate>{{ job.createdAt|date(format='r', timezone='GMT') }}</pubDate>
+                {% for tag in job.tags %}
+                    <category>{{ tag }}</category>
+                {% endfor %}
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

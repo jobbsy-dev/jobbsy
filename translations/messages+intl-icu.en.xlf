@@ -34,6 +34,14 @@
                 <source>form.label.organization_logo</source>
                 <target>Organization logo</target>
             </trans-unit>
+            <trans-unit id="rss.title">
+                <source>rss.title</source>
+                <target>Job board for Symfony</target>
+            </trans-unit>
+            <trans-unit id="rss.description">
+                <source>rss.description</source>
+                <target>Last job offers published on the job board for Symfony</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
