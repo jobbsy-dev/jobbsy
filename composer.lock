@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9adf0c4cca28b49da922bba12ef516e9",
+    "content-hash": "f10ae91728aecddf2ae4a8568cb62343",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -8031,16 +8031,16 @@
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "dev-master",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "203a64e72ee0346ae0eb393d480cc963e6b22235"
+                "reference": "56aeadb1365de714f54f4a7c3b6757e8662f4f29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/203a64e72ee0346ae0eb393d480cc963e6b22235",
-                "reference": "203a64e72ee0346ae0eb393d480cc963e6b22235",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/56aeadb1365de714f54f4a7c3b6757e8662f4f29",
+                "reference": "56aeadb1365de714f54f4a7c3b6757e8662f4f29",
                 "shasum": ""
             },
             "require": {
@@ -8103,7 +8103,6 @@
                 "symfony/form": "To handle uploads in forms",
                 "symfony/yaml": "To use YAML mapping"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -8133,9 +8132,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dustin10/VichUploaderBundle/issues",
-                "source": "https://github.com/dustin10/VichUploaderBundle/tree/master"
+                "source": "https://github.com/dustin10/VichUploaderBundle/tree/1.19.0"
             },
-            "time": "2021-12-22T12:53:23+00:00"
+            "time": "2021-12-23T17:28:12+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -8501,9 +8500,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "vich/uploader-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

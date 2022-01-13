@@ -50,7 +50,7 @@
         "symfony/yaml": "6.0.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0",
-        "vich/uploader-bundle": "dev-master"
+        "vich/uploader-bundle": "^1.19"
     },
     "config": {
         "allow-plugins": {
