@@ -1,0 +1,9 @@
+vich_uploader:
+    db_driver: orm
+    storage: flysystem
+    metadata:
+        type: attribute
+    mappings:
+        organization_image:
+            uri_prefix: /images/organizations
+            upload_destination: organization_image.storage
