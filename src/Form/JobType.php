@@ -22,9 +22,9 @@ class JobType extends AbstractType
             ->add('location')
             ->add('employmentType', EnumType::class, [
                 'class' => EmploymentType::class,
-                'choice_label' => function(EmploymentType $employmentType) {
+                'choice_label' => function (EmploymentType $employmentType) {
                     return sprintf('employment_type.%s', $employmentType->value);
-                }
+                },
             ])
             ->add('organization')
             ->add('url', UrlType::class)
@@ -32,7 +32,8 @@ class JobType extends AbstractType
                 'required' => false,
             ])
             ->add('organizationImageFile', VichFileType::class, [
-                'label' => 'form.label.organization_logo'
+                'label' => 'form.label.organization_logo',
+                'required' => false,
             ])
         ;
 

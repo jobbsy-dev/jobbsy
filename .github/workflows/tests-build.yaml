@@ -1,0 +1,105 @@
+name: "Tests & Build"
+
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+            - develop
+
+jobs:
+    test:
+        runs-on: 'ubuntu-latest'
+        env:
+            fail-fast: true
+            PHPUNIT_FLAGS: "-v"
+            SYMFONY_PHPUNIT_DIR: "$HOME/symfony-bridge/.phpunit"
+            SYMFONY_REQUIRE: ">=4.4"
+            SYMFONY_DEPRECATIONS_HELPER: 40
+        steps:
+            - name: "Checkout code"
+              uses: actions/checkout@v2.3.3
+
+            - name: "Install PHP with extensions"
+              uses: shivammathur/setup-php@2.7.0
+              with:
+                  coverage: "none"
+                  extensions: intl
+                  php-version: 8.1
+                  tools: composer:v2
+
+            - name: "Add PHPUnit matcher"
+              run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+            - name: "Set composer cache directory"
+              id: composer-cache
+              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+            - name: "Cache composer"
+              uses: actions/cache@v2.1.2
+              with:
+                  path: ${{ steps.composer-cache.outputs.dir }}
+                  key: ${{ runner.os }}-8.0-composer-${{ hashFiles('composer.json') }}
+                  restore-keys: ${{ runner.os }}-8.0-composer-
+
+            - name: "Composer install"
+              id: install
+              run: composer install --no-interaction --no-progress
+
+            - name: "Compile CSS and Javascript"
+              run: |
+                  yarn install
+                  yarn dev
+
+            - name: "Init database"
+              run: ./bin/console doctrine:database:create --if-not-exists
+
+            - name: "Init database"
+              run: ./bin/console doctrine:migration:migrate -n
+
+            - name: "Run tests"
+              run: vendor/bin/phpunit
+
+    build:
+        runs-on: 'ubuntu-latest'
+        if: github.ref == 'refs/heads/main'
+        env:
+            APP_ENV: prod
+            BRANCH: ${{ github.ref_name }}
+        needs: ['test']
+        steps:
+            - name: "Checkout code"
+              uses: actions/checkout@v2
+
+            - name: "Install PHP with extensions"
+              uses: shivammathur/setup-php@2.7.0
+              with:
+                  coverage: "none"
+                  extensions: intl
+                  php-version: 8.1
+                  tools: composer:v2
+
+            - name: "Composer install"
+              run: composer install --no-dev --optimize-autoloader --no-interaction
+
+            - name: "Compile CSS and Javascript"
+              run: |
+                  yarn install
+                  yarn build
+
+            - name: "Create deployment artifact"
+              uses: thedoctor0/zip-release@master
+              with:
+                  type: 'zip'
+                  filename: app-build-${{ env.BRANCH }}-latest.zip
+                  exclusions: '*.git* /*node_modules/* /*tests/* /*var/cache/* /*assets/*'
+
+            - name: "Store artifact for distribution"
+              uses: appleboy/scp-action@master
+              with:
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                password: ${{ secrets.PASSWORD }}
+                port: 22
+                source: app-build-${{ env.BRANCH }}-latest.zip
+                target: "$HOME/build"

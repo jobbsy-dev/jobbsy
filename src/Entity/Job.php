@@ -5,9 +5,9 @@ namespace App\Entity;
 use App\EmploymentType;
 use App\Repository\JobRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
@@ -48,10 +48,10 @@ class Job
     #[Vich\UploadableField(mapping: 'organization_image', fileNameProperty: 'organizationImageName', size: 'organizationImageSize')]
     private ?File $organizationImageFile = null;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: 'string', nullable: true)]
     private ?string $organizationImageName = null;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private ?int $organizationImageSize = null;
 
     #[ORM\Column(type: 'datetime')]
@@ -61,6 +61,7 @@ class Job
     {
         $this->id = Uuid::v4();
         $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTime();
     }
 
     public function getId(): Uuid
