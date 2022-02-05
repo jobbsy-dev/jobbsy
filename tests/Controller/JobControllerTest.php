@@ -15,7 +15,7 @@ class JobControllerTest extends WebTestCase
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('a.btn.btn-outline-primary', 'Post a Job');
 
-        self::assertSelectorTextContains('h5', 'Symfony developer Remote');
+        self::assertSelectorTextContains('h5', 'Lead dev Symfony Paris');
     }
 
     public function testCreateJobOffer(): void

@@ -19,6 +19,7 @@ class AppFixtures extends Fixture
             $job->setLocation($location);
             $job->setUrl($url);
             $job->setTags($tags);
+            sleep(1); // just for creation date
 
             $manager->persist($job);
         }

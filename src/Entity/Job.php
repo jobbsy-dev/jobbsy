@@ -94,11 +94,6 @@ class Job
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
     public function getEmploymentType(): ?EmploymentType
     {
         return $this->employmentType;
