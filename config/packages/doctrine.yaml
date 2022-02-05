@@ -1,10 +1,6 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
-        types:
-            employment_type: App\Doctrine\Types\EmploymentType
-        mapping_types:
-            enum: string
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
