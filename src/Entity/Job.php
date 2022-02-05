@@ -29,7 +29,7 @@ class Job
     #[ORM\Column(type: 'datetime_immutable')]
     private ?\DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: 'employment_type')]
+    #[ORM\Column(type: 'string', enumType: EmploymentType::class)]
     #[Assert\NotBlank]
     private ?EmploymentType $employmentType;
 
@@ -55,7 +55,7 @@ class Job
     private ?int $organizationImageSize = null;
 
     #[ORM\Column(type: 'datetime')]
-    private ?\DateTimeInterface $updatedAt = null;
+    private ?\DateTimeInterface $updatedAt;
 
     public function __construct()
     {
@@ -92,11 +92,6 @@ class Job
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): void
-    {
-        $this->createdAt = $createdAt;
     }
 
     public function getEmploymentType(): ?EmploymentType
