@@ -12,10 +12,6 @@ jobs:
         runs-on: 'ubuntu-latest'
         env:
             fail-fast: true
-            PHPUNIT_FLAGS: "-v"
-            SYMFONY_PHPUNIT_DIR: "$HOME/symfony-bridge/.phpunit"
-            SYMFONY_REQUIRE: ">=4.4"
-            SYMFONY_DEPRECATIONS_HELPER: 40
         steps:
             - name: "Checkout code"
               uses: actions/checkout@v2.3.3
@@ -52,10 +48,13 @@ jobs:
                   yarn dev
 
             - name: "Init database"
-              run: ./bin/console doctrine:database:create
+              run: ./bin/console doctrine:database:create --env=test
 
-            - name: "Init database"
-              run: ./bin/console doctrine:migration:migrate -n
+            - name: "Execute migrations"
+              run: ./bin/console doctrine:migration:migrate -n --env=test
+
+            - name: "Load fixtures"
+              run: ./bin/console doctrine:fixtures:load -n --env=test
 
             - name: "Run tests"
               run: vendor/bin/phpunit
