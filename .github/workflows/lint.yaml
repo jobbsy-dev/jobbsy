@@ -32,9 +32,9 @@ jobs:
               uses: shivammathur/setup-php@2.7.0
               with:
                   coverage: "none"
-                  extensions: intl
+                  extensions: intl, pdo_sqlite
                   php-version: 8.1
-                  tools: composer:v2
+                  tools: composer:v2, symfony
 
             - name: "Set composer cache directory"
               id: composer-cache
@@ -71,10 +71,6 @@ jobs:
               if: always() && steps.install.outcome == 'success'
               run: ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
 
-            - name: Download Symfony CLI
-              if: always() && steps.install.outcome == 'success'
-              run: wget https://get.symfony.com/cli/installer -O - | bash
-
             - name: Check if any dependencies are compromised
               if: always() && steps.install.outcome == 'success'
-              run: /home/runner/.symfony/bin/symfony check:security
+              run: symfony check:security

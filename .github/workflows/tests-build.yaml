@@ -24,7 +24,7 @@ jobs:
               uses: shivammathur/setup-php@2.7.0
               with:
                   coverage: "none"
-                  extensions: intl
+                  extensions: intl, pdo_sqlite
                   php-version: 8.1
                   tools: composer:v2
 
@@ -75,7 +75,7 @@ jobs:
               uses: shivammathur/setup-php@2.7.0
               with:
                   coverage: "none"
-                  extensions: intl
+                  extensions: intl, pdo_sqlite
                   php-version: 8.1
                   tools: composer:v2
 
