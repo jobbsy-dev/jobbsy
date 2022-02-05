@@ -52,7 +52,7 @@ jobs:
                   yarn dev
 
             - name: "Init database"
-              run: ./bin/console doctrine:database:create --if-not-exists
+              run: ./bin/console doctrine:database:create
 
             - name: "Init database"
               run: ./bin/console doctrine:migration:migrate -n
