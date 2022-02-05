@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class JobType extends AbstractType
 {
@@ -21,13 +22,19 @@ class JobType extends AbstractType
             ->add('location')
             ->add('employmentType', EnumType::class, [
                 'class' => EmploymentType::class,
-                'choice_label' => function(EmploymentType $employmentType) {
+                'choice_label' => function (EmploymentType $employmentType) {
                     return sprintf('employment_type.%s', $employmentType->value);
-                }
+                },
             ])
             ->add('organization')
             ->add('url', UrlType::class)
-            ->add('tags', TextType::class)
+            ->add('tags', TextType::class, [
+                'required' => false,
+            ])
+            ->add('organizationImageFile', VichFileType::class, [
+                'label' => 'form.label.organization_logo',
+                'required' => false,
+            ])
         ;
 
         $builder->get('tags')

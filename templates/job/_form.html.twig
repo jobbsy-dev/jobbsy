@@ -1,6 +1,12 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.location) }}
+    {{ form_row(form.employmentType) }}
+    {{ form_row(form.organization) }}
+    {{ form_row(form.organizationImageFile) }}
+    {{ form_row(form.url) }}
+    {{ form_row(form.tags) }}
 <div class="d-grid">
-<button class="btn btn-primary btn-lg" type="submit">{{ button_label|default('Post') }}</button>
+    <button class="btn btn-primary btn-lg" type="submit">{{ button_label|default('Post') }}</button>
 </div>
 {{ form_end(form) }}

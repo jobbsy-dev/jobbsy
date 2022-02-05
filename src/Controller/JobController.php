@@ -25,7 +25,7 @@ class JobController extends AbstractController
         ]);
     }
 
-    #[Route('/jon/new', name: 'job_new', methods: ['GET', 'POST'])]
+    #[Route('/job/new', name: 'job_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $job = new Job();

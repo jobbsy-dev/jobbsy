@@ -2,11 +2,16 @@
 
 {% block main %}
     <div class="list-group">
+        {# @var job \App\Entity\Job #}
         {% for job in jobs %}
             <a href="{{ job.url }}" class="list-group-item list-group-item-action py-3" target="_blank" rel="nofollow">
                 <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
                     <div class="d-flex align-items-start">
-                        <img src="https://eu.ui-avatars.com/api/?background=random&name={{ job.organization|url_encode }}&size=70&length=1" alt="">
+                        {% if job.organizationImageName %}
+                            <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" width="70" height="70">
+                        {% else %}
+                            <img src="https://eu.ui-avatars.com/api/?name={{ job.organization }}&size=70&background=random" alt="{{ job.organization }}">
+                        {% endif %}
                         <div class="ms-3">
                             <h5 class="mb-0 text-primary">{{ job.title }}</h5>
                             <small class="text-muted">{{ ('employment_type.' ~ job.employmentType.value)|trans }}</small>

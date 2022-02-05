@@ -5,10 +5,13 @@ namespace App\Entity;
 use App\EmploymentType;
 use App\Repository\JobRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
+#[Vich\Uploadable]
 class Job
 {
     #[ORM\Id]
@@ -42,10 +45,23 @@ class Job
     #[Assert\NotBlank]
     private ?string $url;
 
+    #[Vich\UploadableField(mapping: 'organization_image', fileNameProperty: 'organizationImageName', size: 'organizationImageSize')]
+    private ?File $organizationImageFile = null;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $organizationImageName = null;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $organizationImageSize = null;
+
+    #[ORM\Column(type: 'datetime')]
+    private ?\DateTimeInterface $updatedAt = null;
+
     public function __construct()
     {
         $this->id = Uuid::v4();
         $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTime();
     }
 
     public function getId(): Uuid
@@ -121,5 +137,46 @@ class Job
     public function setUrl(?string $url): void
     {
         $this->url = $url;
+    }
+
+    public function setOrganizationImageFile(?File $organizationImageFile = null): void
+    {
+        $this->organizationImageFile = $organizationImageFile;
+
+        if (null !== $organizationImageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getOrganizationImageFile(): ?File
+    {
+        return $this->organizationImageFile;
+    }
+
+    public function setOrganizationImageName(?string $organizationImageName): void
+    {
+        $this->organizationImageName = $organizationImageName;
+    }
+
+    public function getOrganizationImageName(): ?string
+    {
+        return $this->organizationImageName;
+    }
+
+    public function setOrganizationImageSize(?int $organizationImageSize): void
+    {
+        $this->organizationImageSize = $organizationImageSize;
+    }
+
+    public function getOrganizationImageSize(): ?int
+    {
+        return $this->organizationImageSize;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
     }
 }

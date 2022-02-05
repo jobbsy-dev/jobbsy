@@ -12,8 +12,19 @@
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
 /public/build/
+/public/images/
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 docker-compose.override.yml
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
