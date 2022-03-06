@@ -11,39 +11,37 @@
             {# @var job \App\Entity\Job #}
             {% for job in jobs %}
                 <a href="{{ job.url }}" class="list-group-item list-group-item-action py-3" target="_blank" rel="nofollow">
-                    <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
-                        <div class="d-flex align-items-start">
-                            {% if job.organizationImageName %}
-                                <div class="d-flex align-items-center justify-content-center" style="width: 70px; height: 70px">
-                                    <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" class="img-fluid rounded">
-                                </div>
-                            {% else %}
-                                <img src="https://eu.ui-avatars.com/api/?name={{ job.organization }}&size=70&background=random" alt="{{ job.organization }}">
-                            {% endif %}
-                            <div class="ms-3">
-                                <h5 class="mb-0 text-primary">{{ job.title }}</h5>
-                                <small class="text-muted">{{ ('employment_type.' ~ job.employmentType.value)|trans }}</small>
-                                <div class="mt-1 d-flex flex-wrap">
-                                    <small class="text-muted text-break me-2">
-                                        <i class="fa fa-building"></i>
-                                        {{ job.organization }}
-                                    </small>
-                                    <small class="text-muted text-break">
-                                        <i class="fa fa-map-marker-alt text-secondary"></i>
-                                        {{ job.location }}
-                                    </small>
-                                </div>
+                    <div class="d-flex">
+                        {% if job.organizationImageName %}
+                            <div class="d-flex align-items-center justify-content-center" style="width: 70px; height: 70px">
+                                <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" class="img-fluid rounded">
                             </div>
-                        </div>
-                        <div class="d-flex flex-column align-items-start mt-2 mt-md-0 align-items-md-end">
-                            <div>
-                                {% for tag in job.tags %}
-                                    <span class="badge bg-secondary">{{ tag }}</span>
-                                {% endfor %}
+                        {% else %}
+                            <img src="https://eu.ui-avatars.com/api/?name={{ job.organization }}&size=70&background=random" alt="{{ job.organization }}">
+                        {% endif %}
+                        <div class="ms-3 flex-grow-1">
+                            <p class="h5 d-block mb-0 fw-bold lh-base">{{ job.title }}</p>
+                            <p class="mb-0">{{ job.organization }}</p>
+                            <div class="mt-2 d-flex flex-wrap text-muted small">
+                                <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
+                                    <i class="fa fa-building fa-lg"></i>
+                                    {{ ('employment_type.' ~ job.employmentType.value)|trans }}
+                                </p>
+                                <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                                    <i class="fa fa-map-marker-alt text-secondary"></i>
+                                    {{ job.location|capitalize }}
+                                </p>
+                                <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                                    <i class="fa fa-tags text-secondary"></i>
+                                    {{ job.tags|join(', ') }}
+                                </p>
+                                <p class="ms-md-auto mb-0">
+                                    <i class="fa fa-calendar-alt"></i> {{ job.createdAt|date('d/m/Y') }}
+                                </p>
                             </div>
-                            <small class="text-muted mt-2">
-                                <i class="fa fa-calendar-alt"></i> {{ job.createdAt|date('d/m/Y') }}
-                            </small>
+                            <div class="mt-2">
+
+                            </div>
                         </div>
                     </div>
                 </a>
