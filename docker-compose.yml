@@ -2,11 +2,11 @@ version: '3'
 
 services:
     database:
-        image: postgres:${POSTGRES_VERSION:-12}-alpine
+        image: postgres:12
         environment:
-            POSTGRES_DB: ${POSTGRES_DB:-app}
-            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app}
-            POSTGRES_USER: ${POSTGRES_USER:-symfony}
+            POSTGRES_DB: main
+            POSTGRES_PASSWORD: main
+            POSTGRES_USER: main
         volumes:
             - db-data:/var/lib/postgresql/data:rw
 
