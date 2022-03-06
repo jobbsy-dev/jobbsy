@@ -57,7 +57,7 @@ jobs:
                   yarn dev
 
             - name: "Init database"
-              run: ./bin/console doctrine:database:create --env=test
+              run: ./bin/console doctrine:database:create --env=test --if-not-exists
 
             - name: "Execute migrations"
               run: ./bin/console doctrine:migration:migrate -n --env=test
