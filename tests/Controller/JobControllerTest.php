@@ -15,7 +15,7 @@ class JobControllerTest extends WebTestCase
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('a.btn.btn-primary', 'Post a Job');
 
-        self::assertSelectorTextContains('h5', 'Lead dev Symfony Paris');
+        self::assertSelectorTextContains('p.h5', 'Lead dev Symfony Paris');
     }
 
     public function testCreateJobOffer(): void
@@ -35,6 +35,6 @@ class JobControllerTest extends WebTestCase
         self::assertResponseRedirects('/');
         $client->followRedirect();
 
-        self::assertSelectorTextContains('h5', 'Symfony freelance developer');
+        self::assertSelectorTextContains('p.h5', 'Symfony freelance developer');
     }
 }
