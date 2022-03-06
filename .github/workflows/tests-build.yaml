@@ -12,6 +12,15 @@ jobs:
         runs-on: 'ubuntu-latest'
         env:
             fail-fast: true
+        services:
+            postgres:
+                image: postgres:12
+                env:
+                    POSTGRES_PASSWORD: main
+                    POSTGRES_USER: main
+                    POSTGRES_DB: main_test
+                ports:
+                    - 5432:5432
         steps:
             - name: "Checkout code"
               uses: actions/checkout@v2.3.3
