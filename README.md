@@ -1,4 +1,4 @@
-Job Board for Symfony
+Jobbsy - Job Board for Symfony
 ====================================
 
 Inspired by https://larajobs.com.
