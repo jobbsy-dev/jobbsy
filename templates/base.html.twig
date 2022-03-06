@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %}Job board for Symfony{% endblock %}</title>
+        <title>{% block title %}Jobsy - Job board for Symfony{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -17,14 +17,16 @@
             <div class="container">
                 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                     <a href="{{ path('job_index') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" style="font-size: 2rem">
-                        Job board for Symfony
+                        Jobsy
                     </a>
 
                     <div class="col-md-3 text-end">
-
                         <a href="{{ path('job_new') }}" class="btn btn-outline-primary">{{ 'action.post_job'|trans }}</a>
                     </div>
                 </header>
+                <div class="col-12 text-center my-4">
+                    <p class="h2"><strong>Unofficial job board for Symfony</strong></p>
+                </div>
             </div>
             <main class="container">
                 {% block main %}{% endblock %}
