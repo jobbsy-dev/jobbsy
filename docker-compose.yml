@@ -2,7 +2,7 @@ version: '3'
 
 services:
     database:
-        image: postgres:${POSTGRES_VERSION:-13}-alpine
+        image: postgres:${POSTGRES_VERSION:-12}-alpine
         environment:
             POSTGRES_DB: ${POSTGRES_DB:-app}
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app}
@@ -12,4 +12,3 @@ services:
 
 volumes:
     db-data:
-
