@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %}Jobsy - Job board for Symfony{% endblock %}</title>
+        <title>{% block title %}Jobbsy - Job board for Symfony{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -12,22 +12,21 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body style="background-color: #f3f4f6">
+    <body style="background-color: rgba(249, 250, 251,1)">
         {% block body %}
-            <div class="container">
-                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                    <a href="{{ path('job_index') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" style="font-size: 2rem">
-                        Jobsy
-                    </a>
 
-                    <div class="col-md-3 text-end">
-                        <a href="{{ path('job_new') }}" class="btn btn-outline-primary">{{ 'action.post_job'|trans }}</a>
+            <header class=" bg-white border-bottom p-2">
+                <div class="container">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+                        <a href="{{ path('job_index') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" style="font-size: 2rem">
+                            Jobbsy
+                        </a>
+                        <div class="col-md-3 text-end">
+                            <a href="{{ path('job_new') }}" class="btn btn-primary">{{ 'action.post_job'|trans }}</a>
+                        </div>
                     </div>
-                </header>
-                <div class="col-12 text-center my-4">
-                    <p class="h2"><strong>Unofficial job board for Symfony</strong></p>
                 </div>
-            </div>
+            </header>
             <main class="container">
                 {% block main %}{% endblock %}
             </main>
