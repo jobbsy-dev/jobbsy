@@ -6,13 +6,16 @@ use App\EmploymentType;
 use App\Entity\Job;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Uid\UuidV4;
 
 class AppFixtures extends Fixture
 {
+    public const JOB_1_ID = 'fe094a22-5b0f-4f4d-88ee-5b331aeb6675';
+
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getData() as [$title, $employmentType, $organization, $location, $url, $tags]) {
-            $job = new Job();
+        foreach ($this->getData() as [$title, $employmentType, $organization, $location, $url, $tags, $id]) {
+            $job = new Job($id ? UuidV4::fromString($id) : null);
             $job->setTitle($title);
             $job->setEmploymentType($employmentType);
             $job->setOrganization($organization);
@@ -29,7 +32,7 @@ class AppFixtures extends Fixture
 
     private function getData(): \Generator
     {
-        yield ['Symfony developer Remote', EmploymentType::FULL_TIME, 'Acme', 'Remote', 'https://example.com', ['symfony6', 'php8']];
-        yield ['Lead dev Symfony Paris', EmploymentType::FULL_TIME, 'Acme', 'Paris', 'https://example.com', ['symfony', 'twig']];
+        yield ['Symfony developer Remote', EmploymentType::FULL_TIME, 'Acme', 'Remote', 'https://example.com', ['symfony6', 'php8'], self::JOB_1_ID];
+        yield ['Lead dev Symfony Paris', EmploymentType::FULL_TIME, 'Acme', 'Paris', 'https://example.com', ['symfony', 'twig'], null];
     }
 }

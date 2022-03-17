@@ -2,6 +2,7 @@
 
 namespace App\Tests\Controller;
 
+use App\DataFixtures\AppFixtures;
 use App\EmploymentType;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -36,5 +37,12 @@ class JobControllerTest extends WebTestCase
         $client->followRedirect();
 
         self::assertSelectorTextContains('p.h5', 'Symfony freelance developer');
+    }
+
+    public function testJobRedirect(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/job/'.AppFixtures::JOB_1_ID);
+        self::assertResponseRedirects('https://example.com');
     }
 }
