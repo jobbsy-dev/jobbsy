@@ -44,6 +44,10 @@ class JobType extends AbstractType
                     return implode(', ', $tagsAsArray);
                 },
                 function ($tagsAsString) {
+                    if (null === $tagsAsString) {
+                        return [];
+                    }
+
                     // transform the string back to an array
                     return explode(',', $tagsAsString);
                 }
