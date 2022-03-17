@@ -13,8 +13,9 @@
                 <title>{{ job.title }}</title>
                 <link>{{ job.url }}</link>
                 <pubDate>{{ job.createdAt|date(format='r', timezone='GMT') }}</pubDate>
+                <guid isPermaLink="false">{{ url('job', {'id': job.id}) }}</guid>
                 {% for tag in job.tags %}
-                    <category>{{ tag }}</category>
+                    <category>{{ tag|trim }}</category>
                 {% endfor %}
             </item>
         {% endfor %}

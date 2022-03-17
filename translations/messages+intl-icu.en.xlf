@@ -36,7 +36,7 @@
             </trans-unit>
             <trans-unit id="rss.title">
                 <source>rss.title</source>
-                <target>Job board for Symfony</target>
+                <target>Jobbsy</target>
             </trans-unit>
             <trans-unit id="rss.description">
                 <source>rss.description</source>

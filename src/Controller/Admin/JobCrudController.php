@@ -69,8 +69,7 @@ class JobCrudController extends AbstractCrudController
                 ->setFormTypeOption('choice_label', function (EmploymentType $enum) {
                     return $enum->value;
                 }),
-            ArrayField::new('tags')
-                ->onlyOnDetail(),
+            ArrayField::new('tags'),
             UrlField::new('url'),
             DateTimeField::new('createdAt')
                 ->setFormat('long', 'none')
