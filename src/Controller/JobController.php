@@ -7,6 +7,7 @@ use App\Form\JobType;
 use App\Repository\JobRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -43,5 +44,11 @@ class JobController extends AbstractController
             'job' => $job,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/job/{id}', name: 'job', methods: ['GET'])]
+    public function job(Job $job): RedirectResponse
+    {
+        return $this->redirect($job->getUrl());
     }
 }

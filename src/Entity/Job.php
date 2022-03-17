@@ -57,9 +57,13 @@ class Job
     #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $updatedAt;
 
-    public function __construct()
+    public function __construct(?Uuid $id = null)
     {
-        $this->id = Uuid::v4();
+        if (null === $id) {
+            $id = Uuid::v4();
+        }
+
+        $this->id = $id;
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTime();
     }
