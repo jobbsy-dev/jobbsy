@@ -41,7 +41,7 @@ class JobType extends AbstractType
             ->addModelTransformer(new CallbackTransformer(
                 function ($tagsAsArray) {
                     // transform the array to a string
-                    return implode(', ', $tagsAsArray);
+                    return implode(', ', array_map('trim', $tagsAsArray));
                 },
                 function ($tagsAsString) {
                     if (null === $tagsAsString) {
@@ -49,7 +49,7 @@ class JobType extends AbstractType
                     }
 
                     // transform the string back to an array
-                    return explode(',', $tagsAsString);
+                    return array_filter(array_map('trim', explode(',', $tagsAsString)));
                 }
             ))
         ;
