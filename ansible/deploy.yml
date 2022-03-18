@@ -1,0 +1,26 @@
+---
+-
+  name: Deploy Application
+  hosts: all
+  gather_facts: false
+  vars:
+    ansistrano_deploy_from: "{{ playbook_dir }}/../"
+    ansistrano_deploy_to: '{{ deploy_to }}'
+    ansistrano_get_url: '{{ download_url }}'
+    ansistrano_deploy_via: download_unarchive
+    ansistrano_keep_releases: 3
+    ansistrano_shared_paths:
+        - var/log
+        - var/sessions
+        - public/images
+    ansistrano_shared_files:
+        - '{{ private_key_path }}'
+    symfony_console_path: 'bin/console'
+    symfony_run_composer: false
+    symfony_run_assetic_dump: false
+    symfony_run_assets_install: false
+    symfony_run_doctrine_migrations: true
+    ansistrano_symfony_after_composer_tasks_file: "{{ playbook_dir }}/config/symfony_after_composer_tasks_file.yml"
+
+  roles:
+    - { role: cbrunnkvist.ansistrano-symfony-deploy }
