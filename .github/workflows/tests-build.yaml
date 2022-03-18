@@ -122,6 +122,9 @@ jobs:
         env:
             ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
         steps:
+            - name: "Checkout code"
+              uses: actions/checkout@v2
+
             - name: Install SSH key
               uses: shimataro/ssh-key-action@v2
               with:
