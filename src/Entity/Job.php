@@ -2,47 +2,64 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\EmploymentType;
 use App\Repository\JobRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
 #[Vich\Uploadable]
+#[ApiResource(
+    collectionOperations: ['get'],
+    iri: 'https://schema.org/JobPosting',
+    itemOperations: ['get'],
+    denormalizationContext: ['groups' => ['write']],
+    normalizationContext: ['groups' => ['read']],
+)]
 class Job
 {
     #[ORM\Id]
     #[ORM\Column(type: 'uuid')]
+    #[Groups(['read'])]
     private Uuid $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
+    #[Groups(['read', 'write'])]
     private ?string $title;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
+    #[Groups(['read', 'write'])]
     private ?string $location;
 
     #[ORM\Column(type: 'datetime_immutable')]
+    #[Groups(['read'])]
     private ?\DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: 'string', enumType: EmploymentType::class)]
     #[Assert\NotBlank]
+    #[Groups(['read', 'write'])]
     private ?EmploymentType $employmentType;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
+    #[Groups(['read', 'write'])]
     private ?string $organization;
 
     #[ORM\Column(type: 'json')]
     #[Assert\Count(max: 5)]
+    #[Groups(['read', 'write'])]
     private array $tags = [];
 
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
+    #[Groups(['read', 'write'])]
     private ?string $url;
 
     #[Vich\UploadableField(mapping: 'organization_image', fileNameProperty: 'organizationImageName', size: 'organizationImageSize')]
