@@ -1,0 +1,10 @@
+# See https://symfony.com/doc/current/configuration/secrets.html#deploy-secrets-to-production
+- name: Deploy Secrets to {{ symfony_env }}
+  command: php bin/console secrets:decrypt-to-local --force --env={{ symfony_env }}
+  args:
+      chdir: "{{ ansistrano_release_path.stdout }}"
+
+- name: dump env variables {{ symfony_env }}
+  command: "php {{ vault_composer_path }} dump-env {{ symfony_env }}"
+  args:
+      chdir: "{{ ansistrano_release_path.stdout }}"

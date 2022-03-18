@@ -35,3 +35,6 @@ fixtures:							## Load fixtures test env
 
 test:								## Run tests
 	$(SYMFONY_CLI) $(PHPUNIT)
+
+deploy:
+	ansible-playbook --vault-password-file=.ansible/.vault_pass .ansible/deploy.yml -i .ansible/inventory.yml
