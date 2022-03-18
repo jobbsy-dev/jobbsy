@@ -3,3 +3,4 @@ symfony_env: prod
 private_key_path: 'config/secrets/prod/prod.decrypt.private.php'
 deploy_to: "{{ vault_deploy_to }}"
 download_url: "{{ vault_download_url }}"
+ansible_user: "{{ vault_ansible_user }}"
