@@ -1,0 +1,5 @@
+---
+symfony_env: prod
+deploy_to: "$HOME/jobbsy.dev"
+download_url: "file:///home/qpddetd/build/app-build-main-latest.zip"
+private_key_path: 'config/secrets/prod/prod.decrypt.private.php'

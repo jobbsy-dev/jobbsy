@@ -1,0 +1,2 @@
+[prod]
+ssh.cluster031.hosting.ovh.net ansible_user=qpddetd
