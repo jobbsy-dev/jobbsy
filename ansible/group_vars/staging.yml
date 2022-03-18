@@ -1,0 +1,5 @@
+---
+symfony_env: staging
+deploy_to: "$HOME/staging.lecosinus.dequippe.tech"
+download_url: "file:///home/fufhuxn/build/app-build-develop-latest.zip"
+private_key_path: 'config/secrets/staging/staging.decrypt.private.php'
