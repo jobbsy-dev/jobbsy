@@ -10,7 +10,7 @@
         <div class="list-group mt-3">
             {# @var job \App\Entity\Job #}
             {% for job in jobs %}
-                <a href="{{ job.url }}" class="list-group-item list-group-item-action py-3" target="_blank" rel="nofollow">
+                <a href="{{ path('job', {'id': job.id}) }}" class="list-group-item list-group-item-action py-3" target="_blank" rel="nofollow">
                     <div class="d-flex">
                         {% if job.organizationImageName %}
                             <div class="d-flex align-items-center justify-content-center" style="width: 70px; height: 70px">
