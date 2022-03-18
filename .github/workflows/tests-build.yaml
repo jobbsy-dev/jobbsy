@@ -1,4 +1,4 @@
-name: "Tests & Build"
+name: "Tests, Build & Deploy"
 
 on:
     pull_request:
@@ -71,6 +71,7 @@ jobs:
     build:
         runs-on: 'ubuntu-latest'
         if: github.ref == 'refs/heads/main'
+        concurrency: production
         env:
             APP_ENV: prod
             BRANCH: ${{ github.ref_name }}
@@ -111,3 +112,21 @@ jobs:
                 port: 22
                 source: app-build-${{ env.BRANCH }}-latest.zip
                 target: "$HOME/build"
+
+    deploy:
+        runs-on: 'ubuntu-latest'
+        if: github.ref == 'refs/heads/main'
+        environment: production
+        concurrency: production
+        needs: ['build']
+        env:
+            ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+        steps:
+            - name: Install SSH key
+              uses: shimataro/ssh-key-action@v2
+              with:
+                  key: ${{ secrets.DEPLOY_SSH_KEY }}
+            - name: "Setup Ansible vault password"
+              run: echo "$ANSIBLE_VAULT_PASSWORD" > .ansible/.vault_pass
+            - name: "Deploy"
+              run: make deploy
