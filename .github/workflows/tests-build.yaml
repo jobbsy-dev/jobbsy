@@ -130,7 +130,11 @@ jobs:
               with:
                   key: ${{ secrets.DEPLOY_SSH_KEY }}
                   known_hosts: ${{ secrets.KNOWN_HOSTS }}
-            - name: "Setup Ansible vault password"
-              run: echo "$ANSIBLE_VAULT_PASSWORD" > .ansible/.vault_pass
+
+            - name: "Setup Ansible"
+              run: |
+                  echo "$ANSIBLE_VAULT_PASSWORD" > .ansible/.vault_pass
+                  ansible-galaxy install -r .ansible/requirements.yml
+
             - name: "Deploy"
               run: make deploy
