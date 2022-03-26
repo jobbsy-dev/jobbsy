@@ -69,6 +69,6 @@ DirectoryIndex index.php
     Header set Cache-Control "max-age=31536000, public"
 </FilesMatch>
 
-<FilesMatch "\.(js|css)$">
+<FilesMatch "\.(js|css|woff2|woff|ttf|eot)$">
     Header set Cache-Control "max-age=31536000"
 </FilesMatch>
