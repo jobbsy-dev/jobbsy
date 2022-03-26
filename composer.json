@@ -1,6 +1,8 @@
 {
     "type": "project",
     "license": "proprietary",
+    "name": "qdequippe/jobbsy",
+    "description": "Jobbsy, Job Board for Symfony",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "replace": {
@@ -24,6 +26,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
         "easycorp/easyadmin-bundle": "^4.0",
+        "knplabs/knp-time-bundle": "^1.18",
         "league/flysystem-bundle": "^2.1",
         "nelmio/cors-bundle": "^2.2",
         "phpdocumentor/reflection-docblock": "^5.3",

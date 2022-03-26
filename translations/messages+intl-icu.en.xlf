@@ -6,25 +6,13 @@
                 <source>employment_type.full_time</source>
                 <target>Full time</target>
             </trans-unit>
-            <trans-unit id="employment_type.part_time">
-                <source>employment_type.part_time</source>
-                <target>Part time</target>
-            </trans-unit>
             <trans-unit id="employment_type.contract">
                 <source>employment_type.contract</source>
                 <target>Contract</target>
             </trans-unit>
-            <trans-unit id="employment_type.temporary">
-                <source>employment_type.temporary</source>
-                <target>Temporary</target>
-            </trans-unit>
-            <trans-unit id="employment_type.seasonal">
-                <source>employment_type.seasonal</source>
-                <target>Seasonal</target>
-            </trans-unit>
             <trans-unit id="employment_type.internship">
                 <source>employment_type.internship</source>
-                <target>Internship</target>
+                <target>Apprenticeship / Internship</target>
             </trans-unit>
             <trans-unit id="action.post_job">
                 <source>action.post_job</source>
@@ -41,6 +29,54 @@
             <trans-unit id="rss.description">
                 <source>rss.description</source>
                 <target>Last job offers published on the job board for Symfony</target>
+            </trans-unit>
+            <trans-unit id="form.label.job_title">
+                <source>form.label.job_title</source>
+                <target>Job title</target>
+            </trans-unit>
+            <trans-unit id="form.label.job_location">
+                <source>form.label.job_location</source>
+                <target>Job location</target>
+            </trans-unit>
+            <trans-unit id="form.label.employment_type">
+                <source>form.label.employment_type</source>
+                <target>Job type</target>
+            </trans-unit>
+            <trans-unit id="form.label.organization">
+                <source>form.label.organization</source>
+                <target>Organization name</target>
+            </trans-unit>
+            <trans-unit id="form.label.job_url">
+                <source>form.label.job_url</source>
+                <target>Url to description/application</target>
+            </trans-unit>
+            <trans-unit id="form.label.tags">
+                <source>form.label.tags</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="form.help.job_title">
+                <source>form.help.job_title</source>
+                <target>Example: Lead Symfony Developer</target>
+            </trans-unit>
+            <trans-unit id="form.help.job_location">
+                <source>form.help.job_location</source>
+                <target>Example: Remote, "Paris, remote ok"</target>
+            </trans-unit>
+            <trans-unit id="form.help.job_url">
+                <source>form.help.job_url</source>
+                <target>Example: https://mycompany.com/careers</target>
+            </trans-unit>
+            <trans-unit id="form.help.tags">
+                <source>form.help.tags</source>
+                <target>List of tags separated by "," (max 5). Example: "PHP, Symfony, Redis, MySQL, API"</target>
+            </trans-unit>
+            <trans-unit id="form.help.organization_logo">
+                <source>form.help.organization_logo</source>
+                <target>1:1 square (e.g. 100x100)</target>
+            </trans-unit>
+            <trans-unit id="form.label.optional">
+                <source>form.label.optional</source>
+                <target>(optional)</target>
             </trans-unit>
         </body>
     </file>
