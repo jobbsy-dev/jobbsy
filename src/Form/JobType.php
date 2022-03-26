@@ -18,22 +18,37 @@ class JobType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('location')
+            ->add('title', TextType::class, [
+                'label' => 'form.label.job_title',
+                'help' => 'form.help.job_title',
+            ])
+            ->add('location', TextType::class, [
+                'label' => 'form.label.job_location',
+                'help' => 'form.help.job_location',
+            ])
             ->add('employmentType', EnumType::class, [
+                'label' => 'form.label.employment_type',
                 'class' => EmploymentType::class,
                 'choice_label' => function (EmploymentType $employmentType) {
                     return sprintf('employment_type.%s', $employmentType->value);
                 },
             ])
-            ->add('organization')
-            ->add('url', UrlType::class)
+            ->add('organization', TextType::class, [
+                'label' => 'form.label.organization',
+            ])
+            ->add('url', UrlType::class, [
+                'label' => 'form.label.job_url',
+                'help' => 'form.help.job_url',
+            ])
             ->add('tags', TextType::class, [
+                'label' => 'form.label.tags',
                 'required' => false,
+                'help' => 'form.help.tags',
             ])
             ->add('organizationImageFile', VichFileType::class, [
                 'label' => 'form.label.organization_logo',
                 'required' => false,
+                'help' => 'form.help.organization_logo',
             ])
         ;
 

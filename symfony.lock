@@ -161,6 +161,9 @@
     "jms/metadata": {
         "version": "2.6.1"
     },
+    "knplabs/knp-time-bundle": {
+        "version": "v1.18.0"
+    },
     "laminas/laminas-code": {
         "version": "4.5.0"
     },

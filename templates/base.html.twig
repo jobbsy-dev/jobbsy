@@ -16,13 +16,13 @@
     </head>
     <body style="background-color: rgba(249, 250, 251,1)">
         {% block body %}
-            <header class=" bg-white border-bottom p-2">
+            <header class="bg-white border-bottom p-2">
                 <div class="container">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
                         <a href="{{ path('job_index') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" style="font-size: 2rem">
                             Jobbsy
                         </a>
-                        <div class="col-md-3 text-end">
+                        <div class="col-md-3 text-end ms-3 ms-md-0">
                             <a href="{{ path('job_new') }}" class="btn btn-primary">{{ 'action.post_job'|trans }}</a>
                         </div>
                     </div>
@@ -34,11 +34,24 @@
 
             <footer class="py-3 my-4 text-center">
                 <ul class="nav justify-content-center pb-3 mb-1">
-                    <li class="nav-item"><a href="{{ path('job_index') }}" class="nav-link px-2 text-muted">Home</a></li>
-                    <li class="nav-item"><a href="mailto:hello@jobbsy.dev" class="nav-link px-2 text-muted">Contact</a></li>
-                    <li class="nav-item"><a href="{{ path('job_rss') }}" class="nav-link px-2 text-muted">RSS</a></li>
-                    <li class="nav-item"><a href="{{ path('api_doc') }}" class="nav-link px-2 text-muted">API</a></li>
-                    <li class="nav-item"><a href="https://github.com/qdequippe/jobbsy" target="_blank" rel="nofollow" class="nav-link px-2 text-muted">Github</a></li>
+                    <li class="nav-item">
+                        <a href="{{ path('job_index') }}" class="nav-link px-2 text-muted">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="mailto:hello@jobbsy.dev" class="nav-link px-2 text-muted">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('job_rss') }}" class="nav-link px-2 text-muted">RSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('api_doc') }}" class="nav-link px-2 text-muted">API</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/qdequippe/jobbsy" target="_blank" rel="nofollow" class="nav-link px-2 text-muted">Github</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://twitter.com/jobbsy" target="_blank" rel="nofollow" class="nav-link px-2 text-muted">Twitter</a>
+                    </li>
                 </ul>
                 <p class="text-center text-muted mb-0">{{ ''|date('Y') }} Jobbsy, (unofficial) job board for Symfony™</p>
                 <small class="text-muted">Symfony™ is a trademark, please refer to <a href="https://symfony.com/trademark" class="text-reset" target="_blank" rel="nofollow">Trademark and Logo Policy</a>.</small>
