@@ -18,7 +18,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
     collectionOperations: ['get'],
     iri: 'https://schema.org/JobPosting',
     itemOperations: ['get'],
-    denormalizationContext: ['groups' => ['write']],
     normalizationContext: ['groups' => ['read']],
 )]
 class Job
@@ -73,6 +72,9 @@ class Job
 
     #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $updatedAt;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $organizationImageUrl = null;
 
     public function __construct(?Uuid $id = null)
     {
@@ -194,5 +196,15 @@ class Job
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
+    }
+
+    public function getOrganizationImageUrl(): ?string
+    {
+        return $this->organizationImageUrl;
+    }
+
+    public function setOrganizationImageUrl(?string $organizationImageUrl): void
+    {
+        $this->organizationImageUrl = $organizationImageUrl;
     }
 }
