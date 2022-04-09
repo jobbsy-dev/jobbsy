@@ -20,7 +20,7 @@ class PoleEmploiProvider
         $this->api->authenticate([
             'api_offresdemploiv2',
             'o2dsoffre',
-            'application_'.$this->clientId
+            'application_'.$this->clientId,
         ]);
 
         $results = $this->api->search($params);
@@ -56,7 +56,7 @@ class PoleEmploiProvider
                 $this->entityManager->flush();
                 $this->entityManager->clear();
             }
-            $i++;
+            ++$i;
         }
 
         $this->entityManager->flush();

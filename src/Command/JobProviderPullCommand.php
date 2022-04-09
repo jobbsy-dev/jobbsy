@@ -30,7 +30,7 @@ class JobProviderPullCommand extends Command
             'motsCles' => 'symfony,développeur',
             'minCreationDate' => $now->modify('-1 day'),
             'maxCreationDate' => $now,
-            'origineOffre' => 1
+            'origineOffre' => 1,
         ]);
 
         $io->success('Successful pull');

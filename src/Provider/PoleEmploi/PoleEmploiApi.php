@@ -34,7 +34,7 @@ class PoleEmploiApi
             ],
             'query' => [
                 'realm' => '/partenaire',
-            ]
+            ],
         ]);
 
         $data = $response->toArray();
@@ -47,7 +47,7 @@ class PoleEmploiApi
         $url = 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search';
 
         // Workaround here because this API does not accept DateTime format encoded
-        if (array_key_exists('minCreationDate', $queryParams) || array_key_exists('maxCreationDate', $queryParams)) {
+        if (\array_key_exists('minCreationDate', $queryParams) || \array_key_exists('maxCreationDate', $queryParams)) {
             $maxCreationDate = $queryParams['maxCreationDate'];
             $minCreationDate = $queryParams['minCreationDate'];
 
@@ -71,7 +71,7 @@ class PoleEmploiApi
 
         $response = $this->httpClient->request('GET', $url, [
             'auth_bearer' => $this->accessToken?->getToken(),
-            'query' => $queryParams
+            'query' => $queryParams,
         ]);
 
         return $response->toArray()['resultats'];
