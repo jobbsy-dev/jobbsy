@@ -28,7 +28,7 @@ class JobProviderPullCommand extends Command
 
         $this->provider->pull([
             'motsCles' => 'symfony,développeur',
-            'minCreationDate' => $now->modify('-2 day'),
+            'minCreationDate' => $now->modify('-1 day'),
             'maxCreationDate' => $now,
             'origineOffre' => 1
         ]);
