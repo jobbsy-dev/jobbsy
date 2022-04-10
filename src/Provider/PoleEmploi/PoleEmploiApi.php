@@ -74,6 +74,12 @@ class PoleEmploiApi
             'query' => $queryParams,
         ]);
 
-        return $response->toArray()['resultats'];
+        if (200 !== $response->getStatusCode()) {
+            return [];
+        }
+
+        $data = $response->toArray(false);
+
+        return $data['resultats'] ?? [];
     }
 }

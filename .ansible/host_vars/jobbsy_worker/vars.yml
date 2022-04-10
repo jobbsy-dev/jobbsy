@@ -7,3 +7,4 @@ symfony_run_composer: true
 ansistrano_deploy_via: git
 ansistrano_git_branch: main
 ansistrano_git_repo: git@github.com:qdequippe/jobbsy.git
+composer_path: "{{ vault_composer_path }}"
