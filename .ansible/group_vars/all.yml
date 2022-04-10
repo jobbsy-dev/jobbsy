@@ -1,0 +1,3 @@
+---
+symfony_env: prod
+private_key_path: 'config/secrets/prod/prod.decrypt.private.php'
