@@ -129,13 +129,7 @@ jobs:
               uses: shimataro/ssh-key-action@v2
               with:
                   key: ${{ secrets.DEPLOY_SSH_KEY }}
-                  known_hosts: ${{ secrets.KNOWN_HOSTS }}
-
-            - name: Install SSH key (other server)
-              uses: shimataro/ssh-key-action@v2
-              with:
-                  key: ${{ secrets.DEPLOY_SSH_KEY }}
-                  known_hosts: ${{ secrets.KNOWN_HOSTS2 }}
+                  known_hosts: ${{ secrets.KNOWN_HOSTS_2 }}
 
             - name: "Setup Ansible"
               run: |
