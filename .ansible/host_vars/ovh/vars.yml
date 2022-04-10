@@ -1,5 +1,6 @@
 ---
-ansistrano_get_url: '{{ vault_download_url }}'
+ansible_host: "{{ vault_ansible_host }}"
+ansistrano_get_url: "{{ vault_download_url }}"
 deploy_to: "{{ vault_deploy_to }}"
 ansible_user: "{{ vault_ansible_user }}"
 ansistrano_deploy_via: download_unarchive

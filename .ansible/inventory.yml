@@ -2,7 +2,7 @@ all:
     children:
         webservers:
             hosts:
-                ssh.cluster031.hosting.ovh.net:
+                ovh:
         workers:
             hosts:
-                workers.jobbsy.dev:
+                jobbsy_worker:
