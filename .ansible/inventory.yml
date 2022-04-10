@@ -1,5 +1,8 @@
 all:
     children:
-        prod:
+        webservers:
             hosts:
                 ssh.cluster031.hosting.ovh.net:
+        workers:
+            hosts:
+                workers.jobbsy.dev:

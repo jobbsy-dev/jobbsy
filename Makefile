@@ -38,3 +38,9 @@ test:								## Run tests
 
 deploy:
 	ansible-playbook --vault-password-file=.ansible/.vault_pass .ansible/deploy.yml -i .ansible/inventory.yml
+
+decrypt-vault:
+	ansible-vault decrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass
+
+encrypt-vault:
+	ansible-vault encrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass

@@ -3,13 +3,9 @@
   name: Deploy Application
   hosts: all
   gather_facts: false
-  vars_files:
-      - vault.yml
   vars:
     ansistrano_deploy_from: "{{ playbook_dir }}/../"
     ansistrano_deploy_to: '{{ deploy_to }}'
-    ansistrano_get_url: '{{ download_url }}'
-    ansistrano_deploy_via: download_unarchive
     ansistrano_keep_releases: 3
     ansistrano_shared_paths:
         - var/log
@@ -18,7 +14,6 @@
     ansistrano_shared_files:
         - '{{ private_key_path }}'
     symfony_console_path: 'bin/console'
-    symfony_run_composer: false
     symfony_run_assetic_dump: false
     symfony_run_assets_install: false
     symfony_run_doctrine_migrations: true
