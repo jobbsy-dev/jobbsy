@@ -1,0 +1,2 @@
+---
+ansistrano_after_cleanup_tasks_file: "{{ playbook_dir }}/config/ansistrano_after_cleanup_tasks_file.yml"
