@@ -1,4 +1,5 @@
 ---
+ansible_host: "{{ vault_ansible_host }}"
 deploy_to: "{{ vault_deploy_to }}"
 ansible_user: "{{ vault_ansible_user }}"
 ansible_port: "{{ vault_ansible_port }}"
