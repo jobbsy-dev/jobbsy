@@ -1,0 +1,8 @@
+---
+deploy_to: "{{ vault_deploy_to }}"
+ansible_user: "{{ vault_ansible_user }}"
+ansible_port: "{{ vault_ansible_port }}"
+symfony_run_composer: true
+ansistrano_deploy_via: git
+ansistrano_git_branch: main
+ansistrano_git_repo: git@github.com:qdequippe/jobbsy.git
