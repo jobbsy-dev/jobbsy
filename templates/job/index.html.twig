@@ -17,7 +17,9 @@
                                 <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" class="img-fluid rounded">
                             </div>
                         {% elseif job.organizationImageUrl %}
-                            <img src="{{ job.organizationImageUrl }}" style="width: 70px; height: 70px" alt="{{ job.organization }}">
+                            <div class="d-flex align-items-center justify-content-center" style="width: 70px; height: 70px">
+                                <img src="{{ job.organizationImageUrl }}" class="img-fluid rounded" alt="{{ job.organization }}">
+                            </div>
                         {% else %}
                             <img src="https://eu.ui-avatars.com/api/?name={{ job.organization }}&size=70&background=random" alt="{{ job.organization }}">
                         {% endif %}
