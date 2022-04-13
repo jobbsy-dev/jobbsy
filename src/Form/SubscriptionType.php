@@ -17,8 +17,8 @@ class SubscriptionType extends AbstractType
                 new Assert\NotBlank(),
             ],
             'attr' => [
-                'placeholder' => 'Your email address'
-            ]
+                'placeholder' => 'Your email address',
+            ],
         ]);
     }
 }

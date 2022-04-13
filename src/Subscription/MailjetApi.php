@@ -25,7 +25,7 @@ class MailjetApi
         $response = $this->mailjetClient->request('POST', 'contact', [
             'json' => [
                 'Email' => $email,
-            ]
+            ],
         ]);
 
         if (200 !== $response->getStatusCode()) {
@@ -47,7 +47,7 @@ class MailjetApi
             'json' => [
                 'ContactID' => $contactId,
                 'ListID' => $listId,
-            ]
+            ],
         ]);
 
         if (200 !== $response->getStatusCode()) {
