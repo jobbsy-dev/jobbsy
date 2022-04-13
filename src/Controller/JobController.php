@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Job;
 use App\Form\JobType;
+use App\Form\SubscriptionType;
 use App\Repository\JobRepository;
+use App\Subscription\SubscribeMailingListCommand;
+use App\Subscription\SubscribeMailingListCommandHandler;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -50,5 +53,37 @@ class JobController extends AbstractController
     public function job(Job $job): RedirectResponse
     {
         return $this->redirect($job->getUrl());
+    }
+
+    public function subscriptionForm(): Response
+    {
+        $form = $this->createForm(SubscriptionType::class);
+
+        return $this->render('job/_subscription_form.html.twig', [
+           'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/subscribe', name: 'subscribe', methods: ['POST'])]
+    public function subscribe(Request $request, SubscribeMailingListCommandHandler $handler, string $mailjetListId): Response
+    {
+        $form = $this->createForm(SubscriptionType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $command = new SubscribeMailingListCommand(
+                $form->getData()['email'],
+                $mailjetListId,
+            );
+            ($handler)($command);
+
+            $this->addFlash('success', 'Subscribed!');
+
+            return $this->redirectToRoute('job_index');
+        }
+
+        $this->addFlash('error', 'Please provide a valid email address');
+
+        return $this->redirectToRoute('job_index');
     }
 }

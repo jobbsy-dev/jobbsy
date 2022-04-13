@@ -2,7 +2,7 @@ all:
     children:
         webservers:
             hosts:
-                ovh:
+                web1:
         workers:
             hosts:
-                jobbsy_worker:
+                worker1:

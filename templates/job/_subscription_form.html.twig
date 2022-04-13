@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-between bg-dark text-light align-items-center p-4 rounded">
+    <div>
+        <h5>Subscribe to receive the latest Symfony jobs in your inbox</h5>
+        <p class="mb-0">Receive a weekly overview of Symfony jobs by subscribing to our mailing list</p>
+    </div>
+    <div>
+        {{ form_start(form, {method: 'POST', action: path('subscribe'), attr: {class: 'row gy-2 gx-3 align-items-center'}}) }}
+        <div class="col-auto">
+            {{ form_label(form.email, null, {'label_attr': {'class': 'visually-hidden'}}) }}
+            {{ form_widget(form.email) }}
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+

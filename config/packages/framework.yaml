@@ -17,6 +17,11 @@ framework:
     php_errors:
         log: true
 
+    http_client:
+        scoped_clients:
+            mailjet.client:
+                base_uri: 'https://api.mailjet.com/v3/REST/'
+                auth_basic: '%env(MAILJET_API_KEY)%:%env(MAILJET_API_SECRET_KEY)%'
 when@test:
     framework:
         test: true

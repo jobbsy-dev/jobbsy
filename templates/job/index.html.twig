@@ -5,6 +5,10 @@
         <h2><strong>Job board for Symfony</strong></h2>
     </div>
 
+    <div class="my-5">
+        {{ render(controller('App\\Controller\\JobController::subscriptionForm')) }}
+    </div>
+
     <h2 class="h4">New jobs</h2>
     {% if jobs|length > 0 %}
         <div class="list-group mt-3">
