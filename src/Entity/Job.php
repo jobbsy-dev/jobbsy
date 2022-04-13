@@ -76,6 +76,9 @@ class Job
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $organizationImageUrl = null;
 
+    #[ORM\Column(type: 'integer', options: ['default' => 0])]
+    private int $clickCount = 0;
+
     public function __construct(?Uuid $id = null)
     {
         if (null === $id) {
@@ -206,5 +209,10 @@ class Job
     public function setOrganizationImageUrl(?string $organizationImageUrl): void
     {
         $this->organizationImageUrl = $organizationImageUrl;
+    }
+
+    public function clicked(): void
+    {
+        ++$this->clickCount;
     }
 }

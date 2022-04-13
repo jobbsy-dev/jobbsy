@@ -50,8 +50,11 @@ class JobController extends AbstractController
     }
 
     #[Route('/job/{id}', name: 'job', methods: ['GET'])]
-    public function job(Job $job): RedirectResponse
+    public function job(Job $job, EntityManagerInterface $entityManager): RedirectResponse
     {
+        $job->clicked();
+        $entityManager->flush();
+
         return $this->redirect($job->getUrl());
     }
 
