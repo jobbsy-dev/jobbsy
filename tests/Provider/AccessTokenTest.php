@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Tests\Provider\PoleEmploi;
+namespace App\Tests\Provider;
 
-use App\Provider\PoleEmploi\AccessToken;
+use App\Provider\AccessToken;
 use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\InvalidArgumentException;
 

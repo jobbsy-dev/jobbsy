@@ -79,6 +79,9 @@ class Job
     #[ORM\Column(type: 'integer', options: ['default' => 0])]
     private int $clickCount = 0;
 
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $source = null;
+
     public function __construct(?Uuid $id = null)
     {
         if (null === $id) {
@@ -214,5 +217,15 @@ class Job
     public function clicked(): void
     {
         ++$this->clickCount;
+    }
+
+    public function getSource(): ?string
+    {
+        return $this->source;
+    }
+
+    public function setSource(?string $source): void
+    {
+        $this->source = $source;
     }
 }
