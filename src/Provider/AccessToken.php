@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Provider\PoleEmploi;
+namespace App\Provider;
 
 use Webmozart\Assert\Assert;
 
-class AccessToken
+final class AccessToken
 {
     private \DateTimeImmutable $createdAt;
 
