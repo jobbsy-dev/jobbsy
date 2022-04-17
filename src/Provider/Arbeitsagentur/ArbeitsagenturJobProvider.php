@@ -21,12 +21,14 @@ final class ArbeitsagenturJobProvider implements JobProviderInterface
     {
         $this->api->authenticate();
 
-        $sinceDays = $parameters->to->diff($parameters->from);
-
-        $data = $this->api->search([
+        $params = [
             'was' => 'symfony',
-            'veroeffentlichtseit' => $sinceDays,
-        ]);
+        ];
+        if (null !== $parameters->to && null !== $parameters->from) {
+            $params['veroeffentlichtseit'] = $parameters->to->diff($parameters->from);
+        }
+
+        $data = $this->api->search($params);
 
         $jobs = new JobCollection();
         foreach ($data as $datum) {
@@ -67,7 +69,7 @@ final class ArbeitsagenturJobProvider implements JobProviderInterface
             return false;
         }
 
-        if (false === isset($data['refnr']) && $data['externeUrl']) {
+        if (false === isset($data['refnr']) && false === isset($data['externeUrl'])) {
             return false;
         }
 

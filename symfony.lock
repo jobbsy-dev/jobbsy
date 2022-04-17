@@ -183,6 +183,9 @@
             "var/storage/.gitignore"
         ]
     },
+    "league/flysystem-memory": {
+        "version": "3.0.14"
+    },
     "league/mime-type-detection": {
         "version": "1.9.0"
     },

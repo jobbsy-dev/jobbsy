@@ -28,9 +28,6 @@ final class ArbeitsagenturApi
                 'client_id' => $this->arbeitsagenturClientId,
                 'client_secret' => $this->arbeitsagenturClientSecret,
             ],
-            'query' => [
-                'realm' => '/partenaire',
-            ],
         ]);
 
         $data = $response->toArray();

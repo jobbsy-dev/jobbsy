@@ -4,6 +4,6 @@ namespace App\Provider;
 
 final class SearchParameters
 {
-    public ?\DateTimeImmutable $from;
-    public ?\DateTimeImmutable $to;
+    public ?\DateTimeImmutable $from = null;
+    public ?\DateTimeImmutable $to = null;
 }
