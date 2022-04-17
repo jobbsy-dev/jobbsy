@@ -28,7 +28,7 @@ class MailjetApi
             ],
         ]);
 
-        if (200 !== $response->getStatusCode()) {
+        if (201 !== $response->getStatusCode()) {
             return null;
         }
 
@@ -50,7 +50,7 @@ class MailjetApi
             ],
         ]);
 
-        if (200 !== $response->getStatusCode()) {
+        if (201 !== $response->getStatusCode()) {
             return null;
         }
 
