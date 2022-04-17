@@ -76,7 +76,7 @@ final class ArbeitsagenturJobProvider implements JobProviderInterface
 
     private function fillLogo(array $data, Job $job): void
     {
-        if (false === isset($datum['logoHashId'])) {
+        if (false === isset($data['logoHashId'])) {
             return;
         }
 

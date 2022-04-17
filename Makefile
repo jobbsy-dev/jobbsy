@@ -36,11 +36,16 @@ fixtures:							## Load fixtures test env
 test:								## Run tests
 	$(SYMFONY_CLI) $(PHPUNIT)
 
-deploy:
+deploy:								## Deploy
 	ansible-playbook --vault-password-file=.ansible/.vault_pass .ansible/deploy.yml -i .ansible/inventory.yml
 
-decrypt-vault:
+decrypt-vault:						## Decrypt Ansible vault
 	ansible-vault decrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass
 
-encrypt-vault:
+encrypt-vault:						## Encrypt Ansible vault
 	ansible-vault encrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass
+
+bootstrap-tests:					## Bootstrap tests
+	$(SYMFONY_CLI) console d:d:d --force --env=test
+	$(SYMFONY_CLI) console d:d:c --env=test
+	$(SYMFONY_CLI) console d:m:m --env=test --no-interaction

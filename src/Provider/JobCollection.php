@@ -32,6 +32,6 @@ final class JobCollection implements \Countable
 
     public function count(): int
     {
-        return count($this->jobs);
+        return \count($this->jobs);
     }
 }
