@@ -4,30 +4,34 @@ namespace App\Provider\PoleEmploi;
 
 use App\EmploymentType;
 use App\Entity\Job;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Provider\JobCollection;
+use App\Provider\JobProviderInterface;
+use App\Provider\SearchParameters;
 
-class PoleEmploiProvider
+final class PoleEmploiJobProvider implements JobProviderInterface
 {
     public function __construct(
         private readonly PoleEmploiApi $api,
-        private readonly EntityManagerInterface $entityManager,
-        private readonly string $clientId
+        private readonly string $poleEmploiClientId
     ) {
     }
 
-    public function pull(array $params = []): void
+    public function retrieve(SearchParameters $parameters): JobCollection
     {
         $this->api->authenticate([
             'api_offresdemploiv2',
             'o2dsoffre',
-            'application_'.$this->clientId,
+            'application_'.$this->poleEmploiClientId,
         ]);
 
-        $results = $this->api->search($params);
+        $results = $this->api->search([
+            'motsCles' => 'symfony,développeur',
+            'minCreationDate' => $parameters->from,
+            'maxCreationDate' => $parameters->to,
+            'origineOffre' => 1,
+        ]);
 
-        $this->entityManager->getConnection()->getConfiguration()?->setSQLLogger(null);
-
-        $i = 0;
+        $jobs = new JobCollection();
         foreach ($results as $result) {
             if (false === $this->isOfferCheckConditions($result)) {
                 continue;
@@ -48,18 +52,13 @@ class PoleEmploiProvider
             $job->setOrganizationImageUrl($result['entreprise']['logo'] ?? null);
             $job->setEmploymentType(EmploymentType::FULL_TIME);
 
-            $job->setTags(['Symfony', 'API PoleEmploi']);
+            $job->setTags(['Symfony']);
+            $job->setSource('Pole Emploi');
 
-            $this->entityManager->persist($job);
-
-            if (0 === ($i % 20)) {
-                $this->entityManager->flush();
-                $this->entityManager->clear();
-            }
-            ++$i;
+            $jobs->addJob($job);
         }
 
-        $this->entityManager->flush();
+        return $jobs;
     }
 
     private function isOfferCheckConditions(array $jobOffer): bool

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "451e1b240e237255ff86d1e6797e0f71",
+    "content-hash": "d920971d917e7d008ac532b985e52675",
     "packages": [
         {
             "name": "api-platform/core",
@@ -9264,6 +9264,55 @@
                 }
             ],
             "time": "2022-03-18T17:20:59+00:00"
+        },
+        {
+            "name": "league/flysystem-memory",
+            "version": "3.0.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-memory.git",
+                "reference": "874b022ed7bd095765d1ebf187b750bb809176a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-memory/zipball/874b022ed7bd095765d1ebf187b750bb809176a9",
+                "reference": "874b022ed7bd095765d1ebf187b750bb809176a9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "league/flysystem": "^2.0.0 || ^3.0.0",
+                "php": "^8.0.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\InMemory\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frankdejonge.nl"
+                }
+            ],
+            "description": "In-memory filesystem adapter for Flysystem.",
+            "keywords": [
+                "Flysystem",
+                "file",
+                "files",
+                "filesystem",
+                "memory"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/flysystem-memory/issues",
+                "source": "https://github.com/thephpleague/flysystem-memory/tree/3.0.14"
+            },
+            "time": "2022-04-02T16:55:28+00:00"
         },
         {
             "name": "myclabs/deep-copy",

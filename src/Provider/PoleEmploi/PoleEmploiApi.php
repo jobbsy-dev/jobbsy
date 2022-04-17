@@ -2,16 +2,17 @@
 
 namespace App\Provider\PoleEmploi;
 
+use App\Provider\AccessToken;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class PoleEmploiApi
+final class PoleEmploiApi
 {
     private ?AccessToken $accessToken = null;
 
     public function __construct(
-        private readonly string $clientId,
-        private readonly string $clientSecret,
+        private readonly string $poleEmploiClientId,
+        private readonly string $poleEmploiClientSecret,
         private ?HttpClientInterface $httpClient = null,
     ) {
         if (null === $this->httpClient) {
@@ -28,8 +29,8 @@ class PoleEmploiApi
         $response = $this->httpClient->request('POST', 'https://entreprise.pole-emploi.fr/connexion/oauth2/access_token', [
             'body' => [
                 'grant_type' => 'client_credentials',
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
+                'client_id' => $this->poleEmploiClientId,
+                'client_secret' => $this->poleEmploiClientSecret,
                 'scope' => implode(' ', $scope),
             ],
             'query' => [

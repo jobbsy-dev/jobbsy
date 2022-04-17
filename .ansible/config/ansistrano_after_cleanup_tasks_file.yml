@@ -3,4 +3,4 @@
     name: "pull job provider"
     minute: "0"
     hour: "1"
-    job: "php {{ ansistrano_release_path.stdout }}/bin/console app:job-provider:pull"
+    job: "php {{ ansistrano_release_path.stdout }}/bin/console app:job-provider:retrieve"
