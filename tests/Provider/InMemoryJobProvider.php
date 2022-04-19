@@ -25,4 +25,9 @@ final class InMemoryJobProvider implements JobProviderInterface
     {
         return new JobCollection(...$this->jobs);
     }
+
+    public function enabled(): bool
+    {
+        return true;
+    }
 }

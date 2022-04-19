@@ -100,4 +100,9 @@ final class ArbeitsagenturJobProvider implements JobProviderInterface
         $this->organizationImageStorage->write($name, $organizationLogo->content);
         $job->setOrganizationImageName($name);
     }
+
+    public function enabled(): bool
+    {
+        return false;
+    }
 }
