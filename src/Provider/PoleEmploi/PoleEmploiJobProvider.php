@@ -77,4 +77,9 @@ final class PoleEmploiJobProvider implements JobProviderInterface
 
         return true;
     }
+
+    public function enabled(): bool
+    {
+        return true;
+    }
 }
