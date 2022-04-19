@@ -19,9 +19,18 @@ final class JobProvider implements JobProviderInterface
         $jobs = new JobCollection();
 
         foreach ($this->providers as $provider) {
+            if (false === $provider->enabled()) {
+                continue;
+            }
+
             $jobs->addJob(...$provider->retrieve($parameters)->all());
         }
 
         return $jobs;
+    }
+
+    public function enabled(): bool
+    {
+        return true;
     }
 }
