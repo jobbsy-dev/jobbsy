@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Job;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,5 +18,20 @@ class JobRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Job::class);
+    }
+
+    /**
+     * @return Job[]
+     */
+    public function findLastJobs(): array
+    {
+        $qb = $this->createQueryBuilder('job');
+
+        return $qb
+            ->orderBy('job.pinned', Criteria::DESC)
+            ->addOrderBy('job.createdAt', Criteria::DESC)
+            ->setMaxResults(30)
+            ->getQuery()
+            ->getResult();
     }
 }

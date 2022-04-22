@@ -11,12 +11,20 @@ class JobControllerTest extends WebTestCase
     public function testListJobsOffers(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/');
+        $crawler = $client->request('GET', '/');
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('a.btn.btn-primary', 'Post a Job');
 
-        self::assertSelectorTextContains('.list-group-item p.h5', 'Lead dev Symfony Paris');
+        self::assertSame(
+            'Symfony developer Remote',
+            $crawler->filter('.list-group-item p.h5')->eq(0)->text(),
+            'Pinned job'
+        );
+        self::assertSame(
+            'Backend Symfony developer',
+            $crawler->filter('.list-group-item p.h5')->eq(1)->text()
+        );
     }
 
     public function testCreateJobOffer(): void
@@ -34,9 +42,12 @@ class JobControllerTest extends WebTestCase
             'job[tags]' => 'symfony,freelance,sql',
         ]);
         self::assertResponseRedirects('/');
-        $client->followRedirect();
+        $crawler = $client->followRedirect();
 
-        self::assertSelectorTextContains('.list-group-item p.h5', 'Symfony freelance developer');
+        self::assertSame(
+            'Symfony freelance developer',
+            $crawler->filter('.list-group-item p.h5')->eq(1)->text()
+        );
     }
 
     public function testJobRedirect(): void
