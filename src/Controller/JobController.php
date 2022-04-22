@@ -18,14 +18,19 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/')]
 class JobController extends AbstractController
 {
-    #[
-        Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']),
-        Route('/rss.xml', name: 'job_rss', defaults: ['_format' => 'xml'], methods: ['GET']),
-    ]
-    public function index(JobRepository $jobRepository, string $_format): Response
+    #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]
+    public function index(JobRepository $jobRepository): Response
     {
-        return $this->render('job/index.'.$_format.'.twig', [
+        return $this->render('job/index.html.twig', [
             'jobs' => $jobRepository->findLastJobs(),
+        ]);
+    }
+
+    #[Route('/rss.xml', name: 'job_rss', defaults: ['_format' => 'xml'], methods: ['GET']), ]
+    public function rss(JobRepository $jobRepository): Response
+    {
+        return $this->render('job/index.xml.twig', [
+            'jobs' => $jobRepository->findBy([], ['createdAt' => 'DESC'], 10),
         ]);
     }
 
