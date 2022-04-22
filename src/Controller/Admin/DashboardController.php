@@ -31,6 +31,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToCrud('Jobs', 'fas fa-list', Job::class);
+        yield MenuItem::linkToUrl('View website', 'fas fa-external-link', '/');
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu

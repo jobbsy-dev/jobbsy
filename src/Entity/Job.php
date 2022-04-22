@@ -82,6 +82,9 @@ class Job
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $source = null;
 
+    #[ORM\Column(type: 'boolean', options: ['default' => false])]
+    private bool $pinned = false;
+
     public function __construct(?Uuid $id = null)
     {
         if (null === $id) {
@@ -227,5 +230,17 @@ class Job
     public function setSource(?string $source): void
     {
         $this->source = $source;
+    }
+
+    public function getPinned(): ?bool
+    {
+        return $this->pinned;
+    }
+
+    public function setPinned(bool $pinned): self
+    {
+        $this->pinned = $pinned;
+
+        return $this;
     }
 }

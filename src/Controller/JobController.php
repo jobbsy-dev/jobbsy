@@ -25,7 +25,7 @@ class JobController extends AbstractController
     public function index(JobRepository $jobRepository, string $_format): Response
     {
         return $this->render('job/index.'.$_format.'.twig', [
-            'jobs' => $jobRepository->findBy([], ['createdAt' => 'DESC'], 30),
+            'jobs' => $jobRepository->findLastJobs(),
         ]);
     }
 

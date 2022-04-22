@@ -14,7 +14,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getData() as [$title, $employmentType, $organization, $location, $url, $tags, $id]) {
+        foreach ($this->getData() as [$title, $employmentType, $organization, $location, $url, $tags, $id, $pinned]) {
             $job = new Job($id ? UuidV4::fromString($id) : null);
             $job->setTitle($title);
             $job->setEmploymentType($employmentType);
@@ -22,6 +22,7 @@ class AppFixtures extends Fixture
             $job->setLocation($location);
             $job->setUrl($url);
             $job->setTags($tags);
+            $job->setPinned($pinned ?? false);
             sleep(1); // just for creation date
 
             $manager->persist($job);
@@ -32,7 +33,8 @@ class AppFixtures extends Fixture
 
     private function getData(): \Generator
     {
-        yield ['Symfony developer Remote', EmploymentType::FULL_TIME, 'Acme', 'Remote', 'https://example.com', ['symfony6', 'php8'], self::JOB_1_ID];
-        yield ['Lead dev Symfony Paris', EmploymentType::FULL_TIME, 'Acme', 'Paris', 'https://example.com', ['symfony', 'twig'], null];
+        yield ['Symfony developer Remote', EmploymentType::FULL_TIME, 'Acme', 'Remote', 'https://example.com', ['symfony6', 'php8'], self::JOB_1_ID, true];
+        yield ['Lead dev Symfony Paris', EmploymentType::FULL_TIME, 'Acme', 'Paris', 'https://example.com', ['symfony', 'twig'], null, null];
+        yield ['Backend Symfony developer', EmploymentType::FULL_TIME, 'SensioLabs', 'Paris', 'https://example.com', ['symfony', 'twig'], null, null];
     }
 }
