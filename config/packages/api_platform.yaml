@@ -7,4 +7,4 @@ api_platform:
         versions: [3]
     show_webby: false
     title: 'Jobbsy API'
-    version: '0.0.1'
+    version: '0.1.0'
