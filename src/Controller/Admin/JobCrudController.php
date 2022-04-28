@@ -87,7 +87,7 @@ class JobCrudController extends AbstractCrudController
     {
         return $crud
             ->setSearchFields(['title', 'organization'])
-            ->setDefaultSort(['pinned' => 'DESC', 'createdAt' => 'DESC'])
+            ->setDefaultSort(['createdAt' => 'DESC'])
             ->setPaginatorPageSize(30);
     }
 
@@ -97,6 +97,7 @@ class JobCrudController extends AbstractCrudController
             ->add('title')
             ->add('organization')
             ->add('employmentType')
+            ->add('pinned')
             ;
     }
 }
