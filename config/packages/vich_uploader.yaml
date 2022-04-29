@@ -7,3 +7,5 @@ vich_uploader:
         organization_image:
             uri_prefix: /images/organizations
             upload_destination: organization_image.storage
+            namer:
+                service: Vich\UploaderBundle\Naming\OrignameNamer
