@@ -78,6 +78,10 @@
                 <source>form.label.optional</source>
                 <target>(optional)</target>
             </trans-unit>
+            <trans-unit id="form.label.donation_amount">
+                <source>form.label.donation_amount</source>
+                <target>Donation to open source</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

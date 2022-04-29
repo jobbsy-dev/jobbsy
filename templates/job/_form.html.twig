@@ -6,6 +6,17 @@
     {{ form_row(form.organizationImageFile) }}
     {{ form_row(form.url) }}
     {{ form_row(form.tags) }}
+<div class="border border-primary pinned rounded p-3">
+    {{ form_row(form.donationAmount) }}
+    <div class="alert alert-info">
+        <p class="h5">Support open source ecosystem 💙</p>
+        <p>
+            By making a donation you will <b>support open source</b> and add your job offer at the <b>top of the list for 1 month!</b> <br>
+            Each donation will sponsor Symfony open source ecosystem.<br>
+        </p>
+        <small>Any questions? <a href="mailto:hello@jobbsy.dev">Get in touch!</a></small>
+    </div>
+</div>
 <div class="d-grid mt-4">
     <button class="btn btn-primary btn-lg" type="submit">{{ button_label|default('Post') }}</button>
 </div>

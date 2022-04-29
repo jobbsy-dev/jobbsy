@@ -28,10 +28,22 @@ class JobRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('job');
 
         return $qb
-            ->orderBy('job.pinned', Criteria::DESC)
+            ->orderBy('job.pinnedUntil', Criteria::ASC)
             ->addOrderBy('job.createdAt', Criteria::DESC)
             ->setMaxResults(30)
             ->getQuery()
             ->getResult();
+    }
+
+    public function clearExpiredPinnedJobs(): void
+    {
+        $this->createQueryBuilder('job')
+            ->update()
+            ->set('job.pinnedUntil', ':pinnedUntil')
+            ->setParameter('pinnedUntil', null)
+            ->where('job.pinnedUntil < :now')
+            ->setParameter('now', new \DateTimeImmutable())
+            ->getQuery()
+            ->execute();
     }
 }
