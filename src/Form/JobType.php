@@ -15,7 +15,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichFileType;
-use function PHPUnit\Framework\greaterThanOrEqual;
 
 class JobType extends AbstractType
 {
@@ -61,13 +60,13 @@ class JobType extends AbstractType
                 'data' => 5000,
                 'constraints' => [
                     new GreaterThanOrEqual(0),
-                    new NotBlank()
+                    new NotBlank(),
                 ],
                 'html5' => true,
                 'attr' => [
                     'step' => 5,
                     'min' => 0,
-                ]
+                ],
             ])
         ;
 

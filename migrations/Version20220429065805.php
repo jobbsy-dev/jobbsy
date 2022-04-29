@@ -17,7 +17,7 @@ final class Version20220429065805 extends AbstractMigration
     public function postUp(Schema $schema): void
     {
         $this->connection->update('job', [
-            'pinned_until' => new \DateTimeImmutable('+1 month')
+            'pinned_until' => new \DateTimeImmutable('+1 month'),
         ], ['pinned' => true], [Types::DATETIME_IMMUTABLE]);
         $this->connection->executeQuery('ALTER TABLE job DROP pinned');
     }

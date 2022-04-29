@@ -50,12 +50,12 @@ class JobController extends AbstractController
             $this->addFlash('success', 'Job posted successfully!');
 
             $donationAmount = $form->get('donationAmount')->getData();
-            if (0 === (int)$donationAmount) {
+            if (0 === (int) $donationAmount) {
                 return $this->redirectToRoute('job_index');
             }
 
             $successUrl = $this->generateUrl('job_donation_success', [
-                'id' => $job->getId()
+                'id' => $job->getId(),
             ], UrlGeneratorInterface::ABSOLUTE_URL);
             $successUrl .= '?session_id={CHECKOUT_SESSION_ID}'; // Stripe requires this parameter exactly like this (not encoded)
 
@@ -73,15 +73,15 @@ class JobController extends AbstractController
                 ]],
                 'mode' => 'payment',
                 'success_url' => $successUrl,
-                'cancel_url' =>  $this->generateUrl('job_donation_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL),
+                'cancel_url' => $this->generateUrl('job_donation_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL),
                 'metadata' => [
-                    'jobId' => (string)$job->getId(),
+                    'jobId' => (string) $job->getId(),
                 ],
                 'payment_intent_data' => [
                     'metadata' => [
-                        'jobId' => (string)$job->getId(),
-                    ]
-                ]
+                        'jobId' => (string) $job->getId(),
+                    ],
+                ],
             ]);
 
             return $this->redirect($session->url, 303);
