@@ -4,3 +4,10 @@
     minute: "0"
     hour: "1"
     job: "php {{ ansistrano_release_path.stdout }}/bin/console app:job-provider:retrieve"
+
+- name: Clear pinned jobs
+  ansible.builtin.cron:
+    name: "clear pinned jobs"
+    minute: "0"
+    hour: "0"
+    job: "php {{ ansistrano_release_path.stdout }}/bin/console app:clear-pinned"

@@ -2,6 +2,7 @@ imports:
     - { resource: services_provider.yaml }
 
 parameters:
+    app_version: '%env(APP_VERSION)%'
 
 services:
     # default configuration for services in *this* file
@@ -16,6 +17,7 @@ services:
             string $mailjetListId: '%env(MAILJET_CONTACT_LIST_ID)%'
             string $arbeitsagenturClientId: '%env(ARBEITSAGENTUR_CLIENT_ID)%'
             string $arbeitsagenturClientSecret: '%env(ARBEITSAGENTUR_CLIENT_SECRET)%'
+            string $stripeApiKey: '%env(STRIPE_API_KEY)%'
 
     App\:
         resource: '../src/'

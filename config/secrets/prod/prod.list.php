@@ -11,4 +11,5 @@ return [
     'MAILJET_CONTACT_LIST_ID' => null,
     'POLE_EMPLOI_CLIENT_ID' => null,
     'POLE_EMPLOI_CLIENT_SECRET' => null,
+    'STRIPE_API_KEY' => null,
 ];

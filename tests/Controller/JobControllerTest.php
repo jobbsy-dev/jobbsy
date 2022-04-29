@@ -40,6 +40,7 @@ class JobControllerTest extends WebTestCase
             'job[organization]' => 'Symfony',
             'job[url]' => 'https://symfony.com',
             'job[tags]' => 'symfony,freelance,sql',
+            'job[donationAmount]' => 0,
         ]);
         self::assertResponseRedirects('/');
         $crawler = $client->followRedirect();

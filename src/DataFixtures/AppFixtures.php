@@ -22,7 +22,9 @@ class AppFixtures extends Fixture
             $job->setLocation($location);
             $job->setUrl($url);
             $job->setTags($tags);
-            $job->setPinned($pinned ?? false);
+            if ($pinned) {
+                $job->pinUntil(new \DateTimeImmutable('+1 month'));
+            }
             sleep(1); // just for creation date
 
             $manager->persist($job);
