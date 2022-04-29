@@ -9,13 +9,15 @@ use App\Repository\JobRepository;
 use App\Subscription\SubscribeMailingListCommand;
 use App\Subscription\SubscribeMailingListCommandHandler;
 use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-#[Route('/')]
 class JobController extends AbstractController
 {
     #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]
@@ -35,7 +37,7 @@ class JobController extends AbstractController
     }
 
     #[Route('/job/new', name: 'job_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, string $stripeApiKey): Response
     {
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
@@ -45,13 +47,70 @@ class JobController extends AbstractController
             $entityManager->persist($job);
             $entityManager->flush();
 
-            return $this->redirectToRoute('job_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Job posted successfully!');
+
+            $donationAmount = $form->get('donationAmount')->getData();
+            if (0 === (int) $donationAmount) {
+                return $this->redirectToRoute('job_index');
+            }
+
+            $successUrl = $this->generateUrl('job_donation_success', [
+                'id' => $job->getId(),
+            ], UrlGeneratorInterface::ABSOLUTE_URL);
+            $successUrl .= '?session_id={CHECKOUT_SESSION_ID}'; // Stripe requires this parameter exactly like this (not encoded)
+
+            Stripe::setApiKey($stripeApiKey);
+            $session = Session::create([
+                'line_items' => [[
+                    'price_data' => [
+                        'currency' => 'eur',
+                        'product_data' => [
+                            'name' => 'Donation to open source',
+                        ],
+                        'unit_amount' => $form->get('donationAmount')->getData(),
+                    ],
+                    'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                'success_url' => $successUrl,
+                'cancel_url' => $this->generateUrl('job_donation_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL),
+                'metadata' => [
+                    'jobId' => (string) $job->getId(),
+                ],
+                'payment_intent_data' => [
+                    'metadata' => [
+                        'jobId' => (string) $job->getId(),
+                    ],
+                ],
+            ]);
+
+            return $this->redirect($session->url, 303);
         }
 
         return $this->renderForm('job/new.html.twig', [
             'job' => $job,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/job/{id}/donation/success', name: 'job_donation_success', methods: ['GET'])]
+    public function jobDonationSuccess(Job $job, Request $request, EntityManagerInterface $em, string $stripeApiKey): Response
+    {
+        Stripe::setApiKey($stripeApiKey);
+        $session = Session::retrieve($request->get('session_id'));
+
+        if (Session::PAYMENT_STATUS_PAID === $session->payment_status) {
+            $job->pinUntil($job->getCreatedAt()->modify('+1 month'));
+            $em->flush();
+        }
+
+        return $this->render('job/donation_success.html.twig');
+    }
+
+    #[Route('/job/donation/cancel', name: 'job_donation_cancel', methods: ['GET'])]
+    public function jobDonationCancel(): Response
+    {
+        return $this->render('job/donation_cancel.html.twig');
     }
 
     #[Route('/job/{id}', name: 'job', methods: ['GET'])]

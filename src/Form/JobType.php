@@ -7,10 +7,13 @@ use App\Entity\Job;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class JobType extends AbstractType
@@ -49,6 +52,21 @@ class JobType extends AbstractType
                 'label' => 'form.label.organization_logo',
                 'required' => false,
                 'help' => 'form.help.organization_logo',
+            ])
+            ->add('donationAmount', MoneyType::class, [
+                'label' => 'form.label.donation_amount',
+                'divisor' => 100,
+                'mapped' => false,
+                'data' => 5000,
+                'constraints' => [
+                    new GreaterThanOrEqual(0),
+                    new NotBlank(),
+                ],
+                'html5' => true,
+                'attr' => [
+                    'step' => 5,
+                    'min' => 0,
+                ],
             ])
         ;
 

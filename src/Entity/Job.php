@@ -97,8 +97,8 @@ class Job
     #[ApiFilter(SearchFilter::class, strategy: 'partial')]
     private ?string $source = null;
 
-    #[ORM\Column(type: 'boolean', options: ['default' => false])]
-    private bool $pinned = false;
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $pinnedUntil = null;
 
     public function __construct(?Uuid $id = null)
     {
@@ -136,7 +136,7 @@ class Job
         $this->location = $location;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -217,7 +217,7 @@ class Job
         return $this->organizationImageSize;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): \DateTimeInterface
     {
         return $this->updatedAt;
     }
@@ -247,15 +247,13 @@ class Job
         $this->source = $source;
     }
 
-    public function getPinned(): ?bool
+    public function pinUntil(\DateTimeImmutable $until): void
     {
-        return $this->pinned;
+        $this->pinnedUntil = $until;
     }
 
-    public function setPinned(bool $pinned): self
+    public function isPinned(): bool
     {
-        $this->pinned = $pinned;
-
-        return $this;
+        return $this->pinnedUntil > new \DateTimeImmutable();
     }
 }
