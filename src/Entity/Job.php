@@ -256,4 +256,9 @@ class Job
     {
         return $this->pinnedUntil > new \DateTimeImmutable();
     }
+
+    public function getPinnedUntil(): ?\DateTimeImmutable
+    {
+        return $this->pinnedUntil;
+    }
 }
