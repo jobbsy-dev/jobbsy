@@ -12,4 +12,5 @@ return [
     'POLE_EMPLOI_CLIENT_ID' => null,
     'POLE_EMPLOI_CLIENT_SECRET' => null,
     'STRIPE_API_KEY' => null,
+    'STRIPE_TAX_RATE_ID' => null,
 ];

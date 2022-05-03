@@ -18,6 +18,7 @@ services:
             string $arbeitsagenturClientId: '%env(ARBEITSAGENTUR_CLIENT_ID)%'
             string $arbeitsagenturClientSecret: '%env(ARBEITSAGENTUR_CLIENT_SECRET)%'
             string $stripeApiKey: '%env(STRIPE_API_KEY)%'
+            string $taxRateId: '%env(STRIPE_TAX_RATE_ID)%'
 
     App\:
         resource: '../src/'

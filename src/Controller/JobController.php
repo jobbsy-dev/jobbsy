@@ -37,7 +37,7 @@ class JobController extends AbstractController
     }
 
     #[Route('/job/new', name: 'job_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, string $stripeApiKey): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, string $stripeApiKey, string $taxRateId): Response
     {
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
@@ -65,10 +65,11 @@ class JobController extends AbstractController
                     'price_data' => [
                         'currency' => 'eur',
                         'product_data' => [
-                            'name' => 'Donation to open source',
+                            'name' => 'Sponsor job offer & open source',
                         ],
                         'unit_amount' => $form->get('donationAmount')->getData(),
                     ],
+                    'tax_rates' => [$taxRateId],
                     'quantity' => 1,
                 ]],
                 'mode' => 'payment',
