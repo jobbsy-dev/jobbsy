@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Job;
+use App\Event\JobPostedEvent;
 use App\Form\JobType;
 use App\Form\SubscriptionType;
 use App\Repository\JobRepository;
@@ -12,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +22,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class JobController extends AbstractController
 {
+    public function __construct(
+        private readonly EventDispatcher $eventDispatcher,
+        private readonly string $stripeApiKey,
+        private readonly string $taxRateId
+    )
+    {
+    }
+
     #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]
     public function index(JobRepository $jobRepository): Response
     {
@@ -37,7 +47,7 @@ class JobController extends AbstractController
     }
 
     #[Route('/job/new', name: 'job_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, string $stripeApiKey, string $taxRateId): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
@@ -49,6 +59,11 @@ class JobController extends AbstractController
 
             $this->addFlash('success', 'Job posted successfully!');
 
+            $this->eventDispatcher->dispatch(new JobPostedEvent(
+                $job,
+                $this->generateUrl('job', ['id' => $job->getId()], UrlGeneratorInterface::ABSOLUTE_URL),
+            ));
+
             $donationAmount = $form->get('donationAmount')->getData();
             if (0 === (int) $donationAmount) {
                 return $this->redirectToRoute('job_index');
@@ -59,7 +74,7 @@ class JobController extends AbstractController
             ], UrlGeneratorInterface::ABSOLUTE_URL);
             $successUrl .= '?session_id={CHECKOUT_SESSION_ID}'; // Stripe requires this parameter exactly like this (not encoded)
 
-            Stripe::setApiKey($stripeApiKey);
+            Stripe::setApiKey($this->stripeApiKey);
             $session = Session::create([
                 'line_items' => [[
                     'price_data' => [
@@ -69,7 +84,7 @@ class JobController extends AbstractController
                         ],
                         'unit_amount' => $form->get('donationAmount')->getData(),
                     ],
-                    'tax_rates' => [$taxRateId],
+                    'tax_rates' => [$this->taxRateId],
                     'quantity' => 1,
                 ]],
                 'mode' => 'payment',

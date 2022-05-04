@@ -19,6 +19,12 @@ services:
             string $arbeitsagenturClientSecret: '%env(ARBEITSAGENTUR_CLIENT_SECRET)%'
             string $stripeApiKey: '%env(STRIPE_API_KEY)%'
             string $taxRateId: '%env(STRIPE_TAX_RATE_ID)%'
+            string $commandRouterHost: '%env(COMMAND_ROUTER_HOST)%'
+            string $commandRouterScheme: '%env(COMMAND_ROUTER_SCHEME)%'
+            string $consumerKey: '%env(TWITTER_API_KEY)%'
+            string $consumerSecret: '%env(TWITTER_API_KEY_SECRET)%'
+            string $accessToken: '%env(TWITTER_ACCESS_TOKEN)%'
+            string $tokenSecret: '%env(TWITTER_ACCESS_TOKEN_SECRET)%'
 
     App\:
         resource: '../src/'
