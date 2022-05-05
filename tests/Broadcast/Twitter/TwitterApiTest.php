@@ -14,15 +14,15 @@ class TwitterApiTest extends TestCase
     {
         // Arrange
         $requestData = ['text' => 'Hello World!'];
-        $expectedRequestData = json_encode($requestData, JSON_THROW_ON_ERROR);
+        $expectedRequestData = json_encode($requestData, \JSON_THROW_ON_ERROR);
 
         $expectedResponseData = [
             'data' => [
                 'id' => '1234',
-                'text' => 'Hello World!'
-            ]
+                'text' => 'Hello World!',
+            ],
         ];
-        $mockResponseJson = json_encode($expectedResponseData, JSON_THROW_ON_ERROR);
+        $mockResponseJson = json_encode($expectedResponseData, \JSON_THROW_ON_ERROR);
         $mockResponse = new MockResponse($mockResponseJson, [
             'http_code' => 201,
             'response_headers' => ['Content-Type: application/json'],

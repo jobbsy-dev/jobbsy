@@ -26,8 +26,7 @@ class JobController extends AbstractController
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly string $stripeApiKey,
         private readonly string $taxRateId
-    )
-    {
+    ) {
     }
 
     #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]

@@ -26,7 +26,7 @@ class CreateTweetSubscriberTest extends KernelTestCase
         💻 Symfony web developer
         🎸 Acme
         👉 https://example.com/1
-        
+
         #PHP #Symfony
         EOD;
 

@@ -30,7 +30,7 @@ final class TwitterApi
             'headers' => [
                 'Authorization' => $authorizationHeader,
             ],
-            'json' => $payload
+            'json' => $payload,
         ]);
 
         if (201 !== $response->getStatusCode()) {
@@ -55,19 +55,19 @@ final class TwitterApi
 
         $return = [];
         foreach ($oauthParameters as $key => $value) {
-            $return[] = rawurlencode($key) . '=' . rawurlencode($value);
+            $return[] = rawurlencode($key).'='.rawurlencode($value);
         }
 
-        $signature = $method . "&" . rawurlencode($url) . '&' . rawurlencode(implode('&', $return));
+        $signature = $method.'&'.rawurlencode($url).'&'.rawurlencode(implode('&', $return));
 
-        $compositeKey = rawurlencode($this->consumerSecret) . '&' . rawurlencode($this->tokenSecret);
+        $compositeKey = rawurlencode($this->consumerSecret).'&'.rawurlencode($this->tokenSecret);
         $oauth_signature = base64_encode(hash_hmac('sha1', $signature, $compositeKey, true));
         $oauthParameters['oauth_signature'] = $oauth_signature;
 
         $return = 'OAuth ';
-        $values = array();
+        $values = [];
         foreach ($oauthParameters as $key => $value) {
-            $values[] = "$key=\"" . rawurlencode($value) . "\"";
+            $values[] = "$key=\"".rawurlencode($value).'"';
         }
 
         $return .= implode(', ', $values);
