@@ -11,3 +11,8 @@
     minute: "0"
     hour: "0"
     job: "php {{ ansistrano_release_path.stdout }}/bin/console app:clear-pinned"
+
+- name: Restarting Workers
+  command: php bin/console messenger:stop-workers
+  args:
+    chdir: '{{ ansistrano_release_path.stdout }}'
