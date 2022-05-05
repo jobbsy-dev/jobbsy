@@ -21,5 +21,8 @@ framework:
             Symfony\Component\Notifier\Message\SmsMessage: async
             App\Message\CreateTweetMessage: async
 
-            # Route your messages to the transports
-            # 'App\Message\YourMessage': async
+when@test:
+    framework:
+        messenger:
+            transports:
+                async: 'in-memory://'

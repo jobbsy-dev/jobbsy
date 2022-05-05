@@ -19,27 +19,28 @@ final class TwitterApi
         }
     }
 
-    public function createTweet(Tweet $tweet): void
+    public function createTweet(Tweet $tweet): array
     {
         $method = 'POST';
         $url = 'https://api.twitter.com/2/tweets';
         $payload = $tweet->toArray();
-        $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: $url, body: $payload);
+        $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: $url);
 
-        $this->httpClient->request($method, $url, [
+        $response = $this->httpClient->request($method, $url, [
             'headers' => [
                 'Authorization' => $authorizationHeader,
             ],
             'json' => $payload
         ]);
+
+        if (201 !== $response->getStatusCode()) {
+            throw new \Exception('Unexpected response status code');
+        }
+
+        return $response->toArray();
     }
 
-    private function buildAuthorizationHeader(
-        string $method,
-        string $url,
-        array $queryParameters = [],
-        array $body = []
-    ): string
+    private function buildAuthorizationHeader(string $method, string $url): string
     {
         $oauthParameters = [
             'oauth_consumer_key' => $this->consumerKey,
@@ -49,14 +50,6 @@ final class TwitterApi
             'oauth_nonce' => md5(mt_rand()),
             'oauth_version' => '1.0',
         ];
-
-        foreach ($queryParameters as $key => $value) {
-            $oauthParameters[$key] = $value;
-        }
-
-        foreach ($body as $key => $value) {
-            $oauthParameters[$key] = $value;
-        }
 
         ksort($oauthParameters);
 
