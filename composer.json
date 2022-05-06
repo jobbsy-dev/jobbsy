@@ -1,7 +1,7 @@
 {
     "type": "project",
     "license": "proprietary",
-    "name": "qdequippe/jobbsy",
+    "name": "jobbsy-dev/jobbsy",
     "description": "Jobbsy, Job Board for Symfony",
     "minimum-stability": "stable",
     "prefer-stable": true,
