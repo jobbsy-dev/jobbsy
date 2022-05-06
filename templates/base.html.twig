@@ -16,11 +16,11 @@
     </head>
     <body style="background-color: rgba(249, 250, 251,1)">
         {% block body %}
-            <header class="bg-white border-bottom p-2">
+            <header class="bg-white border-bottom p-2 py-3">
                 <div class="container">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
-                        <a href="{{ path('job_index') }}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" style="font-size: 2rem">
-                            Jobbsy
+                        <a href="{{ path('job_index') }}" class="mb-2 mb-sm-0 mb-md-0">
+                            <img src="{{ asset('build/images/logo_jobbsy.svg') }}" alt="logo" width="150">
                         </a>
                         <div class="col-md-3 text-end ms-3 ms-md-0">
                             <a href="{{ path('job_new') }}" class="btn btn-primary">{{ 'action.post_job'|trans }}</a>
