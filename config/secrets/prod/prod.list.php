@@ -11,6 +11,7 @@ return [
     'MAILJET_CONTACT_LIST_ID' => null,
     'POLE_EMPLOI_CLIENT_ID' => null,
     'POLE_EMPLOI_CLIENT_SECRET' => null,
+    'SENTRY_DSN' => null,
     'STRIPE_API_KEY' => null,
     'STRIPE_TAX_RATE_ID' => null,
     'TWITTER_ACCESS_TOKEN' => null,
