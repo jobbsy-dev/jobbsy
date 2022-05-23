@@ -97,6 +97,9 @@ class JobController extends AbstractController
                         'jobId' => (string) $job->getId(),
                     ],
                 ],
+                'tax_id_collection' => [
+                    'enabled' => true,
+                ],
             ]);
 
             return $this->redirect($session->url, 303);

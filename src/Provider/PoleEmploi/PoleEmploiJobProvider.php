@@ -25,7 +25,7 @@ final class PoleEmploiJobProvider implements JobProviderInterface
         ]);
 
         $results = $this->api->search([
-            'motsCles' => 'symfony,développeur',
+            'motsCles' => 'symfony',
             'minCreationDate' => $parameters->from,
             'maxCreationDate' => $parameters->to,
             'origineOffre' => 1,
@@ -51,8 +51,14 @@ final class PoleEmploiJobProvider implements JobProviderInterface
 
             $job->setOrganizationImageUrl($result['entreprise']['logo'] ?? null);
             $job->setEmploymentType(EmploymentType::FULL_TIME);
+            if (isset($result['typeContrat'], $result['natureContrat'])
+                && 'CDD' === $result['typeContrat']
+                && str_contains($result['natureContrat'], 'apprentissage')
+            ) {
+                $job->setEmploymentType(EmploymentType::INTERNSHIP);
+            }
 
-            $job->setTags(['Symfony']);
+            $job->setTags(['PHP', 'Symfony']);
             $job->setSource('Pole Emploi');
 
             $jobs->addJob($job);
