@@ -204,6 +204,9 @@
     "league/mime-type-detection": {
         "version": "1.9.0"
     },
+    "masterminds/html5": {
+        "version": "2.7.5"
+    },
     "monolog/monolog": {
         "version": "2.3.5"
     },
