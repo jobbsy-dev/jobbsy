@@ -7,11 +7,13 @@ use App\Entity\Job;
 use App\Provider\JobCollection;
 use App\Provider\JobProviderInterface;
 use App\Provider\SearchParameters;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 final class PoleEmploiJobProvider implements JobProviderInterface
 {
     public function __construct(
         private readonly PoleEmploiApi $api,
+        #[Autowire('%env(POLE_EMPLOI_CLIENT_ID)%')]
         private readonly string $poleEmploiClientId
     ) {
     }

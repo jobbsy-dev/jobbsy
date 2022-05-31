@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +25,9 @@ class JobController extends AbstractController
 {
     public function __construct(
         private readonly EventDispatcherInterface $eventDispatcher,
+        #[Autowire('%env(STRIPE_API_KEY)%')]
         private readonly string $stripeApiKey,
+        #[Autowire('%env(STRIPE_TAX_RATE_ID)%')]
         private readonly string $taxRateId
     ) {
     }
@@ -112,9 +115,9 @@ class JobController extends AbstractController
     }
 
     #[Route('/job/{id}/donation/success', name: 'job_donation_success', methods: ['GET'])]
-    public function jobDonationSuccess(Job $job, Request $request, EntityManagerInterface $em, string $stripeApiKey): Response
+    public function jobDonationSuccess(Job $job, Request $request, EntityManagerInterface $em): Response
     {
-        Stripe::setApiKey($stripeApiKey);
+        Stripe::setApiKey($this->stripeApiKey);
         $session = Session::retrieve($request->get('session_id'));
 
         if (Session::PAYMENT_STATUS_PAID === $session->payment_status) {
@@ -150,8 +153,12 @@ class JobController extends AbstractController
     }
 
     #[Route('/subscribe', name: 'subscribe', methods: ['POST'])]
-    public function subscribe(Request $request, SubscribeMailingListCommandHandler $handler, string $mailjetListId): Response
-    {
+    public function subscribe(
+        Request $request,
+        SubscribeMailingListCommandHandler $handler,
+        #[Autowire('%env(MAILJET_CONTACT_LIST_ID)%')]
+        string $mailjetListId
+    ): Response {
         $form = $this->createForm(SubscriptionType::class);
         $form->handleRequest($request);
 
