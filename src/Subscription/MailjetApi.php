@@ -2,13 +2,16 @@
 
 namespace App\Subscription;
 
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class MailjetApi
 {
     public function __construct(
+        #[Autowire('%env(MAILJET_API_KEY)%')]
         string $mailjetApiKey,
+        #[Autowire('%env(MAILJET_API_SECRET_KEY)%')]
         string $mailjetApiSecretKey,
         private ?HttpClientInterface $mailjetClient = null
     ) {

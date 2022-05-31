@@ -2,6 +2,8 @@
 
 namespace App\Provider;
 
+use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
+
 final class JobProvider implements JobProviderInterface
 {
     /**
@@ -9,8 +11,10 @@ final class JobProvider implements JobProviderInterface
      */
     private readonly iterable $providers;
 
-    public function __construct(iterable $providers)
-    {
+    public function __construct(
+        #[TaggedIterator(JobProviderInterface::class, exclude: self::class)]
+        iterable $providers
+    ) {
         $this->providers = $providers;
     }
 
