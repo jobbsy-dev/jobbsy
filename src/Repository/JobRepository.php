@@ -28,7 +28,7 @@ class JobRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('job');
 
         return $qb
-            ->orderBy('job.pinnedUntil', Criteria::ASC)
+            ->addOrderBy('job.pinnedUntil', Criteria::DESC)
             ->addOrderBy('job.createdAt', Criteria::DESC)
             ->setMaxResults(30)
             ->getQuery()

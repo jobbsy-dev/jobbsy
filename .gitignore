@@ -17,7 +17,7 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
-docker-compose.override.yml
+docker-compose.override.yaml
 
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
