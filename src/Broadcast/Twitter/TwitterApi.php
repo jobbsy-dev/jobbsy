@@ -2,15 +2,20 @@
 
 namespace App\Broadcast\Twitter;
 
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final class TwitterApi
 {
     public function __construct(
+        #[Autowire('%env(TWITTER_API_KEY)%')]
         private readonly string $consumerKey,
+        #[Autowire('%env(TWITTER_API_KEY_SECRET)%')]
         private readonly string $consumerSecret,
+        #[Autowire('%env(TWITTER_ACCESS_TOKEN)%')]
         private readonly string $accessToken,
+        #[Autowire('%env(TWITTER_ACCESS_TOKEN_SECRET)%')]
         private readonly string $tokenSecret,
         private ?HttpClientInterface $httpClient = null
     ) {

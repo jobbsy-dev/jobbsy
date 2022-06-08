@@ -1,5 +1,0 @@
-services:
-    App\Provider\JobProvider:
-        arguments: [!tagged_iterator app.job_provider]
-
-    App\Provider\JobProviderInterface: '@App\Provider\JobProvider'
