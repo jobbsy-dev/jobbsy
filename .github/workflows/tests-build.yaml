@@ -110,7 +110,7 @@ jobs:
               with:
                 host: ${{ secrets.HOST }}
                 username: ${{ secrets.USERNAME }}
-                password: ${{ secrets.PASSWORD }}
+                key: ${{ secrets.KEY }}
                 port: ${{ secrets.PORT }}
                 source: app-build-${{ env.BRANCH }}-latest.zip
                 target: "$HOME/build"
