@@ -29,7 +29,7 @@ jobs:
 
             - name: "test ssh"
               run: |
-                  apt install nmap -y --no-interaction
+                  apt install nmap -y
                   nmap jobbsy.dev -PN -p ssh | grep open
 
             - name: "Install PHP with extensions"
