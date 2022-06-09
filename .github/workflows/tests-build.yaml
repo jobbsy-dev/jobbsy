@@ -28,10 +28,7 @@ jobs:
               uses: actions/checkout@v2.3.3
 
             - name: "test ssh"
-              run: sshpass -p "$SSH_PASSWORD" ssh $SSH_USER@jobbsy.dev
-              env:
-                SSH_USER: ${{ secrets.USERNAME }}
-                SSH_PASSWORD: ${{ secrets.PASSWORD }}
+              run: nc -zv jobbsy.dev 22
 
             - name: "Install PHP with extensions"
               uses: shivammathur/setup-php@2.7.0
