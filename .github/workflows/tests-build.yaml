@@ -27,6 +27,11 @@ jobs:
             - name: "Checkout code"
               uses: actions/checkout@v2.3.3
 
+            - name: "test ssh"
+              run: |
+                  apt install nmap -y --no-interaction
+                  nmap jobbsy.dev -PN -p ssh | grep open
+
             - name: "Install PHP with extensions"
               uses: shivammathur/setup-php@2.7.0
               with:
@@ -110,7 +115,7 @@ jobs:
               with:
                 host: ${{ secrets.HOST }}
                 username: ${{ secrets.USERNAME }}
-                password: ${{ secrets.PASSWORD }}
+                key: ${{ secrets.KEY }}
                 port: ${{ secrets.PORT }}
                 source: app-build-${{ env.BRANCH }}-latest.zip
                 target: "$HOME/build"
