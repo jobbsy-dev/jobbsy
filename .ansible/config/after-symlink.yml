@@ -1,3 +1,11 @@
+- name: restart php8.1-fpm
+  become: true
+  service: name=php8.1-fpm state=restarted
+
+#- name: restart caddy
+#  become: true
+#  service: name=caddy state=restarted
+
 - name: Pull job provider
   ansible.builtin.cron:
     name: "pull job provider"

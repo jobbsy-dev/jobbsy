@@ -2,7 +2,4 @@ all:
     children:
         webservers:
             hosts:
-                web1:
-        workers:
-            hosts:
-                worker1:
+                web:
