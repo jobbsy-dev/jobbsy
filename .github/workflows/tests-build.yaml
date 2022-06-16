@@ -135,6 +135,9 @@ jobs:
                   key: ${{ secrets.SSH_KEY }}
                   known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
+            - name: Adding Known Hosts
+              run: "ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts"
+
             - name: "Setup Ansible"
               run: |
                   echo "$ANSIBLE_VAULT_PASSWORD" > .ansible/.vault_pass
