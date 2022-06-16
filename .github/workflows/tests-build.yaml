@@ -136,7 +136,7 @@ jobs:
                 known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
             - name: Adding Known Hosts
-              run: "ssh-keyscan -H -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts"
+              run: "ssh-keyscan -H -p ${{ secrets.SSH_PORT }} ${{ secrets.HOST }} >> ~/.ssh/known_hosts"
 
             - name: "Setup Ansible"
               run: |
