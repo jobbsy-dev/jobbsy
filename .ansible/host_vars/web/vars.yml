@@ -5,3 +5,4 @@ deploy_to: "{{ vault_deploy_to }}"
 ansible_user: "{{ vault_ansible_user }}"
 ansistrano_deploy_via: download_unarchive
 composer_path: "{{ vault_composer_path }}"
+ansible_port: "{{ valut_ansible_port }}"

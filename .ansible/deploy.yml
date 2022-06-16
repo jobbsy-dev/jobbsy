@@ -14,10 +14,13 @@
     ansistrano_shared_files:
         - '{{ private_key_path }}'
     symfony_console_path: 'bin/console'
+    symfony_run_composer: false
     symfony_run_assetic_dump: false
     symfony_run_assets_install: false
     symfony_run_doctrine_migrations: true
     ansistrano_symfony_after_composer_tasks_file: "{{ playbook_dir }}/config/symfony_after_composer_tasks_file.yml"
+    ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/config/after-symlink.yml"
+    ansistrano_symfony_after_cache_tasks_file: "{{ playbook_dir }}/config/after-cache-tasks.yml"
 
   roles:
     - { role: cbrunnkvist.ansistrano-symfony-deploy }
