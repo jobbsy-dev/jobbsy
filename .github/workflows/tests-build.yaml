@@ -135,11 +135,8 @@ jobs:
                 key: ${{ secrets.SSH_KEY }}
                 known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
-            - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
-              with:
-                ssh-private-key: ${{ secrets.SSH_KEY }}
-                ssh-host: jobbsy.dev
-                ssh-port: ${{ secrets.SSH_PORT }}
+            - name: Adding Known Hosts
+              run: "ssh-keyscan -H -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts"
 
             - name: "Setup Ansible"
               run: |
