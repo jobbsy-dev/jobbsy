@@ -132,11 +132,14 @@ jobs:
             - name: Install SSH key
               uses: shimataro/ssh-key-action@v2
               with:
-                  key: ${{ secrets.SSH_KEY }}
-                  known_hosts: ${{ secrets.KNOWN_HOSTS }}
+                key: ${{ secrets.SSH_KEY }}
+                known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
-            - name: Adding Known Hosts
-              run: "ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts"
+            - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+              with:
+                ssh-private-key: ${{ secrets.SSH_KEY }}
+                ssh-host: jobbsy.dev
+                ssh-port: ${{ secrets.SSH_PORT }}
 
             - name: "Setup Ansible"
               run: |
