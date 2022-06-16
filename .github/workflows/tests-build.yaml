@@ -27,9 +27,6 @@ jobs:
             - name: "Checkout code"
               uses: actions/checkout@v2.3.3
 
-            - name: "test ssh"
-              run: nc -zv jobbsy.dev 22
-
             - name: "Install PHP with extensions"
               uses: shivammathur/setup-php@2.7.0
               with:
