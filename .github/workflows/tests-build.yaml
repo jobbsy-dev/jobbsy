@@ -73,6 +73,7 @@ jobs:
     build:
         runs-on: 'ubuntu-latest'
         if: github.ref == 'refs/heads/main'
+        environment: production
         concurrency: production
         env:
             APP_ENV: prod
@@ -118,7 +119,9 @@ jobs:
     deploy:
         runs-on: 'ubuntu-latest'
         if: github.ref == 'refs/heads/main'
-        environment: production
+        environment:
+            name: production
+            url: https://jobbsy.dev
         concurrency: production
         needs: ['build']
         env:
@@ -130,8 +133,8 @@ jobs:
             - name: Install SSH key
               uses: shimataro/ssh-key-action@v2
               with:
-                  key: ${{ secrets.DEPLOY_SSH_KEY }}
-                  known_hosts: ${{ secrets.KNOWN_HOSTS_2 }}
+                  key: ${{ secrets.KEY }}
+                  known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
             - name: "Setup Ansible"
               run: |
