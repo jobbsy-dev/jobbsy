@@ -73,7 +73,6 @@ jobs:
     build:
         runs-on: 'ubuntu-latest'
         if: github.ref == 'refs/heads/main'
-        environment: production
         concurrency: production
         env:
             APP_ENV: prod
@@ -110,9 +109,9 @@ jobs:
               uses: appleboy/scp-action@master
               with:
                 host: ${{ secrets.HOST }}
-                username: ${{ secrets.USERNAME }}
-                key: ${{ secrets.KEY }}
-                port: ${{ secrets.PORT }}
+                username: ${{ secrets.SSH_USERNAME }}
+                key: ${{ secrets.SSH_KEY }}
+                port: ${{ secrets.SSH_PORT }}
                 source: app-build-${{ env.BRANCH }}-latest.zip
                 target: "$HOME/build"
 
@@ -133,7 +132,7 @@ jobs:
             - name: Install SSH key
               uses: shimataro/ssh-key-action@v2
               with:
-                  key: ${{ secrets.KEY }}
+                  key: ${{ secrets.SSH_KEY }}
                   known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
             - name: "Setup Ansible"
