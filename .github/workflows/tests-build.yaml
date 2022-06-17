@@ -110,7 +110,7 @@ jobs:
               with:
                 host: ${{ secrets.HOST }}
                 username: ${{ secrets.SSH_USERNAME }}
-                key: ${{ secrets.SSH_KEY }}
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
                 port: ${{ secrets.SSH_PORT }}
                 source: app-build-${{ env.BRANCH }}-latest.zip
                 target: "$HOME/build"
@@ -132,11 +132,11 @@ jobs:
             - name: Install SSH key
               uses: shimataro/ssh-key-action@v2
               with:
-                key: ${{ secrets.SSH_KEY }}
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
                 known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
             - name: Adding Known Hosts
-              run: "ssh-keyscan -H -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts"
+              run: "ssh-keyscan -H -p ${{ secrets.SSH_PORT }} ${{ secrets.HOST }} >> ~/.ssh/known_hosts"
 
             - name: "Setup Ansible"
               run: |
