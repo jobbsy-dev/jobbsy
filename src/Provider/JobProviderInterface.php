@@ -2,9 +2,9 @@
 
 namespace App\Provider;
 
-use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
-#[Autoconfigure]
+#[AutoconfigureTag]
 interface JobProviderInterface
 {
     public function retrieve(SearchParameters $parameters): JobCollection;
