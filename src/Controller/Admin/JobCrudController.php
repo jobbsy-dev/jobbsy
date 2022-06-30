@@ -79,6 +79,8 @@ class JobCrudController extends AbstractCrudController
                 ->onlyOnForms()
                 ->setFormType(VichImageType::class),
             DateTimeField::new('pinnedUntil'),
+            TextField::new('tweetId')
+                ->onlyOnForms(),
         ];
     }
 
