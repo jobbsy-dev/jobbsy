@@ -24,18 +24,6 @@ class CreateTweetSubscriber implements EventSubscriberInterface
     {
         $job = $event->job;
 
-        $hashtags = array_map(function (string $tag) {
-            return '#'.$tag;
-        }, $job->getTags());
-
-        $text = sprintf(
-            "💻 %s\n🎸 %s\n👉 %s\n\n%s",
-            $job->getTitle(),
-            $job->getOrganization(),
-            $event->jobUrl,
-            implode(' ', $hashtags),
-        );
-
-        $this->bus->dispatch(new CreateTweetMessage($text));
+        $this->bus->dispatch(new CreateTweetMessage($job->getId(), $event->jobUrl));
     }
 }

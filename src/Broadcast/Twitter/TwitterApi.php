@@ -24,7 +24,7 @@ final class TwitterApi
         }
     }
 
-    public function createTweet(Tweet $tweet): array
+    public function createTweet(Tweet $tweet): string
     {
         $method = 'POST';
         $url = 'https://api.twitter.com/2/tweets';
@@ -42,7 +42,13 @@ final class TwitterApi
             throw new \Exception('Unexpected response status code');
         }
 
-        return $response->toArray();
+        $content = $response->toArray();
+
+        if (false === isset($content['data']['id'])) {
+            throw new \Exception('Unexpected response content');
+        }
+
+        return $content['data']['id'];
     }
 
     private function buildAuthorizationHeader(string $method, string $url): string
@@ -78,5 +84,30 @@ final class TwitterApi
         $return .= implode(', ', $values);
 
         return $return;
+    }
+
+    public function deleteTweet(string $tweetId): bool
+    {
+        $method = 'DELETE';
+        $url = 'https://api.twitter.com/2/tweets/'.$tweetId;
+        $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: $url);
+
+        $response = $this->httpClient->request($method, $url, [
+            'headers' => [
+                'Authorization' => $authorizationHeader,
+            ],
+        ]);
+
+        if (200 !== $response->getStatusCode()) {
+            throw new \Exception('Unexpected response status code');
+        }
+
+        $content = $response->toArray();
+
+        if (false === isset($content['data']['deleted'])) {
+            throw new \Exception('Unexpected response content');
+        }
+
+        return $content['data']['deleted'];
     }
 }
