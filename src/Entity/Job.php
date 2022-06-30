@@ -100,6 +100,9 @@ class Job
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $pinnedUntil = null;
 
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $tweetId = null;
+
     public function __construct(?Uuid $id = null)
     {
         if (null === $id) {
@@ -265,5 +268,15 @@ class Job
     public function setPinnedUntil(?\DateTimeImmutable $pinnedUntil): void
     {
         $this->pinnedUntil = $pinnedUntil;
+    }
+
+    public function getTweetId(): ?string
+    {
+        return $this->tweetId;
+    }
+
+    public function setTweetId(string $tweetId): void
+    {
+        $this->tweetId = $tweetId;
     }
 }
