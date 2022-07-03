@@ -15,11 +15,13 @@ class JobPostedTweetTest extends TestCase
         $job = new Job(Uuid::fromString('c018222a-ec42-4252-b795-31b34c589ce1'));
         $job->setTitle('Symfony web developer');
         $job->setOrganization('Acme');
+        $job->setLocation('Remote');
         $job->setTags(['PHP', 'Symfony']);
 
         $expectedTweetText = <<<EOD
         💻 Symfony web developer
         🎸 Acme
+        📍 Remote
         👉 https://example.com/1
 
         #PHP #Symfony
