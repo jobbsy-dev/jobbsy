@@ -19,9 +19,10 @@ final class JobPostedTweet
         }, $this->job->getTags());
 
         $text = sprintf(
-            "💻 %s\n🎸 %s\n👉 %s\n\n%s",
+            "💻 %s\n🎸 %s\n📍 %s\n👉 %s\n\n%s",
             $this->job->getTitle(),
             $this->job->getOrganization(),
+            $this->job->getLocation(),
             $this->jobUrl,
             implode(' ', $hashtags),
         );
