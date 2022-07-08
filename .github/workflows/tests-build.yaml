@@ -103,7 +103,7 @@ jobs:
               with:
                   type: 'zip'
                   filename: app-build-${{ env.BRANCH }}-latest.zip
-                  exclusions: '*.git* /*node_modules/* /*tests/* /*var/cache/* /*assets/*'
+                  exclusions: '*.git* /*node_modules/* /*tests/* /*var/cache/*'
 
             - name: "Store artifact for distribution"
               uses: appleboy/scp-action@master

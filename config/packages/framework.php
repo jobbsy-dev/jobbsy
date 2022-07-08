@@ -15,9 +15,9 @@ return static function (FrameworkConfig $config, ContainerConfigurator $containe
     ;
 
     $config->httpClient()
-    ->scopedClient('mailjet.client')
-    ->baseUri('https://api.mailjet.com/v3/REST/')
-    ->authBasic(env('MAILJET_API_KEY').':'.env('MAILJET_API_SECRET_KEY'));
+        ->scopedClient('mailjet.client')
+        ->baseUri('https://api.mailjet.com/v3/REST/')
+        ->authBasic(env('MAILJET_API_KEY').':'.env('MAILJET_API_SECRET_KEY'));
 
     $config->session()
         ->handlerId(null)
