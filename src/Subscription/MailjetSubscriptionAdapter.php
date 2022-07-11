@@ -16,7 +16,6 @@ class MailjetSubscriptionAdapter implements SubscriptionMailingListInterface
             return;
         }
 
-        dump($contact);
         if (empty($contact)) {
             return;
         }
