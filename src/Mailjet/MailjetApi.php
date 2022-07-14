@@ -1,0 +1,124 @@
+<?php
+
+namespace App\Mailjet;
+
+use App\Mailjet\Model\CreateCampaignDraft\CreateCampaignDraftRequest;
+use App\Mailjet\Model\CreateCampaignDraft\CreateCampaignDraftResponse;
+use App\Mailjet\Model\CreateCampaignDraftContent\CreateCampaignDraftContentRequest;
+use App\Mailjet\Model\CreateCampaignDraftContent\CreateCampaignDraftContentResponse;
+use App\Mailjet\Model\SendCampaignDraft\SendCampaignDraftRequest;
+use App\Mailjet\Model\SendCampaignDraft\SendCampaignDraftResponse;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+
+class MailjetApi
+{
+    public function __construct(
+        #[Autowire('%env(MAILJET_API_KEY)%')]
+        string $mailjetApiKey,
+        #[Autowire('%env(MAILJET_API_SECRET_KEY)%')]
+        string $mailjetApiSecretKey,
+        private ?HttpClientInterface $mailjetClient = null
+    ) {
+        if (null === $mailjetClient) {
+            $this->mailjetClient = HttpClient::create([
+                'base_uri' => 'https://api.mailjet.com/v3/REST/',
+                'auth_basic' => [$mailjetApiKey, $mailjetApiSecretKey],
+            ]);
+        }
+    }
+
+    public function createContact(string $email): ?array
+    {
+        $response = $this->mailjetClient->request('POST', 'contact', [
+            'json' => [
+                'Email' => $email,
+            ],
+        ]);
+
+        if (201 !== $response->getStatusCode()) {
+            return null;
+        }
+
+        $data = $response->toArray(false);
+
+        if (false === isset($data['Data'])) {
+            return null;
+        }
+
+        return $data['Data'];
+    }
+
+    public function addContactToList(string $contactId, string $listId): ?array
+    {
+        $response = $this->mailjetClient->request('POST', 'listrecipient', [
+            'json' => [
+                'ContactID' => $contactId,
+                'ListID' => $listId,
+            ],
+        ]);
+
+        if (201 !== $response->getStatusCode()) {
+            return null;
+        }
+
+        $data = $response->toArray(false);
+
+        if (false === isset($data['Data'])) {
+            return null;
+        }
+
+        return $data['Data'];
+    }
+
+    public function createCampaignDraft(
+        CreateCampaignDraftRequest $createCampaignDraftRequest
+    ): ?CreateCampaignDraftResponse {
+        $response = $this->mailjetClient->request('POST', 'campaigndraft', [
+            'json' => $createCampaignDraftRequest->toArray(),
+        ]);
+
+        if (201 !== $response->getStatusCode()) {
+            return null;
+        }
+
+        $data = $response->toArray(false);
+
+        return CreateCampaignDraftResponse::fromArray($data);
+    }
+
+    public function createCampaignDraftContent(
+        CreateCampaignDraftContentRequest $createCampaignDraftContentRequest
+    ): ?CreateCampaignDraftContentResponse {
+        $url = sprintf('campaigndraft/%d/detailcontent', $createCampaignDraftContentRequest->campaignId);
+        $response = $this->mailjetClient->request('POST', $url, [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'body' => $createCampaignDraftContentRequest->payload(),
+        ]);
+
+        if (201 !== $response->getStatusCode()) {
+            return null;
+        }
+
+        $data = $response->toArray(false);
+
+        return CreateCampaignDraftContentResponse::fromArray($data);
+    }
+
+    public function sendCampaignDraft(SendCampaignDraftRequest $sendCampaignDraftRequest): ?SendCampaignDraftResponse
+    {
+        $url = sprintf('campaigndraft/%d/send', $sendCampaignDraftRequest->campaignId);
+        $response = $this->mailjetClient->request('POST', $url);
+
+        if (201 !== $response->getStatusCode()) {
+            return null;
+        }
+
+        $data = $response->toArray(false);
+
+        return SendCampaignDraftResponse::fromArray($data);
+    }
+}
