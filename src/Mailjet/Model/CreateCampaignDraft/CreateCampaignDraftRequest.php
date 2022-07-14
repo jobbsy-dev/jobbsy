@@ -6,12 +6,12 @@ final class CreateCampaignDraftRequest
 {
     public function __construct(
         readonly string $title,
-        readonly int $contactListId,
+        readonly int $contactsListId,
         readonly string $locale,
         readonly string $senderEmail,
         readonly string $senderName,
         readonly string $subject,
-        readonly int $sender
+        readonly string $sender
     ) {
     }
 
@@ -19,7 +19,7 @@ final class CreateCampaignDraftRequest
     {
         return [
             'Title' => $this->title,
-            'ContactsListID' => $this->contactListId,
+            'ContactsListID' => $this->contactsListId,
             'Locale' => $this->locale,
             'SenderEmail' => $this->senderEmail,
             'SenderName' => $this->senderName,
