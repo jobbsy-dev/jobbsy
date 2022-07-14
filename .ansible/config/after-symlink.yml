@@ -20,6 +20,16 @@
     hour: "0"
     job: "php {{ ansistrano_release_path.stdout }}/bin/console app:clear-pinned"
 
+- name: Send weekly jobs letter
+  ansible.builtin.cron:
+    name: "Send weekly jobs letter every saturday at 8am"
+    minute: "0"
+    hour: "8"
+    day: "*"
+    month: "*"
+    weekday: "6"
+    job: "php {{ ansistrano_release_path.stdout }}/bin/console app:send-jobsletter"
+
 - name: Restarting Workers
   command: php bin/console messenger:stop-workers
   args:

@@ -1,0 +1,70 @@
+<mjml owa="desktop" version="4.10.1">
+    <mj-head>
+        <mj-preview></mj-preview>
+    </mj-head>
+    <mj-body background-color="#F2F2F2">
+        <mj-section background-repeat="repeat" background-size="auto" padding-bottom="0px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px" text-align="center">
+            <mj-column>
+                <mj-text align="left" color="#000000" font-family="Arial, sans-serif" font-size="13px" padding-bottom="4px" padding-left="10px" padding-right="10px" padding-top="4px" padding="4px 10px 4px 10px">
+                    <p class="text-build-content" style="text-align: center; margin: 10px 0; margin-top: 10px; margin-bottom: 10px;" data-testid="RB8E6Azdv8hB7"><span style="color:#798084;font-family:Roboto;font-size:14px;line-height:23px;">You don't see this email correctly? | </span><a class="link-build-content" style="color:inherit;" target="_blank" href="[[PERMALINK]]"><span style="color:#3dabde;font-family:Roboto;font-size:14px;line-height:23px;"><b><u>View in your browser</u></b></span></a></p>
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#ffffff" background-repeat="repeat" padding-bottom="40px" padding-left="40px" padding-right="40px" padding-top="40px" padding="40px 40px 40px 40px" text-align="center">
+            <mj-column vertical-align="middle">
+                <mj-image align="center" alt="Jobbsy" border="none" height="auto" href="https://jobbsy.dev/" padding-bottom="0px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px" src="{{ absolute_url(asset('build/images/logo_jobbsy.svg')) }}" target="_blank" title="" width="130px"></mj-image>
+            </mj-column>
+        </mj-section>
+
+        <mj-section background-color="#ffffff" background-repeat="repeat" padding-bottom="30px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px" text-align="center">
+            <mj-column>
+                <mj-text align="left" color="#000000" font-family="Arial, sans-serif" font-size="13px" padding-bottom="0px" padding-left="30px" padding-right="30px" padding-top="0px" padding="0px 30px 0px 30px">
+                    <h1 class="text-build-content" style="text-align:center;; margin-top: 10px; margin-bottom: 10px" data-testid="_1CsqfUS7w8t9"><span style="color:#d63384;font-family:Roboto;font-size:30px;line-height:30px;"><b>&lt;?php echo "Symfony jobs of the week 🚀" ?&gt;</b></span></h1>
+                </mj-text>
+            </mj-column>
+        </mj-section>
+
+        <mj-raw> {% for job in jobs %} </mj-raw>
+        <mj-section background-color="#ffffff" background-repeat="repeat" padding-bottom="30px" padding-left="30px" padding-right="30px" padding-top="0" padding="30px 30px 30px 30px" text-align="center">
+            <mj-column>
+                <mj-text align="left" color="#000000" font-family="Arial, sans-serif" font-size="23px" padding-bottom="0px" padding-left="10px" padding-right="10px" padding-top="0px" padding="0px 10px 0px 10px">
+                    <h2 class="text-build-content" data-testid="hRfPcvfW8RAxxp" style="margin-top: 10px; margin-bottom: 10px">
+                        <a class="link-build-content" style="color:inherit;" target="_blank" href="{{ url('job', {'id': job.id}) }}">
+                            <span style="font-family:Roboto;font-size:24px;"><b>{{job.title}}</b></span>
+                        </a>
+                    </h2>
+                </mj-text>
+                <mj-text align="left" color="#000000" font-family="Arial, sans-serif" font-size="13px" padding-bottom="0px" padding-left="10px" padding-right="10px" padding-top="0px" padding="0px 10px 0px 10px">
+                    <h3 class="text-build-content" data-testid="aKKcdcSAV" style="margin-top: 10px; margin-bottom: 10px"><span style="font-family:Roboto;font-size:18px;">{{job.organization}}</span></h3>
+                </mj-text>
+                <mj-text align="left" color="#000000" font-family="Arial, sans-serif" font-size="13px" padding-bottom="0px" padding-left="10px" padding-right="10px" padding-top="0px" padding="0px 10px 0px 10px">
+                    <p class="text-build-content" data-testid="NWI1t0eCd" style="margin: 10px 0; margin-top: 10px; margin-bottom: 10px;"><span style="font-family:Roboto;font-size:14px;">🏢 </span><span style="font-family:Roboto;"> {{ ('employment_type.' ~ job.employmentType.value)|trans }} · 📍 {{job.location|capitalize}} · 🏷 {{job.tags|join(', ')}}</span></p>
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-raw> {% endfor %} </mj-raw>
+
+        <mj-section background-color="#3dabde" background-repeat="repeat" padding-bottom="10px" padding-left="30px" padding-right="30px" padding-top="10px" padding="10px 30px 10px 30px" text-align="center">
+            <mj-group vertical-align="middle">
+                <mj-column vertical-align="middle" width="33%">
+                    <mj-text align="left" color="#000000" font-family="Arial, sans-serif" font-size="13px" padding-bottom="0px" padding-left="10px" padding-right="10px" padding-top="0px" padding="0px 10px 0px 10px">
+                        <p class="text-build-content" data-testid="pFbEZi5KAjq6-X" style="margin: 10px 0; margin-top: 10px; margin-bottom: 10px;"><span style="color:#ffffff;font-family:Roboto;font-size:16px;line-height:22px;"><b>Follow Jobbsy</b></span></p>
+                    </mj-text>
+                </mj-column>
+                <mj-column vertical-align="middle" width="67%">
+                    <mj-social align="right" border-radius="50%" color="#ffffff" font-family="Lato, Helvetica, Arial, sans-serif" font-size="13px" icon-padding="5px 5px 5px 5px" icon-size="26px" line-height="22px" mode="horizontal" padding-bottom="0px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px" text-decoration="none">
+                        <mj-social-element background-color="#1DA1F2" href="https://twitter.com/jobbsy" name="twitter-noshare" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/twitter.png"></mj-social-element>
+                        <mj-social-element background-color="#4078C0" href="https://github.com/jobbsy-dev/jobbsy" name="github-noshare" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/github.png"></mj-social-element>
+                    </mj-social>
+                </mj-column>
+            </mj-group>
+        </mj-section>
+        <mj-section background-color="transparent" background-repeat="repeat" padding-bottom="30px" padding-left="20px" padding-right="20px" padding-top="10px" padding="10px 20px 30px 20px" text-align="center">
+            <mj-column>
+                <mj-text align="left" color="#000000" font-family="Arial, sans-serif" font-size="13px" padding-bottom="0px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px">
+                    <p class="text-build-content" style="text-align: center; margin: 10px 0; margin-top: 10px; margin-bottom: 10px;" data-testid="0CWMmFEuvZf5BC"><span style="color:#798084;font-family:Roboto;font-size:14px;line-height:23px;">This e-mail has been sent to </span><span style="color:#3dabde;font-family:Roboto;font-size:14px;line-height:23px;"><b>[[EMAIL_TO]]</b></span><span style="color:#798084;font-family:Roboto;font-size:14px;line-height:23px;">, click </span><a class="link-build-content" style="color:inherit;" target="_blank" href="[[UNSUB_LINK_EN]]"><span style="color:#798084;font-family:Roboto;font-size:14px;line-height:23px;"><b><u>here</u></b></span></a><span style="color:#798084;font-family:Roboto;font-size:14px;line-height:23px;"> to unsubscribe.</span></p>
+                </mj-text>
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

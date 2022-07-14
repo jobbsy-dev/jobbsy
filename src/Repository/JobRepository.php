@@ -46,4 +46,21 @@ class JobRepository extends ServiceEntityRepository
             ->getQuery()
             ->execute();
     }
+
+    /**
+     * @return Job[]
+     */
+    public function findLastWeekJobs(): array
+    {
+        $qb = $this->createQueryBuilder('job');
+
+        return $qb
+            ->where('job.createdAt > :lastWeek')
+            ->setParameter('lastWeek', new \DateTimeImmutable('-1 week'))
+            ->orderBy('job.createdAt', Criteria::DESC)
+            ->addOrderBy('job.clickCount', Criteria::ASC)
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
 }
