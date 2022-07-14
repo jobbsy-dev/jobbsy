@@ -25,7 +25,7 @@ class SendWeeklyJobsLetterCommand extends Command
         private readonly JobRepository $jobRepository,
         private readonly MailjetApi $mailjetApi,
         #[Autowire('%env(MAILJET_CONTACT_LIST_ID)%')]
-        private readonly string $mailjetContactListId,
+        private readonly int $mailjetContactListId,
         #[Autowire('%env(MAILJET_SENDER_ID)%')]
         private readonly string $mailjetSenderId,
     ) {
