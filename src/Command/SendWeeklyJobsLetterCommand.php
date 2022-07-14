@@ -12,6 +12,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 
 #[AsCommand(
@@ -28,6 +29,11 @@ class SendWeeklyJobsLetterCommand extends Command
         private readonly int $mailjetContactListId,
         #[Autowire('%env(MAILJET_SENDER_ID)%')]
         private readonly string $mailjetSenderId,
+        private readonly RouterInterface $router,
+        #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
+        private readonly string $commandRouterHost,
+        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
+        private readonly string $commandRouterScheme,
     ) {
         parent::__construct();
     }
@@ -41,6 +47,10 @@ class SendWeeklyJobsLetterCommand extends Command
 
             return Command::SUCCESS;
         }
+
+        $context = $this->router->getContext();
+        $context->setHost($this->commandRouterHost);
+        $context->setScheme($this->commandRouterScheme);
 
         $response = $this->mailjetApi->createCampaignDraft(new CreateCampaignDraftRequest(
             sprintf('[%s] Weekly jobs letter', (new \DateTime())->format('W')),
