@@ -2,6 +2,8 @@
 
 namespace App\Subscription;
 
+use App\Mailjet\MailjetApi;
+
 class MailjetSubscriptionAdapter implements SubscriptionMailingListInterface
 {
     public function __construct(private readonly MailjetApi $api)

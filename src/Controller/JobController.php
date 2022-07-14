@@ -148,7 +148,7 @@ class JobController extends AbstractController
         $form = $this->createForm(SubscriptionType::class);
 
         return $this->render('job/_subscription_form.html.twig', [
-           'form' => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
