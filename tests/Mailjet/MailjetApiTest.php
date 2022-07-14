@@ -101,7 +101,7 @@ class MailjetApiTest extends TestCase
             'SenderEmail' => 'hello@example.com',
             'SenderName' => 'John Doe',
             'Subject' => 'Hello World!',
-            'Sender' => 99,
+            'Sender' => '99',
         ];
         $expectedRequestData = json_encode($requestData, \JSON_THROW_ON_ERROR);
 
@@ -130,7 +130,7 @@ class MailjetApiTest extends TestCase
             'hello@example.com',
             'John Doe',
             'Hello World!',
-            99
+            '99'
         ));
 
         // Assert
