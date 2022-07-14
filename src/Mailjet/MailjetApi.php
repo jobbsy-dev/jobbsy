@@ -6,6 +6,8 @@ use App\Mailjet\Model\CreateCampaignDraft\CreateCampaignDraftRequest;
 use App\Mailjet\Model\CreateCampaignDraft\CreateCampaignDraftResponse;
 use App\Mailjet\Model\CreateCampaignDraftContent\CreateCampaignDraftContentRequest;
 use App\Mailjet\Model\CreateCampaignDraftContent\CreateCampaignDraftContentResponse;
+use App\Mailjet\Model\ManageContact\ManageContactRequest;
+use App\Mailjet\Model\ManageContact\ManageContactResponse;
 use App\Mailjet\Model\SendCampaignDraft\SendCampaignDraftRequest;
 use App\Mailjet\Model\SendCampaignDraft\SendCampaignDraftResponse;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -120,5 +122,21 @@ class MailjetApi
         $data = $response->toArray(false);
 
         return SendCampaignDraftResponse::fromArray($data);
+    }
+
+    public function manageContact(ManageContactRequest $manageContactRequest): ?ManageContactResponse
+    {
+        $url = sprintf('contactslist/%s/managecontact', $manageContactRequest->contactListId);
+        $response = $this->mailjetClient->request('POST', $url, [
+            'json' => $manageContactRequest->toArray(),
+        ]);
+
+        if (201 !== $response->getStatusCode()) {
+            return null;
+        }
+
+        $data = $response->toArray(false);
+
+        return ManageContactResponse::fromArray($data);
     }
 }

@@ -5,6 +5,8 @@ namespace App\Tests\Mailjet;
 use App\Mailjet\MailjetApi;
 use App\Mailjet\Model\CreateCampaignDraft\CreateCampaignDraftRequest;
 use App\Mailjet\Model\CreateCampaignDraftContent\CreateCampaignDraftContentRequest;
+use App\Mailjet\Model\ManageContact\Action;
+use App\Mailjet\Model\ManageContact\ManageContactRequest;
 use App\Mailjet\Model\SendCampaignDraft\SendCampaignDraftRequest;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
@@ -214,5 +216,52 @@ class MailjetApiTest extends TestCase
         self::assertSame('https://example.com/campaigndraft/1/send', $mockResponse->getRequestUrl());
         self::assertSame($expectedResponseData['Data'], $response->data);
         self::assertSame('Programmed', $response->data[0]['Status']);
+    }
+
+    public function testManageContact(): void
+    {
+        // Arrange
+        $requestData = [
+            'Action' => 'addforce',
+            'Email' => 'test@example.com',
+        ];
+        $expectedRequestData = json_encode($requestData, \JSON_THROW_ON_ERROR);
+
+        $expectedResponseData = [
+            'Count' => 1,
+            'Data' => [
+                [
+                    'Action' => 'addforce',
+                    'Email' => 'test@example.com',
+                ],
+            ],
+            'Total' => 1,
+        ];
+        $mockResponseJson = json_encode($expectedResponseData, \JSON_THROW_ON_ERROR);
+
+        $mockResponse = new MockResponse($mockResponseJson, [
+            'http_code' => 201,
+            'response_headers' => ['Content-Type: application/json'],
+        ]);
+        $httpClient = new MockHttpClient($mockResponse, 'https://example.com');
+
+        $mailjetApi = new MailjetApi('xxx', 'xxx', $httpClient);
+
+        // Act
+        $response = $mailjetApi->manageContact(new ManageContactRequest(
+            1,
+            Action::ADD_FORCE,
+            'test@example.com'
+        ));
+
+        // Assert
+        self::assertSame('POST', $mockResponse->getRequestMethod());
+        self::assertSame('https://example.com/contactslist/1/managecontact', $mockResponse->getRequestUrl());
+        self::assertContains(
+            'Content-Type: application/json',
+            $mockResponse->getRequestOptions()['headers']
+        );
+        self::assertSame($expectedRequestData, $mockResponse->getRequestOptions()['body']);
+        self::assertSame('test@example.com', $response->data[0]['Email']);
     }
 }
