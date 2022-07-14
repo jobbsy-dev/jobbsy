@@ -3,6 +3,8 @@
 namespace App\Subscription;
 
 use App\Mailjet\MailjetApi;
+use App\Mailjet\Model\ManageContact\Action;
+use App\Mailjet\Model\ManageContact\ManageContactRequest;
 
 class MailjetSubscriptionAdapter implements SubscriptionMailingListInterface
 {
@@ -12,23 +14,10 @@ class MailjetSubscriptionAdapter implements SubscriptionMailingListInterface
 
     public function subscribe(string $email, string $mailingList): void
     {
-        $contact = $this->api->createContact($email);
-
-        if (null === $contact) {
-            return;
-        }
-
-        if (empty($contact)) {
-            return;
-        }
-
-        if (false === isset($contact[0]['ID'])) {
-            return;
-        }
-
-        $this->api->addContactToList(
-            $contact[0]['ID'],
-            $mailingList
-        );
+        $this->api->manageContact(new ManageContactRequest(
+            $mailingList,
+            Action::ADD_FORCE,
+            $email,
+        ));
     }
 }
