@@ -5,14 +5,13 @@ namespace App\Tests\Broadcast\Twitter;
 use App\Broadcast\Twitter\JobPostedTweet;
 use App\Entity\Job;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Uid\Uuid;
 
 class JobPostedTweetTest extends TestCase
 {
     public function testToTweetText(): void
     {
         // Arrange
-        $job = new Job(Uuid::fromString('c018222a-ec42-4252-b795-31b34c589ce1'));
+        $job = new Job();
         $job->setTitle('Symfony web developer');
         $job->setOrganization('Acme');
         $job->setLocation('Remote');
