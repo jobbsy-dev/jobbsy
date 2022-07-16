@@ -31,6 +31,7 @@
         "nelmio/cors-bundle": "^2.2",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.2",
+        "ramsey/uuid-doctrine": "^1.8",
         "sensio/framework-extra-bundle": "^6.1",
         "sentry/sentry-symfony": "^4.2",
         "stripe/stripe-php": "^8.0",

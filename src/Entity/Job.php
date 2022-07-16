@@ -8,15 +8,17 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\EmploymentType;
-use App\Repository\JobRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Doctrine\UuidType;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[ORM\Entity(repositoryClass: JobRepository::class)]
+#[ORM\Entity]
 #[Vich\Uploadable]
 #[ApiResource(
     collectionOperations: ['get'],
@@ -29,11 +31,11 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class Job
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'uuid')]
+    #[ORM\Column(type: UuidType::NAME, unique: true)]
     #[Groups(['read'])]
-    private Uuid $id;
+    private UuidInterface $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: Types::STRING, length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(SearchFilter::class, strategy: 'partial')]
@@ -103,10 +105,10 @@ class Job
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $tweetId = null;
 
-    public function __construct(?Uuid $id = null)
+    public function __construct(?UuidInterface $id = null)
     {
         if (null === $id) {
-            $id = Uuid::v4();
+            $id = Uuid::uuid4();
         }
 
         $this->id = $id;
@@ -114,7 +116,7 @@ class Job
         $this->updatedAt = new \DateTime();
     }
 
-    public function getId(): Uuid
+    public function getId(): UuidInterface
     {
         return $this->id;
     }
