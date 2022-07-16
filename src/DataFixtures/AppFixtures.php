@@ -6,7 +6,7 @@ use App\EmploymentType;
 use App\Entity\Job;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\Uid\UuidV4;
+use Ramsey\Uuid\Uuid;
 
 class AppFixtures extends Fixture
 {
@@ -15,7 +15,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         foreach ($this->getData() as [$title, $employmentType, $organization, $location, $url, $tags, $id, $pinned]) {
-            $job = new Job($id ? UuidV4::fromString($id) : null);
+            $job = new Job($id ? Uuid::fromString($id) : null);
             $job->setTitle($title);
             $job->setEmploymentType($employmentType);
             $job->setOrganization($organization);
