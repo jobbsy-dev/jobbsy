@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Sentry\Integration\IgnoreErrorsIntegration;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Config\SentryConfig;
@@ -21,7 +22,8 @@ return static function (SentryConfig $config, ContainerConfigurator $containerCo
             'ignore_exceptions' => [
                 NotFoundHttpException::class,
                 AccessDeniedException::class,
-                MethodNotAllowedHttpException::class
+                MethodNotAllowedHttpException::class,
+                NotAcceptableHttpException::class,
             ]
         ]);
 };
