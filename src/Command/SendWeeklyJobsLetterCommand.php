@@ -6,11 +6,15 @@ use App\Mailjet\MailjetApi;
 use App\Mailjet\Model\CreateCampaignDraft\CreateCampaignDraftRequest;
 use App\Mailjet\Model\CreateCampaignDraftContent\CreateCampaignDraftContentRequest;
 use App\Mailjet\Model\SendCampaignDraft\SendCampaignDraftRequest;
+use App\Mailjet\Model\TestCampaignDraft\Recipient;
+use App\Mailjet\Model\TestCampaignDraft\TestCampaignDraftRequest;
 use App\Repository\JobRepository;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
@@ -36,6 +40,13 @@ class SendWeeklyJobsLetterCommand extends Command
         private readonly string $commandRouterScheme,
     ) {
         parent::__construct();
+    }
+
+    protected function configure(): void
+    {
+        $this
+            ->addOption('test', null, InputOption::VALUE_REQUIRED, 'Send test to email address')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -77,7 +88,22 @@ class SendWeeklyJobsLetterCommand extends Command
         ]);
         $this->mailjetApi->createCampaignDraftContent(new CreateCampaignDraftContentRequest($id, $html));
 
-        $this->mailjetApi->sendCampaignDraft(new SendCampaignDraftRequest($id));
+        $test = $input->getOption('test');
+
+        if (null === $test) {
+            $this->mailjetApi->sendCampaignDraft(new SendCampaignDraftRequest($id));
+
+            return Command::SUCCESS;
+        }
+
+        $response = $this->mailjetApi->testCampaignDraft(new TestCampaignDraftRequest($id, [new Recipient($test)]));
+
+        if (null === $response) {
+            return Command::FAILURE;
+        }
+
+        $io = new SymfonyStyle($input, $output);
+        $io->info('Test send. Campaign status : '.$response->data[0]['Status']);
 
         return Command::SUCCESS;
     }
