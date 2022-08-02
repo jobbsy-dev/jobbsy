@@ -19,7 +19,6 @@
         "ext-iconv": "*",
         "ext-intl": "*",
         "api-platform/core": "^2.6",
-        "composer/package-versions-deprecated": "1.11.99.5",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-fixtures-bundle": "^3.4",

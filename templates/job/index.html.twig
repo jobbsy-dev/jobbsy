@@ -18,7 +18,7 @@
         <div class="list-group mt-3">
             {# @var job \App\Entity\Job #}
             {% for job in jobs %}
-                <a href="{{ path('job', {'id': job.id}) }}" class="list-group-item list-group-item-action py-3 {% if job.pinned %}pinned{% endif %}" target="_blank" rel="nofollow">
+                <a href="{{ path('job', {'id': job.id}) }}" class="list-group-item list-group-item-action py-3 {% if job.pinned %}pinned{% endif %}" target="_blank">
                     <div class="d-flex">
                         {% if job.organizationImageName %}
                             <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" class="img-fluid rounded mt-2 align-self-start" width="65" height="65">
