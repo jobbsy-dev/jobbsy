@@ -5,6 +5,7 @@ namespace App\Command;
 use App\Event\JobPostedEvent;
 use App\Provider\JobProvider;
 use App\Provider\SearchParameters;
+use App\Repository\JobRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -30,7 +31,8 @@ class JobProviderPullCommand extends Command
         private readonly string $commandRouterHost,
         #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
         private readonly string $commandRouterScheme,
-        private readonly EventDispatcherInterface $dispatcher
+        private readonly EventDispatcherInterface $dispatcher,
+        private readonly JobRepository $jobRepository
     ) {
         parent::__construct();
     }
@@ -58,6 +60,10 @@ class JobProviderPullCommand extends Command
         $i = 0;
         $events = [];
         foreach ($jobs->all() as $job) {
+            if ($this->jobRepository->findOneBy(['url' => $job->getUrl()])) {
+                continue;
+            }
+
             $this->entityManager->persist($job);
 
             $events[] = new JobPostedEvent(

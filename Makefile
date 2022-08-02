@@ -11,13 +11,13 @@ PHPUNIT=php ./bin/phpunit
 help:
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
-lint:
+lint:								## Lint the code
 	$(SYMFONY_CLI) console lint:yaml config --parse-tags
 	$(SYMFONY_CLI) console lint:twig templates --env=prod
 	$(SYMFONY_CLI) console lint:xliff translations
 	$(SYMFONY_CLI) console lint:container --no-debug
 
-validate: lint
+validate: lint						## Validate the code, check composer.json and check security
 	$(SYMFONY_CLI) $(COMPOSER) validate --strict
 	$(SYMFONY_CLI) check:security
 
