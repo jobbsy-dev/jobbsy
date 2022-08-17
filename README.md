@@ -61,12 +61,20 @@ $ php bin/console doctrine:fixtures:load
 If you are using Symfony CLI simply run:
 
 ```
+$ cd jobbsy
 $ symfony serve
 ```
 
 Then access the application in your browser at the given URL (https://localhost:8000 by default) and 🎉
 
 For other cases install and run a web server like Nginx or Apache. You can find some default Symfony configuration in the [docs](https://symfony.com/doc/current/setup/web_server_configuration.html).
+
+## 🧪 Run tests
+
+```
+$ cd jobbsy
+$ php ./bin/phpunit
+```
 
 ## Inspirations
 

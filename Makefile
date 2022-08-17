@@ -19,7 +19,7 @@ lint:								## Lint the code
 
 validate: lint						## Validate the code, check composer.json and check security
 	$(SYMFONY_CLI) $(COMPOSER) validate --strict
-	$(SYMFONY_CLI) check:security
+	$(SYMFONY_CLI) $(COMPOSER) audit
 
 migrate:							## Run doctrine migrations
 	$(SYMFONY_CLI) console doctrine:migration:migrate
