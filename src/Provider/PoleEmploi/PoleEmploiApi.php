@@ -57,12 +57,12 @@ final class PoleEmploiApi
 
             $maxCreationDateQueryUrl = $maxCreationDate;
             if ($maxCreationDate instanceof \DateTimeInterface) {
-                $maxCreationDateQueryUrl = $maxCreationDate->format('Y-m-d\TH:i:sp');
+                $maxCreationDateQueryUrl = $maxCreationDate->format('Y-m-d\TH:i:s\Z');
             }
 
             $minCreationDateQueryUrl = $minCreationDate;
             if ($minCreationDate instanceof \DateTimeInterface) {
-                $minCreationDateQueryUrl = $minCreationDate->format('Y-m-d\TH:i:sp');
+                $minCreationDateQueryUrl = $minCreationDate->format('Y-m-d\TH:i:s\Z');
             }
 
             $url .= sprintf(
