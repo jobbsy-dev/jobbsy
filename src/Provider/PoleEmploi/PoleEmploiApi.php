@@ -4,6 +4,7 @@ namespace App\Provider\PoleEmploi;
 
 use App\Provider\AccessToken;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -40,7 +41,10 @@ final class PoleEmploiApi
                 'realm' => '/partenaire',
             ],
         ]);
-
+        if (200 !== $response->getStatusCode()) {
+            echo 'Une erreur est survenue '.$response->getStatusCode()."\r\n";
+            echo $response->getContent()."\r\n";
+        }
         $data = $response->toArray();
 
         $this->accessToken = AccessToken::create($data['access_token'], $data['expires_in']);
@@ -57,12 +61,12 @@ final class PoleEmploiApi
 
             $maxCreationDateQueryUrl = $maxCreationDate;
             if ($maxCreationDate instanceof \DateTimeInterface) {
-                $maxCreationDateQueryUrl = $maxCreationDate->format('Y-m-d\TH:i:sp');
+                $maxCreationDateQueryUrl = $maxCreationDate->format('Y-m-d\TH:i:s\Z');
             }
 
             $minCreationDateQueryUrl = $minCreationDate;
             if ($minCreationDate instanceof \DateTimeInterface) {
-                $minCreationDateQueryUrl = $minCreationDate->format('Y-m-d\TH:i:sp');
+                $minCreationDateQueryUrl = $minCreationDate->format('Y-m-d\TH:i:s\Z');
             }
 
             $url .= sprintf(
@@ -72,13 +76,17 @@ final class PoleEmploiApi
             );
             unset($queryParams['minCreationDate'], $queryParams['maxCreationDate']);
         }
+        try {
+            $response = $this->httpClient->request('GET', $url, [
+                'auth_bearer' => $this->accessToken?->getToken(),
+                'query' => $queryParams,
+            ]);
+            if (200 !== $response->getStatusCode()) {
+                throw new TransportException('Une erreur est survenue '.$response->getStatusCode()."\r\n");
+            }
+        } catch (TransportException $e) {
+            echo $e->getMessage()."\r\n";
 
-        $response = $this->httpClient->request('GET', $url, [
-            'auth_bearer' => $this->accessToken?->getToken(),
-            'query' => $queryParams,
-        ]);
-
-        if (200 !== $response->getStatusCode()) {
             return [];
         }
 
