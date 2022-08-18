@@ -11,6 +11,7 @@ use Ramsey\Uuid\Uuid;
 class AppFixtures extends Fixture
 {
     public const JOB_1_ID = 'fe094a22-5b0f-4f4d-88ee-5b331aeb6675';
+    public const JOB_2_ID = '6bb57d15-313d-403f-8785-58ebebc61852';
 
     public function load(ObjectManager $manager): void
     {
@@ -36,7 +37,7 @@ class AppFixtures extends Fixture
     private function getData(): \Generator
     {
         yield ['Symfony developer Remote', EmploymentType::FULL_TIME, 'Acme', 'Remote', 'https://example.com', ['symfony6', 'php8'], self::JOB_1_ID, true];
-        yield ['Lead dev Symfony Paris', EmploymentType::FULL_TIME, 'Acme', 'Paris', 'https://example.com', ['symfony', 'twig'], null, null];
+        yield ['Lead dev Symfony Paris', EmploymentType::FULL_TIME, 'Acme', 'Paris', 'https://example.com', ['symfony', 'twig'], self::JOB_2_ID, null];
         yield ['Backend Symfony developer', EmploymentType::FULL_TIME, 'SensioLabs', 'Paris', 'https://example.com', ['symfony', 'twig'], null, null];
     }
 }

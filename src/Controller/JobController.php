@@ -117,8 +117,12 @@ class JobController extends AbstractController
     #[Route('/job/{id}/donation/success', name: 'job_donation_success', methods: ['GET'])]
     public function jobDonationSuccess(Job $job, Request $request, EntityManagerInterface $em): Response
     {
+        if (null === ($stripeSessionId = $request->get('session_id'))) {
+            throw $this->createNotFoundException();
+        }
+
         Stripe::setApiKey($this->stripeApiKey);
-        $session = Session::retrieve($request->get('session_id'));
+        $session = Session::retrieve($stripeSessionId);
 
         if (Session::PAYMENT_STATUS_PAID === $session->payment_status) {
             $job->pinUntil($job->getCreatedAt()->modify('+1 month'));
