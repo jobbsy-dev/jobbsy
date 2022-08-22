@@ -228,9 +228,6 @@
     "phar-io/version": {
         "version": "3.1.0"
     },
-    "php-cs-fixer/diff": {
-        "version": "v2.0.2"
-    },
     "php-http/client-common": {
         "version": "2.5.0"
     },
