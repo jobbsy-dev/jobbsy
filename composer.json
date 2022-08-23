@@ -25,6 +25,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
         "easycorp/easyadmin-bundle": "^4.1",
+        "fabpot/goutte": "^4.0",
         "knplabs/knp-time-bundle": "^1.18",
         "league/flysystem-bundle": "^2.1",
         "nelmio/cors-bundle": "^2.2",
