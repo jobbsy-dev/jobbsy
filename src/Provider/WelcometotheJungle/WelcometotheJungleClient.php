@@ -53,13 +53,13 @@ final class WelcometotheJungleClient
             if (isset($structuredData['jobLocation']['@type']) && 'Place' === $structuredData['jobLocation']['@type']) {
                 $location = sprintf(
                     '%s, %s',
-                    $structuredData['jobLocation']['address']['addressLocality'],
+                    html_entity_decode($structuredData['jobLocation']['address']['addressLocality']),
                     ucfirst(Countries::getName($structuredData['jobLocation']['address']['addressCountry'])),
                 );
             }
 
             $data[] = [
-                'company' => trim($structuredData['hiringOrganization']['name']),
+                'company' => html_entity_decode(trim($structuredData['hiringOrganization']['name'])),
                 'companyLogo' => $structuredData['hiringOrganization']['logo'],
                 'url' => $url,
                 'title' => html_entity_decode($structuredData['title']),
