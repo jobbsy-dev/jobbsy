@@ -29,7 +29,7 @@ final class WelcometotheJungleProvider implements JobProviderInterface
             $job->setOrganization($datum['company']);
             $job->setOrganizationImageUrl($datum['companyLogo'] ?? null);
             $job->setSource(self::SOURCE_NAME);
-            $job->setTags(['PHP, Symfony']);
+            $job->setTags(['PHP', 'Symfony']);
             $job->setUrl($datum['url']);
 
             switch ($datum['contractType']) {
