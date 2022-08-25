@@ -1,5 +1,5 @@
 {% if app.request.hasPreviousSession %}
-    <div class="messages">
+    <div class="messages my-2">
         {% for type, messages in app.flashes %}
             {% for message in messages %}
                 <div class="alert alert-dismissible alert-{{ type }} fade show" role="alert">

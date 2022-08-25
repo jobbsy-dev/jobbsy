@@ -19,7 +19,7 @@
         <mj-section background-color="#ffffff" background-repeat="repeat" padding-bottom="30px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px" text-align="center">
             <mj-column>
                 <mj-text align="left" color="#000000" font-family="Arial, sans-serif" font-size="13px" padding-bottom="0px" padding-left="30px" padding-right="30px" padding-top="0px" padding="0px 30px 0px 30px">
-                    <h1 class="text-build-content" style="text-align:center;; margin-top: 10px; margin-bottom: 10px" data-testid="_1CsqfUS7w8t9"><span style="color:#d63384;font-family:Roboto;font-size:30px;line-height:30px;"><b>&lt;?php echo "Symfony jobs of the week 🚀" ?&gt;</b></span></h1>
+                    <h1 class="text-build-content" style="text-align:center;; margin-top: 10px; margin-bottom: 10px" data-testid="_1CsqfUS7w8t9"><span style="font-family:Roboto;font-size:30px;line-height:30px;"><b>New Symfony jobs</b></span></h1>
                 </mj-text>
             </mj-column>
         </mj-section>
