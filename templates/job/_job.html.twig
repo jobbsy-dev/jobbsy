@@ -1,0 +1,40 @@
+{# @var job \App\Entity\Job #}
+<a href="{{ path('job', {'id': job.id}) }}" class="list-group-item list-group-item-action py-3 {% if job.pinned %}pinned{% endif %}" target="_blank">
+    <div class="d-flex">
+        {% if job.organizationImageName %}
+            <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" class="img-fluid rounded mt-2 align-self-start" width="65" height="65">
+        {% elseif job.organizationImageUrl %}
+            <img src="{{ job.organizationImageUrl }}" class="img-fluid rounded mt-2 align-self-start" alt="{{ job.organization }}" width="65" height="65">
+        {% else %}
+            <img src="https://eu.ui-avatars.com/api/?name={{ job.organization }}&size=65&background=fff" alt="{{ job.organization }}" class="mt-2 align-self-start rounded" width="65" height="65">
+        {% endif %}
+        <div class="ms-3 flex-grow-1">
+            <p class="h5 d-block mb-0 fw-bold lh-base">{{ job.title }}</p>
+            <p class="mb-0">{{ job.organization }}</p>
+            <div class="mt-2 d-flex flex-wrap text-muted small">
+                <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
+                    <i class="fa fa-building fa-lg"></i>
+                    {{ ('employment_type.' ~ job.employmentType.value)|trans }}
+                </p>
+                <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                    <i class="fa fa-map-marker-alt text-secondary"></i>
+                    {{ job.location }}
+                </p>
+                {% if job.tags|length > 0 %}
+                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                        <i class="fa fa-tags text-secondary"></i>
+                        {{ job.tags|join(', ') }}
+                    </p>
+                {% endif %}
+                {% if job.pinned %}
+                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                        <i class="fas fa-thumbtack text-primary"></i>
+                    </p>
+                {% endif %}
+                <p class="ms-md-auto mb-0">
+                    {{ job.createdAt|ago }}
+                </p>
+            </div>
+        </div>
+    </div>
+</a>

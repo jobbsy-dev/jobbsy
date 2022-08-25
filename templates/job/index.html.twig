@@ -1,62 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <div class="col-12 text-center my-4">
-        <p class="h1">
-            <code>
-                &lt;?php $jobbsy = "open source job board for Symfony" ?&gt;
-            </code>
-        </p>
+    <div class="px-4 pb-4 py-md-5 my-3 text-center">
+        <h1 class="display-5 fw-bold">Symfony jobs</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                Find the best Symfony jobs, hire the best Symfony developers <br> and contribute to open source 💙
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a type="button" href="{{ path('job_new') }}" class="btn btn-primary px-3 gap-3 bg-gradient">Contribute to open source</a>
+                <a type="button" href="#getNotifiedAboutNewJobs" class="btn btn-outline-primary px-3 ">Get notified about new jobs <i class="fas fa-arrow-down ms-1"></i></a>
+            </div>
+        </div>
     </div>
 
-    <div class="my-3 my-md-5">
-        {{ render(controller('App\\Controller\\JobController::subscriptionForm')) }}
-    </div>
-
-    <h2 class="h4">New jobs</h2>
     {% if jobs|length > 0 %}
-        <div class="list-group mt-3">
-            {# @var job \App\Entity\Job #}
-            {% for job in jobs %}
-                <a href="{{ path('job', {'id': job.id}) }}" class="list-group-item list-group-item-action py-3 {% if job.pinned %}pinned{% endif %}" target="_blank">
-                    <div class="d-flex">
-                        {% if job.organizationImageName %}
-                            <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" class="img-fluid rounded mt-2 align-self-start" width="65" height="65">
-                        {% elseif job.organizationImageUrl %}
-                            <img src="{{ job.organizationImageUrl }}" class="img-fluid rounded mt-2 align-self-start" alt="{{ job.organization }}" width="65" height="65">
-                        {% else %}
-                            <img src="https://eu.ui-avatars.com/api/?name={{ job.organization }}&size=65&background=fff" alt="{{ job.organization }}" class="mt-2 align-self-start rounded" width="65" height="65">
-                        {% endif %}
-                        <div class="ms-3 flex-grow-1">
-                            <p class="h5 d-block mb-0 fw-bold lh-base">{{ job.title }}</p>
-                            <p class="mb-0">{{ job.organization }}</p>
-                            <div class="mt-2 d-flex flex-wrap text-muted small">
-                                <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
-                                    <i class="fa fa-building fa-lg"></i>
-                                    {{ ('employment_type.' ~ job.employmentType.value)|trans }}
-                                </p>
-                                <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                                    <i class="fa fa-map-marker-alt text-secondary"></i>
-                                    {{ job.location }}
-                                </p>
-                                {% if job.tags|length > 0 %}
-                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-tags text-secondary"></i>
-                                        {{ job.tags|join(', ') }}
-                                    </p>
-                                {% endif %}
-                                {% if job.pinned %}
-                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                                        <i class="fas fa-thumbtack text-primary"></i>
-                                    </p>
-                                {% endif %}
-                                <p class="ms-md-auto mb-0">
-                                    {{ job.createdAt|ago }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+        <div class="list-group mt-5">
+            {% set jobsCount = jobs|length %}
+            {% for job in jobs|slice(0, jobsCount/2) %}
+                {{ include('job/_job.html.twig', {'job': job}) }}
+            {% endfor %}
+
+            <div class="my-3 my-md-4" id="getNotifiedAboutNewJobs">
+                {{ render(controller('App\\Controller\\JobController::subscriptionForm')) }}
+            </div>
+
+            {% for job in jobs|slice(jobsCount/2, jobsCount) %}
+                {{ include('job/_job.html.twig', {'job': job}) }}
             {% endfor %}
         </div>
     {% else %}
