@@ -14,30 +14,29 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body style="background-color: rgba(249, 250, 251,1)">
+    <body>
         {% block body %}
-            <header class="bg-white border-bottom p-2 py-3">
+            <header class="px-2 py-4">
                 <div class="container">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
                         <a href="{{ path('job_index') }}" class="mb-2 mb-sm-0 mb-md-0">
-                            <img src="{{ asset('build/images/logo_jobbsy.svg') }}" alt="logo" width="150">
+                            <img src="{{ asset('build/images/logo_jobbsy.svg') }}" alt="logo" width="140">
                         </a>
-                        <div class="col-md-3 text-end ms-3 ms-md-0">
-                            <a href="{{ path('job_new') }}" class="btn btn-primary">{{ 'action.post_job'|trans }}</a>
+                        <div class="col-md-3 text-end ms-3 ms-md-0 d-none d-md-block">
+                            <a href="{{ path('job_new') }}" class="btn btn-primary px-3 bg-gradient">{{ 'action.post_job'|trans }}</a>
                         </div>
                     </div>
                 </div>
             </header>
-            <main class="container">
-                <div class="my-2">
-                    {{ include('default/_flash_messages.html.twig') }}
-                </div>
+
+            <main class="container pb-2 pb-md-5">
+                {{ include('default/_flash_messages.html.twig') }}
 
                 {% block main %}{% endblock %}
             </main>
 
-            <footer class="py-3 my-4 text-center">
-                <ul class="nav justify-content-center pb-3 mb-1">
+            <footer class="py-3 px-3 px-md-0 py-md-5 text-center mt-5 border-top bg-light">
+                <ul class="nav justify-content-center pb-3 mb-1 ">
                     <li class="nav-item">
                         <a href="{{ path('job_index') }}" class="nav-link px-2 text-muted">Home</a>
                     </li>
@@ -67,7 +66,7 @@
                     External sources:
                     <a href="https://pole-emploi.io" class="text-reset" target="_blank">Pole Emploi</a>,
                     <!--, <a href="https://www.arbeitsagentur.de/" class="text-reset" target="_blank">Bundesagentur für Arbeit</a>-->
-                    <a href="https://remoteok.com" class="text-reset" target="_blank">RemoteOK</a>
+                    <a href="https://welcometothejungle.com" class="text-reset" target="_blank">Welcome to the Jundle</a>
                 </small>
             </footer>
         {% endblock %}

@@ -16,7 +16,7 @@
             </trans-unit>
             <trans-unit id="action.post_job">
                 <source>action.post_job</source>
-                <target>Post a Job</target>
+                <target>Post a job</target>
             </trans-unit>
             <trans-unit id="form.label.organization_logo">
                 <source>form.label.organization_logo</source>

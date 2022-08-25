@@ -17,7 +17,7 @@ class JobControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
 
         self::assertResponseIsSuccessful();
-        self::assertSelectorTextContains('a.btn.btn-primary', 'Post a Job');
+        self::assertSelectorTextContains('a.btn.btn-primary', 'Post a job');
 
         self::assertSame(
             'Symfony developer Remote',
