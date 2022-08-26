@@ -21,7 +21,6 @@ jobs:
         env:
             APP_ENV: prod
             BRANCH: ${{ github.ref_name }}
-        needs: ['test']
         steps:
             - name: "Checkout code"
               uses: actions/checkout@v3
