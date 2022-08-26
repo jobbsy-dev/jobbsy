@@ -1,6 +1,6 @@
 # Jobbsy - Job Board for Symfony
 
-![CI/CD](https://github.com/jobbsy-dev/jobbsy/actions/workflows/tests-build.yaml/badge.svg?branch=main)
+![CI/CD](https://github.com/jobbsy-dev/jobbsy/actions/workflows/tests.yaml/badge.svg?branch=main)
 
 Jobbsy is the first and open source job board for [Symfony](https://symfony.com) framework.
 
