@@ -1,0 +1,37 @@
+version: 2
+
+updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      time: "11:00"
+    labels:
+      - actions
+      - dependencies
+
+   # Maintain dependencies for Yarn
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      time: "07:00"
+    open-pull-requests-limit: 10
+    versioning-strategy: lockfile-only
+    labels:
+      - javascript
+      - dependencies
+
+  # Maintain dependencies for Composer
+  - package-ecosystem: composer
+    directory: "/"
+    schedule:
+      interval: weekly
+      time: "07:00"
+    open-pull-requests-limit: 10
+    versioning-strategy: lockfile-only
+
+    labels:
+      - php
+      - dependencies
