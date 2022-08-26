@@ -13,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: "Checkout code"
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: PHP-CS-Fixer
               uses: docker://oskarstark/php-cs-fixer-ga
@@ -26,10 +26,10 @@ jobs:
 
         steps:
             - name: "Checkout code"
-              uses: actions/checkout@v2.3.3
+              uses: actions/checkout@v3
 
             - name: "Install PHP with extensions"
-              uses: shivammathur/setup-php@2.7.0
+              uses: shivammathur/setup-php@2.21.2
               with:
                   coverage: "none"
                   extensions: intl, pdo_sqlite
@@ -41,7 +41,7 @@ jobs:
               run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
             - name: "Cache composer"
-              uses: actions/cache@v2.1.2
+              uses: actions/cache@v3.0.8
               with:
                   path: ${{ steps.composer-cache.outputs.dir }}
                   key: ${{ runner.os }}-8.1-composer-${{ hashFiles('composer.lock') }}

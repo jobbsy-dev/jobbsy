@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
             - name: Release
               uses: softprops/action-gh-release@v1
 
@@ -24,10 +24,10 @@ jobs:
         needs: ['test']
         steps:
             - name: "Checkout code"
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: "Install PHP with extensions"
-              uses: shivammathur/setup-php@2.7.0
+              uses: shivammathur/setup-php@2.21.2
               with:
                   coverage: "none"
                   extensions: intl, mysql, ctype, iconv
@@ -71,7 +71,7 @@ jobs:
             ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
         steps:
             - name: "Checkout code"
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: Install SSH key
               uses: shimataro/ssh-key-action@v2
