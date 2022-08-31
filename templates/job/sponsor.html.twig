@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post a Job | {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="row mt-md-4 mt-0">
+        <div class="col-12 col-md-6 offset-md-3">
+            {{ form_start(form) }}
+            <div class="my-4">
+                {{ form_row(form.donationAmount) }}
+                <div class="alert alert-info">
+                    <p class="h5">Support open source ecosystem 💙</p>
+                    <p>
+                        By making a donation you will <b>support open source</b> and add your job offer at the <b>top of the list for 1 month!</b> <br>
+                        Each donation will sponsor Symfony open source ecosystem.<br>
+                    </p>
+                    <small>Any questions? <a href="mailto:hello@jobbsy.dev">Get in touch!</a></small>
+                </div>
+            </div>
+            <div class="d-grid mt-4">
+                <button class="btn btn-primary btn-lg bg-gradient px-3" type="submit">{{ 'action.sponsor'|trans }}</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

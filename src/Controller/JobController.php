@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Job;
 use App\Event\JobPostedEvent;
 use App\Form\JobType;
+use App\Form\SponsorType;
 use App\Form\SubscriptionType;
 use App\Repository\JobRepository;
 use App\Subscription\SubscribeMailingListCommand;
@@ -181,5 +182,57 @@ class JobController extends AbstractController
         $this->addFlash('error', 'Please provide a valid email address');
 
         return $this->redirectToRoute('job_index');
+    }
+
+    #[Route('/{id}/sponsor', name: 'sponsor')]
+    public function sponsor(Job $job, Request $request): Response
+    {
+      $form = $this->createForm(SponsorType::class, $job);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+          $donationAmount = $form->get('donationAmount')->getData();
+
+          $successUrl = $this->generateUrl('job_donation_success', [
+              'id' => $job->getId(),
+          ], UrlGeneratorInterface::ABSOLUTE_URL);
+          $successUrl .= '?session_id={CHECKOUT_SESSION_ID}'; // Stripe requires this parameter exactly like this (not encoded)
+
+          Stripe::setApiKey($this->stripeApiKey);
+          $session = Session::create([
+              'line_items' => [[
+                  'price_data' => [
+                      'currency' => 'eur',
+                      'product_data' => [
+                          'name' => 'Sponsor job offer & open source',
+                      ],
+                      'unit_amount' => $form->get('donationAmount')->getData(),
+                  ],
+                  'tax_rates' => [$this->taxRateId],
+                  'quantity' => 1,
+              ]],
+              'mode' => 'payment',
+              'success_url' => $successUrl,
+              'cancel_url' => $this->generateUrl('job_donation_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL),
+              'metadata' => [
+                  'jobId' => (string) $job->getId(),
+              ],
+              'payment_intent_data' => [
+                  'metadata' => [
+                      'jobId' => (string) $job->getId(),
+                  ],
+              ],
+              'tax_id_collection' => [
+                  'enabled' => true,
+              ],
+          ]);
+
+          return $this->redirect($session->url, 303);
+      }
+
+      return $this->renderForm('job/sponsor.html.twig', [
+          'job' => $job,
+          'form' => $form,
+      ]);
     }
 }
