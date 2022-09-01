@@ -54,7 +54,7 @@ jobs:
                 username: ${{ secrets.SSH_USERNAME }}
                 key: ${{ secrets.SSH_PRIVATE_KEY }}
                 port: ${{ secrets.SSH_PORT }}
-                source: app-build-${{ env.BRANCH }}-latest.zip
+                source: app-latest.zip
                 target: "$HOME/build"
 
     deploy:
