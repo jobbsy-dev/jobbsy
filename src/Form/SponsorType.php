@@ -5,7 +5,6 @@ namespace App\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -17,7 +16,6 @@ class SponsorType extends AbstractType
             ->add('donationAmount', MoneyType::class, [
                 'label' => 'form.label.donation_amount',
                 'divisor' => 100,
-                'mapped' => false,
                 'data' => 5000,
                 'constraints' => [
                     new GreaterThan(0),
@@ -29,9 +27,5 @@ class SponsorType extends AbstractType
                 ],
             ])
         ;
-    }
-
-    public function configureOptions(OptionsResolver $resolver): void
-    {
     }
 }
