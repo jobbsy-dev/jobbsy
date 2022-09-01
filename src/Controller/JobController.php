@@ -179,7 +179,7 @@ class JobController extends AbstractController
     public function sponsor(Job $job, Request $request): Response
     {
         $job->pinUntil($job->getCreatedAt()->modify('+1 month'));
-        $form = $this->createForm(SponsorType::class, $job);
+        $form = $this->createForm(SponsorType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
