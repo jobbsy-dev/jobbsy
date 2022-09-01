@@ -122,4 +122,21 @@ class JobControllerTest extends WebTestCase
         $client->request('GET', '/job/'.AppFixtures::JOB_1_ID);
         self::assertResponseRedirects('https://example.com');
     }
+
+    public function testSponsorJob(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', sprintf('/job/%s/sponsor', AppFixtures::JOB_1_ID));
+        self::assertResponseIsSuccessful();
+
+        $mockStripeClient = new MockStripeClient(
+            file_get_contents(__DIR__.'/../Mock/create_session.json')
+        );
+        ApiRequestor::setHttpClient($mockStripeClient);
+
+        $client->submitForm('Sponsor', [
+            'sponsor[donationAmount]' => 5000,
+        ]);
+        self::assertResponseRedirects('https://checkout.stripe.com/pay/xxx');
+    }
 }

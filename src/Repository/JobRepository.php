@@ -6,6 +6,7 @@ use App\Entity\Job;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Persistence\ManagerRegistry;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * @method Job|null find($id, $lockMode = null, $lockVersion = null)
@@ -62,5 +63,16 @@ class JobRepository extends ServiceEntityRepository
             ->setMaxResults(10)
             ->getQuery()
             ->getResult();
+    }
+
+    public function get(UuidInterface $id): Job
+    {
+        $job = $this->find($id);
+
+        if (null === $job) {
+            throw new JobNotFoundException(sprintf('Job with id "%s" not found', $id));
+        }
+
+        return $job;
     }
 }

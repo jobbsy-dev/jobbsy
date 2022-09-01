@@ -82,6 +82,10 @@
                 <source>form.label.donation_amount</source>
                 <target>Donation to open source</target>
             </trans-unit>
+            <trans-unit id="action.sponsor">
+                <source>action.sponsor</source>
+                <target>Sponsor</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

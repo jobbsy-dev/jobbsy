@@ -2,14 +2,18 @@
 
 namespace App\Controller;
 
+use App\Donation\Command\CreateDonationPaymentUrlCommand;
+use App\Donation\CommandHandler\CreateDonationPaymentUrlCommandHandler;
 use App\Entity\Job;
 use App\Event\JobPostedEvent;
 use App\Form\JobType;
+use App\Form\SponsorType;
 use App\Form\SubscriptionType;
 use App\Repository\JobRepository;
 use App\Subscription\SubscribeMailingListCommand;
 use App\Subscription\SubscribeMailingListCommandHandler;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,37 +31,39 @@ class JobController extends AbstractController
         private readonly EventDispatcherInterface $eventDispatcher,
         #[Autowire('%env(STRIPE_API_KEY)%')]
         private readonly string $stripeApiKey,
-        #[Autowire('%env(STRIPE_TAX_RATE_ID)%')]
-        private readonly string $taxRateId
+        private readonly CreateDonationPaymentUrlCommandHandler $commandHandler,
+        private readonly JobRepository $jobRepository,
+        private readonly EntityManagerInterface $em,
+        private readonly LoggerInterface $logger
     ) {
     }
 
     #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]
-    public function index(JobRepository $jobRepository): Response
+    public function index(): Response
     {
         return $this->render('job/index.html.twig', [
-            'jobs' => $jobRepository->findLastJobs(),
+            'jobs' => $this->jobRepository->findLastJobs(),
         ]);
     }
 
     #[Route('/rss.xml', name: 'job_rss', defaults: ['_format' => 'xml'], methods: ['GET']), ]
-    public function rss(JobRepository $jobRepository): Response
+    public function rss(): Response
     {
         return $this->render('job/index.xml.twig', [
-            'jobs' => $jobRepository->findBy([], ['createdAt' => 'DESC'], 10),
+            'jobs' => $this->jobRepository->findBy([], ['createdAt' => 'DESC'], 10),
         ]);
     }
 
     #[Route('/job/new', name: 'job_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request): Response
     {
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($job);
-            $entityManager->flush();
+            $this->em->persist($job);
+            $this->em->flush();
 
             $this->addFlash('success', 'Job posted successfully!');
 
@@ -76,36 +82,16 @@ class JobController extends AbstractController
             ], UrlGeneratorInterface::ABSOLUTE_URL);
             $successUrl .= '?session_id={CHECKOUT_SESSION_ID}'; // Stripe requires this parameter exactly like this (not encoded)
 
-            Stripe::setApiKey($this->stripeApiKey);
-            $session = Session::create([
-                'line_items' => [[
-                    'price_data' => [
-                        'currency' => 'eur',
-                        'product_data' => [
-                            'name' => 'Sponsor job offer & open source',
-                        ],
-                        'unit_amount' => $form->get('donationAmount')->getData(),
-                    ],
-                    'tax_rates' => [$this->taxRateId],
-                    'quantity' => 1,
-                ]],
-                'mode' => 'payment',
-                'success_url' => $successUrl,
-                'cancel_url' => $this->generateUrl('job_donation_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL),
-                'metadata' => [
-                    'jobId' => (string) $job->getId(),
-                ],
-                'payment_intent_data' => [
-                    'metadata' => [
-                        'jobId' => (string) $job->getId(),
-                    ],
-                ],
-                'tax_id_collection' => [
-                    'enabled' => true,
-                ],
-            ]);
+            $command = new CreateDonationPaymentUrlCommand(
+                $job->getId(),
+                $donationAmount,
+                $successUrl,
+                $this->generateUrl('job_donation_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL)
+            );
 
-            return $this->redirect($session->url, 303);
+            $redirectUrl = ($this->commandHandler)($command);
+
+            return $this->redirect($redirectUrl, 303);
         }
 
         return $this->renderForm('job/new.html.twig', [
@@ -115,18 +101,24 @@ class JobController extends AbstractController
     }
 
     #[Route('/job/{id}/donation/success', name: 'job_donation_success', methods: ['GET'])]
-    public function jobDonationSuccess(Job $job, Request $request, EntityManagerInterface $em): Response
+    public function jobDonationSuccess(Job $job, Request $request): Response
     {
         if (null === ($stripeSessionId = $request->get('session_id'))) {
             throw $this->createNotFoundException();
         }
 
         Stripe::setApiKey($this->stripeApiKey);
-        $session = Session::retrieve($stripeSessionId);
+        try {
+            $session = Session::retrieve($stripeSessionId);
+        } catch (\Exception $e) {
+            $this->logger->notice($e->getMessage());
+
+            throw $this->createNotFoundException();
+        }
 
         if (Session::PAYMENT_STATUS_PAID === $session->payment_status) {
             $job->pinUntil($job->getCreatedAt()->modify('+1 month'));
-            $em->flush();
+            $this->em->flush();
         }
 
         return $this->render('job/donation_success.html.twig');
@@ -139,10 +131,10 @@ class JobController extends AbstractController
     }
 
     #[Route('/job/{id}', name: 'job', methods: ['GET'])]
-    public function job(Job $job, EntityManagerInterface $entityManager): RedirectResponse
+    public function job(Job $job): RedirectResponse
     {
         $job->clicked();
-        $entityManager->flush();
+        $this->em->flush();
 
         return $this->redirect($job->getUrl());
     }
@@ -181,5 +173,39 @@ class JobController extends AbstractController
         $this->addFlash('error', 'Please provide a valid email address');
 
         return $this->redirectToRoute('job_index');
+    }
+
+    #[Route('/job/{id}/sponsor', name: 'sponsor')]
+    public function sponsor(Job $job, Request $request): Response
+    {
+        $job->pinUntil($job->getCreatedAt()->modify('+1 month'));
+        $form = $this->createForm(SponsorType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $donationAmount = $form->get('donationAmount')->getData();
+
+            $successUrl = $this->generateUrl('job_donation_success', [
+                'id' => $job->getId(),
+            ], UrlGeneratorInterface::ABSOLUTE_URL);
+            $successUrl .= '?session_id={CHECKOUT_SESSION_ID}'; // Stripe requires this parameter exactly like this (not encoded)
+
+            $command = new CreateDonationPaymentUrlCommand(
+                $job->getId(),
+                $donationAmount,
+                $successUrl,
+                $this->generateUrl('job_donation_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL)
+            );
+
+            $redirectUrl = ($this->commandHandler)($command);
+
+            return $this->redirect($redirectUrl, 303);
+        }
+
+        return $this->renderForm('job/sponsor.html.twig', [
+            'job' => $job,
+            'form' => $form,
+            'latestJobs' => $this->jobRepository->findBy([], ['createdAt' => 'DESC'], 3),
+        ]);
     }
 }
