@@ -2,20 +2,12 @@
 
 namespace App\Form;
 
-use App\EmploymentType;
-use App\Entity\Job;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
-use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThan;
-use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class SponsorType extends AbstractType
 {
@@ -34,7 +26,6 @@ class SponsorType extends AbstractType
                 'html5' => true,
                 'attr' => [
                     'step' => 5,
-                    'min' => 1,
                 ],
             ])
         ;

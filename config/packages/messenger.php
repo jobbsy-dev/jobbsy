@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Donation\Command\CreateDonationPaymentUrlCommand;
 use App\Message\CreateTweetMessage;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\Mailer\Messenger\SendEmailMessage;
@@ -11,25 +12,29 @@ use Symfony\Config\FrameworkConfig;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
 return static function (FrameworkConfig $config, ContainerConfigurator $containerConfigurator): void {
-    $config->messenger()
-        ->failureTransport('failed');
+    $messenger = $config->messenger();
 
-    $config->messenger()
+    $messenger->failureTransport('failed');
+
+    $messenger->transport('sync')->dsn('sync://');
+
+    $messenger
         ->transport('async')
         ->dsn(env('MESSENGER_TRANSPORT_DSN'))
         ->retryStrategy()->maxRetries(3)->multiplier(2);
 
-    $config->messenger()
+    $messenger
         ->transport('failed')
         ->dsn('doctrine://default?queue_name=failed');
 
-    $config->messenger()->routing(SendEmailMessage::class)->senders(['async']);
-    $config->messenger()->routing(ChatMessage::class)->senders(['async']);
-    $config->messenger()->routing(SmsMessage::class)->senders(['async']);
-    $config->messenger()->routing(CreateTweetMessage::class)->senders(['async']);
+    $messenger->routing(SendEmailMessage::class)->senders(['async']);
+    $messenger->routing(ChatMessage::class)->senders(['async']);
+    $messenger->routing(SmsMessage::class)->senders(['async']);
+    $messenger->routing(CreateTweetMessage::class)->senders(['async']);
+    $messenger->routing(CreateDonationPaymentUrlCommand::class)->senders(['sync']);
 
     if ('test' === $containerConfigurator->env()) {
-        $config->messenger()
+        $messenger
             ->transport('async')
             ->dsn('in-memory://');
     }

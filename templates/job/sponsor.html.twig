@@ -1,26 +1,116 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Post a Job | {{ parent() }}{% endblock %}
+{% block title %}Sponsor a Job | {{ parent() }}{% endblock %}
+
+{% block post_job %}{% endblock %}
 
 {% block main %}
-    <div class="row mt-md-4 mt-0">
-        <div class="col-12 col-md-6 offset-md-3">
-            {{ form_start(form) }}
-            <div class="my-4">
-                {{ form_row(form.donationAmount) }}
-                <div class="alert alert-info">
-                    <p class="h5">Support open source ecosystem 💙</p>
-                    <p>
-                        By making a donation you will <b>support open source</b> and add your job offer at the <b>top of the list for 1 month!</b> <br>
-                        Each donation will sponsor Symfony open source ecosystem.<br>
-                    </p>
-                    <small>Any questions? <a href="mailto:hello@jobbsy.dev">Get in touch!</a></small>
+    <div class="my-5">
+        <div class="row mt-md-4 mt-0 align-items-center">
+            <div class="col-12 col-md-5">
+                {{ form_start(form) }}
+                <h1 class="h2">Support open source ecosystem 💙</h1>
+                <p>
+                    By making a donation you will <b>support open source</b> and add your job offer at the <b>top of the list for 1 month!</b> <br>
+                    Each donation will sponsor Symfony open source ecosystem.<br>
+                </p>
+                <small>Any questions? <a href="mailto:hello@jobbsy.dev">Get in touch!</a></small>
+
+                <div class="mt-4">
+                    {{ form_widget(form.donationAmount) }}
+                </div>
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary btn-lg bg-gradient px-3" type="submit">{{ 'action.sponsor'|trans }}</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-12 col-md-6 offset-1 d-none d-md-block">
+                <div class="list-group mt-5">
+                    {{ include('job/_job.html.twig', {'job': job}) }}
+
+                    <li class="list-group-item list-group-item-action py-3 disabled">
+                        <div class="d-flex">
+                            <img src="{{ asset('build/images/hooli.webp') }}" alt="Hooli" class="mt-2 align-self-start rounded" width="65" height="65">
+                            <div class="ms-3 flex-grow-1">
+                                <p class="h5 d-block mb-0 fw-bold lh-base">Lead Symfony developer</p>
+                                <p class="mb-0">Hooli</p>
+                                <div class="mt-2 d-flex flex-wrap text-muted small">
+                                    <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
+                                        <i class="fa fa-building fa-lg"></i>
+                                        {{ 'employment_type.full_time'|trans }}
+                                    </p>
+                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                                        <i class="fa fa-map-marker-alt text-secondary"></i>
+                                        Remote, UK
+                                    </p>
+                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                                        <i class="fa fa-tags text-secondary"></i>
+                                        PHP, Symfony, PostgreSQL
+                                    </p>
+                                    <p class="ms-md-auto mb-0">
+                                        1 day ago
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item list-group-item-action py-3 disabled">
+                        <div class="d-flex">
+                            <img src="{{ asset('build/images/pied_piper_logo.jpg') }}" alt="Pied Piper" class="mt-2 align-self-start rounded" width="65" height="65">
+                            <div class="ms-3 flex-grow-1">
+                                <p class="h5 d-block mb-0 fw-bold lh-base">Full stack Symfony developer</p>
+                                <p class="mb-0">Pied Piper</p>
+                                <div class="mt-2 d-flex flex-wrap text-muted small">
+                                    <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
+                                        <i class="fa fa-building fa-lg"></i>
+                                        {{ 'employment_type.full_time'|trans }}
+                                    </p>
+                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                                        <i class="fa fa-map-marker-alt text-secondary"></i>
+                                        Paris, France
+                                    </p>
+                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                                        <i class="fa fa-tags text-secondary"></i>
+                                        PHP, Symfony, MySQL
+                                    </p>
+                                    <p class="ms-md-auto mb-0">
+                                        2 days ago
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item list-group-item-action py-3 disabled">
+                        <div class="d-flex">
+                            <img src="{{ asset('build/images/acme-corporation-logo.png') }}" alt="Hooli" class="mt-2 align-self-start rounded" width="65" height="65">
+                            <div class="ms-3 flex-grow-1">
+                                <p class="h5 d-block mb-0 fw-bold lh-base">Symfony Software Engineer</p>
+                                <p class="mb-0">Acme Coroporation</p>
+                                <div class="mt-2 d-flex flex-wrap text-muted small">
+                                    <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
+                                        <i class="fa fa-building fa-lg"></i>
+                                        {{ 'employment_type.full_time'|trans }}
+                                    </p>
+                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                                        <i class="fa fa-map-marker-alt text-secondary"></i>
+                                        Lisbon, Portual, Remote
+                                    </p>
+                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
+                                        <i class="fa fa-tags text-secondary"></i>
+                                        PHP, Symfony, React
+                                    </p>
+                                    <p class="ms-md-auto mb-0">
+                                        2 days ago
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
                 </div>
             </div>
-            <div class="d-grid mt-4">
-                <button class="btn btn-primary btn-lg bg-gradient px-3" type="submit">{{ 'action.sponsor'|trans }}</button>
-            </div>
-            {{ form_end(form) }}
         </div>
     </div>
 {% endblock %}
