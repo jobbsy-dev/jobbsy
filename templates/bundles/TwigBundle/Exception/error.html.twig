@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="text-center py-4">
+        <h1>Internal server error</h1>
+
+        <p>
+            There was an internal server error.
+            <a href="{{ path('job_index') }}">Return to the homepage</a>.
+        </p>
+    </div>
+{% endblock %}
