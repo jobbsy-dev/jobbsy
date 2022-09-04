@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="text-center py-4">
+        <h1>Access forbidden</h1>
+
+        <p>
+            You don't have permission to access to this resource.
+            <a href="{{ path('job_index') }}">Return to the homepage</a>.
+        </p>
+    </div>
+{% endblock %}
