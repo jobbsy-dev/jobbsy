@@ -25,7 +25,7 @@ class JobControllerTest extends WebTestCase
             'Pinned job'
         );
         self::assertSame(
-            'Backend Symfony developer',
+            'Lead dev Symfony Paris',
             $crawler->filter('.list-group-item p.h5')->eq(1)->text()
         );
     }

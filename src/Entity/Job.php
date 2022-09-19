@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\EmploymentType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,16 +20,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[ORM\Entity]
-#[Vich\Uploadable]
 #[ApiResource(
-    collectionOperations: ['get'],
-    iri: 'https://schema.org/JobPosting',
-    itemOperations: ['get'],
+    types: ['https://schema.org/JobPosting'],
+    operations: [
+        new Get(),
+        new GetCollection(),
+    ],
     normalizationContext: ['groups' => ['read']],
     order: ['createdAt' => 'DESC']
 )]
-#[ApiFilter(OrderFilter::class, properties: ['createdAt' => 'DESC'])]
+#[ORM\Entity]
+#[Vich\Uploadable]
+#[ApiFilter(filterClass: OrderFilter::class, properties: ['createdAt' => 'DESC'])]
 class Job
 {
     #[ORM\Id]
@@ -38,30 +42,30 @@ class Job
     #[ORM\Column(type: Types::STRING, length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
     private ?string $title;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
     private ?string $location;
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Groups(['read'])]
-    #[ApiFilter(DateFilter::class)]
+    #[ApiFilter(filterClass: DateFilter::class)]
     private ?\DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: 'string', enumType: EmploymentType::class)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
     private ?EmploymentType $employmentType;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
     private ?string $organization;
 
     #[ORM\Column(type: 'json')]
@@ -96,7 +100,7 @@ class Job
 
     #[ORM\Column(type: 'string', nullable: true)]
     #[Groups(['read'])]
-    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
     private ?string $source = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
@@ -104,6 +108,9 @@ class Job
 
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $tweetId = null;
+
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $publishedAt = null;
 
     public function __construct(?UuidInterface $id = null)
     {
@@ -189,7 +196,6 @@ class Job
     public function setOrganizationImageFile(?File $organizationImageFile = null): void
     {
         $this->organizationImageFile = $organizationImageFile;
-
         if (null !== $organizationImageFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
@@ -280,5 +286,24 @@ class Job
     public function setTweetId(string $tweetId): void
     {
         $this->tweetId = $tweetId;
+    }
+
+    public function publish(?\DateTimeImmutable $publishedAt = null): void
+    {
+        if (null === $publishedAt) {
+            $publishedAt = new \DateTimeImmutable();
+        }
+
+        $this->publishedAt = $publishedAt;
+    }
+
+    public function unpublish(): void
+    {
+        $this->publishedAt = null;
+    }
+
+    public function isPublished(): bool
+    {
+        return null !== $this->publishedAt;
     }
 }

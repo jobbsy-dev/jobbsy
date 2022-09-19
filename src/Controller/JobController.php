@@ -62,6 +62,7 @@ class JobController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $job->publish();
             $this->em->persist($job);
             $this->em->flush();
 
