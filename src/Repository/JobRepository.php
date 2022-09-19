@@ -29,8 +29,9 @@ class JobRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('job');
 
         return $qb
+            ->where($qb->expr()->isNotNull('job.publishedAt'))
             ->addOrderBy('job.pinnedUntil', Criteria::DESC)
-            ->addOrderBy('job.createdAt', Criteria::DESC)
+            ->addOrderBy('job.publishedAt', Criteria::DESC)
             ->setMaxResults(30)
             ->getQuery()
             ->getResult();
@@ -56,9 +57,10 @@ class JobRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('job');
 
         return $qb
-            ->where('job.createdAt > :lastWeek')
+            ->where('job.publishedAt > :lastWeek')
+            ->andWhere($qb->expr()->isNotNull('job.publishedAt'))
             ->setParameter('lastWeek', new \DateTimeImmutable('-1 week'))
-            ->orderBy('job.createdAt', Criteria::DESC)
+            ->orderBy('job.publishedAt', Criteria::DESC)
             ->addOrderBy('job.clickCount', Criteria::ASC)
             ->setMaxResults(10)
             ->getQuery()

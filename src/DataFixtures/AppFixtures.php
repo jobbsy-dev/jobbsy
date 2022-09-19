@@ -15,6 +15,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        $publishedAt = new \DateTimeImmutable();
         foreach ($this->getData() as [$title, $employmentType, $organization, $location, $url, $tags, $id, $pinned]) {
             $job = new Job($id ? Uuid::fromString($id) : null);
             $job->setTitle($title);
@@ -23,10 +24,11 @@ class AppFixtures extends Fixture
             $job->setLocation($location);
             $job->setUrl($url);
             $job->setTags($tags);
+            $job->publish($publishedAt);
             if ($pinned) {
                 $job->pinUntil(new \DateTimeImmutable('+1 month'));
             }
-            sleep(1); // just for creation date
+            $publishedAt = $publishedAt->modify('- 1 hour');
 
             $manager->persist($job);
         }
