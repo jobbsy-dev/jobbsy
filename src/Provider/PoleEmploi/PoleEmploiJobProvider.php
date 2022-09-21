@@ -62,6 +62,7 @@ final class PoleEmploiJobProvider implements JobProviderInterface
 
             $job->setTags(['PHP', 'Symfony']);
             $job->setSource('Pole Emploi');
+            $job->publish();
 
             $jobs->addJob($job);
         }

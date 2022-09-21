@@ -39,6 +39,7 @@ final class WelcometotheJungleProvider implements JobProviderInterface
                 case 'CONTRACTOR':
                     $job->setEmploymentType(EmploymentType::INTERNSHIP);
             }
+            $job->publish();
 
             $jobCollection->addJob($job);
         }
