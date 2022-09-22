@@ -58,6 +58,10 @@ final class WelcometotheJungleClient
                 );
             }
 
+            if (null === $location) {
+                continue;
+            }
+
             $data[] = [
                 'company' => html_entity_decode(trim($structuredData['hiringOrganization']['name'])),
                 'companyLogo' => $structuredData['hiringOrganization']['logo'],
