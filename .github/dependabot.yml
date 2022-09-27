@@ -10,6 +10,8 @@ updates:
     labels:
       - actions
       - dependencies
+    assignees:
+      - qdequippe
 
    # Maintain dependencies for Yarn
   - package-ecosystem: npm
@@ -22,6 +24,8 @@ updates:
     labels:
       - javascript
       - dependencies
+    assignees:
+      - qdequippe
 
   # Maintain dependencies for Composer
   - package-ecosystem: composer
@@ -31,7 +35,8 @@ updates:
       time: "07:00"
     open-pull-requests-limit: 10
     versioning-strategy: lockfile-only
-
     labels:
       - php
       - dependencies
+    assignees:
+      - qdequippe
