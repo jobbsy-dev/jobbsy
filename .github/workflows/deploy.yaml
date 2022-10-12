@@ -7,7 +7,7 @@ on:
             - main
 
 concurrency:
-    group: production
+    group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
 
 jobs:
@@ -58,7 +58,6 @@ jobs:
         environment:
             name: production
             url: https://jobbsy.dev
-        concurrency: production
         needs: ['build']
         env:
             ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
