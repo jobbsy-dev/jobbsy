@@ -206,7 +206,6 @@ class JobController extends AbstractController
         return $this->renderForm('job/sponsor.html.twig', [
             'job' => $job,
             'form' => $form,
-            'latestJobs' => $this->jobRepository->findBy([], ['createdAt' => 'DESC'], 3),
         ]);
     }
 }

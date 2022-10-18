@@ -12,28 +12,29 @@
             <p class="h5 d-block mb-0 fw-bold lh-base">{{ job.title }}</p>
             <p class="mb-0">{{ job.organization }}</p>
             <div class="mt-2 d-flex flex-wrap text-muted small">
-                <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
-                    <i class="fa fa-building fa-lg"></i>
-                    {{ ('employment_type.' ~ job.employmentType.value)|trans }}
-                </p>
-                <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                    <i class="fa fa-map-marker-alt text-secondary"></i>
-                    {{ job.location }}
-                </p>
+                <div class="text-break mb-0 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                    <i icon-name="building"></i>
+                    <span class="ms-1">{{ ('employment_type.' ~ job.employmentType.value)|trans }}</span>
+                </div>
+                <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                    <i icon-name="map-pin" class="fs-6"></i>
+                    <span class="ms-1">{{ job.location }}</span>
+                </div>
                 {% if job.tags|length > 0 %}
-                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                        <i class="fa fa-tags text-secondary"></i>
-                        {{ job.tags|join(', ') }}
-                    </p>
+                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                        <i icon-name="tags"></i>
+                        <span class="ms-1">{{ job.tags|join(', ') }}</span>
+                    </div>
                 {% endif %}
                 {% if job.pinned %}
-                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                        <i class="fas fa-thumbtack text-primary"></i>
-                    </p>
+                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                        <i icon-name="pin" class="text-primary"></i>
+                    </div>
                 {% endif %}
-                <p class="ms-md-auto mb-0">
+                <div class="ms-md-auto mb-0">
+                    i
                     {{ job.createdAt|ago }}
-                </p>
+                </div>
             </div>
         </div>
     </div>

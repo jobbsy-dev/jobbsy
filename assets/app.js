@@ -12,3 +12,18 @@ import Alert from 'bootstrap/js/dist/alert';
 
 // start the Stimulus application
 import './bootstrap';
+
+import { createIcons, ArrowDown, Building, MapPin, Tags, Pin } from 'lucide';
+createIcons({
+    icons: {
+        ArrowDown,
+        Building,
+        MapPin,
+        Tags,
+        Pin
+    },
+    attrs: {
+        width: 20,
+        height: 20,
+    }
+});
