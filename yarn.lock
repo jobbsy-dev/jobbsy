@@ -1556,7 +1556,7 @@ boolbase@^1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
 
-bootstrap@^5.1.3:
+bootstrap@^5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.2.tgz#834e053eed584a65e244d8aa112a6959f56e27a0"
   integrity sha512-dEtzMTV71n6Fhmbg4fYJzQsw1N29hJKO1js5ackCgIpDcGid2ETMGC6zwSYw09v05Y+oRdQ9loC54zB1La3hHQ==
@@ -2802,6 +2802,11 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+lucide@^0.91.0:
+  version "0.91.0"
+  resolved "https://registry.yarnpkg.com/lucide/-/lucide-0.91.0.tgz#5308d9dbd71a2b7f6873cd4c85d4139a10e3ca79"
+  integrity sha512-Ynd2KJjNIP/H/YJnKusvLazgR5RYpCqBJ3Fe0E1D7Ml+MudIxCfPG2l2Bm/HCxPxnXarWypdowbuy6dkeH8d/w==
 
 make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"

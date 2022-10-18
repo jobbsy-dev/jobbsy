@@ -7,7 +7,7 @@
 {% block main %}
     <div class="my-5">
         <div class="row mt-md-4 mt-0 align-items-center">
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-4">
                 {{ form_start(form) }}
                 <h1 class="h2">Support open source ecosystem 💙</h1>
                 <p>
@@ -24,7 +24,7 @@
                 </div>
                 {{ form_end(form) }}
             </div>
-            <div class="col-12 col-md-6 offset-1 d-none d-md-block">
+            <div class="col-12 col-md-7 offset-1 d-none d-md-block">
                 <div class="list-group mt-5">
                     {{ include('job/_job.html.twig', {'job': job}) }}
 
@@ -35,21 +35,21 @@
                                 <p class="h5 d-block mb-0 fw-bold lh-base">Lead Symfony developer</p>
                                 <p class="mb-0">Hooli</p>
                                 <div class="mt-2 d-flex flex-wrap text-muted small">
-                                    <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-building fa-lg"></i>
-                                        {{ 'employment_type.full_time'|trans }}
-                                    </p>
-                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-map-marker-alt text-secondary"></i>
-                                        Remote, UK
-                                    </p>
-                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-tags text-secondary"></i>
-                                        PHP, Symfony, PostgreSQL
-                                    </p>
-                                    <p class="ms-md-auto mb-0">
+                                    <div class="text-break mb-0 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                                        <i icon-name="building"></i>
+                                        <span class="ms-1">{{ 'employment_type.full_time'|trans }}</span>
+                                    </div>
+                                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                                        <i icon-name="map-pin"></i>
+                                        <span class="ms-1">Remote, UK</span>
+                                    </div>
+                                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                                        <i icon-name="tags"></i>
+                                        <span class="ms-1">PHP, Symfony, PostgreSQL</span>
+                                    </div>
+                                    <div class="ms-md-auto mb-0">
                                         1 day ago
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -62,21 +62,21 @@
                                 <p class="h5 d-block mb-0 fw-bold lh-base">Full stack Symfony developer</p>
                                 <p class="mb-0">Pied Piper</p>
                                 <div class="mt-2 d-flex flex-wrap text-muted small">
-                                    <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-building fa-lg"></i>
-                                        {{ 'employment_type.full_time'|trans }}
-                                    </p>
-                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-map-marker-alt text-secondary"></i>
-                                        Paris, France
-                                    </p>
-                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-tags text-secondary"></i>
-                                        PHP, Symfony, MySQL
-                                    </p>
-                                    <p class="ms-md-auto mb-0">
+                                    <div class="text-break mb-0 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                                        <i icon-name="building"></i>
+                                        <span class="ms-1">{{ 'employment_type.full_time'|trans }}</span>
+                                    </div>
+                                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                                        <i icon-name="map-pin"></i>
+                                        <span class="ms-1">Paris, France</span>
+                                    </div>
+                                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                                        <i icon-name="tags"></i>
+                                        <span class="ms-1">PHP, Symfony, MySQL</span>
+                                    </div>
+                                    <div class="ms-md-auto mb-0">
                                         2 days ago
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -89,21 +89,21 @@
                                 <p class="h5 d-block mb-0 fw-bold lh-base">Symfony Software Engineer</p>
                                 <p class="mb-0">Acme Coroporation</p>
                                 <div class="mt-2 d-flex flex-wrap text-muted small">
-                                    <p class="text-break mb-0 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-building fa-lg"></i>
-                                        {{ 'employment_type.full_time'|trans }}
-                                    </p>
-                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-map-marker-alt text-secondary"></i>
-                                        Lisbon, Portual, Remote
-                                    </p>
-                                    <p class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0">
-                                        <i class="fa fa-tags text-secondary"></i>
-                                        PHP, Symfony, React
-                                    </p>
-                                    <p class="ms-md-auto mb-0">
+                                    <div class="text-break mb-0 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                                        <i icon-name="building"></i>
+                                        <span class="ms-1">{{ 'employment_type.full_time'|trans }}</span>
+                                    </div>
+                                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                                        <i icon-name="map-pin"></i>
+                                        <span class="ms-1">Lisbon, Portual, Remote</span>
+                                    </div>
+                                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                                        <i icon-name="tags"></i>
+                                        <span class="ms-1">PHP, Symfony, React</span>
+                                    </div>
+                                    <div class="ms-md-auto mb-0">
                                         2 days ago
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
