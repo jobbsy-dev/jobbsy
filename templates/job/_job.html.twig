@@ -9,14 +9,13 @@
             <img src="https://eu.ui-avatars.com/api/?name={{ job.organization }}&size=65&background=fff" alt="{{ job.organization }}" class="mt-2 align-self-start rounded" width="65" height="65">
         {% endif %}
         <div class="ms-3 flex-grow-1">
+            <div class="d-flex align-items-center justify-content-between">
+                <span class="mb-0">{{ job.organization }}</span>
+                <span class="badge rounded-pill text-bg-light ">{{ ('employment_type.' ~ job.employmentType.value)|trans }}</span>
+            </div>
             <p class="h5 d-block mb-0 fw-bold lh-base">{{ job.title }}</p>
-            <p class="mb-0">{{ job.organization }}</p>
             <div class="mt-2 d-flex flex-wrap text-muted small">
                 <div class="text-break mb-0 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
-                    <i icon-name="building"></i>
-                    <span class="ms-1">{{ ('employment_type.' ~ job.employmentType.value)|trans }}</span>
-                </div>
-                <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
                     <i icon-name="map-pin" class="fs-6"></i>
                     <span class="ms-1">{{ job.location }}</span>
                 </div>

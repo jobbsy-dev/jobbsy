@@ -63,6 +63,8 @@ class JobController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $job->publish();
+            // Allow 1 month of boost on manual creation
+            $job->pinUntil(new \DateTimeImmutable('+1 month'));
             $this->em->persist($job);
             $this->em->flush();
 
@@ -118,7 +120,7 @@ class JobController extends AbstractController
         }
 
         if (Session::PAYMENT_STATUS_PAID === $session->payment_status) {
-            $job->pinUntil($job->getCreatedAt()->modify('+1 month'));
+            $job->pinUntil(new \DateTimeImmutable('+6 months'));
             $this->em->flush();
         }
 

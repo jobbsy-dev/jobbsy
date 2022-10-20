@@ -50,7 +50,7 @@ class JobControllerTest extends WebTestCase
 
         self::assertSame(
             'Symfony freelance developer',
-            $crawler->filter('.list-group-item p.h5')->eq(1)->text()
+            $crawler->filter('.list-group-item p.h5')->eq(0)->text()
         );
     }
 

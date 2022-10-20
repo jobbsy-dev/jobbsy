@@ -38,8 +38,35 @@ class AppFixtures extends Fixture
 
     private function getData(): \Generator
     {
-        yield ['Symfony developer Remote', EmploymentType::FULL_TIME, 'Acme', 'Remote', 'https://example.com', ['symfony6', 'php8'], self::JOB_1_ID, true];
-        yield ['Lead dev Symfony Paris', EmploymentType::FULL_TIME, 'Acme', 'Paris', 'https://example.com', ['symfony', 'twig'], self::JOB_2_ID, null];
-        yield ['Backend Symfony developer', EmploymentType::FULL_TIME, 'SensioLabs', 'Paris', 'https://example.com', ['symfony', 'twig'], null, null];
+        yield [
+            'Symfony developer Remote',
+            EmploymentType::FULL_TIME,
+            'Acme',
+            'Remote',
+            'https://example.com',
+            ['symfony6', 'php8'],
+            self::JOB_1_ID,
+            true
+        ];
+        yield [
+            'Lead dev Symfony Paris',
+            EmploymentType::FULL_TIME,
+            'Acme',
+            'Paris',
+            'https://example.com',
+            ['symfony', 'twig'],
+            self::JOB_2_ID,
+            false
+        ];
+        yield [
+            'Backend Symfony developer',
+            EmploymentType::FULL_TIME,
+            'SensioLabs',
+            'Paris',
+            'https://example.com',
+            ['symfony', 'twig'],
+            null,
+            false
+        ];
     }
 }
