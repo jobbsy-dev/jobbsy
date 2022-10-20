@@ -46,7 +46,7 @@ class AppFixtures extends Fixture
             'https://example.com',
             ['symfony6', 'php8'],
             self::JOB_1_ID,
-            true
+            true,
         ];
         yield [
             'Lead dev Symfony Paris',
@@ -56,7 +56,7 @@ class AppFixtures extends Fixture
             'https://example.com',
             ['symfony', 'twig'],
             self::JOB_2_ID,
-            false
+            false,
         ];
         yield [
             'Backend Symfony developer',
@@ -66,7 +66,7 @@ class AppFixtures extends Fixture
             'https://example.com',
             ['symfony', 'twig'],
             null,
-            false
+            false,
         ];
     }
 }

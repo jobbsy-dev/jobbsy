@@ -25,6 +25,12 @@
                         <span class="ms-1">{{ job.tags|join(', ') }}</span>
                     </div>
                 {% endif %}
+                {% if job.salary %}
+                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
+                        <i icon-name="coins"></i>
+                        <span class="ms-1">{{ job.salary }}</span>
+                    </div>
+                {% endif %}
                 {% if job.pinned %}
                     <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-center d-flex">
                         <i icon-name="pin" class="text-primary"></i>

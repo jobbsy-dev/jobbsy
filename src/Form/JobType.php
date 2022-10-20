@@ -68,6 +68,11 @@ class JobType extends AbstractType
                     'min' => 0,
                 ],
             ])
+            ->add('salary', TextType::class, [
+                'label' => 'form.label.salary',
+                'help' => 'form.help.salary',
+                'required' => false,
+            ])
         ;
 
         $builder->get('tags')

@@ -60,7 +60,7 @@
             </trans-unit>
             <trans-unit id="form.help.job_location">
                 <source>form.help.job_location</source>
-                <target>Example: Remote, "Paris, remote ok"</target>
+                <target>Examples: Remote, "Paris, remote ok"</target>
             </trans-unit>
             <trans-unit id="form.help.job_url">
                 <source>form.help.job_url</source>
@@ -85,6 +85,14 @@
             <trans-unit id="action.sponsor">
                 <source>action.sponsor</source>
                 <target>Sponsor</target>
+            </trans-unit>
+            <trans-unit id="form.label.salary">
+                <source>form.label.salary</source>
+                <target>Salary</target>
+            </trans-unit>
+            <trans-unit id="form.help.salary">
+                <source>form.help.salary</source>
+                <target>Examples: "45 000€ – 55 000€", "$80,000 — $102,000"</target>
             </trans-unit>
         </body>
     </file>
