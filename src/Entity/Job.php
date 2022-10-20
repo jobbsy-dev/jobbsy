@@ -283,7 +283,7 @@ class Job
         return $this->tweetId;
     }
 
-    public function setTweetId(string $tweetId): void
+    public function setTweetId(?string $tweetId): void
     {
         $this->tweetId = $tweetId;
     }
