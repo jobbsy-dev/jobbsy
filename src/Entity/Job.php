@@ -112,6 +112,9 @@ class Job
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $publishedAt = null;
 
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $salary = null;
+
     public function __construct(?UuidInterface $id = null)
     {
         if (null === $id) {
@@ -305,5 +308,15 @@ class Job
     public function isPublished(): bool
     {
         return null !== $this->publishedAt;
+    }
+
+    public function getSalary(): ?string
+    {
+        return $this->salary;
+    }
+
+    public function setSalary(?string $salary): void
+    {
+        $this->salary = $salary;
     }
 }

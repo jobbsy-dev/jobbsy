@@ -14,11 +14,13 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
 
     $emDefault = $config->orm()->entityManager('default');
 
-    $emDefault->connection('default')
+    $emDefault
+        ->connection('default')
         ->namingStrategy('doctrine.orm.naming_strategy.underscore_number_aware')
         ->autoMapping(true);
 
-    $emDefault->mapping('App')
+    $emDefault
+        ->mapping('App')
         ->isBundle(false)
         ->type('attribute')
         ->dir('%kernel.project_dir%/src/Entity')
@@ -45,7 +47,9 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
     }
 
     if ('test' === $containerConfigurator->env()) {
-        $config->dbal()->connection('default')
+        $config
+            ->dbal()
+            ->connection('default')
             ->dbnameSuffix('_test'. env('TEST_TOKEN')->default(''));
     }
 };
