@@ -60,6 +60,10 @@ final class PoleEmploiJobProvider implements JobProviderInterface
                 $job->setEmploymentType(EmploymentType::INTERNSHIP);
             }
 
+            if (isset($result['salaire']['libelle'])) {
+                $job->setSalary($result['salaire']['libelle']);
+            }
+
             $job->setTags(['PHP', 'Symfony']);
             $job->setSource('Pole Emploi');
             $job->publish();
