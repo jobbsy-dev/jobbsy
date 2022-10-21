@@ -14,7 +14,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
@@ -39,25 +38,10 @@ class JobCrudController extends AbstractCrudController
         return [
             IdField::new('id')
                 ->onlyOnDetail(),
-            ImageField::new('organizationImageName')
-                ->setLabel('Org logo')
-                ->setBasePath('images/organizations')
-                ->hideOnForm(),
-            TextField::new('title'),
+            TextField::new('title')
+                ->setMaxLength(35),
             TextField::new('organization'),
             TextField::new('location'),
-            ChoiceField::new('employmentType')
-                ->hideWhenUpdating()
-                ->setChoices(function () {
-                    $choices = array_map(static fn (?EmploymentType $unit) => [$unit->value => $unit->name], EmploymentType::cases());
-
-                    return array_merge(...$choices);
-                })
-                ->setFormType(EnumType::class)
-                ->setFormTypeOption('class', EmploymentType::class)
-                ->setFormTypeOption('choice_label', function (EmploymentType $enum) {
-                    return $enum->value;
-                }),
             ChoiceField::new('employmentType')
                 ->onlyOnForms()
                 ->setChoices(function () {
@@ -78,7 +62,10 @@ class JobCrudController extends AbstractCrudController
             Field::new('organizationImageFile')
                 ->onlyOnForms()
                 ->setFormType(VichImageType::class),
-            DateTimeField::new('pinnedUntil'),
+            TextField::new('source')
+                ->onlyOnIndex(),
+            DateTimeField::new('pinnedUntil')
+                ->setFormat('d/M/Y', 'none'),
             TextField::new('tweetId')
                 ->onlyOnForms(),
         ];
