@@ -115,6 +115,11 @@ class Job
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $salary = null;
 
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Assert\Email]
+    #[Assert\NotBlank]
+    private ?string $email = null;
+
     public function __construct(?UuidInterface $id = null)
     {
         if (null === $id) {
@@ -318,5 +323,15 @@ class Job
     public function setSalary(?string $salary): void
     {
         $this->salary = $salary;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): void
+    {
+        $this->email = $email;
     }
 }

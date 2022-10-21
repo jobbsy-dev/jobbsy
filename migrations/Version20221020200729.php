@@ -9,11 +9,6 @@ use Doctrine\Migrations\AbstractMigration;
 
 final class Version20221020200729 extends AbstractMigration
 {
-    public function getDescription(): string
-    {
-        return '';
-    }
-
     public function up(Schema $schema): void
     {
         $this->addSql('ALTER TABLE job ADD COLUMN salary VARCHAR(255) DEFAULT NULL');

@@ -48,6 +48,7 @@ final class CreateStripePaymentUrl implements CreatePaymentUrlInterface
             'tax_id_collection' => [
                 'enabled' => true,
             ],
+            'customer_email' => $job->getEmail(),
         ]);
 
         return $session->url;

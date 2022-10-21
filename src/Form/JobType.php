@@ -6,6 +6,7 @@ use App\EmploymentType;
 use App\Entity\Job;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -72,6 +73,10 @@ class JobType extends AbstractType
                 'label' => 'form.label.salary',
                 'help' => 'form.help.salary',
                 'required' => false,
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'form.label.email_address',
+                'help' => 'form.help.email_address',
             ])
         ;
 

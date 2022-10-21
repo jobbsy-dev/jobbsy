@@ -65,8 +65,7 @@ class JobController extends AbstractController
             $job->publish();
             // Allow 1 month of boost on manual creation
             $job->pinUntil(new \DateTimeImmutable('+1 month'));
-            $this->em->persist($job);
-            $this->em->flush();
+            $this->jobRepository->save($job, true);
 
             $this->addFlash('success', 'Job posted successfully!');
 

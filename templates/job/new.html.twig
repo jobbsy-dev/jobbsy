@@ -27,6 +27,7 @@
                     <small>Any questions? <a href="mailto:hello@jobbsy.dev">Get in touch!</a></small>
                 </div>
             </div>
+            {{ form_row(form.email, {'row_attr': {'class': 'my-4'}}) }}
             <div class="d-grid mt-4">
                 <button class="btn btn-primary btn-lg bg-gradient px-3" type="submit">{{ button_label|default('Post') }}</button>
             </div>
