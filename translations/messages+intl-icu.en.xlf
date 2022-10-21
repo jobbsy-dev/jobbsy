@@ -94,6 +94,14 @@
                 <source>form.help.salary</source>
                 <target>Examples: "45 000€ – 55 000€", "$80,000 — $102,000"</target>
             </trans-unit>
+            <trans-unit id="form.label.email_address">
+                <source>form.label.email_address</source>
+                <target>Email address</target>
+            </trans-unit>
+            <trans-unit id="form.help.email_address">
+                <source>form.help.email_address</source>
+                <target>Your email address to send you invoice</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

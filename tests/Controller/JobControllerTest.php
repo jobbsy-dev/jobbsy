@@ -44,6 +44,7 @@ class JobControllerTest extends WebTestCase
             'job[url]' => 'https://symfony.com',
             'job[tags]' => 'symfony,freelance,sql',
             'job[donationAmount]' => 0,
+            'job[email]' => 'test@example.com',
         ]);
         self::assertResponseRedirects('/');
         $crawler = $client->followRedirect();
@@ -73,6 +74,7 @@ class JobControllerTest extends WebTestCase
             'job[url]' => 'https://symfony.com',
             'job[tags]' => 'symfony,freelance,sql',
             'job[donationAmount]' => 5000,
+            'job[email]' => 'test@example.com',
         ]);
         self::assertResponseRedirects('https://checkout.stripe.com/pay/xxx');
     }
