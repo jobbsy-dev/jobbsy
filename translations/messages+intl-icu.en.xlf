@@ -40,7 +40,7 @@
             </trans-unit>
             <trans-unit id="form.label.employment_type">
                 <source>form.label.employment_type</source>
-                <target>Job type</target>
+                <target>Employment type</target>
             </trans-unit>
             <trans-unit id="form.label.organization">
                 <source>form.label.organization</source>
@@ -60,7 +60,7 @@
             </trans-unit>
             <trans-unit id="form.help.job_location">
                 <source>form.help.job_location</source>
-                <target>Examples: Remote, "Paris, remote ok"</target>
+                <target>Examples: Paris, Berlin or London</target>
             </trans-unit>
             <trans-unit id="form.help.job_url">
                 <source>form.help.job_url</source>
@@ -68,7 +68,7 @@
             </trans-unit>
             <trans-unit id="form.help.tags">
                 <source>form.help.tags</source>
-                <target>List of tags separated by "," (max 5). Example: "PHP, Symfony, Redis, MySQL, API"</target>
+                <target>List of tags separated by a comma (max 5). Example: PHP, Symfony, Redis, MySQL, API</target>
             </trans-unit>
             <trans-unit id="form.help.organization_logo">
                 <source>form.help.organization_logo</source>
@@ -92,7 +92,7 @@
             </trans-unit>
             <trans-unit id="form.help.salary">
                 <source>form.help.salary</source>
-                <target>Examples: "45 000€ – 55 000€", "$80,000 — $102,000"</target>
+                <target>Examples: 45 000€ – 55 000€ or $80,000 — $102,000</target>
             </trans-unit>
             <trans-unit id="form.label.email_address">
                 <source>form.label.email_address</source>
@@ -100,7 +100,23 @@
             </trans-unit>
             <trans-unit id="form.help.email_address">
                 <source>form.help.email_address</source>
-                <target>Your email address to send you invoice</target>
+                <target>Contact email address for invoice</target>
+            </trans-unit>
+            <trans-unit id="location_type.remote">
+                <source>location_type.remote</source>
+                <target>Remote</target>
+            </trans-unit>
+            <trans-unit id="location_type.on_site">
+                <source>location_type.on_site</source>
+                <target>On site</target>
+            </trans-unit>
+            <trans-unit id="location_type.hybrid">
+                <source>location_type.hybrid</source>
+                <target>Hybrid</target>
+            </trans-unit>
+            <trans-unit id="form.label.location_type">
+                <source>form.label.location_type</source>
+                <target>Type</target>
             </trans-unit>
         </body>
     </file>

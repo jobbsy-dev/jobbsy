@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Job;
 
 enum EmploymentType: string
 {

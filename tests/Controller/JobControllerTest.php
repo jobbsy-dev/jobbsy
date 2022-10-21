@@ -3,7 +3,7 @@
 namespace App\Tests\Controller;
 
 use App\DataFixtures\AppFixtures;
-use App\EmploymentType;
+use App\Job\EmploymentType;
 use App\Repository\JobRepository;
 use App\Tests\Mock\MockStripeClient;
 use Stripe\ApiRequestor;
@@ -44,7 +44,7 @@ class JobControllerTest extends WebTestCase
             'job[url]' => 'https://symfony.com',
             'job[tags]' => 'symfony,freelance,sql',
             'job[donationAmount]' => 0,
-            'job[email]' => 'test@example.com',
+            'job[contactEmail]' => 'test@example.com',
         ]);
         self::assertResponseRedirects('/');
         $crawler = $client->followRedirect();
@@ -74,7 +74,7 @@ class JobControllerTest extends WebTestCase
             'job[url]' => 'https://symfony.com',
             'job[tags]' => 'symfony,freelance,sql',
             'job[donationAmount]' => 5000,
-            'job[email]' => 'test@example.com',
+            'job[contactEmail]' => 'test@example.com',
         ]);
         self::assertResponseRedirects('https://checkout.stripe.com/pay/xxx');
     }

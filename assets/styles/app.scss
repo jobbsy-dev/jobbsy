@@ -10,3 +10,15 @@ $min-contrast-ratio: 2;
         border-top-width: 0;
     }
 }
+
+.job-organization-logo {
+    width: 75px;
+    height: 75px;
+}
+
+@media screen and (max-width: 768px) {
+    .job-organization-logo {
+        width: 60px;
+        height: 60px;
+    }
+}

@@ -2,8 +2,8 @@
 
 namespace App\Provider\PoleEmploi;
 
-use App\EmploymentType;
 use App\Entity\Job;
+use App\Job\EmploymentType;
 use App\Provider\JobCollection;
 use App\Provider\JobProviderInterface;
 use App\Provider\SearchParameters;

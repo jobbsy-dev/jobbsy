@@ -2,8 +2,9 @@
 
 namespace App\Form;
 
-use App\EmploymentType;
 use App\Entity\Job;
+use App\Job\EmploymentType;
+use App\Job\LocationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -27,7 +28,7 @@ class JobType extends AbstractType
                 'help' => 'form.help.job_title',
             ])
             ->add('location', TextType::class, [
-                'label' => 'form.label.job_location',
+                'label' => false,
                 'help' => 'form.help.job_location',
             ])
             ->add('employmentType', EnumType::class, [
@@ -74,9 +75,15 @@ class JobType extends AbstractType
                 'help' => 'form.help.salary',
                 'required' => false,
             ])
-            ->add('email', EmailType::class, [
+            ->add('contactEmail', EmailType::class, [
                 'label' => 'form.label.email_address',
-                'help' => 'form.help.email_address',
+            ])
+            ->add('locationType', EnumType::class, [
+                'label' => false,
+                'class' => LocationType::class,
+                'choice_label' => function (LocationType $locationType) {
+                    return sprintf('location_type.%s', $locationType->value);
+                },
             ])
         ;
 
