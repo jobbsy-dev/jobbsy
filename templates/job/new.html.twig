@@ -6,28 +6,44 @@
 
 {% block main %}
     <div class="row mt-md-4 mt-0">
+        <div class="text-center py-5">
+            <h1 class="text-center display-5 fw-bold">
+                Reach amazing Symfony developers
+            </h1>
+            <p class="lead">Jobbsy is the best place to reach amazing Symfony developers <br> while contributing to open source</p>
+
+        </div>
         <div class="col-12 col-md-6 offset-md-3">
             {{ form_start(form) }}
-            {{ form_row(form.title, {'row_attr': {'class': 'my-4'}}) }}
-            {{ form_row(form.location, {'row_attr': {'class': 'my-4'}}) }}
-            {{ form_row(form.employmentType, {'row_attr': {'class': 'my-4'}}) }}
-            {{ form_row(form.salary, {'row_attr': {'class': 'my-4'}}) }}
+
+            <h4 class="mb-3">🏢 Company details</h4>
             {{ form_row(form.organization, {'row_attr': {'class': 'my-4'}}) }}
             {{ form_row(form.organizationImageFile, {'row_attr': {'class': 'my-4'}}) }}
-            {{ form_row(form.url, {'row_attr': {'class': 'my-4'}}) }}
-            {{ form_row(form.tags, {'row_attr': {'class': 'my-4'}}) }}
-            <div class="my-4">
-                {{ form_row(form.donationAmount) }}
-                <div class="alert alert-info">
-                    <p class="h5">Support open source ecosystem 💙</p>
-                    <p>
-                        By making a donation you will <b>support open source</b> and add your job offer at the <b>top of the list for 6 months!</b> <br>
-                        Each donation will sponsor Symfony open source ecosystem.<br>
-                    </p>
-                    <small>Any questions? <a href="mailto:hello@jobbsy.dev">Get in touch!</a></small>
+
+            <h4 class="mb-3 mt-5">💻 Job details</h4>
+            {{ form_row(form.title, {'row_attr': {'class': 'my-4'}}) }}
+            <div class="row my-4">
+                <span class="form-label">{{ 'form.label.job_location'|trans }}</span>
+                <div class="col">
+                    {{ form_row(form.location, {'row_attr': {'class': 'mb-0'}}) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.locationType, {'row_attr': {'class': 'mb-0'}}) }}
                 </div>
             </div>
-            {{ form_row(form.email, {'row_attr': {'class': 'my-4'}}) }}
+            {{ form_row(form.employmentType, {'row_attr': {'class': 'my-4'}}) }}
+            {{ form_row(form.url, {'row_attr': {'class': 'my-4'}}) }}
+            {{ form_row(form.salary, {'row_attr': {'class': 'my-4'}}) }}
+            {{ form_row(form.tags, {'row_attr': {'class': 'my-4'}}) }}
+
+            <h4 class="mb-3 mt-5">💖 Donation</h4>
+            <div class="my-4">
+                {{ form_row(form.donationAmount) }}
+                <div class="p-4 bg-light border rounded">
+                    {{ include('job/_donation_description.html.twig') }}
+                </div>
+            </div>
+            {{ form_row(form.contactEmail, {'row_attr': {'class': 'my-4'}}) }}
             <div class="d-grid mt-4">
                 <button class="btn btn-primary btn-lg bg-gradient px-3" type="submit">{{ button_label|default('Post') }}</button>
             </div>

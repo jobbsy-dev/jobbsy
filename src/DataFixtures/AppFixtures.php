@@ -2,8 +2,8 @@
 
 namespace App\DataFixtures;
 
-use App\EmploymentType;
 use App\Entity\Job;
+use App\Job\EmploymentType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;

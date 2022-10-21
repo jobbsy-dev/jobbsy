@@ -9,7 +9,8 @@ use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
-use App\EmploymentType;
+use App\Job\EmploymentType;
+use App\Job\LocationType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidType;
@@ -117,8 +118,11 @@ class Job
 
     #[ORM\Column(type: 'string', nullable: true)]
     #[Assert\Email]
+    private ?string $contactEmail = null;
+
+    #[ORM\Column(type: 'string', nullable: true, enumType: LocationType::class)]
     #[Assert\NotBlank]
-    private ?string $email = null;
+    private ?LocationType $locationType = null;
 
     public function __construct(?UuidInterface $id = null)
     {
@@ -325,13 +329,23 @@ class Job
         $this->salary = $salary;
     }
 
-    public function getEmail(): ?string
+    public function getContactEmail(): ?string
     {
-        return $this->email;
+        return $this->contactEmail;
     }
 
-    public function setEmail(?string $email): void
+    public function setContactEmail(?string $contactEmail): void
     {
-        $this->email = $email;
+        $this->contactEmail = $contactEmail;
+    }
+
+    public function getLocationType(): ?LocationType
+    {
+        return $this->locationType;
+    }
+
+    public function setLocationType(?LocationType $locationType): void
+    {
+        $this->locationType = $locationType;
     }
 }

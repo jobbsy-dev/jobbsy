@@ -2,8 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use App\EmploymentType;
 use App\Entity\Job;
+use App\Job\EmploymentType;
+use App\Job\LocationType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -42,6 +43,8 @@ class JobCrudController extends AbstractCrudController
                 ->setMaxLength(35),
             TextField::new('organization'),
             TextField::new('location'),
+            TextField::new('salary')
+                ->onlyOnForms(),
             ChoiceField::new('employmentType')
                 ->onlyOnForms()
                 ->setChoices(function () {
@@ -52,6 +55,18 @@ class JobCrudController extends AbstractCrudController
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', EmploymentType::class)
                 ->setFormTypeOption('choice_label', function (EmploymentType $enum) {
+                    return $enum->value;
+                }),
+            ChoiceField::new('locationType')
+                ->onlyOnForms()
+                ->setChoices(function () {
+                    $choices = array_map(static fn (?LocationType $unit) => [$unit->value => $unit], LocationType::cases());
+
+                    return array_merge(...$choices);
+                })
+                ->setFormType(EnumType::class)
+                ->setFormTypeOption('class', LocationType::class)
+                ->setFormTypeOption('choice_label', function (LocationType $enum) {
                     return $enum->value;
                 }),
             ArrayField::new('tags'),
@@ -67,6 +82,8 @@ class JobCrudController extends AbstractCrudController
             DateTimeField::new('pinnedUntil')
                 ->setFormat('d/M/Y', 'none'),
             TextField::new('tweetId')
+                ->onlyOnForms(),
+            TextField::new('contactEmail')
                 ->onlyOnForms(),
         ];
     }

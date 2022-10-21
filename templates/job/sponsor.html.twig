@@ -9,12 +9,9 @@
         <div class="row mt-md-4 mt-0 align-items-center">
             <div class="col-12 col-md-4">
                 {{ form_start(form) }}
-                <h1 class="h2">Support open source ecosystem 💙</h1>
-                <p>
-                    By making a donation you will <b>support open source</b> and add your job offer at the <b>top of the list for 6 months!</b> <br>
-                    Each donation will sponsor Symfony open source ecosystem.<br>
-                </p>
-                <small>Any questions? <a href="mailto:hello@jobbsy.dev">Get in touch!</a></small>
+                <h1 class="h2 mb-4">Support open source 💖</h1>
+
+                {{ include('job/_donation_description.html.twig') }}
 
                 <div class="mt-4">
                     {{ form_widget(form.donationAmount) }}
