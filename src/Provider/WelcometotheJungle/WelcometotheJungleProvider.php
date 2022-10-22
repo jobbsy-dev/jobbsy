@@ -32,7 +32,7 @@ final class WelcometotheJungleProvider implements JobProviderInterface
             $job->setTags(['PHP', 'Symfony']);
             $job->setUrl($datum['url']);
 
-            switch ($datum['contractType']) {
+            switch ($datum['employmentType']) {
                 case 'FULL_TIME':
                     $job->setEmploymentType(EmploymentType::FULL_TIME);
                     break;

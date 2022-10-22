@@ -50,12 +50,34 @@ final class WelcometotheJungleClient
             }
 
             $location = null;
-            if (isset($structuredData['jobLocation']['@type']) && 'Place' === $structuredData['jobLocation']['@type']) {
-                $location = sprintf(
-                    '%s, %s',
-                    html_entity_decode($structuredData['jobLocation']['address']['addressLocality']),
-                    ucfirst(Countries::getName($structuredData['jobLocation']['address']['addressCountry'])),
-                );
+            if (isset($structuredData['jobLocation'])) {
+                // Check is multidimensional array (e.g. array of jobLocation)
+                if (false === isset($structuredData['jobLocation']['@type'])) {
+                    $locations = [];
+                    foreach ($structuredData['jobLocation'] as $jobLocation) {
+                        if (false === isset($jobLocation['@type'])) {
+                            continue;
+                        }
+
+                        if ('Place' !== $jobLocation['@type']) {
+                            continue;
+                        }
+
+                        $locations[] = sprintf(
+                            '%s, %s',
+                            html_entity_decode($jobLocation['address']['addressLocality']),
+                            ucfirst(Countries::getName($jobLocation['address']['addressCountry'])),
+                        );
+                    }
+
+                    $location = implode(', ', $locations);
+                } elseif ('Place' === $structuredData['jobLocation']['@type']) {
+                    $location = sprintf(
+                        '%s, %s',
+                        html_entity_decode($structuredData['jobLocation']['address']['addressLocality']),
+                        ucfirst(Countries::getName($structuredData['jobLocation']['address']['addressCountry'])),
+                    );
+                }
             }
 
             if (null === $location) {
@@ -67,7 +89,7 @@ final class WelcometotheJungleClient
                 'companyLogo' => $structuredData['hiringOrganization']['logo'],
                 'url' => $url,
                 'title' => html_entity_decode($structuredData['title']),
-                'contractType' => $structuredData['employmentType'],
+                'employmentType' => $structuredData['employmentType'],
                 'location' => $location,
             ];
         }
