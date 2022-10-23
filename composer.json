@@ -74,7 +74,6 @@
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^7.1",
-        "friendsofphp/php-cs-fixer": "^3.5",
         "league/flysystem-memory": "^3.0",
         "phpstan/phpstan": "^1.4",
         "phpunit/phpunit": "^9.5",
