@@ -1,5 +1,5 @@
 SYMFONY_CLI=symfony
-PHP_CS_FIXER=php ./vendor/bin/php-cs-fixer
+PHP_CS_FIXER=php ./tools/php-cs-fixer/vendor/bin/php-cs-fixer
 PHP_STAN=php ./vendor/bin/phpstan
 CONSOLE=bin/console
 COMPOSER=composer
