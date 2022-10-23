@@ -19,6 +19,7 @@ jobs:
                   github-token: ${{ secrets.github_token }}
                   output-file: "false"
                   skip-version-file: "true"
+                  skip-git-pull: "true"
 
             - name: Create Release
               uses: softprops/action-gh-release@v1
