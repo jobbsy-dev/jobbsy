@@ -2,8 +2,8 @@ name: "Release 🏷"
 
 on:
     push:
-        tags:
-            - "v*.*.*"
+        branches:
+            - main
 
 jobs:
     release:
@@ -11,5 +11,19 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v3
-            - name: Release
+
+            - name: Conventional Changelog Action
+              id: changelog
+              uses: TriPSs/conventional-changelog-action@v3
+              with:
+                  github-token: ${{ secrets.github_token }}
+                  output-file: "false"
+                  skip-version-file: "true"
+
+            - name: Create Release
               uses: softprops/action-gh-release@v1
+              if: ${{ steps.changelog.outputs.skipped == 'false' }}
+              with:
+                  tag_name: ${{ steps.changelog.outputs.tag }}
+                  name: ${{ steps.changelog.outputs.tag }}
+                  body: ${{ steps.changelog.outputs.clean_changelog }}
