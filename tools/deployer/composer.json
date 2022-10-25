@@ -1,0 +1,5 @@
+{
+    "require": {
+        "deployer/deployer": "^7.0"
+    }
+}
