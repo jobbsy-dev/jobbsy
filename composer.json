@@ -35,6 +35,7 @@
         "ramsey/uuid-doctrine": "^1.8",
         "sensio/framework-extra-bundle": "^6.1",
         "sentry/sentry-symfony": "^4.2",
+        "stella-maris/clock": "^0.1.6",
         "stripe/stripe-php": "^9.0",
         "symfony/asset": "6.1.*",
         "symfony/console": "6.1.*",
@@ -68,6 +69,7 @@
         "symfony/webpack-encore-bundle": "^1.12",
         "symfony/yaml": "6.1.*",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/intl-extra": "^3.4",
         "twig/twig": "^2.12|^3.0",
         "vich/uploader-bundle": "^1.19",
         "webmozart/assert": "^1.10"

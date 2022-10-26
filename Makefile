@@ -24,7 +24,7 @@ validate: lint						## Validate the code, check composer.json and check security
 migrate:							## Run doctrine migrations
 	$(SYMFONY_CLI) console doctrine:migration:migrate
 
-phpcsfix:							## Run cs fixer
+phpcsfix: tools-vendor				## Run cs fixer
 	$(SYMFONY_CLI) $(PHP_CS_FIXER) fix
 
 phpstan:							## Run PHPStan
@@ -48,3 +48,10 @@ encrypt-vault:						## Encrypt Ansible vault
 bootstrap-tests:					## Bootstrap tests
 	$(SYMFONY_CLI) console d:d:c --env=test
 	$(SYMFONY_CLI) console d:m:m --env=test --no-interaction
+
+# Rules from files
+
+tools/php-cs-fixer/vendor/composer/installed.php: composer.lock
+	$(SYMFONY_CLI) $(COMPOSER) install --working-dir=./tools/php-cs-fixer
+
+tools-vendor: tools/php-cs-fixer/vendor/composer/installed.php

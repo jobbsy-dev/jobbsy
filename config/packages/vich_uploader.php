@@ -15,4 +15,9 @@ return static function (VichUploaderConfig $config): void {
         ->uriPrefix('/images/organizations')
         ->uploadDestination('organization_image.storage')
         ->namer()->service(OrignameNamer::class);
+
+    $config->mappings('event_image')
+        ->uriPrefix('/images/events')
+        ->uploadDestination('event_image.storage')
+        ->namer()->service(OrignameNamer::class);
 };

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Common\Filter\OrderFilterInterface;
+use ApiPlatform\Doctrine\Common\Filter\SearchFilterInterface;
 use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
@@ -28,11 +30,11 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
         new GetCollection(),
     ],
     normalizationContext: ['groups' => ['read']],
-    order: ['createdAt' => 'DESC']
+    order: ['createdAt' => OrderFilterInterface::DIRECTION_DESC]
 )]
 #[ORM\Entity]
 #[Vich\Uploadable]
-#[ApiFilter(filterClass: OrderFilter::class, properties: ['createdAt' => 'DESC'])]
+#[ApiFilter(filterClass: OrderFilter::class, properties: ['createdAt' => OrderFilterInterface::DIRECTION_DESC])]
 class Job
 {
     #[ORM\Id]
@@ -43,85 +45,92 @@ class Job
     #[ORM\Column(type: Types::STRING, length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?string $title;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: Types::STRING, length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?string $location;
 
-    #[ORM\Column(type: 'datetime_immutable')]
-    #[Groups(['read'])]
-    #[ApiFilter(filterClass: DateFilter::class)]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private ?\DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: 'string', enumType: EmploymentType::class)]
+    #[ORM\Column(type: Types::STRING, enumType: EmploymentType::class)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?EmploymentType $employmentType;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: Types::STRING, length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?string $organization;
 
-    #[ORM\Column(type: 'json')]
+    #[ORM\Column(type: Types::JSON)]
     #[Assert\Count(max: 5)]
     #[Groups(['read'])]
     private array $tags = [];
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
     private ?string $url;
 
-    #[Vich\UploadableField(mapping: 'organization_image', fileNameProperty: 'organizationImageName', size: 'organizationImageSize')]
+    #[Vich\UploadableField(
+        mapping: 'organization_image',
+        fileNameProperty: 'organizationImageName',
+        size: 'organizationImageSize'
+    )]
     private ?File $organizationImageFile = null;
 
-    #[ORM\Column(type: 'string', nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     #[Groups(['read'])]
     private ?string $organizationImageName = null;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
+    #[ORM\Column(type: Types::INTEGER, nullable: true)]
     private ?int $organizationImageSize = null;
 
-    #[ORM\Column(type: 'datetime')]
-    private ?\DateTimeInterface $updatedAt;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    private ?\DateTimeImmutable $updatedAt;
 
-    #[ORM\Column(type: 'string', nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     #[Groups(['read'])]
     private ?string $organizationImageUrl = null;
 
-    #[ORM\Column(type: 'integer', options: ['default' => 0])]
+    #[ORM\Column(type: Types::INTEGER, options: ['default' => 0])]
     private int $clickCount = 0;
 
-    #[ORM\Column(type: 'string', nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     #[Groups(['read'])]
-    #[ApiFilter(filterClass: SearchFilter::class, strategy: 'partial')]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?string $source = null;
 
-    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $pinnedUntil = null;
 
-    #[ORM\Column(type: 'string', nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $tweetId = null;
 
-    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    #[Groups(['read'])]
+    #[ApiFilter(filterClass: DateFilter::class)]
     private ?\DateTimeImmutable $publishedAt = null;
 
-    #[ORM\Column(type: 'string', nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Groups(['read'])]
     private ?string $salary = null;
 
-    #[ORM\Column(type: 'string', nullable: true)]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     #[Assert\Email]
     private ?string $contactEmail = null;
 
-    #[ORM\Column(type: 'string', nullable: true, enumType: LocationType::class)]
+    #[ORM\Column(type: Types::STRING, nullable: true, enumType: LocationType::class)]
     #[Assert\NotBlank]
+    #[Groups(['read'])]
+    #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?LocationType $locationType = null;
 
     public function __construct(?UuidInterface $id = null)
@@ -132,7 +141,7 @@ class Job
 
         $this->id = $id;
         $this->createdAt = new \DateTimeImmutable();
-        $this->updatedAt = new \DateTime();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getId(): UuidInterface
@@ -240,7 +249,7 @@ class Job
         return $this->organizationImageSize;
     }
 
-    public function getUpdatedAt(): \DateTimeInterface
+    public function getUpdatedAt(): \DateTimeImmutable
     {
         return $this->updatedAt;
     }
