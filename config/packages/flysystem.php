@@ -8,4 +8,8 @@ return static function (FlysystemConfig $config): void {
     $config->storage('organization_image.storage')
         ->adapter('local')
         ->options(['directory' => '%kernel.project_dir%/public/images/organizations']);
+
+    $config->storage('event_image.storage')
+        ->adapter('local')
+        ->options(['directory' => '%kernel.project_dir%/public/images/events']);
 };

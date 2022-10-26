@@ -18,12 +18,25 @@
         {% block body %}
             <header class="px-2 py-4">
                 <div class="container">
-                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <a href="{{ path('job_index') }}" class="mb-2 mb-sm-0 mb-md-0">
-                            <img src="{{ asset('build/images/logo_jobbsy.svg') }}" alt="logo" width="140">
+                            <img src="{{ asset('build/images/logo_jobbsy.svg') }}" alt="logo" width="120">
                         </a>
+                        {% set routeName = app.request.attributes.get('_route') %}
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-3">
+                            <li class="nav-item">
+                                <a href="{{ path('job_index') }}" class="nav-link px-2 {% if routeName != 'job_index'%}link-secondary{% endif %}">
+                                    Jobs
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('app_event_index') }}" class="nav-link px-2 {% if routeName != 'app_event_index'%}link-secondary{% endif %}">
+                                    Events
+                                </a>
+                            </li>
+                        </ul>
                         {% block post_job %}
-                            <div class="col-md-3 text-end ms-3 ms-md-0 d-none d-md-block">
+                            <div class="ms-3 ms-md-0 d-none d-md-block">
                                 <a href="{{ path('job_new') }}" class="btn btn-primary px-3 bg-gradient">{{ 'action.post_job'|trans }}</a>
                             </div>
                         {% endblock %}
