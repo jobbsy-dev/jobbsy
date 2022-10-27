@@ -14,33 +14,31 @@
         </div>
     </div>
 
-    {% if events|length > 0 %}
-        <ul class="list-unstyled">
-            {% for event in events %}
-                <li class="py-4 py-lg-5 d-sm-flex">
-                    <a href="{{ event.url }}" class="col-12 col-md-4 d-block pe-4">
-                        <img src="{{ vich_uploader_asset(event) }}" class="img-fluid img-thumbnail" alt="{{ event.name }}">
-                    </a>
-                    <div class="col-12 col-md-8 mt-3 mt-md-0">
-                        <h2 class="d-block h3 card-title">
-                            <a href="{{ event.url }}" class="text-decoration-none">{{ event.name }}</a>
-                        </h2>
-                        <small class="text-muted">
-                            {% if event.startDate|date is same as event.endDate|date %}
-                                {{ event.startDate|format_datetime('medium', 'none') }}
-                            {% else %}
-                                {{ event.startDate|format_datetime('medium', 'none') }} - {{ event.endDate|format_datetime('medium', 'none') }}
-                            {% endif %}
-                        </small>
-                        <p class="card-text mt-2">{{ event.abstract }}</p>
-                        <a href="{{ event.url }}" class="btn btn-outline-primary btn-sm">Learn more</a>
+    <div>
+        <h2>Upcoming Events & Meetups</h2>
+        {% if upcomingEvents|length > 0 %}
+            <div class="row mt-2 row-cols-1 row-cols-md-3 g-4">
+                {% for event in upcomingEvents %}
+                    <div class="col col-md-6 col-lg-4">
+                        {{ include('event/_event.html.twig', {'event': event}) }}
                     </div>
-                </li>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <p>No upcoming events</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mt-5">
+        <h2>Past Events & Meetups</h2>
+        <div class="row mt-2 row-cols-1 row-cols-md-3 g-4">
+            {% for event in pastEvents %}
+                <div class="col col-md-6 col-lg-4">
+                    {{ include('event/_event.html.twig', {'event': event}) }}
+                </div>
             {% endfor %}
-        </ul>
-    {% else %}
-        <div class="text-center">
-            <p>No upcoming events</p>
         </div>
-    {% endif %}
+    </div>
 {% endblock %}

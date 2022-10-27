@@ -57,4 +57,17 @@ class EventRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @return Event[]
+     */
+    public function findPastEvents(): array
+    {
+        return $this->createQueryBuilder('event')
+            ->where('event.startDate < :today')
+            ->setParameter('today', $this->clock->now())
+            ->orderBy('event.startDate', Criteria::ASC)
+            ->getQuery()
+            ->getResult();
+    }
 }

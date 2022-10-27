@@ -20,6 +20,6 @@ class EventControllerTest extends WebTestCase
         self::assertPageTitleContains('Events');
 
         self::assertSelectorTextContains('h1', 'Upcoming Symfony Conferences and Events');
-        self::assertSelectorTextContains('h2', 'SymfonyCon');
+        self::assertSelectorTextContains('h2', 'Upcoming Events & Meetups');
     }
 }

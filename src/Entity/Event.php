@@ -8,13 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidType;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
-#[Vich\Uploadable]
 class Event
 {
     #[ORM\Id]
@@ -38,25 +35,17 @@ class Event
     #[Assert\NotBlank]
     private ?string $location = null;
 
+    #[ORM\Column(type: Types::STRING)]
+    #[Assert\NotBlank]
+    #[Assert\Country]
+    private ?string $country = null;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Assert\Length(max: 200)]
     private ?string $abstract = null;
 
-    #[Vich\UploadableField(mapping: 'event_image', fileNameProperty: 'imageName', size: 'imageSize')]
-    private ?File $imageFile = null;
-
-    #[ORM\Column(type: Types::STRING, nullable: true)]
-    #[Groups(['read'])]
-    private ?string $imageName = null;
-
-    #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    private ?int $imageSize = null;
-
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $createdAt;
-
-    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    private ?\DateTimeImmutable $updatedAt;
 
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
@@ -71,7 +60,6 @@ class Event
 
         $this->id = $id;
         $this->createdAt = new \DateTimeImmutable();
-        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getId(): UuidInterface
@@ -139,40 +127,9 @@ class Event
         return $this;
     }
 
-    public function setImageFile(?File $imageFile = null): void
-    {
-        $this->imageFile = $imageFile;
-
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
-    }
-
     public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
-
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
     }
 
     public function getUrl(): ?string
@@ -185,13 +142,13 @@ class Event
         $this->url = $url;
     }
 
-    public function setImageName(?string $imageName): void
+    public function getCountry(): ?string
     {
-        $this->imageName = $imageName;
+        return $this->country;
     }
 
-    public function setImageSize(?int $imageSize): void
+    public function setCountry(?string $country): void
     {
-        $this->imageSize = $imageSize;
+        $this->country = $country;
     }
 }

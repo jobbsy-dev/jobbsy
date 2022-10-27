@@ -1,0 +1,32 @@
+<div class="card h-100 p-3">
+    <div class="card-body">
+        <h3 class="card-title">
+            <a href="{{ event.url }}" class="text-decoration-none text-reset">{{ event.name }}</a>
+        </h3>
+        <ul class="list-unstyled mt-3 d-flex gap-2 flex-column">
+            <li class="d-flex align-items-center gap-2">
+                <i icon-name="calendar-days" class="fs-6"></i>
+
+                {% if event.startDate|date is same as event.endDate|date %}
+                    {{ event.startDate|format_datetime('medium', 'none') }}
+                {% else %}
+                    {{ event.startDate|format_datetime('medium', 'none') }} - {{ event.endDate|format_datetime('medium', 'none') }}
+                {% endif %}
+            </li>
+            <li class="d-flex align-items-center gap-2">
+                {% set location = event.location|lower %}
+                {% if location starts with 'online' %}
+                    <i icon-name="cloud" class="fs-6"></i>
+                    {{ event.location }}
+                {% else %}
+                    <i icon-name="map-pin" class="fs-6"></i>
+                    {{ event.location }} ({{ event.country|country_name }})
+                {% endif %}
+            </li>
+        </ul>
+        <p class="card-text">{{ event.abstract }}</p>
+    </div>
+    <div class="p-3">
+        <a href="{{ event.url }}" class="btn btn-outline-primary btn-sm">Learn more</a>
+    </div>
+</div>

@@ -13,7 +13,7 @@ import Alert from 'bootstrap/js/dist/alert';
 // start the Stimulus application
 import './bootstrap';
 
-import { createIcons, ArrowDown, Building, MapPin, Tags, Pin, Briefcase, Coins } from 'lucide';
+import { createIcons, ArrowDown, Building, MapPin, Tags, Pin, Briefcase, Coins, CalendarDays, Cloud } from 'lucide';
 createIcons({
     icons: {
         ArrowDown,
@@ -22,7 +22,9 @@ createIcons({
         Tags,
         Pin,
         Briefcase,
-        Coins
+        Coins,
+        CalendarDays,
+        Cloud
     },
     attrs: {
         width: 20,
