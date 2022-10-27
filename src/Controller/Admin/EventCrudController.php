@@ -5,13 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\Event;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CountryField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class EventCrudController extends AbstractCrudController
 {
@@ -33,9 +32,8 @@ class EventCrudController extends AbstractCrudController
             TextField::new('location'),
             TextareaField::new('abstract')
                 ->onlyOnForms(),
-            Field::new('imageFile')
-                ->onlyOnForms()
-                ->setFormType(VichImageType::class),
+            CountryField::new('country')
+                ->setFormTypeOption('preferred_choices', ['FR', 'DE', 'ES', 'UK', 'IT', 'PL']),
         ];
     }
 
