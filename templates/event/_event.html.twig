@@ -20,7 +20,7 @@
                     {{ event.location }}
                 {% else %}
                     <i icon-name="map-pin" class="fs-6"></i>
-                    {{ event.location }} ({{ event.country|country_name }})
+                    {{ event.location }} | <span class="fs-5">{{ event.country|country_emoji }}</span> {{ event.country|country_name }}
                 {% endif %}
             </li>
         </ul>
