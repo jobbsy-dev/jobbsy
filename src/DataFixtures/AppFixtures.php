@@ -47,7 +47,7 @@ class AppFixtures extends Fixture
 
     private function loadEvents(ObjectManager $manager): void
     {
-        foreach ($this->getEventData() as [$id, $name, $startDate, $endDate, $location, $abstract, $url]) {
+        foreach ($this->getEventData() as [$id, $name, $startDate, $endDate, $location, $abstract, $url, $countryCode]) {
             $event = new Event($id ? Uuid::fromString($id) : null);
             $event->setName($name);
             $event->setUrl($url);
@@ -55,6 +55,7 @@ class AppFixtures extends Fixture
             $event->setLocation($location);
             $event->setStartDate(\DateTimeImmutable::createFromFormat('Y-m-d', $startDate));
             $event->setEndDate(\DateTimeImmutable::createFromFormat('Y-m-d', $endDate));
+            $event->setCountry($countryCode);
 
             $manager->persist($event);
         }
@@ -98,6 +99,37 @@ class AppFixtures extends Fixture
 
     private function getEventData(): \Generator
     {
-        yield [self::EVENT_1_ID, 'SymfonyCon', '2022-11-17', '2022-11-18', 'Paris, France', 'Welcome to the SymfonyCon', 'https://live.symfony.com/2022-paris-con/'];
+        yield [
+            self::EVENT_1_ID,
+            'SymfonyCon 2022 Disneyland Paris',
+            '2022-11-17',
+            '2022-11-18',
+            'Paris',
+            'We are thrilled to welcome you at SymfonyCon Disneyland Paris 2022! This year, we will finally meet you at the Disney\'s Hotel New York - Art of Marvel for the annual international Symfony conference. ',
+            'https://live.symfony.com/2022-paris-con/',
+            'FR',
+        ];
+
+        yield [
+            null,
+            'API Platform Conference 2022',
+            '2022-09-15',
+            '2022-09-16',
+            'Lille & Online',
+            'The 2nd edition of the API Platform Conference (a popular open source framework for building hypermedia and GraphQL APIs ) is coming!',
+            'https://api-platform.com/con/2022/',
+            'FR',
+        ];
+
+        yield [
+            null,
+            'SymfonyWorld Online 2022 Winter Edition',
+            '2022-12-08',
+            '2022-12-09',
+            'Online',
+            'Join us for the fifth edition of the international online SymfonyWorld conference. The entire conference will take place online during 4 days in English.',
+            'https://live.symfony.com/2022-world-winter/',
+            'FR',
+        ];
     }
 }
