@@ -17,13 +17,13 @@
     </div>
 
     {% if jobs|length > 0 %}
-        <div class="list-group mt-5">
+        <div class="d-flex flex-column justify-content-around gap-3">
             {% set jobsCount = jobs|length %}
             {% for job in jobs|slice(0, jobsCount/2) %}
                 {{ include('job/_job.html.twig', {'job': job}) }}
             {% endfor %}
 
-            <div class="my-3 my-md-4" id="getNotifiedAboutNewJobs">
+            <div id="getNotifiedAboutNewJobs">
                 {{ render(controller('App\\Controller\\JobController::subscriptionForm')) }}
             </div>
 

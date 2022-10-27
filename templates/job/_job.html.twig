@@ -1,45 +1,69 @@
 {# @var job \App\Entity\Job #}
-<a href="{{ path('job', {'id': job.id}) }}" class="list-group-item list-group-item-action py-3 {% if job.pinned %}pinned{% endif %}" target="_blank">
-    <div class="d-flex align-items-center">
-        {% if job.organizationImageName %}
-            <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" class="img-fluid rounded mt-2 job-organization-logo">
-        {% elseif job.organizationImageUrl %}
-            <img src="{{ job.organizationImageUrl }}" class="img-fluid rounded mt-2 job-organization-logo" alt="{{ job.organization }}">
-        {% else %}
-            <img src="https://eu.ui-avatars.com/api/?name={{ job.organization }}&size=65&background=fff" alt="{{ job.organization }}" class="mt-2 rounded job-organization-logo">
-        {% endif %}
-        <div class="ms-3 flex-grow-1">
-            <div class="d-flex align-items-center justify-content-between mb-0">
-                <span class="mb-0">{{ job.organization }}</span>
-                <span class="badge rounded-pill text-bg-light text-wrap">{{ ('employment_type.' ~ job.employmentType.value)|trans }}</span>
-            </div>
-            <p class="h5 d-block mb-0 fw-bold lh-base">{{ job.title }}</p>
-            <div class="mt-1 d-flex flex-wrap text-muted small flex-column flex-md-row align-content-start">
-                <div class="text-break flex-grow-1 flex-md-grow-0 align-items-md-center d-flex">
-                    <i icon-name="map-pin" class="fs-6"></i>
-                    <span class="ms-1">
+<div class="card card-job border-3 shadow-sm">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            {% if job.organizationImageName %}
+                <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" class="img-fluid rounded job-organization-logo d-none d-md-block">
+            {% elseif job.organizationImageUrl %}
+                <img src="{{ job.organizationImageUrl }}" class="img-fluid rounded job-organization-logo d-none d-md-block" alt="{{ job.organization }}">
+            {% else %}
+                <img src="https://eu.ui-avatars.com/api/?name={{ job.organization }}&size=65&background=fff" alt="{{ job.organization }}" class="rounded job-organization-logo d-none d-md-block">
+            {% endif %}
+            <div class="ms-0 ms-md-3 align-self-start">
+                <div class="d-flex align-items-center justify-content-between mb-0">
+                    <span class="mb-0">{{ job.organization }}</span>
+                    <span class="badge rounded-pill text-bg-light text-wrap"></span>
+                </div>
+
+                <p class="h5 d-block mb-0 fw-bold lh-base">
+                    <a href="{{ path('job', {'id': job.id}) }}" class="stretched-link text-reset text-decoration-none">
+                        {{ job.title }}
+                    </a>
+                </p>
+
+                <ul class="list-unstyled mt-2 d-flex gap-3 flex-row text-muted small flex-wrap mb-0">
+                    <li class="d-flex align-items-center gap-1">
+                        <i icon-name="briefcase" class="fs-6"></i>
+                        {{ ('employment_type.' ~ job.employmentType.value)|trans }}
+                    </li>
+                    <li class="d-flex align-items-center gap-1">
+                        <i icon-name="map-pin" class="fs-6"></i>
                         {{ job.location }}
                         {% if job.locationType %}
-                        | {{ ('location_type.' ~ job.locationType.value)|trans }}
+                            | {{ ('location_type.' ~ job.locationType.value)|trans }}
                         {% endif %}
+                    </li>
+                    {% if job.salary %}
+                        <li class="d-flex align-items-center gap-1">
+                            <i icon-name="coins" class="fs-6"></i>
+                            {{ job.salary }}
+                        </li>
+                    {% endif %}
+                </ul>
+                <div class="d-flex gap-2 flex-wrap d-lg-none mt-3">
+                    {% if job.pinned %}
+                        <span class="border border-1 border-primary rounded py-1 px-2 text-primary small d-flex align-items-center gap-1">
+                            <i icon-name="star" class="fs-6"></i>
+                            Featured
+                        </span>
+                    {% endif %}
+                    {% for tag in job.tags %}
+                        <span class="border border-1 rounded py-1 px-2 text-muted small">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="gap-2 flex-wrap ms-auto d-none d-lg-flex">
+                {% if job.pinned %}
+                    <span class="border border-1 border-primary rounded py-1 px-2 text-primary small d-flex align-items-center gap-1">
+                        <i icon-name="star" class="fs-6"></i>
+                        Featured
                     </span>
-                </div>
-                {% if job.tags|length > 0 %}
-                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-md-center d-flex mt-2 mt-md-0 d-none d-md-block">
-                        <i icon-name="tags"></i>
-                        <span class="ms-1">{{ job.tags|join(', ') }}</span>
-                    </div>
                 {% endif %}
-                {% if job.salary %}
-                    <div class="text-break mb-0 ms-md-3 flex-grow-1 flex-md-grow-0 align-items-md-center d-flex mt-2 mt-md-0 d-none d-md-block">
-                        <i icon-name="coins"></i>
-                        <span class="ms-1">{{ job.salary }}</span>
-                    </div>
-                {% endif %}
-                <div class="ms-md-auto mb-0 mt-2 mt-md-0 d-none d-md-block">
-                    {{ job.createdAt|ago }}
-                </div>
+                {% for tag in job.tags %}
+                    <span class="border border-1 rounded py-1 px-2 text-muted small">{{ tag }}</span>
+                {% endfor %}
             </div>
         </div>
     </div>
-</a>
+</div>
