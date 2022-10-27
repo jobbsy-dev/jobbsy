@@ -38,8 +38,8 @@ final class WelcometotheJungleClient
             foreach ($crawler->filter('script[type="application/ld+json"]') as $domElement) {
                 $decodedData = json_decode($domElement->textContent, true, 512, \JSON_THROW_ON_ERROR);
 
-                if (isset($decodedData['content']['@type']) && 'JobPosting' === $decodedData['content']['@type']) {
-                    $structuredData = $decodedData['content'];
+                if (isset($decodedData['@type']) && 'JobPosting' === $decodedData['@type']) {
+                    $structuredData = $decodedData;
 
                     break;
                 }
