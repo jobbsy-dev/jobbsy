@@ -21,7 +21,7 @@
                     </a>
                 </p>
 
-                <ul class="list-unstyled mt-2 d-flex gap-3 flex-row text-muted small flex-wrap mb-0">
+                <ul class="list-unstyled mt-2 d-flex gap-2 flex-row text-muted small flex-wrap mb-0">
                     <li class="d-flex align-items-center gap-1">
                         <i icon-name="briefcase" class="fs-6"></i>
                         {{ ('employment_type.' ~ job.employmentType.value)|trans }}
@@ -40,6 +40,7 @@
                         </li>
                     {% endif %}
                 </ul>
+
                 <div class="d-flex gap-2 flex-wrap d-lg-none mt-3">
                     {% if job.pinned %}
                         <span class="border border-1 border-primary rounded py-1 px-2 text-primary small d-flex align-items-center gap-1">
@@ -53,17 +54,24 @@
                 </div>
             </div>
 
-            <div class="gap-2 flex-wrap ms-auto d-none d-lg-flex">
-                {% if job.pinned %}
-                    <span class="border border-1 border-primary rounded py-1 px-2 text-primary small d-flex align-items-center gap-1">
+            {% set tagsBlock = true %}
+            {% if noTags is defined %}
+                {% set tagsBlock = not noTags %}
+            {% endif %}
+
+            {% if tagsBlock %}
+                <div class="gap-2 flex-wrap ms-auto d-none d-lg-flex">
+                    {% if job.pinned %}
+                        <span class="border border-1 border-primary rounded py-1 px-2 text-primary small d-flex align-items-center gap-1">
                         <i icon-name="star" class="fs-6"></i>
                         Featured
                     </span>
-                {% endif %}
-                {% for tag in job.tags %}
-                    <span class="border border-1 rounded py-1 px-2 text-muted small">{{ tag }}</span>
-                {% endfor %}
-            </div>
+                    {% endif %}
+                    {% for tag in job.tags %}
+                        <span class="border border-1 rounded py-1 px-2 text-muted small">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

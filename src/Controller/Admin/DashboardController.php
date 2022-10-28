@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Event;
 use App\Entity\Job;
+use App\Entity\Post;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
@@ -26,13 +27,14 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Jobsy');
+            ->setTitle('Jobbsy');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToCrud('Jobs', 'fas fa-list', Job::class);
-        yield MenuItem::linkToCrud('Events', 'fas fa-list', Event::class);
+        yield MenuItem::linkToCrud('Events', 'fas fa-calendar', Event::class);
+        yield MenuItem::linkToCrud('Posts', 'fas fa-edit', Post::class);
         yield MenuItem::linkToUrl('View website', 'fas fa-external-link', '/');
     }
 

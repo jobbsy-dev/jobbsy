@@ -24,7 +24,7 @@ class JobRepository extends ServiceEntityRepository
     /**
      * @return Job[]
      */
-    public function findLastJobs(): array
+    public function findLastJobs(int $limit = 30): array
     {
         $qb = $this->createQueryBuilder('job');
 
@@ -32,7 +32,7 @@ class JobRepository extends ServiceEntityRepository
             ->where($qb->expr()->isNotNull('job.publishedAt'))
             ->addOrderBy('job.pinnedUntil', Criteria::DESC)
             ->addOrderBy('job.publishedAt', Criteria::DESC)
-            ->setMaxResults(30)
+            ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
     }

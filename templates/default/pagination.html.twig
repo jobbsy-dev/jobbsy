@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between">
+    {% if previous is defined %}
+        <a rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}" class="btn btn-outline-secondary d-flex align-items-center">
+            <i icon-name="arrow-left"></i>
+            Newer posts
+        </a>
+    {% else %}
+        <button rel="prev"  class="btn btn-outline-secondary disabled d-flex align-items-center">
+            <i icon-name="arrow-left"></i>
+            Newer posts
+        </button>
+    {% endif %}
+
+    {% if next is defined %}
+        <a rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}" class="btn btn-outline-secondary d-flex align-items-center">
+            Older posts
+            <i icon-name="arrow-right"></i>
+        </a>
+    {% else %}
+        <button rel="prev"  class="btn btn-outline-secondary disabled d-flex align-items-center">
+            Older posts
+            <i icon-name="arrow-right"></i>
+        </button>
+    {% endif %}
+</div>
