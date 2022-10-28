@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }} | Blog | {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="px-4 pb-4 py-md-5 my-3 text-center">
+        <h1 class="display-5 fw-bold">
+            {{ post.title }}
+        </h1>
+        <div class="col-lg-6 mx-auto d-none d-md-block">
+            <p class="mb-4 small text-muted">
+                {{ post.publishedAt|format_datetime('long', 'none') }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-8">
+            {{ post.content|markdown_to_html|sanitize_html }}
+        </div>
+
+        <div class="col-4 col-md-4">
+
+            <span class="h3 d-block mb-3">Latest jobs</span>
+
+            <div class="job-list d-flex flex-column justify-content-around gap-3">
+                {% for job in latestJobs %}
+                    {{ include('job/_job.html.twig', {'job': job, 'noTags': true}) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
