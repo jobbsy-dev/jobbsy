@@ -36,6 +36,10 @@ class BlogController extends AbstractController
     #[Route('/blog/{slug}', name: 'blog_post', methods: ['GET'])]
     public function post(Post $post): Response
     {
+        if (false === $post->isPublished()) {
+            throw $this->createNotFoundException();
+        }
+
         return $this->render('blog/show.html.twig', [
             'post' => $post,
             'latestJobs' => $this->jobRepository->findLastJobs(5),

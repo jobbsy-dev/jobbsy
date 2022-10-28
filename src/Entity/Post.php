@@ -127,4 +127,9 @@ class Post
 
         return $this;
     }
+
+    public function isPublished(): bool
+    {
+        return null !== $this->publishedAt;
+    }
 }
