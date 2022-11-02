@@ -54,24 +54,17 @@
                 </div>
             </div>
 
-            {% set tagsBlock = true %}
-            {% if noTags is defined %}
-                {% set tagsBlock = not noTags %}
-            {% endif %}
-
-            {% if tagsBlock %}
-                <div class="gap-2 flex-wrap ms-auto d-none d-lg-flex">
-                    {% if job.pinned %}
-                        <span class="border border-1 border-primary rounded py-1 px-2 text-primary small d-flex align-items-center gap-1">
-                        <i icon-name="star" class="fs-6"></i>
-                        Featured
-                    </span>
-                    {% endif %}
-                    {% for tag in job.tags %}
-                        <span class="border border-1 rounded py-1 px-2 text-muted small">{{ tag }}</span>
-                    {% endfor %}
-                </div>
-            {% endif %}
+            <div class="gap-2 flex-wrap ms-auto d-none d-lg-flex">
+                {% if job.pinned %}
+                    <span class="border border-1 border-primary rounded py-1 px-2 text-primary small d-flex align-items-center gap-1">
+                    <i icon-name="star" class="fs-6"></i>
+                    Featured
+                </span>
+                {% endif %}
+                {% for tag in job.tags %}
+                    <span class="border border-1 rounded py-1 px-2 text-muted small">{{ tag }}</span>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\NewsAggregator\Source\SymfonyBlog;
+namespace App\NewsAggregator\RSS;
 
+use App\NewsAggregator\RSS\Model\Document;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class SymfonyClient
+final class Client
 {
     public function __construct(private ?HttpClientInterface $httpClient = null)
     {
@@ -14,9 +15,9 @@ class SymfonyClient
         }
     }
 
-    public function readFeed(): ?string
+    public function get(string $url): ?Document
     {
-        $response = $this->httpClient->request('GET', 'https://feeds.feedburner.com/symfony/blog', [
+        $response = $this->httpClient->request('GET', $url, [
             'headers' => [
                 'Content-Type' => 'text/xml',
             ],
@@ -26,6 +27,8 @@ class SymfonyClient
             return null;
         }
 
-        return $response->getContent();
+        $xmlData = $response->getContent();
+
+        return Document::create($xmlData);
     }
 }

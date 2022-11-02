@@ -17,10 +17,10 @@
     </div>
 
     {% if jobs|length > 0 %}
-        <div class="job-list d-flex flex-column justify-content-around gap-3">
+        <div class="job-list d-flex flex-column justify-content-around gap-4">
             {% set jobsCount = jobs|length %}
             {% for job in jobs|slice(0, jobsCount/2) %}
-                {{ include('job/_job.html.twig', {'job': job}) }}
+                {{ include('job/_job_card.html.twig', {'job': job}) }}
             {% endfor %}
 
             <div id="getNotifiedAboutNewJobs">
@@ -28,7 +28,7 @@
             </div>
 
             {% for job in jobs|slice(jobsCount/2, jobsCount) %}
-                {{ include('job/_job.html.twig', {'job': job}) }}
+                {{ include('job/_job_card.html.twig', {'job': job}) }}
             {% endfor %}
         </div>
     {% else %}

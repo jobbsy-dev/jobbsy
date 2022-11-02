@@ -19,13 +19,10 @@ class Article
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $link = null;
 
-    #[ORM\Column(type: Types::GUID)]
-    private ?string $guid = null;
-
-    #[ORM\Column]
+    #[ORM\Column(type: Types::JSON)]
     private array $authors = [];
 
     #[ORM\Column(type: Types::TEXT)]
@@ -36,6 +33,9 @@ class Article
 
     #[ORM\Column(length: 255)]
     private ?string $source = null;
+
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $publishedAt = null;
 
     public function __construct(?UuidInterface $id = null)
     {
@@ -72,18 +72,6 @@ class Article
     public function setLink(string $link): self
     {
         $this->link = $link;
-
-        return $this;
-    }
-
-    public function getGuid(): ?string
-    {
-        return $this->guid;
-    }
-
-    public function setGuid(string $guid): self
-    {
-        $this->guid = $guid;
 
         return $this;
     }
@@ -127,5 +115,15 @@ class Article
         $this->source = $source;
 
         return $this;
+    }
+
+    public function getPublishedAt(): ?\DateTimeImmutable
+    {
+        return $this->publishedAt;
+    }
+
+    public function setPublishedAt(?\DateTimeImmutable $publishedAt): void
+    {
+        $this->publishedAt = $publishedAt;
     }
 }
