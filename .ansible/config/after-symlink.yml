@@ -13,6 +13,13 @@
     hour: "1"
     job: "php {{ ansistrano_release_path.stdout }}/bin/console app:job-provider:retrieve"
 
+- name: Aggregate news
+  ansible.builtin.cron:
+    name: "aggregate news"
+    minute: "0"
+    hour: "2"
+    job: "php {{ ansistrano_release_path.stdout }}/bin/console app:aggregate-news"
+
 - name: Clear pinned jobs
   ansible.builtin.cron:
     name: "clear pinned jobs"
