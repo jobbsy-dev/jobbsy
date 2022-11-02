@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\NewsAggregator\NewsProvider;
+use App\News\AggregateNews;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -19,7 +19,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class AggregateNewsCommand extends Command
 {
     public function __construct(
-        protected readonly NewsProvider $newsProvider,
+        protected readonly AggregateNews $aggregateNews,
         private readonly ArticleRepository $articleRepository,
         private readonly EntityManagerInterface $entityManager
     ) {
@@ -30,7 +30,7 @@ class AggregateNewsCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $articles = $this->newsProvider->retrieve();
+        $articles = ($this->aggregateNews)();
 
         $progressBar = new ProgressBar($output, \count($articles));
         $progressBar->start();
@@ -44,7 +44,6 @@ class AggregateNewsCommand extends Command
 
             if (0 === ($i % 20)) {
                 $this->entityManager->flush();
-                $this->entityManager->clear();
             }
             ++$i;
             $progressBar->advance();

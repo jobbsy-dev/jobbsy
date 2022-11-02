@@ -1,8 +1,8 @@
 <?php
 
-namespace App\NewsAggregator\RSS;
+namespace App\News\RSS;
 
-use App\NewsAggregator\RSS\Model\Document;
+use App\News\RSS\Model\Document;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 

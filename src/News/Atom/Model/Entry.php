@@ -1,6 +1,6 @@
 <?php
 
-namespace App\NewsAggregator\Atom\Model;
+namespace App\News\Atom\Model;
 
 final class Entry
 {

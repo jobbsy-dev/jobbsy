@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Event;
+use App\Entity\Feed;
 use App\Entity\Job;
 use App\Entity\Post;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -35,6 +36,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Jobs', 'fas fa-list', Job::class);
         yield MenuItem::linkToCrud('Events', 'fas fa-calendar', Event::class);
         yield MenuItem::linkToCrud('Posts', 'fas fa-edit', Post::class);
+        yield MenuItem::linkToCrud('Feeds', 'fas fa-edit', Feed::class);
         yield MenuItem::linkToUrl('View website', 'fas fa-external-link', '/');
     }
 

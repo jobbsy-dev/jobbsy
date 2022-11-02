@@ -2,7 +2,7 @@
 
 namespace App\Tests\NewsAggregator\RSS;
 
-use App\NewsAggregator\RSS\Client;
+use App\News\RSS\Client;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;

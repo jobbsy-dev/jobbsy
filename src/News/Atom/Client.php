@@ -1,8 +1,8 @@
 <?php
 
-namespace App\NewsAggregator\Atom;
+namespace App\News\Atom;
 
-use App\NewsAggregator\Atom\Model\Feed;
+use App\News\Atom\Model\Feed;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 

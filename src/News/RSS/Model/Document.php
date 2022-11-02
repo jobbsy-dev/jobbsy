@@ -1,6 +1,6 @@
 <?php
 
-namespace App\NewsAggregator\RSS\Model;
+namespace App\News\RSS\Model;
 
 final class Document
 {

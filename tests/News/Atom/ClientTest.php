@@ -2,7 +2,7 @@
 
 namespace App\Tests\NewsAggregator\Atom;
 
-use App\NewsAggregator\Atom\Client;
+use App\News\Atom\Client;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;

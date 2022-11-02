@@ -1,28 +1,25 @@
 <article>
-    <div class="d-flex align-items-center mb-3">
-        {% if article.source is same as 'https://feeds.feedburner.com/strangebuzz/en' %}
+    <div class="d-flex align-items-center mb-3 text-muted small">
+        {% if article.feed.url is same as 'https://feeds.feedburner.com/strangebuzz/en' %}
             <img src="{{ asset('build/images/news_aggregator/sources/strangebuzz.png') }}" alt="" width="50">
         {% endif %}
-        {% if article.source is same as 'https://feeds.feedburner.com/symfony/blog' %}
+        {% if article.feed.url is same as 'https://feeds.feedburner.com/symfony/blog' %}
             <img src="{{ asset('build/images/news_aggregator/sources/symfony.png') }}" alt="" width="75">
         {% endif %}
-        {% if article.source is same as 'https://blog.sensiolabs.com/category/symfony/feed/' %}
+        {% if article.feed.url is same as 'https://blog.sensiolabs.com/category/symfony/feed/' %}
             <img src="{{ asset('build/images/news_aggregator/sources/sensiolabs.svg') }}" alt="" width="75">
         {% endif %}
-        {% if article.source is same as 'https://feeds.feedburner.com/knpuniversity' %}
+        {% if article.feed.url is same as 'https://feeds.feedburner.com/knpuniversity' %}
             <img src="{{ asset('build/images/news_aggregator/sources/symfonycasts-logo.svg') }}" alt="" width="100">
         {% endif %}
 
-        {% if article.publishedAt or article.authors %}
-            <span class="d-block ms-2 text-muted small">&#183;</span>
+        <span class="ms-3">{{ article.feed.name }}</span>
 
-            <p class="post-metadata text-muted small mb-0 ms-2">
-                {% if article.publishedAt %}
-                    <span class="metadata">{{ article.publishedAt|format_datetime('long', 'none') }}</span>
-                {% endif %}
-                {% if article.authors is not empty %}
-                    <span class="metadata">by {{ article.authors|join(', ') }}</span>
-                {% endif %}
+        {% if article.publishedAt %}
+            <span class="d-block ms-2 small">&#183;</span>
+
+            <p class="post-metadata mb-0 ms-2">
+                <span class="metadata" title="{{ article.publishedAt|format_datetime('long', 'long') }}">{{ article.publishedAt|ago }}</span>
             </p>
         {% endif %}
     </div>

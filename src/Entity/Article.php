@@ -22,22 +22,20 @@ class Article
     #[ORM\Column(length: 255, unique: true)]
     private ?string $link = null;
 
-    #[ORM\Column(type: Types::JSON)]
-    private array $authors = [];
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $createdAt;
 
-    #[ORM\Column(length: 255)]
-    private ?string $source = null;
-
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $publishedAt = null;
 
-    public function __construct(?UuidInterface $id = null)
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private Feed $feed;
+
+    public function __construct(Feed $feed, ?UuidInterface $id = null)
     {
         if (null === $id) {
             $id = Uuid::uuid4();
@@ -45,6 +43,7 @@ class Article
 
         $this->id = $id;
         $this->createdAt = new \DateTimeImmutable();
+        $this->feed = $feed;
     }
 
     public function getId(): UuidInterface
@@ -76,18 +75,6 @@ class Article
         return $this;
     }
 
-    public function getAuthors(): array
-    {
-        return $this->authors;
-    }
-
-    public function setAuthors(array $authors): self
-    {
-        $this->authors = $authors;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -105,18 +92,6 @@ class Article
         return $this->createdAt;
     }
 
-    public function getSource(): ?string
-    {
-        return $this->source;
-    }
-
-    public function setSource(string $source): self
-    {
-        $this->source = $source;
-
-        return $this;
-    }
-
     public function getPublishedAt(): ?\DateTimeImmutable
     {
         return $this->publishedAt;
@@ -125,5 +100,10 @@ class Article
     public function setPublishedAt(?\DateTimeImmutable $publishedAt): void
     {
         $this->publishedAt = $publishedAt;
+    }
+
+    public function getFeed(): ?Feed
+    {
+        return $this->feed;
     }
 }
