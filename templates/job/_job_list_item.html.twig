@@ -23,11 +23,5 @@
                 | {{ ('location_type.' ~ job.locationType.value)|trans }}
             {% endif %}
         </li>
-        {% if job.salary %}
-            <li class="d-flex align-items-center gap-1">
-                <i icon-name="coins" class="fs-6"></i>
-                {{ job.salary }}
-            </li>
-        {% endif %}
     </ul>
 </div>
