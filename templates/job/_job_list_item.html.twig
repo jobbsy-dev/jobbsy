@@ -1,0 +1,33 @@
+{# @var job \App\Entity\Job #}
+<div class="d-flex flex-column">
+    <div class="d-flex align-items-center justify-content-between mb-0">
+        <span class="mb-0">{{ job.organization }}</span>
+        <span class="badge rounded-pill text-bg-light text-wrap"></span>
+    </div>
+
+    <p class="h5 d-block mb-0 fw-bold lh-base">
+        <a href="{{ path('job', {'id': job.id}) }}" class="stretched-link text-reset text-decoration-none">
+            {{ job.title }}
+        </a>
+    </p>
+
+    <ul class="list-unstyled mt-2 d-flex gap-2 flex-row text-muted small flex-wrap mb-0">
+        <li class="d-flex align-items-center gap-1">
+            <i icon-name="briefcase" class="fs-6"></i>
+            {{ ('employment_type.' ~ job.employmentType.value)|trans }}
+        </li>
+        <li class="d-flex align-items-center gap-1">
+            <i icon-name="map-pin" class="fs-6"></i>
+            {{ job.location }}
+            {% if job.locationType %}
+                | {{ ('location_type.' ~ job.locationType.value)|trans }}
+            {% endif %}
+        </li>
+        {% if job.salary %}
+            <li class="d-flex align-items-center gap-1">
+                <i icon-name="coins" class="fs-6"></i>
+                {{ job.salary }}
+            </li>
+        {% endif %}
+    </ul>
+</div>

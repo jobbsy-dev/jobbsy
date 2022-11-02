@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News | {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="px-4 pb-4 py-md-5 my-3 text-center">
+        <h1 class="display-5 fw-bold">
+            News
+        </h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                Aggregated news about Symfony.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-7">
+            <div class="job-list d-flex flex-column justify-content-around gap-5">
+                {% for article in pagination %}
+                    {{ include('news/_article.html.twig') }}
+                {% else %}
+                    <div class="well">No news found</div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 d-none d-md-flex flex-column offset-md-1">
+            <h2 class="h4 mb-4">Latest jobs</h2>
+            <div class="card p-3 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex gap-4 flex-column">
+                        {% for job in lastJobs %}
+                            {{ include('job/_job_list_item.html.twig', {'job': job}) }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation mt-5">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>The Strangebuzz PHP/Symfony blog.</title>
+    <subtitle>Articles for the "" tag.</subtitle>
+    <updated>2022-10-31T14:26:09+01:00</updated>
+    <author>
+        <name>COil</name>
+        <email>coil@strangebuzz.com</email>
+    </author>
+    <link href="https://www.strangebuzz.com/en/blog/rss.xml" rel="self"/>
+    <id>https://www.strangebuzz.com/en/blog/rss.xml</id>
+    <icon>https://www.strangebuzz.com/img/strangebuzz_132.jpg?3.0.1</icon>
+    <logo>https://www.strangebuzz.com/img/strangebuzz_1024.jpg?3.0.1</logo>
+    <rights> © 2022 Strangebuzz</rights>
+    <entry>
+        <title>Validating your data fixtures with the Alice Symfony bundle </title>
+        <link href="https://www.strangebuzz.com/en/blog/validating-your-data-fixtures-with-the-alice-symfony-bundle"/>
+        <id>https://www.strangebuzz.com/en/blog/validating-your-data-fixtures-with-the-alice-symfony-bundle</id>
+        <published>2022-10-15T00:00:00+02:00</published>
+        <updated>2022-10-15T00:00:00+02:00</updated>
+        <author>
+            <name>COil</name>
+            <email>coil@strangebuzz.com</email>
+        </author>
+        <summary type="html">This post shows how to validate data fixtures with the Alice Symfony bundle before inserting them into the database. It's essential, as you could have invalid data otherwise in the development or test environments. </summary>
+    </entry>
+    <entry>
+        <title>Using PHP 8.1 enumerations in a Symfony project</title>
+        <link href="https://www.strangebuzz.com/en/blog/using-php-8-1-enumerations-in-a-symfony-project"/>
+        <id>https://www.strangebuzz.com/en/blog/using-php-8-1-enumerations-in-a-symfony-project</id>
+        <published>2022-09-03T00:00:00+02:00</published>
+        <updated>2022-09-07T00:00:00+02:00</updated>
+        <author>
+            <name>COil</name>
+            <email>coil@strangebuzz.com</email>
+        </author>
+        <summary type="html">This post shows how to use PHP 8.1 enumerations in a Symfony project. We review the different steps to use this new PHP 8.1 useful feature in different parts of a Symfony application. </summary>
+    </entry>
+    <entry>
+        <title>Upgrading PHP with the ondrej/php repository on an Ubuntu server</title>
+        <link href="https://www.strangebuzz.com/en/blog/upgrading-php-with-the-ondrej-php-repository-on-an-ubuntu-server"/>
+        <id>https://www.strangebuzz.com/en/blog/upgrading-php-with-the-ondrej-php-repository-on-an-ubuntu-server</id>
+        <published>2022-07-25T00:00:00+02:00</published>
+        <updated>2022-07-25T00:00:00+02:00</updated>
+        <author>
+            <name>COil</name>
+            <email>coil@strangebuzz.com</email>
+        </author>
+        <summary type="html">This post shows how to upgrade PHP with the ondrej/php repository on an Ubuntu server, step by step, to avoid forgetting something. </summary>
+    </entry>
+    <entry>
+        <title>Initializing your Symfony project with solid foundations</title>
+        <link href="https://www.strangebuzz.com/en/blog/initializing-your-symfony-project-with-solid-foundations"/>
+        <id>https://www.strangebuzz.com/en/blog/initializing-your-symfony-project-with-solid-foundations</id>
+        <published>2022-06-11T00:00:00+02:00</published>
+        <updated>2022-06-12T00:00:00+02:00</updated>
+        <author>
+            <name>COil</name>
+            <email>coil@strangebuzz.com</email>
+        </author>
+        <summary type="html">This post shows how to initialize a Symfony project with solid foundations. I give several bits of advice about this crucial step that determines how your project will evolve in the long run; will it stay maintainable and fun to work with? Or will it become the legacy project everyone tries to avoid? </summary>
+    </entry>
+</feed>

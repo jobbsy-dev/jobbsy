@@ -31,4 +31,9 @@ return static function (FrameworkConfig $config, ContainerConfigurator $containe
             ->session()
             ->storageFactoryId('session.storage.factory.mock_file');
     }
+
+    $config->htmlSanitizer()
+        ->sanitizer('app.article_sanitizer')
+            ->blockElements(['a', 'ul', 'li', 'p'])
+            ->dropElements(['figure', 'img', 'hr']);
 };

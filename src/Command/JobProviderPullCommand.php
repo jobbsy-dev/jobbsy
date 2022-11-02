@@ -49,8 +49,6 @@ class JobProviderPullCommand extends Command
 
         $jobs = $this->provider->retrieve($parameters);
 
-        $this->entityManager->getConnection()->getConfiguration()?->setSQLLogger();
-
         $context = $this->router->getContext();
         $context->setHost($this->commandRouterHost);
         $context->setScheme($this->commandRouterScheme);
