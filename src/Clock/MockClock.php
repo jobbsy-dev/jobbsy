@@ -11,7 +11,7 @@ final class MockClock implements ClockInterface
     public function __construct(?\DateTimeImmutable $now = null)
     {
         if (null === $now) {
-            $now = new DateTimeImmutable();
+            $now = new \DateTimeImmutable();
         }
 
         $this->now = $now;
