@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
-use App\Repository\EventRepository;
 use App\Repository\JobRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,7 +17,6 @@ class NewsController extends AbstractController
     public function __construct(
         private readonly ArticleRepository $articleRepository,
         private readonly JobRepository $jobRepository,
-        private readonly EventRepository $eventRepository
     ) {
     }
 
@@ -36,7 +34,6 @@ class NewsController extends AbstractController
         return $this->render('news/index.html.twig', [
             'pagination' => $pagination,
             'lastJobs' => $this->jobRepository->findLastJobs(5),
-            'upcomingEvents' => $this->eventRepository->findUpcomingEvents(5),
         ]);
     }
 
