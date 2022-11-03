@@ -2,9 +2,12 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Article;
 use App\Entity\Event;
+use App\Entity\Feed;
 use App\Entity\Job;
 use App\Job\EmploymentType;
+use App\News\FeedType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
@@ -16,10 +19,15 @@ class AppFixtures extends Fixture
 
     public const EVENT_1_ID = '9594a801-ff90-4be5-a3b4-ff8497f13ecf';
 
+    public const FEED_RSS_ID = '02f25238-795d-42b9-a569-cb79531a6195';
+    public const FEED_ATOM_ID = '5492e5a8-2865-486b-b9c0-f8313fdfcb24';
+    public const NEWS_1_ID = '867fd3ce-77d2-4447-a97e-643ddec9f435';
+
     public function load(ObjectManager $manager): void
     {
         $this->loadJobs($manager);
         $this->loadEvents($manager);
+        $this->loadNews($manager);
     }
 
     private function loadJobs(ObjectManager $manager): void
@@ -58,6 +66,38 @@ class AppFixtures extends Fixture
             $event->setCountry($countryCode);
 
             $manager->persist($event);
+        }
+
+        $manager->flush();
+    }
+
+    private function loadNews(ObjectManager $manager): void
+    {
+        $feedRSS = new Feed(Uuid::fromString(self::FEED_RSS_ID));
+        $feedRSS->setName('RSS Feed');
+        $feedRSS->setUrl('https://localhost/rss');
+        $feedRSS->setType(FeedType::RSS);
+        $manager->persist($feedRSS);
+        $this->addReference(sprintf('feed-%s', self::FEED_RSS_ID), $feedRSS);
+
+        $feedAtom = new Feed(Uuid::fromString(self::FEED_ATOM_ID));
+        $feedAtom->setName('Atom Feed');
+        $feedAtom->setUrl('https://localhost/atom');
+        $feedAtom->setType(FeedType::ATOM);
+        $manager->persist($feedAtom);
+        $this->addReference(sprintf('feed-%s', self::FEED_ATOM_ID), $feedAtom);
+
+        foreach ($this->getNewsData() as [$id, $title, $link, $description, $publishedAt, $feedId]) {
+            /** @var Feed $feed */
+            $feed = $this->getReference(sprintf('feed-%s', $feedId));
+
+            $article = new Article($feed, $id ? Uuid::fromString($id) : null);
+            $article->setTitle($title);
+            $article->setLink($link);
+            $article->setDescription($description);
+            $article->setPublishedAt(\DateTimeImmutable::createFromFormat('Y-m-d', $publishedAt));
+
+            $manager->persist($article);
         }
 
         $manager->flush();
@@ -130,6 +170,27 @@ class AppFixtures extends Fixture
             'Join us for the fifth edition of the international online SymfonyWorld conference. The entire conference will take place online during 4 days in English.',
             'https://live.symfony.com/2022-world-winter/',
             'FR',
+        ];
+    }
+
+    private function getNewsData(): \Generator
+    {
+        yield [
+            self::NEWS_1_ID,
+            'Write your first tests',
+            'https://localhost/write-first-tests',
+            'Ready to write your first tests? Use PHPUnit on your Symfony app',
+            '2022-11-03',
+            self::FEED_RSS_ID,
+        ];
+
+        yield [
+            null,
+            'Why you should migrate your Symfony configs to PHP',
+            'https://localhost/php-config',
+            '<p>Yesterday, I had a quick discussion on Slack in the Symfony Support channel where somebody was asking about splitting up their services.yaml file into multiple included files.</p>',
+            '2022-11-03',
+            self::FEED_ATOM_ID,
         ];
     }
 }

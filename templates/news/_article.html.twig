@@ -1,34 +1,24 @@
 <article>
-    <div class="d-flex align-items-center mb-3">
-        {% if article.source is same as 'https://feeds.feedburner.com/strangebuzz/en' %}
-            <img src="{{ asset('build/images/news_aggregator/sources/strangebuzz.png') }}" alt="" width="50">
-        {% endif %}
-        {% if article.source is same as 'https://feeds.feedburner.com/symfony/blog' %}
-            <img src="{{ asset('build/images/news_aggregator/sources/symfony.png') }}" alt="" width="75">
-        {% endif %}
-        {% if article.source is same as 'https://blog.sensiolabs.com/category/symfony/feed/' %}
-            <img src="{{ asset('build/images/news_aggregator/sources/sensiolabs.svg') }}" alt="" width="75">
-        {% endif %}
-        {% if article.source is same as 'https://feeds.feedburner.com/knpuniversity' %}
-            <img src="{{ asset('build/images/news_aggregator/sources/symfonycasts-logo.svg') }}" alt="" width="100">
+    <div class="d-flex align-items-center mb-3 text-muted small">
+        {% if article.feed.imageName %}
+            <img src="{{ vich_uploader_asset(article.feed) }}" alt="" width="30" class="rounded-circle">
+        {% elseif article.feed.imageUrl %}
+            <img src="{{ article.feed.imageUrl }}" alt="" width="30" class="rounded-circle">
         {% endif %}
 
-        {% if article.publishedAt or article.authors %}
-            <span class="d-block ms-2 text-muted small">&#183;</span>
+        <span class="ms-3">{{ article.feed.name }}</span>
 
-            <p class="post-metadata text-muted small mb-0 ms-2">
-                {% if article.publishedAt %}
-                    <span class="metadata">{{ article.publishedAt|format_datetime('long', 'none') }}</span>
-                {% endif %}
-                {% if article.authors is not empty %}
-                    <span class="metadata">by {{ article.authors|join(', ') }}</span>
-                {% endif %}
+        {% if article.publishedAt %}
+            <span class="d-block ms-2 small">&#183;</span>
+
+            <p class="post-metadata mb-0 ms-2">
+                <span class="metadata" title="{{ article.publishedAt|format_datetime('long', 'long') }}">{{ article.publishedAt|ago }}</span>
             </p>
         {% endif %}
     </div>
 
     <h3 class="card-title">
-        <a href="{{ path('news_article', {id: article.id}) }}" class="text-decoration-none text-reset">
+        <a href="{{ path('news_article', {id: article.id}) }}" class="text-decoration-none text-reset" target="_blank">
             {{ article.title }}
         </a>
     </h3>
@@ -37,5 +27,5 @@
         {{ article.description|sanitize_html(sanitizer = 'app.article_sanitizer')|u.truncate(180, '...', false)|raw }}
     </div>
 
-    <a href="{{ path('news_article', {id: article.id}) }}">Continue reading</a>
+    <a href="{{ path('news_article', {id: article.id}) }}" target="_blank">Continue reading</a>
 </article>
