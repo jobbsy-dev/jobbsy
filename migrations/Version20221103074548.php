@@ -13,7 +13,7 @@ final class Version20221103074548 extends AbstractMigration
     {
         $this->addSql('ALTER TABLE feed ADD COLUMN image_name VARCHAR(255) DEFAULT NULL');
         $this->addSql('ALTER TABLE feed ADD COLUMN image_size INTEGER DEFAULT NULL');
-        $this->addSql('ALTER TABLE feed ADD COLUMN updated_at DATETIME NOT NULL');
+        $this->addSql('ALTER TABLE feed ADD COLUMN updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP');
         $this->addSql('ALTER TABLE feed ADD COLUMN image_url VARCHAR(255) DEFAULT NULL');
     }
 
