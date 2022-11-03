@@ -7,10 +7,12 @@ use App\News\FeedType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class FeedCrudController extends AbstractCrudController
 {
@@ -39,6 +41,11 @@ class FeedCrudController extends AbstractCrudController
                 ->setFormTypeOption('choice_label', function (FeedType $enum) {
                     return $enum->value;
                 }),
+            UrlField::new('imageUrl')
+                ->onlyOnForms(),
+            Field::new('imageFile')
+                ->onlyOnForms()
+                ->setFormType(VichImageType::class),
         ];
     }
 
