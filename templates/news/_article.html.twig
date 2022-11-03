@@ -1,12 +1,12 @@
 <article>
     <div class="d-flex align-items-center mb-3 text-muted small">
         {% if article.feed.imageName %}
-            <img src="{{ vich_uploader_asset(article.feed) }}" alt="" width="30" class="rounded-circle">
+            <img src="{{ vich_uploader_asset(article.feed) }}" alt="" width="30" class="rounded-circle me-2">
         {% elseif article.feed.imageUrl %}
-            <img src="{{ article.feed.imageUrl }}" alt="" width="30" class="rounded-circle">
+            <img src="{{ article.feed.imageUrl }}" alt="" width="30" class="rounded-circle me-2">
         {% endif %}
 
-        <span class="ms-3">{{ article.feed.name }}</span>
+        <span>{{ article.feed.name }}</span>
 
         {% if article.publishedAt %}
             <span class="d-block ms-2 small">&#183;</span>
