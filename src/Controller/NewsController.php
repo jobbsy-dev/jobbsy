@@ -6,6 +6,8 @@ use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\JobRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use League\Uri\Uri;
+use League\Uri\UriModifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,6 +42,9 @@ class NewsController extends AbstractController
     #[Route('/news/{id}', name: 'news_article', methods: ['GET'])]
     public function post(Article $article): RedirectResponse
     {
-        return $this->redirect($article->getLink());
+        $uri = Uri::createFromString($article->getLink());
+        $uri = UriModifier::appendQuery($uri, 'ref=jobbsy');
+
+        return $this->redirect($uri);
     }
 }

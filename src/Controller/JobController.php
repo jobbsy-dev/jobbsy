@@ -13,6 +13,8 @@ use App\Repository\JobRepository;
 use App\Subscription\SubscribeMailingListCommand;
 use App\Subscription\SubscribeMailingListCommandHandler;
 use Doctrine\ORM\EntityManagerInterface;
+use League\Uri\Uri;
+use League\Uri\UriModifier;
 use Psr\Log\LoggerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
@@ -138,7 +140,10 @@ class JobController extends AbstractController
         $job->clicked();
         $this->em->flush();
 
-        return $this->redirect($job->getUrl());
+        $uri = Uri::createFromString($job->getUrl());
+        $uri = UriModifier::appendQuery($uri, 'ref=jobbsy');
+
+        return $this->redirect($uri);
     }
 
     public function subscriptionForm(): Response
