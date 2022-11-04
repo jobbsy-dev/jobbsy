@@ -122,7 +122,7 @@ class JobControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/job/'.AppFixtures::JOB_1_ID);
-        self::assertResponseRedirects('https://example.com');
+        self::assertResponseRedirects('https://example.com?ref=jobbsy');
     }
 
     public function testSponsorJob(): void
