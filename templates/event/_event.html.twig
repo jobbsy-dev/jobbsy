@@ -1,7 +1,7 @@
 <div class="card h-100 p-3 shadow-sm">
     <div class="card-body">
         <h3 class="card-title">
-            <a href="{{ event.url }}" class="text-decoration-none text-reset" target="_blank">{{ event.name }}</a>
+            <a href="{{ path('event_redirect', {'id': event.id}) }}" class="text-decoration-none text-reset" target="_blank">{{ event.name }}</a>
         </h3>
         <ul class="list-unstyled mt-3 d-flex gap-2 flex-column">
             <li class="d-flex align-items-center gap-2">
