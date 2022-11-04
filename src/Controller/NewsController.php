@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Analytics\AnalyticsClient;
+use App\Analytics\Plausible\EventRequest;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\JobRepository;
@@ -19,6 +21,7 @@ class NewsController extends AbstractController
     public function __construct(
         private readonly ArticleRepository $articleRepository,
         private readonly JobRepository $jobRepository,
+        private readonly AnalyticsClient $client,
     ) {
     }
 
@@ -40,8 +43,16 @@ class NewsController extends AbstractController
     }
 
     #[Route('/news/{id}', name: 'news_article', methods: ['GET'])]
-    public function post(Article $article): RedirectResponse
+    public function post(Request $request, Article $article): RedirectResponse
     {
+        $this->client->event(EventRequest::create([
+            'User-Agent' => $request->headers->get('User-Agent'),
+            'X-Forwarded-For' => implode(',', $request->getClientIps()),
+            'domain' => 'jobbsy.dev',
+            'name' => 'news-view',
+            'url' => $request->getUri(),
+        ]));
+
         $uri = Uri::createFromString($article->getLink());
         $uri = UriModifier::appendQuery($uri, 'ref=jobbsy');
 

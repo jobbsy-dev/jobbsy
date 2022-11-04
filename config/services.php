@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Analytics\AnalyticsClient;
+use App\Analytics\Dummy\DummyClient;
+use App\Analytics\Plausible\PlausibleClient;
 use App\Clock\MockClock;
 use App\Clock\SystemClock;
 use StellaMaris\Clock\ClockInterface;
@@ -25,8 +28,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ]);
 
     $services->set(ClockInterface::class, SystemClock::class);
+    $services->set(AnalyticsClient::class, PlausibleClient::class);
 
     if ('dev' === $containerConfigurator->env() || 'test' === $containerConfigurator->env()) {
         $services->set(ClockInterface::class, MockClock::class);
+        $services->set(AnalyticsClient::class, DummyClient::class);
     }
 };

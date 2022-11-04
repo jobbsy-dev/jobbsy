@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Analytics\AnalyticsClient;
+use App\Analytics\Plausible\EventRequest;
 use App\Donation\Command\CreateDonationPaymentUrlCommand;
 use App\Donation\CommandHandler\CreateDonationPaymentUrlCommandHandler;
 use App\Entity\Job;
@@ -36,7 +38,8 @@ class JobController extends AbstractController
         private readonly CreateDonationPaymentUrlCommandHandler $commandHandler,
         private readonly JobRepository $jobRepository,
         private readonly EntityManagerInterface $em,
-        private readonly LoggerInterface $logger
+        private readonly LoggerInterface $logger,
+        private readonly AnalyticsClient $client,
     ) {
     }
 
@@ -135,10 +138,18 @@ class JobController extends AbstractController
     }
 
     #[Route('/job/{id}', name: 'job', methods: ['GET'])]
-    public function job(Job $job): RedirectResponse
+    public function job(Request $request, Job $job): RedirectResponse
     {
         $job->clicked();
         $this->em->flush();
+
+        $this->client->event(EventRequest::create([
+            'User-Agent' => $request->headers->get('User-Agent'),
+            'X-Forwarded-For' => implode(',', $request->getClientIps()),
+            'domain' => 'jobbsy.dev',
+            'name' => 'job-view',
+            'url' => $request->getUri(),
+        ]));
 
         $uri = Uri::createFromString($job->getUrl());
         $uri = UriModifier::appendQuery($uri, 'ref=jobbsy');

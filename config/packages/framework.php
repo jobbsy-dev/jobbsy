@@ -36,4 +36,11 @@ return static function (FrameworkConfig $config, ContainerConfigurator $containe
         ->sanitizer('app.article_sanitizer')
             ->blockElements(['a', 'ul', 'li', 'p'])
             ->dropElements(['figure', 'img', 'hr']);
+
+    $config
+        ->trustedProxies(env('TRUSTED_PROXIES'))
+        ->trustedHeaders([
+            'x-forwarded-for',
+            'x-forwarded-proto',
+        ]);
 };
