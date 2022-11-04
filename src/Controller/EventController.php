@@ -22,7 +22,7 @@ class EventController extends AbstractController
         ]);
     }
 
-    #[Route('/events/{id}', name: 'event_article', methods: ['GET'])]
+    #[Route('/events/{id}', name: 'event_redirect', methods: ['GET'])]
     public function event(Event $event): RedirectResponse
     {
         $uri = Uri::createFromString($event->getUrl());
