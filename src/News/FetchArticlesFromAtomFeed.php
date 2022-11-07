@@ -25,7 +25,7 @@ final class FetchArticlesFromAtomFeed implements FetchArticlesFromFeedInterface
             $article = new Article($feed);
             $article->setTitle(trim($entry->title));
             $article->setLink($entry->link);
-            $article->setDescription(trim($entry->summary));
+            $article->setDescription($entry->summary ? trim($entry->summary) : trim($entry->content));
             $article->setPublishedAt($entry->published);
 
             $articles[] = $article;

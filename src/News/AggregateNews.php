@@ -3,12 +3,14 @@
 namespace App\News;
 
 use App\Repository\FeedRepository;
+use Psr\Log\LoggerInterface;
 
 final class AggregateNews
 {
     public function __construct(
         private readonly FeedRepository $feedRepository,
-        private readonly FetchArticlesFromFeed $fetchArticlesFromFeed
+        private readonly FetchArticlesFromFeed $fetchArticlesFromFeed,
+        private readonly LoggerInterface $logger
     ) {
     }
 
@@ -18,7 +20,11 @@ final class AggregateNews
 
         $articles = [];
         foreach ($feeds as $feed) {
-            $articles[] = ($this->fetchArticlesFromFeed)($feed);
+            try {
+                $articles[] = ($this->fetchArticlesFromFeed)($feed);
+            } catch (\Exception $exception) {
+                $this->logger->error($exception->getMessage());
+            }
         }
 
         return array_merge(...$articles);
