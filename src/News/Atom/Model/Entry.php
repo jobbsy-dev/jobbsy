@@ -40,7 +40,7 @@ final class Entry
     private static function getNodeValue(string $expression, \DOMXPath $xpath, \DOMNode $node): ?string
     {
         if (0 === $xpath->query($expression, $node)->count()) {
-           return null;
+            return null;
         }
 
         return $xpath->evaluate($expression, $node)->item(0)->nodeValue;
