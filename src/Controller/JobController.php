@@ -147,7 +147,7 @@ class JobController extends AbstractController
             'User-Agent' => $request->headers->get('User-Agent'),
             'X-Forwarded-For' => implode(',', $request->getClientIps()),
             'domain' => 'jobbsy.dev',
-            'name' => 'job-view',
+            'name' => 'pageview',
             'url' => $request->getUri(),
         ]));
 
