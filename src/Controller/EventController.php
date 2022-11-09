@@ -37,7 +37,7 @@ class EventController extends AbstractController
             'User-Agent' => $request->headers->get('User-Agent'),
             'X-Forwarded-For' => implode(',', $request->getClientIps()),
             'domain' => 'jobbsy.dev',
-            'name' => 'event-view',
+            'name' => 'pageview',
             'url' => $request->getUri(),
         ]));
 
