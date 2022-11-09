@@ -24,6 +24,6 @@ class CreateTweetSubscriber implements EventSubscriberInterface
     {
         $job = $event->job;
 
-        $this->bus->dispatch(new CreateTweetMessage($job->getId(), $event->jobUrl));
+//        $this->bus->dispatch(new CreateTweetMessage($job->getId(), $event->jobUrl));
     }
 }
