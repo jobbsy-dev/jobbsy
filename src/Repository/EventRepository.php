@@ -67,7 +67,7 @@ class EventRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('event')
             ->where('event.startDate < :today')
             ->setParameter('today', $this->clock->now())
-            ->orderBy('event.startDate', Criteria::ASC)
+            ->orderBy('event.startDate', Criteria::DESC)
             ->getQuery()
             ->getResult();
     }

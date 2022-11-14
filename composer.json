@@ -28,7 +28,7 @@
         "doctrine/orm": "^2.10",
         "easycorp/easyadmin-bundle": "^4.1",
         "fabpot/goutte": "^4.0",
-        "knplabs/knp-paginator-bundle": "^5.9",
+        "knplabs/knp-paginator-bundle": "^6.0",
         "knplabs/knp-time-bundle": "^1.18",
         "league/commonmark": "^2.3",
         "league/flysystem-bundle": "^3.0",
@@ -79,7 +79,7 @@
         "twig/markdown-extra": "^3.4",
         "twig/string-extra": "^3.4",
         "twig/twig": "^2.12|^3.0",
-        "vich/uploader-bundle": "^1.19",
+        "vich/uploader-bundle": "^2.0",
         "webmozart/assert": "^1.10"
     },
     "require-dev": {
