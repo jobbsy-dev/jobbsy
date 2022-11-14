@@ -33,7 +33,7 @@ phpstan:							## Run PHPStan
 fixtures:							## Load fixtures test env
 	$(SYMFONY_CLI) console doctrine:fixtures:load --env=test --no-interaction
 
-test:								## Run tests
+test: bootstrap-tests fixtures		## Run tests
 	$(SYMFONY_CLI) $(PHPUNIT)
 
 deploy:								## Deploy
