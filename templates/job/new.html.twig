@@ -4,6 +4,13 @@
 
 {% block post_job %}{% endblock %}
 
+{% block extra_scripts %}
+    {{ parent() }}
+    {% if app.environment is same as 'prod' %}
+        <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="566e6760-2f80-4303-b926-615ff7aaec74";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    {% endif %}
+{% endblock %}
+
 {% block main %}
     <div class="row mt-md-4 mt-0">
         <div class="text-center py-5">
