@@ -1,0 +1,39 @@
+<article>
+    <div class="d-flex align-items-center mb-3 text-muted small flex-wrap">
+        {% if entry.feed %}
+            {% if entry.feed.imageName or entry.feed.imageUrl %}
+                <div class="me-2">
+                    {% if entry.feed.imageName %}
+                        <img src="{{ vich_uploader_asset(entry.feed) }}" alt="" width="30" class="rounded-circle">
+                    {% elseif entry.feed.imageUrl %}
+                        <img src="{{ entry.feed.imageUrl }}" alt="" width="30" class="rounded-circle">
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="d-flex align-items-center gap-2 flex-grow-1">
+            {% if entry.feed %}
+                <span class="d-block text-truncate feed-name">{{ entry.feed.name }}</span>
+            {% endif %}
+
+            {% if entry.publishedAt %}
+                <span class="small">&#183;</span>
+
+                <p class="post-metadata mb-0">
+                    <span class="metadata" title="{{ entry.publishedAt|format_datetime('long', 'long') }}">{{ entry.publishedAt|ago }}</span>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <h3 class="card-title">
+        <a href="{{ path('news_entry', {id: entry.id}) }}" class="text-decoration-none text-reset" target="_blank">
+            {{ entry.title }}
+        </a>
+    </h3>
+
+    <div class="card-text mt-3 mb-3">
+        {{ entry.description|sanitize_html(sanitizer = 'app.article_sanitizer')|u.truncate(180, '...', false)|raw }}
+    </div>
+</article>

@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Analytics\AnalyticsClient;
 use App\Analytics\Plausible\EventRequest;
-use App\Entity\Article;
-use App\Repository\ArticleRepository;
+use App\Entity\News\Entry;
 use App\Repository\JobRepository;
+use App\Repository\News\EntryRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use League\Uri\Uri;
 use League\Uri\UriModifier;
@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class NewsController extends AbstractController
 {
     public function __construct(
-        private readonly ArticleRepository $articleRepository,
+        private readonly EntryRepository $articleRepository,
         private readonly JobRepository $jobRepository,
         private readonly AnalyticsClient $client,
     ) {
@@ -42,8 +42,8 @@ class NewsController extends AbstractController
         ]);
     }
 
-    #[Route('/news/{id}', name: 'news_article', methods: ['GET'])]
-    public function post(Request $request, Article $article): RedirectResponse
+    #[Route('/news/{id}', name: 'news_entry', methods: ['GET'])]
+    public function entry(Request $request, Entry $article): RedirectResponse
     {
         $this->client->event(EventRequest::create([
             'User-Agent' => $request->headers->get('User-Agent'),

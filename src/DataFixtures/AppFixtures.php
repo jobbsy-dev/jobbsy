@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Article;
 use App\Entity\Event;
-use App\Entity\Feed;
 use App\Entity\Job;
+use App\Entity\News\Entry;
+use App\Entity\News\Feed;
 use App\Job\EmploymentType;
-use App\News\FeedType;
+use App\News\Aggregator\FeedType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
@@ -41,11 +41,11 @@ class AppFixtures extends Fixture
             $job->setLocation($location);
             $job->setUrl($url);
             $job->setTags($tags);
+            $publishedAt = $publishedAt->modify('- 1 hour');
             $job->publish($publishedAt);
             if ($pinned) {
                 $job->pinUntil(new \DateTimeImmutable('+1 month'));
             }
-            $publishedAt = $publishedAt->modify('- 1 hour');
 
             $manager->persist($job);
         }
@@ -91,7 +91,8 @@ class AppFixtures extends Fixture
             /** @var Feed $feed */
             $feed = $this->getReference(sprintf('feed-%s', $feedId));
 
-            $article = new Article($feed, $id ? Uuid::fromString($id) : null);
+            $article = new Entry($id ? Uuid::fromString($id) : null);
+            $article->setFeed($feed);
             $article->setTitle($title);
             $article->setLink($link);
             $article->setDescription($description);
