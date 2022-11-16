@@ -2,7 +2,7 @@
 
 namespace App\EventSubscriber\EasyAdmin;
 
-use App\Entity\Post;
+use App\Entity\Blog\Post;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;

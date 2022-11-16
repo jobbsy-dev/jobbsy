@@ -2,8 +2,8 @@
 
 namespace App\Command;
 
-use App\News\AggregateNews;
-use App\Repository\ArticleRepository;
+use App\News\Aggregator\AggregateNews;
+use App\Repository\News\EntryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -20,7 +20,7 @@ class AggregateNewsCommand extends Command
 {
     public function __construct(
         protected readonly AggregateNews $aggregateNews,
-        private readonly ArticleRepository $articleRepository,
+        private readonly EntryRepository $articleRepository,
         private readonly EntityManagerInterface $entityManager
     ) {
         parent::__construct();

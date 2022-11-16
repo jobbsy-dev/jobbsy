@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Post;
+use App\Entity\Blog\Post;
 use App\Repository\JobRepository;
 use App\Repository\PostRepository;
 use Knp\Component\Pager\PaginatorInterface;

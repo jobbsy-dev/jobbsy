@@ -2,10 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Blog\Post;
 use App\Entity\Event;
-use App\Entity\Feed;
 use App\Entity\Job;
-use App\Entity\Post;
+use App\Entity\News\Entry;
+use App\Entity\News\Feed;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
@@ -35,8 +36,15 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToCrud('Jobs', 'fas fa-list', Job::class);
         yield MenuItem::linkToCrud('Events', 'fas fa-calendar', Event::class);
-        yield MenuItem::linkToCrud('Posts', 'fas fa-edit', Post::class);
-        yield MenuItem::linkToCrud('Feeds', 'fas fa-edit', Feed::class);
+
+        yield MenuItem::linkToCrud('Blog Posts', 'fas fa-file-text', Post::class);
+
+        yield MenuItem::subMenu('News', 'fas fa-newspaper')->setSubItems([
+            MenuItem::linkToCrud('Entries', 'fas fa-list', Entry::class),
+            MenuItem::linkToCrud('Feeds', 'fas fa-rss', Feed::class),
+        ]);
+
+        yield MenuItem::section('Channels');
         yield MenuItem::linkToUrl('View website', 'fas fa-external-link', '/');
     }
 

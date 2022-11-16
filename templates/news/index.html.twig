@@ -17,8 +17,8 @@
     <div class="row">
         <div class="col-12 col-md-7">
             <div class="job-list d-flex flex-column justify-content-around gap-5">
-                {% for article in pagination %}
-                    {{ include('news/_article.html.twig') }}
+                {% for entry in pagination %}
+                    {{ include('news/_entry.html.twig') }}
                 {% else %}
                     <div class="well">No news found</div>
                 {% endfor %}

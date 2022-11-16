@@ -2,19 +2,20 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Blog\Post;
+use App\Entity\News\Entry;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
-class PostCrudController extends AbstractCrudController
+class EntryCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Post::class;
+        return Entry::class;
     }
 
     public function configureFields(string $pageName): iterable
@@ -24,12 +25,8 @@ class PostCrudController extends AbstractCrudController
                 ->onlyOnDetail(),
             TextField::new('title')
                 ->setMaxLength(35),
-            TextField::new('slug')
-                ->onlyOnForms()
-                ->setRequired(false),
-            TextField::new('summary')
-                ->onlyOnForms(),
-            TextareaField::new('content')
+            UrlField::new('link'),
+            TextareaField::new('description')
                 ->onlyOnForms(),
             DateTimeField::new('publishedAt'),
         ];
