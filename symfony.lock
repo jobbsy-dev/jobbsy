@@ -164,15 +164,15 @@
         "version": "2.3.2"
     },
     "league/flysystem-bundle": {
-        "version": "2.1",
+        "version": "3.0",
         "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
+            "branch": "main",
             "version": "1.0",
-            "ref": "913dc3d7a5a1af0d2b044c5ac3a16e2f851d7380"
+            "ref": "84b75cfe673515e38bf128a9539919165bb24cd3"
         },
         "files": [
-            "config/packages/flysystem.yaml",
+            "config/packages/flysystem.php",
             "var/storage/.gitignore"
         ]
     },
