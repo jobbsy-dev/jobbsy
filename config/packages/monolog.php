@@ -25,17 +25,17 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $mainHandler = $config->handler('main')
             ->type('fingers_crossed')
             ->actionLevel('error')
-            ->handler('file_log')
+            ->handler('nested')
             ->bufferSize(50);
 
-        $mainHandler->excludedHttpCode()->code(403);
         $mainHandler->excludedHttpCode()->code(404);
+        $mainHandler->excludedHttpCode()->code(405);
 
-        $config->handler('file_log')
-            ->type('rotating_file')
-            ->path('%kernel.logs_dir%/%kernel.environment%.log')
+        $config->handler('nested')
+            ->type('stream')
+            ->path('php://stderr')
             ->level('debug')
-            ->maxFiles(10);
+            ->formatter('monolog.formatter.json');
 
         $config->handler('console')
             ->type('console')

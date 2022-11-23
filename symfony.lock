@@ -558,15 +558,15 @@
         "version": "v6.0.1"
     },
     "symfony/monolog-bundle": {
-        "version": "3.7",
+        "version": "3.8",
         "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
+            "branch": "main",
             "version": "3.7",
-            "ref": "213676c4ec929f046dfde5ea8e97625b81bc0578"
+            "ref": "96b724d9eee133f18d4845f90948c5d864cfb286"
         },
         "files": [
-            "config/packages/monolog.yaml"
+            "config/packages/monolog.php"
         ]
     },
     "symfony/notifier": {
