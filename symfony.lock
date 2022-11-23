@@ -723,15 +723,15 @@
         "version": "v6.0.1"
     },
     "symfony/validator": {
-        "version": "6.0",
+        "version": "6.1",
         "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
+            "branch": "main",
             "version": "5.3",
-            "ref": "c32cfd98f714894c4f128bb99aa2530c1227603c"
+            "ref": "f05ddc36fac6381e494125732d6822b5af2051b3"
         },
         "files": [
-            "config/packages/validator.yaml"
+            "config/packages/validator.php"
         ]
     },
     "symfony/var-dumper": {
