@@ -688,15 +688,15 @@
         "version": "v6.0.1"
     },
     "symfony/translation": {
-        "version": "6.0",
+        "version": "6.1",
         "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
+            "branch": "main",
             "version": "5.3",
-            "ref": "da64f5a2b6d96f5dc24914517c0350a5f91dee43"
+            "ref": "0d821754923c256a79c8567d46310176884dd674"
         },
         "files": [
-            "config/packages/translation.yaml",
+            "config/packages/translation.php",
             "translations/.gitignore"
         ]
     },
