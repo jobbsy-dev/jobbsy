@@ -136,8 +136,8 @@
             "allow-contrib": false,
             "require": "6.1.*",
             "endpoint": [
-                "https://raw.githubusercontent.com/alexander-schranz/symfony-recipes-php/flex/main/index.json",
-                "https://raw.githubusercontent.com/alexander-schranz/symfony-recipes-php-contrib/flex/main/index.json",
+                "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php/flex/main/index.json",
+                "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php-contrib/flex/main/index.json",
                 "flex://defaults"
             ]
         }
