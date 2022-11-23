@@ -540,15 +540,15 @@
         }
     },
     "symfony/messenger": {
-        "version": "6.0",
+        "version": "6.1",
         "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.3",
-            "ref": "25e3c964d3aee480b3acc3114ffb7940c89edfed"
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
+            "branch": "main",
+            "version": "6.0",
+            "ref": "7f231d9d4cdab2f79cabd2adb5c0b3443c6d2f1e"
         },
         "files": [
-            "config/packages/messenger.yaml"
+            "config/packages/messenger.php"
         ]
     },
     "symfony/mime": {
