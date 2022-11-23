@@ -84,13 +84,13 @@
     "doctrine/doctrine-migrations-bundle": {
         "version": "3.2",
         "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
+            "branch": "main",
             "version": "3.1",
-            "ref": "ee609429c9ee23e22d6fa5728211768f51ed2818"
+            "ref": "cfb536f3fe7994c4177bee66f7f95fcc4b78209f"
         },
         "files": [
-            "config/packages/doctrine_migrations.yaml",
+            "config/packages/doctrine_migrations.php",
             "migrations/.gitignore"
         ]
     },
