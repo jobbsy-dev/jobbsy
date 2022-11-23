@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\NewsAggregator\RSS;
+namespace App\Tests\News\Aggregator\RSS;
 
 use App\News\Aggregator\RSS\Client;
 use PHPUnit\Framework\TestCase;

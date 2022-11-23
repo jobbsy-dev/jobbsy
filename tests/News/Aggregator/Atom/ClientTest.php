@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\NewsAggregator\Atom;
+namespace App\Tests\News\Aggregator\Atom;
 
 use App\News\Aggregator\Atom\Client;
 use PHPUnit\Framework\TestCase;

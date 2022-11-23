@@ -19,8 +19,7 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
         ->namingStrategy('doctrine.orm.naming_strategy.underscore_number_aware')
         ->autoMapping(true);
 
-    $emDefault
-        ->mapping('App')
+    $emDefault->mapping('App')
         ->isBundle(false)
         ->type('attribute')
         ->dir('%kernel.project_dir%/src/Entity')

@@ -34,8 +34,8 @@ return static function (FrameworkConfig $config, ContainerConfigurator $containe
 
     $config->htmlSanitizer()
         ->sanitizer('app.article_sanitizer')
-            ->blockElements(['a', 'ul', 'li', 'p'])
-            ->dropElements(['figure', 'img', 'hr']);
+        ->blockElements(['a', 'ul', 'li', 'p'])
+        ->dropElements(['figure', 'img', 'hr']);
 
     $config
         ->trustedProxies(env('TRUSTED_PROXIES'))
