@@ -15,17 +15,14 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->parameters()
         ->set('app_version', env('APP_VERSION'));
 
-    $services = $containerConfigurator->services()
-        ->defaults()
+    $services = $containerConfigurator->services();
+
+    $services->defaults()
         ->autoconfigure()
         ->autowire();
 
     $services->load('App\\', '../src/')
-        ->exclude([
-            '../src/DependencyInjection/',
-            '../src/Entity/',
-            '../src/Kernel.php'
-        ]);
+        ->exclude([__DIR__.'/../src/DependencyInjection/', __DIR__.'/../src/Entity/', __DIR__.'/../src/Kernel.php']);
 
     $services->set(ClockInterface::class, SystemClock::class);
     $services->set(AnalyticsClient::class, PlausibleClient::class);

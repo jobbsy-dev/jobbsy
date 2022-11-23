@@ -485,19 +485,19 @@
         "version": "v6.0.1"
     },
     "symfony/framework-bundle": {
-        "version": "6.0",
+        "version": "6.1",
         "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
+            "branch": "main",
             "version": "5.4",
-            "ref": "3cd216a4d007b78d8554d44a5b1c0a446dab24fb"
+            "ref": "6d2b53f8a97ea7092efc8fd94aa329f604316c3e"
         },
         "files": [
-            "config/packages/cache.yaml",
-            "config/packages/framework.yaml",
+            "config/packages/cache.php",
+            "config/packages/framework.php",
             "config/preload.php",
-            "config/routes/framework.yaml",
-            "config/services.yaml",
+            "config/routes/framework.php",
+            "config/services.php",
             "public/index.php",
             "src/Controller/.gitignore",
             "src/Kernel.php"
