@@ -3,31 +3,29 @@
 declare(strict_types=1);
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Config\FrameworkConfig;
-use Symfony\Config\WebProfilerConfig;
 
-return static function (WebProfilerConfig $config, FrameworkConfig $frameworkConfig, ContainerConfigurator $containerConfigurator): void {
+return static function (ContainerConfigurator $containerConfigurator): void {
     if ($containerConfigurator->env() === 'dev') {
-        $config
-            ->toolbar(true)
-            ->interceptRedirects(false);
-
-        $frameworkConfig->profiler()
-            ->onlyExceptions(false)
-            ->collectSerializerData(true);
+        $containerConfigurator->extension('web_profiler', [
+            'toolbar' => true,
+            'intercept_redirects' => false,
+        ]);
+        $containerConfigurator->extension('framework', [
+            'profiler' => [
+                'only_exceptions' => false,
+                'collect_serializer_data' => true,
+            ],
+        ]);
     }
-
     if ($containerConfigurator->env() === 'test') {
-        $config
-            ->toolbar(false)
-            ->interceptRedirects(false);
-
+        $containerConfigurator->extension('web_profiler', [
+            'toolbar' => false,
+            'intercept_redirects' => false,
+        ]);
         $containerConfigurator->extension('framework', [
             'profiler' => [
                 'collect' => false,
             ],
         ]);
-        $frameworkConfig->profiler()
-            ->collect(false);
     }
 };
