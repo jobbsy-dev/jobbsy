@@ -191,13 +191,13 @@
     "nelmio/cors-bundle": {
         "version": "2.2",
         "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
+            "branch": "main",
             "version": "1.5",
-            "ref": "6bea22e6c564fba3a1391615cada1437d0bde39c"
+            "ref": "f818ca1a144e57496762ae837d9929543f042751"
         },
         "files": [
-            "config/packages/nelmio_cors.yaml"
+            "config/packages/nelmio_cors.php"
         ]
     },
     "nikic/php-parser": {
