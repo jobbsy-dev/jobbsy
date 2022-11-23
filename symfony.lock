@@ -16,15 +16,15 @@
         "version": "v1.6.0"
     },
     "dama/doctrine-test-bundle": {
-        "version": "6.7",
+        "version": "7.1",
         "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php-contrib",
+            "branch": "main",
             "version": "4.0",
-            "ref": "56eaa387b5e48ebcc7c95a893b47dfa1ad51449c"
+            "ref": "b891f75435e49095a11ce83296e4ff9cadecf87f"
         },
         "files": [
-            "config/packages/test/dama_doctrine_test_bundle.yaml"
+            "config/packages/test/dama_doctrine_test_bundle.php"
         ]
     },
     "doctrine/annotations": {
