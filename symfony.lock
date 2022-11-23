@@ -377,15 +377,15 @@
         "version": "3.5.0"
     },
     "sentry/sentry-symfony": {
-        "version": "4.2",
+        "version": "4.4",
         "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php-contrib",
             "branch": "main",
-            "version": "3.0",
-            "ref": "9746f0823302d7980e5273ef7a69ef3f5ac80914"
+            "version": "4.0",
+            "ref": "98cfda368c72348995eaa93de6ef7f3eb6aac05c"
         },
         "files": [
-            "config/packages/sentry.yaml"
+            "config/packages/sentry.php"
         ]
     },
     "stripe/stripe-php": {
