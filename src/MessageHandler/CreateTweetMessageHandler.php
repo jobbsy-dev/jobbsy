@@ -7,9 +7,10 @@ use App\Broadcast\Twitter\TwitterApi;
 use App\Message\CreateTweetMessage;
 use App\Repository\JobRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-final class CreateTweetMessageHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+final class CreateTweetMessageHandler
 {
     public function __construct(
         private readonly JobRepository $jobRepository,
