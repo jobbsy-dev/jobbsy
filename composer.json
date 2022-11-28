@@ -41,7 +41,7 @@
         "sensio/framework-extra-bundle": "^6.1",
         "sentry/sentry-symfony": "^4.2",
         "stella-maris/clock": "^0.1.6",
-        "stripe/stripe-php": "^9.0",
+        "stripe/stripe-php": "^10.0",
         "symfony/asset": "6.1.*",
         "symfony/console": "6.1.*",
         "symfony/doctrine-messenger": "6.1.*",

@@ -5,9 +5,10 @@ namespace App\Donation\CommandHandler;
 use App\Donation\Command\CreateDonationPaymentUrlCommand;
 use App\Donation\CreatePaymentUrlInterface;
 use App\Repository\JobRepository;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-final class CreateDonationPaymentUrlCommandHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+final class CreateDonationPaymentUrlCommandHandler
 {
     public function __construct(
         private readonly JobRepository $jobRepository,
