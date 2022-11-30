@@ -358,18 +358,6 @@
     "sebastian/version": {
         "version": "3.0.2"
     },
-    "sensio/framework-extra-bundle": {
-        "version": "6.2",
-        "recipe": {
-            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
-            "branch": "main",
-            "version": "5.2",
-            "ref": "1a037f165c1b4db8cccdf04624723ba8a20dce0f"
-        },
-        "files": [
-            "config/packages/sensio_framework_extra.php"
-        ]
-    },
     "sentry/sdk": {
         "version": "3.1.1"
     },
