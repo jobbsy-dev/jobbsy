@@ -101,7 +101,7 @@ class JobController extends AbstractController
             return $this->redirect($redirectUrl, 303);
         }
 
-        return $this->renderForm('job/new.html.twig', [
+        return $this->render('job/new.html.twig', [
             'job' => $job,
             'form' => $form,
         ]);
@@ -220,7 +220,7 @@ class JobController extends AbstractController
             return $this->redirect($redirectUrl, 303);
         }
 
-        return $this->renderForm('job/sponsor.html.twig', [
+        return $this->render('job/sponsor.html.twig', [
             'job' => $job,
             'form' => $form,
         ]);
