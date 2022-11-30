@@ -28,20 +28,19 @@
                         <a href="{{ path('job_index') }}" class="mb-2 mb-sm-0 mb-md-0">
                             <img src="{{ asset('build/images/logo_jobbsy.svg') }}" alt="logo" width="120">
                         </a>
-                        {% set routeName = app.request.attributes.get('_route') %}
                         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-md-3">
                             <li class="nav-item">
-                                <a href="{{ path('job_index') }}" class="nav-link px-2 {% if routeName != 'job_index'%}link-secondary{% endif %}">
+                                <a href="{{ path('job_index') }}" class="nav-link px-2 {% if app.current_route != 'job_index'%}link-secondary{% endif %}">
                                     Jobs
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('event_index') }}" class="nav-link px-2 {% if routeName != 'event_index'%}link-secondary{% endif %}">
+                                <a href="{{ path('event_index') }}" class="nav-link px-2 {% if app.current_route != 'event_index'%}link-secondary{% endif %}">
                                     Events
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('news_index') }}" class="nav-link px-2 {% if routeName != 'news_index'%}link-secondary{% endif %}">
+                                <a href="{{ path('news_index') }}" class="nav-link px-2 {% if app.current_route != 'news_index'%}link-secondary{% endif %}">
                                     News
                                 </a>
                             </li>
