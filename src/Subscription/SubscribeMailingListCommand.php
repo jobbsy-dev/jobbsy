@@ -2,11 +2,11 @@
 
 namespace App\Subscription;
 
-class SubscribeMailingListCommand
+final readonly class SubscribeMailingListCommand
 {
     public function __construct(
-        public readonly string $email,
-        public readonly string $listId
+        public string $email,
+        public string $listId
     ) {
     }
 }

@@ -2,16 +2,16 @@
 
 namespace App\Mailjet\Model\CreateCampaignDraft;
 
-final class CreateCampaignDraftRequest
+final readonly class CreateCampaignDraftRequest
 {
     public function __construct(
-        readonly string $title,
-        readonly int $contactsListId,
-        readonly string $locale,
-        readonly string $senderEmail,
-        readonly string $senderName,
-        readonly string $subject,
-        readonly string $sender
+        public string $title,
+        public int $contactsListId,
+        public string $locale,
+        public string $senderEmail,
+        public string $senderName,
+        public string $subject,
+        public string $sender
     ) {
     }
 

@@ -2,14 +2,14 @@
 
 namespace App\News\Aggregator\Atom\Model;
 
-final class Entry
+final readonly class Entry
 {
     public function __construct(
-        public readonly string $title,
-        public readonly string $link,
-        public readonly ?string $summary = null,
-        public readonly ?string $content = null,
-        public readonly ?\DateTimeImmutable $published = null,
+        public string $title,
+        public string $link,
+        public ?string $summary = null,
+        public ?string $content = null,
+        public ?\DateTimeImmutable $published = null,
     ) {
     }
 

@@ -2,12 +2,12 @@
 
 namespace App\Mailjet\Model\ManageContact;
 
-final class ManageContactResponse
+final readonly class ManageContactResponse
 {
     private function __construct(
-        public readonly int $count,
-        public readonly array $data,
-        public readonly int $total,
+        public int $count,
+        public array $data,
+        public int $total,
     ) {
     }
 

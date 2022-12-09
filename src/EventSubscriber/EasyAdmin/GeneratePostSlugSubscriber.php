@@ -7,9 +7,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-final class GeneratePostSlugSubscriber implements EventSubscriberInterface
+final readonly class GeneratePostSlugSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly SluggerInterface $slugger)
+    public function __construct(private SluggerInterface $slugger)
     {
     }
 

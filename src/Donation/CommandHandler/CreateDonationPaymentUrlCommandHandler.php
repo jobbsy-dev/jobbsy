@@ -8,11 +8,11 @@ use App\Repository\JobRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-final class CreateDonationPaymentUrlCommandHandler
+final readonly class CreateDonationPaymentUrlCommandHandler
 {
     public function __construct(
-        private readonly JobRepository $jobRepository,
-        private readonly CreatePaymentUrlInterface $createPaymentUrl
+        private JobRepository $jobRepository,
+        private CreatePaymentUrlInterface $createPaymentUrl
     ) {
     }
 

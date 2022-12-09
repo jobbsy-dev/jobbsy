@@ -4,23 +4,24 @@ namespace App\Provider;
 
 use Webmozart\Assert\Assert;
 
-final class AccessToken
+final readonly class AccessToken
 {
-    private \DateTimeImmutable $createdAt;
-
     private function __construct(
-        private readonly string $token,
-        private readonly int $expiresIn,
+        private string $token,
+        private int $expiresIn,
+        private \DateTimeImmutable $createdAt
     ) {
         Assert::notEmpty($token);
         Assert::greaterThan($this->expiresIn, 0);
-
-        $this->createdAt = new \DateTimeImmutable();
     }
 
-    public static function create(string $token, int $expiresIn): self
+    public static function create(
+        string $token,
+        int $expiresIn,
+        \DateTimeImmutable $createAt = new \DateTimeImmutable()
+    ): self
     {
-        return new self($token, $expiresIn);
+        return new self($token, $expiresIn, $createAt);
     }
 
     public function getToken(): string

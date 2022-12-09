@@ -7,9 +7,9 @@ use App\Entity\Job;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityDeletedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-final class DeleteTweetSubscriber implements EventSubscriberInterface
+final readonly class DeleteTweetSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly TwitterApi $twitterApi)
+    public function __construct(private TwitterApi $twitterApi)
     {
     }
 

@@ -2,9 +2,9 @@
 
 namespace App\Subscription;
 
-class SubscribeMailingListCommandHandler
+final readonly class SubscribeMailingListCommandHandler
 {
-    public function __construct(private readonly SubscriptionMailingListInterface $subscriptionMailingList)
+    public function __construct(private SubscriptionMailingListInterface $subscriptionMailingList)
     {
     }
 

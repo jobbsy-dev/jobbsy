@@ -6,9 +6,9 @@ use App\Mailjet\MailjetApi;
 use App\Mailjet\Model\ManageContact\Action;
 use App\Mailjet\Model\ManageContact\ManageContactRequest;
 
-class MailjetSubscriptionAdapter implements SubscriptionMailingListInterface
+final readonly class MailjetSubscriptionAdapter implements SubscriptionMailingListInterface
 {
-    public function __construct(private readonly MailjetApi $api)
+    public function __construct(private MailjetApi $api)
     {
     }
 

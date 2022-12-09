@@ -4,7 +4,6 @@ namespace App\Provider\PoleEmploi;
 
 use App\Provider\AccessToken;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final class PoleEmploiApi
@@ -16,11 +15,8 @@ final class PoleEmploiApi
         private readonly string $poleEmploiClientId,
         #[Autowire('%env(POLE_EMPLOI_CLIENT_SECRET)%')]
         private readonly string $poleEmploiClientSecret,
-        private ?HttpClientInterface $httpClient = null,
+        private readonly HttpClientInterface $httpClient,
     ) {
-        if (null === $this->httpClient) {
-            $this->httpClient = HttpClient::create();
-        }
     }
 
     public function authenticate(array $scope = [], bool $force = false): void

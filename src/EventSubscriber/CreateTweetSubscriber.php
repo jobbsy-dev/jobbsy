@@ -7,9 +7,9 @@ use App\Message\CreateTweetMessage;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-class CreateTweetSubscriber implements EventSubscriberInterface
+final readonly class CreateTweetSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly MessageBusInterface $bus)
+    public function __construct(private MessageBusInterface $bus)
     {
     }
 

@@ -6,9 +6,9 @@ use App\Entity\News\Entry;
 use App\Entity\News\Feed;
 use App\News\Aggregator\Atom\Client as AtomClient;
 
-final class FetchArticlesFromAtomFeed implements FetchArticlesFromFeedInterface
+final readonly class FetchArticlesFromAtomFeed implements FetchArticlesFromFeedInterface
 {
-    public function __construct(private readonly AtomClient $atomClient)
+    public function __construct(private AtomClient $atomClient)
     {
     }
 

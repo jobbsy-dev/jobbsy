@@ -2,11 +2,11 @@
 
 namespace App\News\Aggregator\Atom\Model;
 
-final class Author
+final readonly class Author
 {
     public function __construct(
-        public readonly string $name,
-        public readonly string $email
+        public string $name,
+        public string $email
     ) {
     }
 }

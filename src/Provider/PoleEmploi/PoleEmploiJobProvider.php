@@ -9,12 +9,12 @@ use App\Provider\JobProviderInterface;
 use App\Provider\SearchParameters;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
-final class PoleEmploiJobProvider implements JobProviderInterface
+final readonly class PoleEmploiJobProvider implements JobProviderInterface
 {
     public function __construct(
-        private readonly PoleEmploiApi $api,
+        private PoleEmploiApi $api,
         #[Autowire('%env(POLE_EMPLOI_CLIENT_ID)%')]
-        private readonly string $poleEmploiClientId
+        private string $poleEmploiClientId
     ) {
     }
 

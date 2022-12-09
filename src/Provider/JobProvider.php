@@ -4,12 +4,12 @@ namespace App\Provider;
 
 use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 
-final class JobProvider implements JobProviderInterface
+final readonly class JobProvider implements JobProviderInterface
 {
     /**
      * @var JobProviderInterface[]
      */
-    private readonly iterable $providers;
+    private iterable $providers;
 
     public function __construct(
         #[TaggedIterator(JobProviderInterface::class, exclude: self::class)]

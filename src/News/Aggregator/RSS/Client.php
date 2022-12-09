@@ -3,16 +3,12 @@
 namespace App\News\Aggregator\RSS;
 
 use App\News\Aggregator\RSS\Model\Document;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-final class Client
+final readonly class Client
 {
-    public function __construct(private ?HttpClientInterface $httpClient = null)
+    public function __construct(private HttpClientInterface $httpClient)
     {
-        if (null === $this->httpClient) {
-            $this->httpClient = HttpClient::create();
-        }
     }
 
     public function get(string $url): ?Document

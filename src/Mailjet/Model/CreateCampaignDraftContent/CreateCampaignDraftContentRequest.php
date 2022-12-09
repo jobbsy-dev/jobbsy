@@ -2,11 +2,11 @@
 
 namespace App\Mailjet\Model\CreateCampaignDraftContent;
 
-final class CreateCampaignDraftContentRequest
+final readonly class CreateCampaignDraftContentRequest
 {
     public function __construct(
-        public readonly int $campaignId,
-        public readonly string $htmlPart
+        public int $campaignId,
+        public string $htmlPart
     ) {
     }
 
