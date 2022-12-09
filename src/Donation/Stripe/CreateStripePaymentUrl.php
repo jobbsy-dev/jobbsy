@@ -8,13 +8,13 @@ use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
-final class CreateStripePaymentUrl implements CreatePaymentUrlInterface
+final readonly class CreateStripePaymentUrl implements CreatePaymentUrlInterface
 {
     public function __construct(
         #[Autowire('%env(STRIPE_TAX_RATE_ID)%')]
-        private readonly string $taxRateId,
+        private string $taxRateId,
         #[Autowire('%env(STRIPE_API_KEY)%')]
-        private readonly string $stripeApiKey,
+        private string $stripeApiKey,
     ) {
     }
 

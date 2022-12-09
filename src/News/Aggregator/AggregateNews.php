@@ -5,12 +5,12 @@ namespace App\News\Aggregator;
 use App\Repository\News\FeedRepository;
 use Psr\Log\LoggerInterface;
 
-final class AggregateNews
+final readonly class AggregateNews
 {
     public function __construct(
-        private readonly FeedRepository $feedRepository,
-        private readonly FetchArticlesFromFeed $fetchArticlesFromFeed,
-        private readonly LoggerInterface $logger
+        private FeedRepository $feedRepository,
+        private FetchArticlesFromFeed $fetchArticlesFromFeed,
+        private LoggerInterface $logger
     ) {
     }
 

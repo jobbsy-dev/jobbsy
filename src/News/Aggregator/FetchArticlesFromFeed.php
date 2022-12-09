@@ -5,12 +5,12 @@ namespace App\News\Aggregator;
 use App\Entity\News\Feed;
 use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 
-final class FetchArticlesFromFeed
+final readonly class FetchArticlesFromFeed
 {
     /**
      * @var FetchArticlesFromFeedInterface[]
      */
-    private readonly iterable $providers;
+    private iterable $providers;
 
     public function __construct(
         #[TaggedIterator(FetchArticlesFromFeedInterface::class)]

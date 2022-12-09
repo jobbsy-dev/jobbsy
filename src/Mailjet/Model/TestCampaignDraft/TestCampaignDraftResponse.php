@@ -2,12 +2,12 @@
 
 namespace App\Mailjet\Model\TestCampaignDraft;
 
-final class TestCampaignDraftResponse
+final readonly class TestCampaignDraftResponse
 {
     private function __construct(
-        public readonly int $count,
-        public readonly array $data,
-        public readonly int $total,
+        public int $count,
+        public array $data,
+        public int $total,
     ) {
     }
 

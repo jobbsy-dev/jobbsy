@@ -2,11 +2,11 @@
 
 namespace App\Provider\Arbeitsagentur;
 
-final class OrganizationLogo
+final readonly class OrganizationLogo
 {
     public function __construct(
-        public readonly string $content,
-        public readonly ?string $contentType
+        public string $content,
+        public ?string $contentType
     ) {
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Broadcast\Twitter;
 
-final class Tweet
+final readonly class Tweet
 {
-    public function __construct(public readonly string $text)
+    public function __construct(public string $text)
     {
     }
 

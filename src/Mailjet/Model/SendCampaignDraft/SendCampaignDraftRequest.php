@@ -2,10 +2,10 @@
 
 namespace App\Mailjet\Model\SendCampaignDraft;
 
-final class SendCampaignDraftRequest
+final readonly class SendCampaignDraftRequest
 {
     public function __construct(
-        public readonly int $campaignId,
+        public int $campaignId,
     ) {
     }
 }

@@ -20,7 +20,7 @@ jobs:
               with:
                   coverage: "none"
                   extensions: intl, pdo_sqlite, ctype, iconv
-                  php-version: 8.1
+                  php-version: 8.2
                   tools: composer:v2
 
             - name: "Add PHPUnit matcher"

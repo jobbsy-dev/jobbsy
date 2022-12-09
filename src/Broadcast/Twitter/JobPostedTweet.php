@@ -4,11 +4,11 @@ namespace App\Broadcast\Twitter;
 
 use App\Entity\Job;
 
-final class JobPostedTweet
+final readonly class JobPostedTweet
 {
     public function __construct(
-        private readonly Job $job,
-        private readonly string $jobUrl
+        private Job $job,
+        private string $jobUrl
     ) {
     }
 

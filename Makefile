@@ -25,7 +25,7 @@ migrate:							## Run doctrine migrations
 	$(SYMFONY_CLI) console doctrine:migration:migrate
 
 phpcsfix: tools-vendor				## Run cs fixer
-	$(SYMFONY_CLI) $(PHP_CS_FIXER) fix
+	PHP_CS_FIXER_IGNORE_ENV=true $(SYMFONY_CLI) $(PHP_CS_FIXER) fix
 
 phpstan:							## Run PHPStan
 	$(SYMFONY_CLI) $(PHP_STAN) analyse --level 1 src/

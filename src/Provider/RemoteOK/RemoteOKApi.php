@@ -2,16 +2,12 @@
 
 namespace App\Provider\RemoteOK;
 
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-final class RemoteOKApi
+final readonly class RemoteOKApi
 {
-    public function __construct(private ?HttpClientInterface $httpClient = null)
+    public function __construct(private HttpClientInterface $httpClient)
     {
-        if (null === $this->httpClient) {
-            $this->httpClient = HttpClient::create();
-        }
     }
 
     public function search(array $queryParams): array

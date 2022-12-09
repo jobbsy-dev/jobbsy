@@ -6,9 +6,9 @@ use App\Entity\News\Entry;
 use App\Entity\News\Feed;
 use App\News\Aggregator\RSS\Client as RSSClient;
 
-final class FetchArticlesFromRSSFeed implements FetchArticlesFromFeedInterface
+final readonly class FetchArticlesFromRSSFeed implements FetchArticlesFromFeedInterface
 {
-    public function __construct(private readonly RSSClient $rssClient)
+    public function __construct(private RSSClient $rssClient)
     {
     }
 

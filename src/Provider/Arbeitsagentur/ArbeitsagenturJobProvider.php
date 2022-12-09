@@ -9,11 +9,11 @@ use App\Provider\JobProviderInterface;
 use App\Provider\SearchParameters;
 use League\Flysystem\FilesystemOperator;
 
-final class ArbeitsagenturJobProvider implements JobProviderInterface
+final readonly class ArbeitsagenturJobProvider implements JobProviderInterface
 {
     public function __construct(
-        private readonly ArbeitsagenturApi $api,
-        private readonly FilesystemOperator $organizationImageStorage,
+        private ArbeitsagenturApi $api,
+        private FilesystemOperator $organizationImageStorage,
     ) {
     }
 

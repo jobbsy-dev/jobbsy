@@ -5,16 +5,12 @@ namespace App\Analytics\Plausible;
 use App\Analytics\AnalyticsClient;
 use App\Analytics\EventRequestInterface;
 use Symfony\Component\HttpClient\Exception\TransportException;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-final class PlausibleClient implements AnalyticsClient
+final readonly class PlausibleClient implements AnalyticsClient
 {
-    public function __construct(private ?HttpClientInterface $httpClient = null)
+    public function __construct(private HttpClientInterface $httpClient)
     {
-        if (null === $this->httpClient) {
-            $this->httpClient = HttpClient::create();
-        }
     }
 
     public function event(EventRequestInterface $request): void

@@ -4,7 +4,6 @@ namespace App\Provider\Arbeitsagentur;
 
 use App\Provider\AccessToken;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final class ArbeitsagenturApi
@@ -16,11 +15,8 @@ final class ArbeitsagenturApi
         private readonly string $arbeitsagenturClientId,
         #[Autowire('%env(ARBEITSAGENTUR_CLIENT_SECRET)%')]
         private readonly string $arbeitsagenturClientSecret,
-        private ?HttpClientInterface $httpClient = null,
+        private readonly HttpClientInterface $httpClient,
     ) {
-        if (null === $this->httpClient) {
-            $this->httpClient = HttpClient::create();
-        }
     }
 
     public function authenticate(): void
