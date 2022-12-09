@@ -19,8 +19,7 @@ final readonly class AccessToken
         string $token,
         int $expiresIn,
         \DateTimeImmutable $createAt = new \DateTimeImmutable()
-    ): self
-    {
+    ): self {
         return new self($token, $expiresIn, $createAt);
     }
 
