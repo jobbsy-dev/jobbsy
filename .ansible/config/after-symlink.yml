@@ -31,10 +31,10 @@
   ansible.builtin.cron:
     name: "Send weekly jobs letter every saturday at 8am"
     minute: "0"
-    hour: "8"
+    hour: "10"
     day: "*"
     month: "*"
-    weekday: "6"
+    weekday: "1"
     job: "php {{ ansistrano_release_path.stdout }}/bin/console app:send-jobsletter"
 
 - name: Restarting Workers
