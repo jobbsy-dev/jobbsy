@@ -6,7 +6,7 @@ use App\Entity\Event;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Persistence\ManagerRegistry;
-use StellaMaris\Clock\ClockInterface;
+use Symfony\Component\Clock\ClockInterface;
 
 /**
  * @extends ServiceEntityRepository<Event>
@@ -18,13 +18,9 @@ use StellaMaris\Clock\ClockInterface;
  */
 class EventRepository extends ServiceEntityRepository
 {
-    private ClockInterface $clock;
-
-    public function __construct(ManagerRegistry $registry, ClockInterface $clock)
+    public function __construct(ManagerRegistry $registry, private readonly ClockInterface $clock)
     {
         parent::__construct($registry, Event::class);
-
-        $this->clock = $clock;
     }
 
     public function save(Event $entity, bool $flush = false): void
