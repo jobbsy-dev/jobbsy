@@ -43,7 +43,7 @@ final class WelcometotheJungleProvider implements JobProviderInterface
                     $job->setEmploymentType(EmploymentType::INTERNSHIP);
             }
 
-            if ($datum['locationType'] === 'TELECOMMUTE') {
+            if ('TELECOMMUTE' === $datum['locationType']) {
                 $job->setLocationType(LocationType::REMOTE);
             }
 
