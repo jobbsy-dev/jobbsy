@@ -133,6 +133,12 @@ class Job
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?LocationType $locationType = null;
 
+    #[ORM\Column(type: Types::STRING, nullable: true)]
+    private ?string $industry = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
     public function __construct(?UuidInterface $id = null)
     {
         if (null === $id) {
@@ -356,5 +362,25 @@ class Job
     public function setLocationType(?LocationType $locationType): void
     {
         $this->locationType = $locationType;
+    }
+
+    public function getIndustry(): ?string
+    {
+        return $this->industry;
+    }
+
+    public function setIndustry(?string $industry): void
+    {
+        $this->industry = $industry;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 }

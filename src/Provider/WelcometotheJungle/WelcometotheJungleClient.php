@@ -26,7 +26,7 @@ final class WelcometotheJungleClient
             'https://www.welcometothejungle.com/fr/pages/emploi-developpeur-symfony'
         );
 
-        $urls = $crawler->filter('ol:nth-child(2) > li header a')->each(function (Crawler $crawler) {
+        $urls = $crawler->filter('ol:nth-child(2) li header a')->each(function (Crawler $crawler) {
             return $crawler->link()->getUri();
         });
 
@@ -91,6 +91,9 @@ final class WelcometotheJungleClient
                 'title' => html_entity_decode($structuredData['title']),
                 'employmentType' => $structuredData['employmentType'],
                 'location' => $location,
+                'locationType' => $structuredData['jobLocationType'] ?? null,
+                'description' => $structuredData['description'] ?? null,
+                'industry' => $structuredData['industry'] ?? null,
             ];
         }
 

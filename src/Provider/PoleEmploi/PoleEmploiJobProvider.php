@@ -43,6 +43,8 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
             $job->setOrganization($result['entreprise']['nom']);
             $job->setUrl($result['origineOffre']['urlOrigine']);
             $job->setTitle($result['intitule']);
+            $job->setIndustry($result['secteurActiviteLibelle'] ?? null);
+            $job->setDescription($result['description'] ?? null);
 
             $location = $result['lieuTravail']['libelle'];
             if (str_contains($location, '-')) {

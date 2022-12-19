@@ -4,6 +4,7 @@ namespace App\Provider\WelcometotheJungle;
 
 use App\Entity\Job;
 use App\Job\EmploymentType;
+use App\Job\LocationType;
 use App\Provider\JobCollection;
 use App\Provider\JobProviderInterface;
 use App\Provider\SearchParameters;
@@ -31,6 +32,8 @@ final class WelcometotheJungleProvider implements JobProviderInterface
             $job->setSource(self::SOURCE_NAME);
             $job->setTags(['PHP', 'Symfony']);
             $job->setUrl($datum['url']);
+            $job->setIndustry($datum['industry']);
+            $job->setDescription($datum['description']);
 
             switch ($datum['employmentType']) {
                 case 'FULL_TIME':
@@ -39,6 +42,11 @@ final class WelcometotheJungleProvider implements JobProviderInterface
                 case 'CONTRACTOR':
                     $job->setEmploymentType(EmploymentType::INTERNSHIP);
             }
+
+            if ('TELECOMMUTE' === $datum['locationType']) {
+                $job->setLocationType(LocationType::REMOTE);
+            }
+
             $job->publish();
 
             $jobCollection->addJob($job);
