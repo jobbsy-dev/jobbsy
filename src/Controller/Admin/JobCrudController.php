@@ -103,6 +103,9 @@ class JobCrudController extends AbstractCrudController
             ->add('organization')
             ->add('employmentType')
             ->add('pinnedUntil')
+            ->add('source')
+            ->add('createdAt')
+            ->add('industry')
         ;
     }
 }
