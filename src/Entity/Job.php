@@ -383,4 +383,9 @@ class Job
     {
         $this->description = $description;
     }
+
+    public function isManualPublishing(): bool
+    {
+        return null === $this->source;
+    }
 }
