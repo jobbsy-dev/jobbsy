@@ -19,6 +19,11 @@ return static function (FrameworkConfig $config, ContainerConfigurator $containe
         ->baseUri('https://api.mailjet.com/v3/REST/')
         ->authBasic(env('MAILJET_API_KEY').':'.env('MAILJET_API_SECRET_KEY'));
 
+    $config->httpClient()
+        ->scopedClient('openai.client')
+        ->baseUri('https://api.openai.com/v1/')
+        ->authBearer(env('OPENAI_API_KEY'));
+
     $config->session()
         ->handlerId(null)
         ->cookieSecure('auto')

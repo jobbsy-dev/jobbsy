@@ -20,20 +20,29 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
 
     public function retrieve(SearchParameters $parameters): JobCollection
     {
-        $this->api->authenticate([
-            'api_offresdemploiv2',
-            'o2dsoffre',
-            'application_'.$this->poleEmploiClientId,
-        ]);
-
-        $results = $this->api->search([
-            'motsCles' => 'symfony',
-            'minCreationDate' => $parameters->from,
-            'maxCreationDate' => $parameters->to,
-            'origineOffre' => 1,
-        ]);
-
         $jobs = new JobCollection();
+
+        try {
+            $this->api->authenticate([
+                'api_offresdemploiv2',
+                'o2dsoffre',
+                'application_'.$this->poleEmploiClientId,
+            ]);
+        } catch (\Throwable $exception) {
+            return $jobs;
+        }
+
+        try {
+            $results = $this->api->search([
+                'motsCles' => 'symfony',
+                'minCreationDate' => $parameters->from,
+                'maxCreationDate' => $parameters->to,
+                'origineOffre' => 1,
+            ]);
+        } catch (\Throwable $exception) {
+            return $jobs;
+        }
+
         foreach ($results as $result) {
             if (false === $this->isOfferCheckConditions($result)) {
                 continue;
