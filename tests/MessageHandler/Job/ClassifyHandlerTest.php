@@ -37,7 +37,7 @@ class ClassifyHandlerTest extends TestCase
             ->with('d43b7e10-cbc7-40d1-a9d4-aa73fc825456')
             ->willReturn($job);
 
-        $handler = new ClassifyHandler($client, $repository);
+        $handler = new ClassifyHandler($client, $repository, 'model');
         $message = new ClassifyMessage('d43b7e10-cbc7-40d1-a9d4-aa73fc825456');
 
         // Act
