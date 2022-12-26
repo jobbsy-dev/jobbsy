@@ -128,7 +128,7 @@ class Job
     private ?string $contactEmail = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true, enumType: LocationType::class)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(allowNull: true)]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?LocationType $locationType = null;

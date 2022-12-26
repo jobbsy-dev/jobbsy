@@ -16,7 +16,7 @@ Online and official website is available on [jobbsy.dev](https://jobbsy.dev).
 - [Composer](https://getcomposer.org) v2
 - (optional) [Symfony CLI](https://symfony.com/download) to easily launch project
 
-## 🏗 How to install?
+## 🏗 How to install
 
 First fork the project and clone it:
 
@@ -56,7 +56,7 @@ If you want some data to start you can load fixtures:
 $ php bin/console doctrine:fixtures:load
 ```
 
-## 🚀 How to launch?
+## 🚀 How to launch
 
 If you are using Symfony CLI simply run:
 
