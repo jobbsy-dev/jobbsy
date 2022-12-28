@@ -6,17 +6,10 @@ use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Intl\Countries;
 
-final class WelcometotheJungleClient
+final readonly class WelcometotheJungleClient
 {
-    private Client $goutteClient;
-
-    public function __construct(?Client $goutteClient = null)
+    public function __construct(private Client $goutteClient)
     {
-        if (null === $goutteClient) {
-            $goutteClient = new Client();
-        }
-
-        $this->goutteClient = $goutteClient;
     }
 
     public function crawl(): array

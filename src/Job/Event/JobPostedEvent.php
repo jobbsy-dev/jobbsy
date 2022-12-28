@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Event;
+namespace App\Job\Event;
 
 use App\Entity\Job;
 use Symfony\Contracts\EventDispatcher\Event;

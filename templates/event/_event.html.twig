@@ -14,13 +14,12 @@
                 {% endif %}
             </li>
             <li class="d-flex align-items-center gap-2">
-                {% set location = event.location|lower %}
-                {% if location starts with 'online' %}
+                {% if event.online %}
                     <i icon-name="cloud" class="fs-6"></i>
-                    {{ event.location }}
+                    Online
                 {% else %}
                     <i icon-name="map-pin" class="fs-6"></i>
-                    {{ event.location }} | <span class="fs-5">{{ event.country|country_emoji }}</span> {{ event.country|country_name }}
+                    {{ event.location }} {% if event.mixed %}& Online {% endif %} | <span class="fs-5">{{ event.country|country_emoji }}</span> {{ event.country|country_name }}
                 {% endif %}
             </li>
         </ul>

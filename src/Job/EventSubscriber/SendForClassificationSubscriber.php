@@ -1,13 +1,13 @@
 <?php
 
-namespace App\EventSubscriber;
+namespace App\Job\EventSubscriber;
 
-use App\Event\JobPostedEvent;
-use App\Message\CreateTweetMessage;
+use App\Job\Event\JobPostedEvent;
+use App\Message\Job\ClassifyMessage;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-final readonly class CreateTweetSubscriber implements EventSubscriberInterface
+final readonly class SendForClassificationSubscriber implements EventSubscriberInterface
 {
     public function __construct(private MessageBusInterface $bus)
     {
@@ -24,6 +24,14 @@ final readonly class CreateTweetSubscriber implements EventSubscriberInterface
     {
         $job = $event->job;
 
-//        $this->bus->dispatch(new CreateTweetMessage($job->getId(), $event->jobUrl));
+        if ($job->isManualPublishing()) {
+            return;
+        }
+
+        if (empty($job->getDescription())) {
+            return;
+        }
+
+        $this->bus->dispatch(new ClassifyMessage($job->getId()));
     }
 }
