@@ -35,21 +35,21 @@ final readonly class MeetupImporter
 
                 foreach ($meetupsData as $meetupData) {
                     $event = new Event();
-                    $event->setName($meetupData['name']);
+                    $event->setName(html_entity_decode($meetupData['name']));
                     $event->setUrl($meetupData['url']);
                     $event->setAbstract(sprintf(
                         '%s...',
                         mb_substr(html_entity_decode($meetupData['description']), 0, 200))
                     );
 
-                    switch ($meetupData['eventAttendanceMode']) {
-                        case 'https://schema.org/OnlineEventAttendanceMode':
+                    switch (true) {
+                        case str_contains($meetupData['eventAttendanceMode'], 'OnlineEventAttendanceMode'):
                             $event->setAttendanceMode(AttendanceMode::ONLINE);
                             break;
-                        case 'https://schema.org/MixedEventAttendanceMode':
+                        case str_contains($meetupData['eventAttendanceMode'], 'MixedEventAttendanceMode'):
                             $event->setAttendanceMode(AttendanceMode::MIXED);
                             break;
-                        case 'https://schema.org/OfflineEventAttendanceMode':
+                        case str_contains($meetupData['eventAttendanceMode'], 'OfflineEventAttendanceMode'):
                             $event->setAttendanceMode(AttendanceMode::OFFLINE);
                             break;
                     }
