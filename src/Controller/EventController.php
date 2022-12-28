@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Analytics\AnalyticsClient;
 use App\Analytics\Plausible\EventRequest;
-use App\Entity\Event;
-use App\Repository\EventRepository;
+use App\Entity\CommunityEvent\Event;
+use App\Repository\CommunityEvent\EventRepository;
 use League\Uri\Uri;
 use League\Uri\UriModifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

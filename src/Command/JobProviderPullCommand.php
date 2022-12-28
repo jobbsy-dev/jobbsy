@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Event\JobPostedEvent;
+use App\Job\Event\JobPostedEvent;
 use App\Provider\JobProvider;
 use App\Provider\SearchParameters;
 use App\Repository\JobRepository;

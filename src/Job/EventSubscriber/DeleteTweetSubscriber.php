@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EventSubscriber;
+namespace App\Job\EventSubscriber;
 
 use App\Broadcast\Twitter\TwitterApi;
 use App\Entity\Job;

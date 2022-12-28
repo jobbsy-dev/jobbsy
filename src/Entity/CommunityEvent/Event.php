@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\CommunityEvent;
 
-use App\Repository\EventRepository;
+use App\CommunityEvent\AttendanceMode;
+use App\Repository\CommunityEvent\EventRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidType;
@@ -31,8 +32,7 @@ class Event
     #[Assert\NotBlank]
     private ?\DateTimeImmutable $endDate = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    #[Assert\NotBlank]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $location = null;
 
     #[ORM\Column(type: Types::STRING)]
@@ -51,6 +51,10 @@ class Event
     #[Assert\NotBlank]
     #[Groups(['read'])]
     private ?string $url;
+
+    #[ORM\Column(type: Types::STRING, nullable: true, enumType: AttendanceMode::class)]
+    #[Groups(['read'])]
+    private ?AttendanceMode $attendanceMode = null;
 
     public function __construct(?UuidInterface $id = null)
     {
@@ -108,7 +112,7 @@ class Event
         return $this->location;
     }
 
-    public function setLocation(string $location): self
+    public function setLocation(?string $location): self
     {
         $this->location = $location;
 
@@ -150,5 +154,33 @@ class Event
     public function setCountry(?string $country): void
     {
         $this->country = $country;
+    }
+
+    public function getAttendanceMode(): ?AttendanceMode
+    {
+        return $this->attendanceMode;
+    }
+
+    public function setAttendanceMode(AttendanceMode $attendanceMode): void
+    {
+        $this->attendanceMode = $attendanceMode;
+    }
+
+    public function isOnline(): bool
+    {
+        if (null !== $this->attendanceMode) {
+            return AttendanceMode::ONLINE === $this->attendanceMode;
+        }
+
+        return 'online' === mb_strtolower(trim($this->location));
+    }
+
+    public function isMixed(): bool
+    {
+        if (null !== $this->attendanceMode) {
+            return AttendanceMode::MIXED === $this->attendanceMode;
+        }
+
+        return str_contains(mb_strtolower(trim($this->location)), 'online');
     }
 }
