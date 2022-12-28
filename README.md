@@ -4,16 +4,16 @@
 
 Jobbsy is the first and open source job board for [Symfony](https://symfony.com) framework.
 
-Sponsor open source when publishing a job offer is the main goal of Jobbsy 💙
+Sponsor open source when publishing a job offer is the main goal of Jobbsy 💖
 
 Online and official website is available on [jobbsy.dev](https://jobbsy.dev).
 
-## ☑️ Requirements
+## 📋 Requirements
 
 - PHP 8.1 or higher
 - PDO-SQLite PHP extension, PHP intl extension
 - Node.js v17.2 or higher and yarn
-- [Composer](https://getcomposer.org) v2
+- [Composer](https://getcomposer.org)
 - (optional) [Symfony CLI](https://symfony.com/download) to easily launch project
 
 ## 🏗 How to install
