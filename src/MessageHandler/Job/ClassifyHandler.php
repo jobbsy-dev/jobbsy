@@ -26,7 +26,7 @@ final readonly class ClassifyHandler
         $job = $this->jobRepository->get(Uuid::fromString($message->jobId));
 
         $prompt = CreateJobPromptForClassification::create($job);
-        $result = $this->openAIClient->completions(new CompletionRequest($this->model, $prompt, 0.5));
+        $result = $this->openAIClient->completions(new CompletionRequest($this->model, $prompt, 0.8, 30));
 
         if (false === isset($result['choices'][0]['text'])) {
             return;
