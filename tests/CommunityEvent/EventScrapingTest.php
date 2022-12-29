@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Tests\CommunityEvent\Meetup;
+namespace App\Tests\CommunityEvent;
 
-use App\CommunityEvent\Meetup\MeetupCrawler;
+use App\CommunityEvent\EventScraping;
 use Goutte\Client;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-final class MeetupCrawlerTest extends TestCase
+final class EventScrapingTest extends TestCase
 {
     public function testCrawl(): void
     {
@@ -16,10 +16,10 @@ final class MeetupCrawlerTest extends TestCase
         $mockResponse = new MockResponse(file_get_contents(__DIR__.'/fixtures/meetup_events_page.html'));
         $mockClient = new MockHttpClient([$mockResponse]);
         $goutteClient = new Client($mockClient);
-        $meetupCrawler = new MeetupCrawler($goutteClient);
+        $meetupCrawler = new EventScraping($goutteClient);
 
         // Act
-        $data = $meetupCrawler->crawl('http://localhost');
+        $data = $meetupCrawler->fetch('http://localhost');
 
         // Assert
         self::assertCount(1, $data);

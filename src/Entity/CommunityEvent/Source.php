@@ -2,7 +2,6 @@
 
 namespace App\Entity\CommunityEvent;
 
-use App\CommunityEvent\SourceType;
 use App\Repository\CommunityEvent\SourceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,16 +17,12 @@ class Source
     private UuidInterface $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $url = null;
 
-    #[ORM\Column(type: Types::STRING, enumType: SourceType::class)]
-    private ?SourceType $type = null;
-
-    public function __construct(?UuidInterface $id = null)
-    {
+    public function __construct(
+        ?UuidInterface $id = null,
+        #[ORM\Column(type: Types::DATETIME_IMMUTABLE)] public readonly \DateTimeImmutable $createdAt = new \DateTimeImmutable()
+    ) {
         if (null === $id) {
             $id = Uuid::uuid4();
         }
@@ -40,39 +35,13 @@ class Source
         return $this->id;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(string $url): void
     {
         $this->url = $url;
-
-        return $this;
-    }
-
-    public function getType(): ?SourceType
-    {
-        return $this->type;
-    }
-
-    public function setType(SourceType $type): self
-    {
-        $this->type = $type;
-
-        return $this;
     }
 }

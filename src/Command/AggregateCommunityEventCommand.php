@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\CommunityEvent\Meetup\MeetupImporter;
+use App\CommunityEvent\EventImporter;
 use App\News\Aggregator\AggregateNews;
 use App\Repository\CommunityEvent\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,7 +19,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 {
     public function __construct(
         protected readonly AggregateNews $aggregateNews,
-        private readonly MeetupImporter $importer,
+        private readonly EventImporter $importer,
         private readonly EventRepository $eventRepository,
         private readonly EntityManagerInterface $em
     ) {
