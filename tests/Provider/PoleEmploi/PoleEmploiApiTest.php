@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class PoleEmploiApiTest extends TestCase
+final class PoleEmploiApiTest extends TestCase
 {
     public function testSearchWithISO8601DateTimeFormat(): void
     {

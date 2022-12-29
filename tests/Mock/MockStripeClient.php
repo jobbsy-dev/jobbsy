@@ -4,16 +4,21 @@ namespace App\Tests\Mock;
 
 use Stripe\HttpClient\ClientInterface;
 
-final class MockStripeClient implements ClientInterface
+final readonly class MockStripeClient implements ClientInterface
 {
     public function __construct(
-        private readonly ?string $createSessionResponse = null,
-        private readonly ?string $retrieveSessionResponse = null
+        private ?string $createSessionResponse = null,
+        private ?string $retrieveSessionResponse = null
     ) {
     }
 
-    public function request($method, $absUrl, $headers, $params, $hasFile): array
-    {
+    public function request(
+        $method,
+        $absUrl,
+        $headers,
+        $params,
+        $hasFile
+    ): array {
         $body = '{}';
 
         if ('https://api.stripe.com/v1/checkout/sessions' === $absUrl && 'post' === mb_strtolower($method)) {

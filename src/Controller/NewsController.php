@@ -16,13 +16,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class NewsController extends AbstractController
+final class NewsController extends AbstractController
 {
     public function __construct(
         private readonly EntryRepository $articleRepository,
         private readonly JobRepository $jobRepository,
         private readonly AnalyticsClient $client,
-    ) {
+        ) {
     }
 
     #[Route('/news', name: 'news_index', methods: ['GET'])]

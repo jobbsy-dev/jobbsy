@@ -4,15 +4,16 @@ namespace App\Tests\CommunityEvent\Meetup;
 
 use App\CommunityEvent\Meetup\MeetupCrawler;
 use App\CommunityEvent\Meetup\MeetupImporter;
+use App\CommunityEvent\SourceType;
 use App\Entity\CommunityEvent\Source;
-use App\Repository\CommunityEvent\SourceRepository;
+use App\Tests\Repository\CommunityEvent\InMemorySourceRepository;
 use Goutte\Client;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class MeetupImporterTest extends TestCase
+final class MeetupImporterTest extends TestCase
 {
     public function testImport(): void
     {
@@ -23,12 +24,10 @@ class MeetupImporterTest extends TestCase
 
         $source1 = new Source();
         $source1->setUrl('http://localhost/1');
+        $source1->setType(SourceType::MEETUP_GROUP);
         $source2 = new Source();
         $source2->setUrl('http://localhost/2');
-        $repository = $this->createMock(SourceRepository::class);
-        $repository
-            ->method('findBy')
-            ->willReturn([$source1, $source2]);
+        $repository = new InMemorySourceRepository([$source1, $source2]);
 
         $crawler = new MeetupCrawler($goutteClient);
         $importer = new MeetupImporter(

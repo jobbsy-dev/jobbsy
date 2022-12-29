@@ -15,7 +15,7 @@ final class Channel
         public readonly string $description,
         public readonly ?string $language = null,
         public readonly ?\DateTimeImmutable $pubDate = null,
-    ) {
+        ) {
     }
 
     public function addItem(Item $item): void

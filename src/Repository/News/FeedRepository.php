@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Feed[]    findAll()
  * @method Feed[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class FeedRepository extends ServiceEntityRepository
+final class FeedRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

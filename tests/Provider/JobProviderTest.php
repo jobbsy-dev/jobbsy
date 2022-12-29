@@ -7,7 +7,7 @@ use App\Provider\JobProvider;
 use App\Provider\SearchParameters;
 use PHPUnit\Framework\TestCase;
 
-class JobProviderTest extends TestCase
+final class JobProviderTest extends TestCase
 {
     public function testRetrieve(): void
     {

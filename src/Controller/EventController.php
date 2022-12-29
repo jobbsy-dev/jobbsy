@@ -14,11 +14,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class EventController extends AbstractController
+final class EventController extends AbstractController
 {
-    public function __construct(
-        private readonly AnalyticsClient $client
-    ) {
+    public function __construct(private readonly AnalyticsClient $client)
+    {
     }
 
     #[Route('/events', name: 'event_index', methods: ['GET'])]

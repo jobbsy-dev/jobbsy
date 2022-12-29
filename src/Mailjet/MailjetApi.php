@@ -18,10 +18,8 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 final readonly class MailjetApi
 {
     public function __construct(
-        #[Autowire('%env(MAILJET_API_KEY)%')]
-        string $mailjetApiKey,
-        #[Autowire('%env(MAILJET_API_SECRET_KEY)%')]
-        string $mailjetApiSecretKey,
+        #[Autowire('%env(MAILJET_API_KEY)%')] string $mailjetApiKey,
+        #[Autowire('%env(MAILJET_API_SECRET_KEY)%')] string $mailjetApiSecretKey,
         private HttpClientInterface $mailjetClient
     ) {
     }

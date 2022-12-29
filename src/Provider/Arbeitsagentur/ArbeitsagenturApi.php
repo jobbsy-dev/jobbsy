@@ -11,12 +11,10 @@ final class ArbeitsagenturApi
     private ?AccessToken $accessToken = null;
 
     public function __construct(
-        #[Autowire('%env(ARBEITSAGENTUR_CLIENT_ID)%')]
-        private readonly string $arbeitsagenturClientId,
-        #[Autowire('%env(ARBEITSAGENTUR_CLIENT_SECRET)%')]
-        private readonly string $arbeitsagenturClientSecret,
+        #[Autowire('%env(ARBEITSAGENTUR_CLIENT_ID)%')] private readonly string $arbeitsagenturClientId,
+        #[Autowire('%env(ARBEITSAGENTUR_CLIENT_SECRET)%')] private readonly string $arbeitsagenturClientSecret,
         private readonly HttpClientInterface $httpClient,
-    ) {
+        ) {
     }
 
     public function authenticate(): void

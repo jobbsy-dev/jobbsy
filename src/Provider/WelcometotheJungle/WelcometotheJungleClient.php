@@ -19,7 +19,7 @@ final readonly class WelcometotheJungleClient
             'https://www.welcometothejungle.com/fr/pages/emploi-developpeur-symfony'
         );
 
-        $urls = $crawler->filter('ol:nth-child(2) li header a')->each(function (Crawler $crawler) {
+        $urls = $crawler->filter('ol:nth-child(2) li header a')->each(function (Crawler $crawler): string {
             return $crawler->link()->getUri();
         });
 
@@ -58,7 +58,7 @@ final readonly class WelcometotheJungleClient
 
                         $locations[] = sprintf(
                             '%s, %s',
-                            html_entity_decode($jobLocation['address']['addressLocality']),
+                            html_entity_decode((string) $jobLocation['address']['addressLocality']),
                             ucfirst(Countries::getName($jobLocation['address']['addressCountry'])),
                         );
                     }
@@ -67,7 +67,7 @@ final readonly class WelcometotheJungleClient
                 } elseif ('Place' === $structuredData['jobLocation']['@type']) {
                     $location = sprintf(
                         '%s, %s',
-                        html_entity_decode($structuredData['jobLocation']['address']['addressLocality']),
+                        html_entity_decode((string) $structuredData['jobLocation']['address']['addressLocality']),
                         ucfirst(Countries::getName($structuredData['jobLocation']['address']['addressCountry'])),
                     );
                 }
@@ -78,10 +78,10 @@ final readonly class WelcometotheJungleClient
             }
 
             $data[] = [
-                'company' => html_entity_decode(trim($structuredData['hiringOrganization']['name'])),
+                'company' => html_entity_decode(trim((string) $structuredData['hiringOrganization']['name'])),
                 'companyLogo' => $structuredData['hiringOrganization']['logo'],
                 'url' => $url,
-                'title' => html_entity_decode($structuredData['title']),
+                'title' => html_entity_decode((string) $structuredData['title']),
                 'employmentType' => $structuredData['employmentType'],
                 'location' => $location,
                 'locationType' => $structuredData['jobLocationType'] ?? null,

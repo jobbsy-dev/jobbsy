@@ -8,15 +8,10 @@ use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 final readonly class FetchArticlesFromFeed
 {
     /**
-     * @var FetchArticlesFromFeedInterface[]
+     * @param FetchArticlesFromFeedInterface[] $providers
      */
-    private iterable $providers;
-
-    public function __construct(
-        #[TaggedIterator(FetchArticlesFromFeedInterface::class)]
-        iterable $providers
-    ) {
-        $this->providers = $providers;
+    public function __construct(#[TaggedIterator(FetchArticlesFromFeedInterface::class)] private iterable $providers)
+    {
     }
 
     public function __invoke(Feed $feed): array

@@ -13,8 +13,7 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
 {
     public function __construct(
         private PoleEmploiApi $api,
-        #[Autowire('%env(POLE_EMPLOI_CLIENT_ID)%')]
-        private string $poleEmploiClientId
+        #[Autowire('%env(POLE_EMPLOI_CLIENT_ID)%')] private string $poleEmploiClientId
     ) {
     }
 
@@ -28,7 +27,7 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
                 'o2dsoffre',
                 'application_'.$this->poleEmploiClientId,
             ]);
-        } catch (\Throwable $exception) {
+        } catch (\Throwable) {
             return $jobs;
         }
 
@@ -39,7 +38,7 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
                 'maxCreationDate' => $parameters->to,
                 'origineOffre' => 1,
             ]);
-        } catch (\Throwable $exception) {
+        } catch (\Throwable) {
             return $jobs;
         }
 
@@ -56,8 +55,8 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
             $job->setDescription($result['description'] ?? null);
 
             $location = $result['lieuTravail']['libelle'];
-            if (str_contains($location, '-')) {
-                $job->setLocation(ucfirst(trim(explode('-', $location)[1])));
+            if (str_contains((string) $location, '-')) {
+                $job->setLocation(ucfirst(trim(explode('-', (string) $location)[1])));
             } else {
                 $job->setLocation($location);
             }
@@ -66,7 +65,7 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
             $job->setEmploymentType(EmploymentType::FULL_TIME);
             if (isset($result['typeContrat'], $result['natureContrat'])
                 && 'CDD' === $result['typeContrat']
-                && str_contains($result['natureContrat'], 'apprentissage')
+                && str_contains((string) $result['natureContrat'], 'apprentissage')
             ) {
                 $job->setEmploymentType(EmploymentType::INTERNSHIP);
             }
@@ -95,11 +94,7 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
             return false;
         }
 
-        if (false === isset($jobOffer['origineOffre']['urlOrigine'])) {
-            return false;
-        }
-
-        return true;
+        return false !== isset($jobOffer['origineOffre']['urlOrigine']);
     }
 
     public function enabled(): bool

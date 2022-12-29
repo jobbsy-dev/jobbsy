@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class PoleEmploiJobProviderTest extends TestCase
+final class PoleEmploiJobProviderTest extends TestCase
 {
     public function testRetrieve(): void
     {

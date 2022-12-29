@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class MailjetApiTest extends TestCase
+final class MailjetApiTest extends TestCase
 {
     public function testCreateContact(): void
     {

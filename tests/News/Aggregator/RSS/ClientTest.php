@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
     public function testReadRssDocument(): void
     {
@@ -27,7 +27,7 @@ class ClientTest extends TestCase
         self::assertSame('Symfony Blog', $channel->title);
         self::assertCount(4, $channel->getItems());
         $item = $channel->getItems()[0];
-        self::assertSame('A Week of Symfony #826 (24-30 October 2022)', trim($item->title));
+        self::assertSame('A Week of Symfony #826 (24-30 October 2022)', trim((string) $item->title));
     }
 
     public function testReadRssDocumentExtraProperties(): void
@@ -46,7 +46,7 @@ class ClientTest extends TestCase
         self::assertCount(1, $document->getChannels());
         $channel = $document->getChannels()[0];
         $item = $channel->getItems()[0];
-        self::assertSame('Javier Eguiluz', trim($item->author));
+        self::assertSame('Javier Eguiluz', trim((string) $item->author));
         self::assertSame('2022-10-30', $item->pubDate->format('Y-m-d'));
     }
 }

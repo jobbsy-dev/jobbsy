@@ -6,11 +6,8 @@ use Webmozart\Assert\Assert;
 
 final readonly class AccessToken
 {
-    private function __construct(
-        private string $token,
-        private int $expiresIn,
-        private \DateTimeImmutable $createdAt
-    ) {
+    private function __construct(private string $token, private int $expiresIn, private \DateTimeImmutable $createdAt)
+    {
         Assert::notEmpty($token);
         Assert::greaterThan($this->expiresIn, 0);
     }

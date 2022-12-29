@@ -50,7 +50,7 @@ class Event
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    private ?string $url;
+    private ?string $url = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true, enumType: AttendanceMode::class)]
     #[Groups(['read'])]

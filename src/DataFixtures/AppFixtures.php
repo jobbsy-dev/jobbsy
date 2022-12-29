@@ -13,7 +13,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 
-class AppFixtures extends Fixture
+final class AppFixtures extends Fixture
 {
     public const JOB_1_ID = 'fe094a22-5b0f-4f4d-88ee-5b331aeb6675';
     public const JOB_2_ID = '6bb57d15-313d-403f-8785-58ebebc61852';

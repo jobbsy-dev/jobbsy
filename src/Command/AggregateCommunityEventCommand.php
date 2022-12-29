@@ -15,8 +15,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 #[AsCommand(
     name: 'app:aggregate-events',
     description: 'Aggregate events from multiple sources',
-)]
-class AggregateCommunityEventCommand extends Command
+)] final class AggregateCommunityEventCommand extends Command
 {
     public function __construct(
         protected readonly AggregateNews $aggregateNews,
@@ -34,7 +33,7 @@ class AggregateCommunityEventCommand extends Command
         $events = $this->importer->import();
 
         foreach ($events as $event) {
-            if ($this->eventRepository->findOneBy(['url' => $event->getUrl()])) {
+            if (null !== $this->eventRepository->findOneBy(['url' => $event->getUrl()])) {
                 continue;
             }
 

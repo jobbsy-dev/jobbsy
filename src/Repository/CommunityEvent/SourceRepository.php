@@ -2,6 +2,8 @@
 
 namespace App\Repository\CommunityEvent;
 
+use App\CommunityEvent\Repository\SourceRepositoryInterface;
+use App\CommunityEvent\SourceType;
 use App\Entity\CommunityEvent\Source;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -14,7 +16,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Source[]    findAll()
  * @method Source[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SourceRepository extends ServiceEntityRepository
+final class SourceRepository extends ServiceEntityRepository implements SourceRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -37,5 +39,12 @@ class SourceRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findByType(SourceType $sourceType): array
+    {
+        return $this->findBy([
+            'type' => $sourceType,
+        ]);
     }
 }

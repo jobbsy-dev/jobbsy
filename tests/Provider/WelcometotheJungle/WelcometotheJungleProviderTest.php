@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class WelcometotheJungleProviderTest extends TestCase
+final class WelcometotheJungleProviderTest extends TestCase
 {
     public function testRetrieve(): void
     {
