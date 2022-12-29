@@ -4,12 +4,16 @@ namespace App\OpenAI\Model;
 
 final readonly class CompletionRequest
 {
-    public function __construct(public string $model, public string|array $prompt, public float $temperature = 1)
-    {
+    public function __construct(
+        public string $model,
+        public string|array $prompt,
+        public float $temperature = 1,
+        public int $maxTokens = 16
+    ) {
     }
 
     /**
-     * @return array{model: string, prompt: string|mixed[], temperature: float}
+     * @return array{model: string, prompt: string|mixed[], temperature: float, max_tokens: int}
      */
     public function toArray(): array
     {
@@ -17,6 +21,7 @@ final readonly class CompletionRequest
             'model' => $this->model,
             'prompt' => $this->prompt,
             'temperature' => $this->temperature,
+            'max_tokens' => $this->maxTokens,
         ];
     }
 }
