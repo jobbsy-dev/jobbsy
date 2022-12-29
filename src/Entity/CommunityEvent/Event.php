@@ -2,6 +2,10 @@
 
 namespace App\Entity\CommunityEvent;
 
+use ApiPlatform\Doctrine\Common\Filter\OrderFilterInterface;
+use ApiPlatform\Metadata\ApiProperty;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
 use App\CommunityEvent\AttendanceMode;
 use App\Repository\CommunityEvent\EventRepository;
 use Doctrine\DBAL\Types\Types;
@@ -12,6 +16,11 @@ use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[ApiResource(
+    types: ['https://schema.org/Event'],
+    order: ['createdAt' => OrderFilterInterface::DIRECTION_DESC]
+)]
+#[GetCollection]
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
 {
@@ -22,17 +31,21 @@ class Event
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
     #[Assert\Length(max: 255)]
+    #[ApiProperty(types: ['https://schema.org/name'])]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Assert\NotBlank]
+    #[ApiProperty(types: ['https://schema.org/startDate'])]
     private ?\DateTimeImmutable $startDate = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Assert\NotBlank]
+    #[ApiProperty(types: ['https://schema.org/endDate'])]
     private ?\DateTimeImmutable $endDate = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ApiProperty(types: ['https://schema.org/location'])]
     private ?string $location = null;
 
     #[ORM\Column(type: Types::STRING)]
@@ -42,6 +55,7 @@ class Event
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Assert\Length(max: 200)]
+    #[ApiProperty(types: ['https://schema.org/description'])]
     private ?string $abstract = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
@@ -50,10 +64,12 @@ class Event
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
+    #[ApiProperty(types: ['https://schema.org/url'])]
     private ?string $url = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true, enumType: AttendanceMode::class)]
     #[Groups(['read'])]
+    #[ApiProperty(types: ['https://schema.org/eventAttendanceMode'])]
     private ?AttendanceMode $attendanceMode = null;
 
     public function __construct(?UuidInterface $id = null)
