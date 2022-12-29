@@ -3,7 +3,7 @@
         <h3 class="card-title">
             <a href="{{ path('event_redirect', {'id': event.id}) }}" class="text-decoration-none text-reset" target="_blank">{{ event.name }}</a>
         </h3>
-        <ul class="list-unstyled mt-3 d-flex gap-2 flex-column">
+        <ul class="list-unstyled mt-3 d-flex gap-2 flex-column mb-0">
             <li class="d-flex align-items-center gap-2">
                 <i icon-name="calendar-days" class="fs-6"></i>
 
@@ -23,6 +23,8 @@
                 {% endif %}
             </li>
         </ul>
-        <p class="card-text">{{ event.abstract }}</p>
+        {% if event.abstract %}
+            <p class="card-text mt-3">{{ event.abstract }}</p>
+        {% endif %}
     </div>
 </div>

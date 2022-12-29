@@ -48,8 +48,7 @@ class Event
     #[ApiProperty(types: ['https://schema.org/location'])]
     private ?string $location = null;
 
-    #[ORM\Column(type: Types::STRING)]
-    #[Assert\NotBlank]
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     #[Assert\Country]
     private ?string $country = null;
 
