@@ -2,33 +2,54 @@
 
 namespace App\Entity\News;
 
+use ApiPlatform\Doctrine\Common\Filter\OrderFilterInterface;
+use ApiPlatform\Metadata\ApiProperty;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\News\EntryRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidType;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
+#[ApiResource(
+    types: ['https://schema.org/Article'],
+    normalizationContext: ['groups' => ['entry:read']],
+    order: ['createdAt' => OrderFilterInterface::DIRECTION_DESC]
+)]
+#[GetCollection]
 #[ORM\Entity(repositoryClass: EntryRepository::class)]
 class Entry
 {
     #[ORM\Id]
     #[ORM\Column(type: UuidType::NAME, unique: true)]
+    #[Groups(groups: ['entry:read'])]
     private UuidInterface $id;
 
     #[ORM\Column(length: 255)]
+    #[ApiProperty(types: ['https://schema.org/name'])]
+    #[Groups(groups: ['entry:read'])]
     private ?string $title = null;
 
     #[ORM\Column(length: 255, unique: true)]
+    #[ApiProperty(types: ['https://schema.org/url'])]
+    #[Groups(groups: ['entry:read'])]
     private ?string $link = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[ApiProperty(types: ['https://schema.org/description'])]
+    #[Groups(groups: ['entry:read'])]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    #[Groups(groups: ['entry:read'])]
     private \DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    #[ApiProperty(types: ['https://schema.org/datePublished'])]
+    #[Groups(groups: ['entry:read'])]
     private ?\DateTimeImmutable $publishedAt = null;
 
     #[ORM\ManyToOne]
@@ -109,5 +130,17 @@ class Entry
     public function setFeed(Feed $feed): void
     {
         $this->feed = $feed;
+    }
+
+    #[Groups(groups: ['entry:read'])]
+    public function getSourceName(): ?string
+    {
+        return $this->feed?->getName();
+    }
+
+    #[Groups(groups: ['entry:read'])]
+    public function getSourceUrl(): ?string
+    {
+        return $this->feed?->getUrl();
     }
 }

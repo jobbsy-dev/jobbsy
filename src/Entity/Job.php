@@ -9,7 +9,6 @@ use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use App\Job\EmploymentType;
 use App\Job\LocationType;
@@ -25,13 +24,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ApiResource(
     types: ['https://schema.org/JobPosting'],
-    operations: [
-        new Get(),
-        new GetCollection(),
-    ],
     normalizationContext: ['groups' => ['read']],
     order: ['createdAt' => OrderFilterInterface::DIRECTION_DESC]
 )]
+#[GetCollection]
 #[ORM\Entity]
 #[Vich\Uploadable]
 #[ApiFilter(filterClass: OrderFilter::class, properties: ['createdAt' => OrderFilterInterface::DIRECTION_DESC])]
