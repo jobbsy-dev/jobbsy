@@ -22,23 +22,18 @@ use Twig\Environment;
 #[AsCommand(
     name: 'app:send-jobsletter',
     description: 'Add a short description for your command',
-)]
-class SendWeeklyJobsLetterCommand extends Command
+)] final class SendWeeklyJobsLetterCommand extends Command
 {
     public function __construct(
         private readonly Environment $twig,
         private readonly JobRepository $jobRepository,
         private readonly MailjetApi $mailjetApi,
-        #[Autowire('%env(MAILJET_CONTACT_LIST_ID)%')]
-        private readonly int $mailjetContactListId,
-        #[Autowire('%env(MAILJET_SENDER_ID)%')]
-        private readonly string $mailjetSenderId,
+        #[Autowire('%env(MAILJET_CONTACT_LIST_ID)%')] private readonly int $mailjetContactListId,
+        #[Autowire('%env(MAILJET_SENDER_ID)%')] private readonly string $mailjetSenderId,
         private readonly RouterInterface $router,
-        #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
-        private readonly string $commandRouterHost,
-        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
-        private readonly string $commandRouterScheme,
-    ) {
+        #[Autowire('%env(COMMAND_ROUTER_HOST)%')] private readonly string $commandRouterHost,
+        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')] private readonly string $commandRouterScheme,
+        ) {
         parent::__construct();
     }
 
@@ -53,7 +48,7 @@ class SendWeeklyJobsLetterCommand extends Command
     {
         $jobs = $this->jobRepository->findLastWeekJobs();
 
-        if (empty($jobs)) {
+        if ([] === $jobs) {
             $output->writeln('No jobs found');
 
             return Command::SUCCESS;

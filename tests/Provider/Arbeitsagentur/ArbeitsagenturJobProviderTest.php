@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class ArbeitsagenturJobProviderTest extends TestCase
+final class ArbeitsagenturJobProviderTest extends TestCase
 {
     public function testRetrieve(): void
     {

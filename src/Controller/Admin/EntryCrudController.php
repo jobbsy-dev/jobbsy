@@ -11,7 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
-class EntryCrudController extends AbstractCrudController
+final class EntryCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {

@@ -7,15 +7,16 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final readonly class TwitterApi
 {
+    /**
+     * @var string
+     */
+    private const URL = 'https://api.twitter.com/2/tweets';
+
     public function __construct(
-        #[Autowire('%env(TWITTER_API_KEY)%')]
-        private string $consumerKey,
-        #[Autowire('%env(TWITTER_API_KEY_SECRET)%')]
-        private string $consumerSecret,
-        #[Autowire('%env(TWITTER_ACCESS_TOKEN)%')]
-        private string $accessToken,
-        #[Autowire('%env(TWITTER_ACCESS_TOKEN_SECRET)%')]
-        private string $tokenSecret,
+        #[Autowire('%env(TWITTER_API_KEY)%')] private string $consumerKey,
+        #[Autowire('%env(TWITTER_API_KEY_SECRET)%')] private string $consumerSecret,
+        #[Autowire('%env(TWITTER_ACCESS_TOKEN)%')] private string $accessToken,
+        #[Autowire('%env(TWITTER_ACCESS_TOKEN_SECRET)%')] private string $tokenSecret,
         private HttpClientInterface $httpClient
     ) {
     }
@@ -23,11 +24,10 @@ final readonly class TwitterApi
     public function createTweet(Tweet $tweet): string
     {
         $method = 'POST';
-        $url = 'https://api.twitter.com/2/tweets';
         $payload = $tweet->toArray();
-        $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: $url);
+        $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: self::URL);
 
-        $response = $this->httpClient->request($method, $url, [
+        $response = $this->httpClient->request($method, self::URL, [
             'headers' => [
                 'Authorization' => $authorizationHeader,
             ],
@@ -35,13 +35,13 @@ final readonly class TwitterApi
         ]);
 
         if (201 !== $response->getStatusCode()) {
-            throw new \Exception('Unexpected response status code');
+            throw new \Exception('Unexpected response status code.');
         }
 
         $content = $response->toArray();
 
         if (false === isset($content['data']['id'])) {
-            throw new \Exception('Unexpected response content');
+            throw new \Exception('Unexpected response content.');
         }
 
         return $content['data']['id'];
@@ -54,7 +54,7 @@ final readonly class TwitterApi
             'oauth_token' => $this->accessToken,
             'oauth_signature_method' => 'HMAC-SHA1',
             'oauth_timestamp' => time(),
-            'oauth_nonce' => md5(mt_rand()),
+            'oauth_nonce' => md5(random_int(0, mt_getrandmax())),
             'oauth_version' => '1.0',
         ];
 
@@ -77,9 +77,7 @@ final readonly class TwitterApi
             $values[] = "$key=\"".rawurlencode($value).'"';
         }
 
-        $return .= implode(', ', $values);
-
-        return $return;
+        return $return.implode(', ', $values);
     }
 
     public function deleteTweet(string $tweetId): bool
@@ -95,13 +93,13 @@ final readonly class TwitterApi
         ]);
 
         if (200 !== $response->getStatusCode()) {
-            throw new \Exception('Unexpected response status code');
+            throw new \Exception('Unexpected response status code.');
         }
 
         $content = $response->toArray();
 
         if (false === isset($content['data']['deleted'])) {
-            throw new \Exception('Unexpected response content');
+            throw new \Exception('Unexpected response content.');
         }
 
         return $content['data']['deleted'];

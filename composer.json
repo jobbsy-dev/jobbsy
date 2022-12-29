@@ -86,6 +86,7 @@
         "league/flysystem-memory": "^3.0",
         "phpstan/phpstan": "^1.4",
         "phpunit/phpunit": "^9.5",
+        "rector/rector": "^0.15.2",
         "symfony/browser-kit": "6.2.*",
         "symfony/css-selector": "6.2.*",
         "symfony/debug-bundle": "6.2.*",

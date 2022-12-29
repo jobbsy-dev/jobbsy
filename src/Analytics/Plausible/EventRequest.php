@@ -13,7 +13,7 @@ final readonly class EventRequest implements EventRequestInterface
         private string $name,
         private string $url,
         private string $contentType = 'application/json',
-    ) {
+        ) {
     }
 
     public static function create(array $data): self
@@ -37,6 +37,9 @@ final readonly class EventRequest implements EventRequestInterface
         ];
     }
 
+    /**
+     * @return array{domain: string, name: string, url: string}
+     */
     public function body(): array
     {
         return [

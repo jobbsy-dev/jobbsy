@@ -12,6 +12,7 @@ $finder = (new PhpCsFixer\Finder())
 
 return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
+    ->registerCustomFixers(new PedroTroller\CS\Fixer\Fixers())
     ->setRules([
         '@Symfony' => true,
         '@Symfony:risky' => true,
@@ -25,6 +26,10 @@ return (new PhpCsFixer\Config())
         'phpdoc_order' => true,
         'strict_comparison' => true,
         'strict_param' => true,
+        'PedroTroller/exceptions_punctuation' => true,
+        'PedroTroller/line_break_between_method_arguments' => [ 'max-args' => 4, 'max-length' => 120, 'automatic-argument-merge' => true ],
+        'PedroTroller/line_break_between_statements' => true,
+        'PedroTroller/doctrine_migrations' => true,
     ])
     ->setFinder($finder)
     ->setCacheFile(__DIR__.'/var/.php_cs.cache')

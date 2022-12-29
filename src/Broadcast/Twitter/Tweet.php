@@ -8,6 +8,9 @@ final readonly class Tweet
     {
     }
 
+    /**
+     * @return array{text: string}
+     */
     public function toArray(): array
     {
         return [

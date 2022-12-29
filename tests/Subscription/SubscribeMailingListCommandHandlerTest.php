@@ -6,7 +6,7 @@ use App\Subscription\SubscribeMailingListCommand;
 use App\Subscription\SubscribeMailingListCommandHandler;
 use PHPUnit\Framework\TestCase;
 
-class SubscribeMailingListCommandHandlerTest extends TestCase
+final class SubscribeMailingListCommandHandlerTest extends TestCase
 {
     public function testSubscribe(): void
     {

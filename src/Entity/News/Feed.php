@@ -30,7 +30,7 @@ class Feed
     private \DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: Types::STRING, enumType: FeedType::class)]
-    private ?FeedType $type;
+    private ?FeedType $type = null;
 
     #[Vich\UploadableField(
         mapping: 'feed_image',

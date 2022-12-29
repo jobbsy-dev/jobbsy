@@ -7,15 +7,11 @@ use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 final readonly class JobProvider implements JobProviderInterface
 {
     /**
-     * @var JobProviderInterface[]
+     * @param JobProviderInterface[] $providers
      */
-    private iterable $providers;
-
     public function __construct(
-        #[TaggedIterator(JobProviderInterface::class, exclude: self::class)]
-        iterable $providers
+        #[TaggedIterator(JobProviderInterface::class, exclude: self::class)] private iterable $providers
     ) {
-        $this->providers = $providers;
     }
 
     public function retrieve(SearchParameters $parameters): JobCollection

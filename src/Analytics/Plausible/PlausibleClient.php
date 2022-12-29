@@ -23,7 +23,7 @@ final readonly class PlausibleClient implements AnalyticsClient
         $status = $response->getStatusCode();
 
         if (202 !== $status) {
-            throw new TransportException('Unable to create event');
+            throw new TransportException('Unable to create event.');
         }
     }
 }

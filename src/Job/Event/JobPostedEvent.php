@@ -7,9 +7,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 final class JobPostedEvent extends Event
 {
-    public function __construct(
-        public readonly Job $job,
-        public readonly string $jobUrl,
-    ) {
+    public function __construct(public readonly Job $job, public readonly string $jobUrl)
+    {
     }
 }

@@ -12,7 +12,7 @@ use Psr\Log\NullLogger;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class MeetupImporterTest extends TestCase
+final class MeetupImporterTest extends TestCase
 {
     public function testImport(): void
     {

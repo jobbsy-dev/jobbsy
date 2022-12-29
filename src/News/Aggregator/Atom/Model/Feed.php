@@ -11,9 +11,8 @@ final class Feed
      */
     private array $entries;
 
-    public function __construct(
-        public readonly string $title
-    ) {
+    public function __construct(public readonly string $title)
+    {
     }
 
     public function addEntry(Entry $entry): void

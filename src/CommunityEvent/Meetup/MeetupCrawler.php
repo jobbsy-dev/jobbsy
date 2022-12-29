@@ -31,9 +31,15 @@ final readonly class MeetupCrawler
             $schemas = json_decode($domElement->textContent, true, 512, \JSON_THROW_ON_ERROR);
 
             foreach ($schemas as $schema) {
-                if (isset($schema['@type']) && 'Event' === $schema['@type']) {
-                    $data[] = $schema;
+                if (false === isset($schema['@type'])) {
+                    continue;
                 }
+
+                if ('Event' !== $schema['@type']) {
+                    continue;
+                }
+
+                $data[] = $schema;
             }
         }
 

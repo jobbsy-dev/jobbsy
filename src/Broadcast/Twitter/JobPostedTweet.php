@@ -6,15 +6,13 @@ use App\Entity\Job;
 
 final readonly class JobPostedTweet
 {
-    public function __construct(
-        private Job $job,
-        private string $jobUrl
-    ) {
+    public function __construct(private Job $job, private string $jobUrl)
+    {
     }
 
     public function toTweet(): Tweet
     {
-        $hashtags = array_map(static function (string $tag) {
+        $hashtags = array_map(static function (string $tag): string {
             return '#'.$tag;
         }, $this->job->getTags());
 

@@ -12,7 +12,7 @@ use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class ClassifyHandlerTest extends TestCase
+final class ClassifyHandlerTest extends TestCase
 {
     public function testClassifyJob(): void
     {

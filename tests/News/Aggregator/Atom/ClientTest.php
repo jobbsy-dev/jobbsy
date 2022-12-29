@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
     public function testReadFeed(): void
     {
@@ -25,6 +25,6 @@ class ClientTest extends TestCase
         self::assertSame('The Strangebuzz PHP/Symfony blog.', $feed->title);
         self::assertCount(4, $feed->getEntries());
         $entry = $feed->getEntries()[0];
-        self::assertSame('Validating your data fixtures with the Alice Symfony bundle', trim($entry->title));
+        self::assertSame('Validating your data fixtures with the Alice Symfony bundle', trim((string) $entry->title));
     }
 }

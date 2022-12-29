@@ -43,13 +43,13 @@ final readonly class MeetupImporter
                     );
 
                     switch (true) {
-                        case str_contains($meetupData['eventAttendanceMode'], 'OnlineEventAttendanceMode'):
+                        case str_contains((string) $meetupData['eventAttendanceMode'], 'OnlineEventAttendanceMode'):
                             $event->setAttendanceMode(AttendanceMode::ONLINE);
                             break;
-                        case str_contains($meetupData['eventAttendanceMode'], 'MixedEventAttendanceMode'):
+                        case str_contains((string) $meetupData['eventAttendanceMode'], 'MixedEventAttendanceMode'):
                             $event->setAttendanceMode(AttendanceMode::MIXED);
                             break;
-                        case str_contains($meetupData['eventAttendanceMode'], 'OfflineEventAttendanceMode'):
+                        case str_contains((string) $meetupData['eventAttendanceMode'], 'OfflineEventAttendanceMode'):
                             $event->setAttendanceMode(AttendanceMode::OFFLINE);
                             break;
                     }

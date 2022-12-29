@@ -12,7 +12,7 @@ final readonly class CreateDonationPaymentUrlCommand
         public int $amount,
         public string $redirectSuccessUrl,
         public string $redirectCancelUrl,
-    ) {
+        ) {
         Assert::greaterThan($amount, 0);
         Assert::notEmpty($redirectSuccessUrl);
         Assert::notEmpty($redirectCancelUrl);

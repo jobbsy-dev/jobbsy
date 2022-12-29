@@ -46,13 +46,13 @@ class Job
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?string $title;
+    private ?string $title = null;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?string $location;
+    private ?string $location = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private ?\DateTimeImmutable $createdAt;
@@ -61,13 +61,13 @@ class Job
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?EmploymentType $employmentType;
+    private ?EmploymentType $employmentType = null;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?string $organization;
+    private ?string $organization = null;
 
     #[ORM\Column(type: Types::JSON)]
     #[Assert\Count(max: 5)]
@@ -77,7 +77,7 @@ class Job
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    private ?string $url;
+    private ?string $url = null;
 
     #[Vich\UploadableField(
         mapping: 'organization_image',

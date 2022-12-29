@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1e0b38af4ded66da271a99d2bff5be8",
+    "content-hash": "bb90ac867ffabda363c2c15d2750b317",
     "packages": [
         {
             "name": "composer/pcre",
@@ -461,6 +461,51 @@
                 }
             ],
             "time": "2022-10-31T19:28:50+00:00"
+        },
+        {
+            "name": "pedrotroller/php-cs-custom-fixer",
+            "version": "v2.28.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers.git",
+                "reference": "46783e4b14fecdd130dec9c2848f3846c0f9ffee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PedroTroller/PhpCSFixer-Custom-Fixers/zipball/46783e4b14fecdd130dec9c2848f3846c0f9ffee",
+                "reference": "46783e4b14fecdd130dec9c2848f3846c0f9ffee",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofphp/php-cs-fixer": "^3.7",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "^7.0",
+                "twig/twig": "^3.3",
+                "webmozart/assert": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PedroTroller\\CS\\Fixer\\": "src/PedroTroller/CS/Fixer"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP-CS-FIXER : my custom fixers",
+            "support": {
+                "issues": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers/issues",
+                "source": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers/tree/v2.28.0"
+            },
+            "time": "2022-04-27T09:00:24+00:00"
         },
         {
             "name": "psr/cache",

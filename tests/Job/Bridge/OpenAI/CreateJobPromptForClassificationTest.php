@@ -6,7 +6,7 @@ use App\Entity\Job;
 use App\Job\Bridge\OpenAI\CreateJobPromptForClassification;
 use PHPUnit\Framework\TestCase;
 
-class CreateJobPromptForClassificationTest extends TestCase
+final class CreateJobPromptForClassificationTest extends TestCase
 {
     /**
      * @dataProvider dataPrompt

@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\Clock\MockClock;
 
-class EventControllerTest extends WebTestCase
+final class EventControllerTest extends WebTestCase
 {
     public function testIndex(): void
     {

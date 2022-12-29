@@ -9,11 +9,11 @@ use App\Provider\JobCollection;
 use App\Provider\JobProviderInterface;
 use App\Provider\SearchParameters;
 
-final class WelcometotheJungleProvider implements JobProviderInterface
+final readonly class WelcometotheJungleProvider implements JobProviderInterface
 {
     public const SOURCE_NAME = 'WTTJ';
 
-    public function __construct(private readonly WelcometotheJungleClient $client)
+    public function __construct(private WelcometotheJungleClient $client)
     {
     }
 

@@ -4,10 +4,8 @@ namespace App\Mailjet\Model\TestCampaignDraft;
 
 final readonly class TestCampaignDraftRequest
 {
-    public function __construct(
-        public string $draftId,
-        public array $recipients,
-    ) {
+    public function __construct(public string $draftId, public array $recipients)
+    {
     }
 
     public function toArray(): array

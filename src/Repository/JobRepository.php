@@ -14,7 +14,7 @@ use Ramsey\Uuid\UuidInterface;
  * @method Job[]    findAll()
  * @method Job[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class JobRepository extends ServiceEntityRepository
+final class JobRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -72,7 +72,7 @@ class JobRepository extends ServiceEntityRepository
         $job = $this->find($id);
 
         if (null === $job) {
-            throw new JobNotFoundException(sprintf('Job with id "%s" not found', $id));
+            throw new JobNotFoundException(sprintf('Job with id "%s" not found.', $id));
         }
 
         return $job;

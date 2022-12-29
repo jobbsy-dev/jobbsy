@@ -11,10 +11,8 @@ use League\Flysystem\FilesystemOperator;
 
 final readonly class ArbeitsagenturJobProvider implements JobProviderInterface
 {
-    public function __construct(
-        private ArbeitsagenturApi $api,
-        private FilesystemOperator $organizationImageStorage,
-    ) {
+    public function __construct(private ArbeitsagenturApi $api, private FilesystemOperator $organizationImageStorage)
+    {
     }
 
     public function retrieve(SearchParameters $parameters): JobCollection
@@ -69,11 +67,11 @@ final readonly class ArbeitsagenturJobProvider implements JobProviderInterface
             return false;
         }
 
-        if (false === isset($data['refnr']) && false === isset($data['externeUrl'])) {
-            return false;
+        if (false !== isset($data['refnr'])) {
+            return true;
         }
 
-        return true;
+        return false !== isset($data['externeUrl']);
     }
 
     private function fillLogo(array $data, Job $job): void

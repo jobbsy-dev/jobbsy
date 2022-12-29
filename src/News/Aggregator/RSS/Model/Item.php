@@ -12,7 +12,7 @@ final readonly class Item
         public ?string $author = null,
         public ?string $guid = null,
         public ?string $category = null,
-    ) {
+        ) {
     }
 
     public static function create(\DOMXPath $xpath, \DOMNode $itemNode): self
@@ -21,7 +21,7 @@ final readonly class Item
         if (0 !== $xpath->query('./pubDate', $itemNode)->count()) {
             $pubDate = \DateTimeImmutable::createFromFormat(
                 \DateTimeInterface::RFC2822,
-                trim($xpath->evaluate('./pubDate', $itemNode)->item(0)->nodeValue)
+                trim((string) $xpath->evaluate('./pubDate', $itemNode)->item(0)->nodeValue)
             );
         }
 

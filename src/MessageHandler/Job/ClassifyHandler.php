@@ -16,8 +16,7 @@ final readonly class ClassifyHandler
     public function __construct(
         private Client $openAIClient,
         private JobRepository $jobRepository,
-        #[Autowire('%env(OPENAI_API_COMPLETION_MODEL)%')]
-        private string $model
+        #[Autowire('%env(OPENAI_API_COMPLETION_MODEL)%')] private string $model
     ) {
     }
 
@@ -36,7 +35,7 @@ final readonly class ClassifyHandler
             return;
         }
 
-        $keywords = array_filter(array_map('trim', explode(',', $result['choices'][0]['text'])));
+        $keywords = array_filter(array_map('trim', explode(',', (string) $result['choices'][0]['text'])));
 
         $job->setTags($keywords);
 

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class WelcometotheJungleClientTest extends TestCase
+final class WelcometotheJungleClientTest extends TestCase
 {
     public function testCrawl(): void
     {

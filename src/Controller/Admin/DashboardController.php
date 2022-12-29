@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class DashboardController extends AbstractDashboardController
+final class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
     public function index(): Response
@@ -33,7 +33,7 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Jobbsy');
     }
 
-    public function configureMenuItems(): iterable
+    public function configureMenuItems(): \Iterator
     {
         yield MenuItem::linkToCrud('Jobs', 'fas fa-list', Job::class);
 

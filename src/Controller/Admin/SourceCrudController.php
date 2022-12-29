@@ -12,7 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 
-class SourceCrudController extends AbstractCrudController
+final class SourceCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
@@ -29,14 +29,14 @@ class SourceCrudController extends AbstractCrudController
             UrlField::new('url'),
             ChoiceField::new('type')
                 ->onlyOnForms()
-                ->setChoices(function () {
-                    $choices = array_map(static fn (?SourceType $unit) => [$unit->value => $unit], SourceType::cases());
+                ->setChoices(function (): array {
+                    $choices = array_map(static fn (?SourceType $unit): array => [$unit->value => $unit], SourceType::cases());
 
                     return array_merge(...$choices);
                 })
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', SourceType::class)
-                ->setFormTypeOption('choice_label', function (SourceType $enum) {
+                ->setFormTypeOption('choice_label', function (SourceType $enum): string {
                     return $enum->value;
                 }),
         ];
