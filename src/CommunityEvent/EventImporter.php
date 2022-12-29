@@ -34,6 +34,9 @@ final readonly class EventImporter
                         mb_substr(html_entity_decode($eventData['description']), 0, 200))
                     );
 
+                    $event->setStartDate(new \DateTimeImmutable($eventData['startDate']));
+                    $event->setEndDate(new \DateTimeImmutable($eventData['endDate']));
+
                     switch (true) {
                         case str_contains((string) $eventData['eventAttendanceMode'], 'OnlineEventAttendanceMode'):
                             $event->setAttendanceMode(AttendanceMode::ONLINE);
@@ -46,13 +49,21 @@ final readonly class EventImporter
                             break;
                     }
 
-                    $event->setLocation(html_entity_decode($eventData['location']['address']['addressLocality']));
-                    $event->setStartDate(new \DateTimeImmutable($eventData['startDate']));
-                    $event->setEndDate(new \DateTimeImmutable($eventData['endDate']));
+                    if (isset($eventData['location']['@type'])) {
+                        if ('Place' === $eventData['location']['@type']) {
+                            $event->setLocation(html_entity_decode((string) $eventData['location']['address']['addressLocality']));
 
-                    $countryName = html_entity_decode($eventData['location']['address']['addressCountry']);
-                    $key = array_search($countryName, Countries::getNames(), true);
-                    $event->setCountry($key);
+                            $countryName = html_entity_decode((string) $eventData['location']['address']['addressCountry']);
+                            if (Countries::exists($countryName)) {
+                                $event->setCountry($countryName);
+                            } else {
+                                $key = array_search($countryName, Countries::getNames(), true);
+                                $event->setCountry($key);
+                            }
+                        } elseif ('VirtualLocation' === $eventData['location']['@type']) {
+                            $event->setAttendanceMode(AttendanceMode::ONLINE);
+                        }
+                    }
 
                     $events[] = $event;
                 }

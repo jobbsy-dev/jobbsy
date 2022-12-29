@@ -16,7 +16,7 @@ final class Version20221229180133 extends AbstractMigration
         $this->addSql('CREATE TABLE source (id CHAR(36) NOT NULL --(DC2Type:uuid)
         , url VARCHAR(255) NOT NULL, created_at DATETIME NOT NULL --(DC2Type:datetime_immutable)
         , PRIMARY KEY(id))');
-        $this->addSql('INSERT INTO source (id, url) SELECT id, url FROM __temp__source');
+        $this->addSql('INSERT INTO source (id, url, created_at) SELECT id, url, DATETIME("now") FROM __temp__source');
         $this->addSql('DROP TABLE __temp__source');
     }
 
