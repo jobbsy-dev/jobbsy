@@ -34,7 +34,7 @@ final readonly class ClassifyHandler
 
         $keywords = array_filter(array_map('trim', explode(',', (string) $result['choices'][0]['text'])));
 
-        $job->setTags($keywords);
+        $job->setTags(\array_slice($keywords, 0, 5));
 
         $this->jobRepository->save($job, true);
     }
