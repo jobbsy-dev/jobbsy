@@ -1,10 +1,10 @@
 <?php
 
-namespace App\CommunityEvent\Meetup;
+namespace App\CommunityEvent;
 
 use Goutte\Client;
 
-final readonly class MeetupCrawler
+final readonly class EventScraping
 {
     public function __construct(private Client $goutteClient)
     {
@@ -22,12 +22,13 @@ final readonly class MeetupCrawler
      *     location: array{address: array{addressLocality: string, addressCountry: string}}
      * }>
      */
-    public function crawl(string $url): array
+    public function fetch(string $url): array
     {
         $data = [];
         $crawler = $this->goutteClient->request('GET', $url);
 
-        foreach ($crawler->filter('script[type="application/ld+json"]') as $domElement) {
+        $structuredDataElements = $crawler->filter('script[type="application/ld+json"]');
+        foreach ($structuredDataElements as $domElement) {
             $schemas = json_decode($domElement->textContent, true, 512, \JSON_THROW_ON_ERROR);
 
             foreach ($schemas as $schema) {

@@ -3,7 +3,6 @@
 namespace App\Repository\CommunityEvent;
 
 use App\CommunityEvent\Repository\SourceRepositoryInterface;
-use App\CommunityEvent\SourceType;
 use App\Entity\CommunityEvent\Source;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -41,10 +40,8 @@ final class SourceRepository extends ServiceEntityRepository implements SourceRe
         }
     }
 
-    public function findByType(SourceType $sourceType): array
+    public function getAll(): array
     {
-        return $this->findBy([
-            'type' => $sourceType,
-        ]);
+        return $this->findAll();
     }
 }

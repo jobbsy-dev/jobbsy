@@ -84,6 +84,10 @@ jobs:
               if: always() && steps.install.outcome == 'success'
               run: symfony check:security
 
+            - name: PHPStan
+              if: always() && steps.install.outcome == 'success'
+              run: ./vendor/bin/phpstan analyze
+
             - name: Rector
               if: always() && steps.install.outcome == 'success'
               run: ./vendor/bin/rector process --dry-run

@@ -12,16 +12,12 @@ use App\Mailjet\Model\SendCampaignDraft\SendCampaignDraftRequest;
 use App\Mailjet\Model\SendCampaignDraft\SendCampaignDraftResponse;
 use App\Mailjet\Model\TestCampaignDraft\TestCampaignDraftRequest;
 use App\Mailjet\Model\TestCampaignDraft\TestCampaignDraftResponse;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final readonly class MailjetApi
 {
-    public function __construct(
-        #[Autowire('%env(MAILJET_API_KEY)%')] string $mailjetApiKey,
-        #[Autowire('%env(MAILJET_API_SECRET_KEY)%')] string $mailjetApiSecretKey,
-        private HttpClientInterface $mailjetClient
-    ) {
+    public function __construct(private HttpClientInterface $mailjetClient)
+    {
     }
 
     public function createContact(string $email): ?array

@@ -37,7 +37,7 @@ final class MailjetApiTest extends TestCase
         ]);
         $httpClient = new MockHttpClient($mockResponse, 'https://example.com');
 
-        $mailjetApi = new MailjetApi('xxx', 'xxx', $httpClient);
+        $mailjetApi = new MailjetApi($httpClient);
 
         // Act
         $responseData = $mailjetApi->createContact('john@example.com');
@@ -77,7 +77,7 @@ final class MailjetApiTest extends TestCase
         ]);
         $httpClient = new MockHttpClient($mockResponse, 'https://example.com');
 
-        $mailjetApi = new MailjetApi('xxx', 'xxx', $httpClient);
+        $mailjetApi = new MailjetApi($httpClient);
 
         // Act
         $responseData = $mailjetApi->addContactToList('123', '456');
@@ -122,7 +122,7 @@ final class MailjetApiTest extends TestCase
         ]);
         $httpClient = new MockHttpClient($mockResponse, 'https://example.com');
 
-        $mailjetApi = new MailjetApi('xxx', 'xxx', $httpClient);
+        $mailjetApi = new MailjetApi($httpClient);
 
         // Act
         $response = $mailjetApi->createCampaignDraft(new CreateCampaignDraftRequest(
@@ -169,7 +169,7 @@ final class MailjetApiTest extends TestCase
         ]);
         $httpClient = new MockHttpClient($mockResponse, 'https://example.com');
 
-        $mailjetApi = new MailjetApi('xxx', 'xxx', $httpClient);
+        $mailjetApi = new MailjetApi($httpClient);
 
         // Act
         $response = $mailjetApi->createCampaignDraftContent(new CreateCampaignDraftContentRequest(
@@ -206,7 +206,7 @@ final class MailjetApiTest extends TestCase
         ]);
         $httpClient = new MockHttpClient($mockResponse, 'https://example.com');
 
-        $mailjetApi = new MailjetApi('xxx', 'xxx', $httpClient);
+        $mailjetApi = new MailjetApi($httpClient);
 
         // Act
         $response = $mailjetApi->sendCampaignDraft(new SendCampaignDraftRequest(1));
@@ -245,7 +245,7 @@ final class MailjetApiTest extends TestCase
         ]);
         $httpClient = new MockHttpClient($mockResponse, 'https://example.com');
 
-        $mailjetApi = new MailjetApi('xxx', 'xxx', $httpClient);
+        $mailjetApi = new MailjetApi($httpClient);
 
         // Act
         $response = $mailjetApi->manageContact(new ManageContactRequest(

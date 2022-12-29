@@ -22,19 +22,19 @@ validate: lint						## Validate the code, check composer.json and check security
 	$(SYMFONY_CLI) $(COMPOSER) validate --strict
 	$(SYMFONY_CLI) $(COMPOSER) audit
 
-migrate:							## Run doctrine migrations
+migrate: vendor							## Run doctrine migrations
 	$(SYMFONY_CLI) console doctrine:migration:migrate
 
-phpcsfix: tools-vendor				## Run cs fixer
+phpcsfix: tools-vendor					## Run cs fixer
 	PHP_CS_FIXER_IGNORE_ENV=true $(SYMFONY_CLI) $(PHP_CS_FIXER) fix
 
-phpstan:							## Run PHPStan
+phpstan: vendor							## Run PHPStan
 	$(SYMFONY_CLI) $(PHP_STAN) analyse --level 1 src/
 
-fixtures:							## Load fixtures test env
+fixtures: vendor						## Load fixtures test env
 	$(SYMFONY_CLI) console doctrine:fixtures:load --env=test --no-interaction
 
-test: bootstrap-tests fixtures		## Run tests
+test: vendor bootstrap-tests fixtures	## Run tests
 	$(SYMFONY_CLI) $(PHPUNIT)
 
 deploy:								## Deploy
@@ -51,10 +51,10 @@ bootstrap-tests:					## Bootstrap tests
 	$(SYMFONY_CLI) console d:d:c --env=test
 	$(SYMFONY_CLI) console d:m:m --env=test --no-interaction
 
-rectify: 							## Run Rector
+rectify: vendor						## Run Rector
 	$(SYMFONY_CLI) $(RECTOR) process
 
-rector: 							## Run Rector with dry run
+rector: vendor							## Run Rector with dry run
 	$(SYMFONY_CLI) $(RECTOR) process --dry-run
 
 # Rules from files
@@ -63,3 +63,8 @@ tools/php-cs-fixer/vendor/composer/installed.php: composer.lock
 	$(SYMFONY_CLI) $(COMPOSER) install --working-dir=./tools/php-cs-fixer
 
 tools-vendor: tools/php-cs-fixer/vendor/composer/installed.php
+
+vendor/composer/installed.php: composer.lock
+	$(SYMFONY_CLI) $(COMPOSER) install
+
+vendor: vendor/composer/installed.php
