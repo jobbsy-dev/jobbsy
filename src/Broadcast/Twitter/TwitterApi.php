@@ -10,7 +10,7 @@ final readonly class TwitterApi
     /**
      * @var string
      */
-    private const URL = 'https://api.twitter.com/2/tweets';
+    private const BASE_URL = 'https://api.twitter.com/2';
 
     public function __construct(
         #[Autowire('%env(TWITTER_API_KEY)%')] private string $consumerKey,
@@ -25,9 +25,10 @@ final readonly class TwitterApi
     {
         $method = 'POST';
         $payload = $tweet->toArray();
-        $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: self::URL);
+        $url = sprintf('%s/tweets', self::BASE_URL);
+        $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: $url);
 
-        $response = $this->httpClient->request($method, self::URL, [
+        $response = $this->httpClient->request($method, $url, [
             'headers' => [
                 'Authorization' => $authorizationHeader,
             ],
@@ -83,7 +84,7 @@ final readonly class TwitterApi
     public function deleteTweet(string $tweetId): bool
     {
         $method = 'DELETE';
-        $url = 'https://api.twitter.com/2/tweets/'.$tweetId;
+        $url = sprintf('%s/tweets/%s', self::BASE_URL, $tweetId);
         $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: $url);
 
         $response = $this->httpClient->request($method, $url, [

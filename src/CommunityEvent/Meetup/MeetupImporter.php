@@ -3,9 +3,9 @@
 namespace App\CommunityEvent\Meetup;
 
 use App\CommunityEvent\AttendanceMode;
+use App\CommunityEvent\Repository\SourceRepositoryInterface;
 use App\CommunityEvent\SourceType;
 use App\Entity\CommunityEvent\Event;
-use App\Repository\CommunityEvent\SourceRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Intl\Countries;
 
@@ -13,7 +13,7 @@ final readonly class MeetupImporter
 {
     public function __construct(
         private MeetupCrawler $crawler,
-        private SourceRepository $sourceRepository,
+        private SourceRepositoryInterface $sourceRepository,
         private LoggerInterface $logger
     ) {
     }
@@ -25,9 +25,7 @@ final readonly class MeetupImporter
     {
         $events = [];
 
-        $groups = $this->sourceRepository->findBy([
-            'type' => SourceType::MEETUP_GROUP,
-        ]);
+        $groups = $this->sourceRepository->findByType(SourceType::MEETUP_GROUP);
 
         foreach ($groups as $group) {
             try {

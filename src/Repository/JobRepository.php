@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Job;
+use App\Job\Repository\JobRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Persistence\ManagerRegistry;
@@ -14,7 +15,7 @@ use Ramsey\Uuid\UuidInterface;
  * @method Job[]    findAll()
  * @method Job[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-final class JobRepository extends ServiceEntityRepository
+final class JobRepository extends ServiceEntityRepository implements JobRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {

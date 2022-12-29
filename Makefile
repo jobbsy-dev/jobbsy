@@ -1,5 +1,6 @@
 SYMFONY_CLI=symfony
 PHP_CS_FIXER=php ./tools/php-cs-fixer/vendor/bin/php-cs-fixer
+RECTOR=php ./vendor/bin/rector
 PHP_STAN=php ./vendor/bin/phpstan
 CONSOLE=bin/console
 COMPOSER=composer
@@ -49,6 +50,12 @@ bootstrap-tests:					## Bootstrap tests
 	$(SYMFONY_CLI) console d:d:d --env=test --force
 	$(SYMFONY_CLI) console d:d:c --env=test
 	$(SYMFONY_CLI) console d:m:m --env=test --no-interaction
+
+rectify: 							## Run Rector
+	$(SYMFONY_CLI) $(RECTOR) process
+
+rector: 							## Run Rector with dry run
+	$(SYMFONY_CLI) $(RECTOR) process --dry-run
 
 # Rules from files
 

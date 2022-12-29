@@ -6,7 +6,7 @@ use App\Entity\Job;
 use App\Message\Job\ClassifyMessage;
 use App\MessageHandler\Job\ClassifyHandler;
 use App\OpenAI\Client;
-use App\Repository\JobRepository;
+use App\Tests\Repository\InMemoryJobRepository;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpClient\MockHttpClient;
@@ -31,11 +31,7 @@ final class ClassifyHandlerTest extends TestCase
         $httpClient = new MockHttpClient([$mockResponse]);
         $client = new Client($httpClient);
 
-        $repository = $this->createMock(JobRepository::class);
-        $repository
-            ->method('find')
-            ->with('d43b7e10-cbc7-40d1-a9d4-aa73fc825456')
-            ->willReturn($job);
+        $repository = new InMemoryJobRepository([$job]);
 
         $handler = new ClassifyHandler($client, $repository, 'model');
         $message = new ClassifyMessage('d43b7e10-cbc7-40d1-a9d4-aa73fc825456');
