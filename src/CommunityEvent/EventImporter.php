@@ -29,12 +29,10 @@ final readonly class EventImporter
                     $event = new Event();
                     $event->setName(html_entity_decode($eventData['name']));
                     $event->setUrl($eventData['url']);
-                    if (isset($eventData['description'])) {
-                        $event->setAbstract(sprintf(
-                            '%s...',
-                            mb_substr(html_entity_decode($eventData['description']), 0, 200))
-                        );
-                    }
+                    $event->setAbstract(sprintf(
+                        '%s...',
+                        mb_substr(html_entity_decode($eventData['description']), 0, 200))
+                    );
 
                     $event->setStartDate(new \DateTimeImmutable($eventData['startDate']));
                     $event->setEndDate(new \DateTimeImmutable($eventData['endDate']));
@@ -53,9 +51,9 @@ final readonly class EventImporter
 
                     if (isset($eventData['location']['@type'])) {
                         if ('Place' === $eventData['location']['@type']) {
-                            $event->setLocation(html_entity_decode($eventData['location']['address']['addressLocality']));
+                            $event->setLocation(html_entity_decode((string) $eventData['location']['address']['addressLocality']));
 
-                            $countryName = html_entity_decode($eventData['location']['address']['addressCountry']);
+                            $countryName = html_entity_decode((string) $eventData['location']['address']['addressCountry']);
                             if (Countries::exists($countryName)) {
                                 $event->setCountry($countryName);
                             } else {
