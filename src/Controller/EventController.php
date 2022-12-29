@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\Cache;
 use Symfony\Component\Routing\Annotation\Route;
 
 final class EventController extends AbstractController
@@ -21,6 +22,7 @@ final class EventController extends AbstractController
     }
 
     #[Route('/events', name: 'event_index', methods: ['GET'])]
+    #[Cache(smaxage: 86400)]
     public function index(EventRepository $eventRepository): Response
     {
         return $this->render('event/index.html.twig', [
