@@ -10,18 +10,6 @@ final readonly class EventScraping
     {
     }
 
-    /**
-     * @throws \JsonException
-     *
-     * @return array<array{
-     *     name: string,
-     *     url: string,
-     *     description: string,
-     *     startDate: string,
-     *     endDate: string,
-     *     location: array{address: array{addressLocality: string, addressCountry: string}}
-     * }>
-     */
     public function fetch(string $url): array
     {
         $data = [];

@@ -27,12 +27,14 @@ final readonly class EventImporter
 
                 foreach ($eventsData as $eventData) {
                     $event = new Event();
-                    $event->setName(html_entity_decode($eventData['name']));
+                    $event->setName(html_entity_decode((string) $eventData['name']));
                     $event->setUrl($eventData['url']);
-                    $event->setAbstract(sprintf(
-                        '%s...',
-                        mb_substr(html_entity_decode($eventData['description']), 0, 200))
-                    );
+                    if (isset($eventData['description'])) {
+                        $event->setAbstract(sprintf(
+                                '%s...',
+                                mb_substr(html_entity_decode((string) $eventData['description']), 0, 200))
+                        );
+                    }
 
                     $event->setStartDate(new \DateTimeImmutable($eventData['startDate']));
                     $event->setEndDate(new \DateTimeImmutable($eventData['endDate']));
