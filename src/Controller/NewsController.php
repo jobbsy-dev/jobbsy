@@ -32,9 +32,10 @@ final class NewsController extends AbstractController
     {
         $queryBuilder = $this->articleRepository->createQueryBuilderLastNews();
 
+        $page = $request->query->getInt('page', 1);
         $pagination = $paginator->paginate(
             $queryBuilder,
-            $request->query->getInt('page', 1),
+            $page <= 0 ? 1 : $page,
             20
         );
 
