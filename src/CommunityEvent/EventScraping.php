@@ -34,6 +34,14 @@ final readonly class EventScraping
                     continue;
                 }
 
+                if (false === isset($schema['organizer']['url'])) {
+                    continue;
+                }
+
+                if (false === str_contains($url, (string) $schema['organizer']['url'])) {
+                    continue;
+                }
+
                 $data[] = $schema;
             }
         }
