@@ -42,9 +42,9 @@
   args:
     chdir: '{{ ansistrano_release_path.stdout }}'
 
-#- name: Aggregate events every day at 2am
-#  ansible.builtin.cron:
-#    name: "Aggregate events every day at 2am"
-#    minute: "0"
-#    hour: "2"
-#    job: "php {{ ansistrano_release_path.stdout }}/bin/console app:aggregate-events"
+- name: Aggregate events every day at 2am
+  ansible.builtin.cron:
+    name: "Aggregate events every day at 2am"
+    minute: "0"
+    hour: "2"
+    job: "php {{ ansistrano_release_path.stdout }}/bin/console app:aggregate-events"

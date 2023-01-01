@@ -22,7 +22,7 @@ final class EventImporterTest extends TestCase
         $goutteClient = new Client($mockClient);
 
         $source1 = new Source();
-        $source1->setUrl('http://localhost/1');
+        $source1->setUrl('https://www.meetup.com/backendos/events');
         $source2 = new Source();
         $source2->setUrl('http://localhost/2');
         $repository = new InMemorySourceRepository([$source1, $source2]);

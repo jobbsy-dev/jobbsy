@@ -19,7 +19,7 @@ final class EventScrapingTest extends TestCase
         $meetupCrawler = new EventScraping($goutteClient);
 
         // Act
-        $data = $meetupCrawler->fetch('http://localhost');
+        $data = $meetupCrawler->fetch('https://www.meetup.com/backendos/events');
 
         // Assert
         self::assertCount(1, $data);
