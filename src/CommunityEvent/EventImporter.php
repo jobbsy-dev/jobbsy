@@ -31,8 +31,8 @@ final readonly class EventImporter
                     $event->setUrl($eventData['url']);
                     if (isset($eventData['description'])) {
                         $event->setAbstract(sprintf(
-                                '%s...',
-                                mb_substr(html_entity_decode((string) $eventData['description']), 0, 200))
+                            '%s...',
+                            mb_substr(html_entity_decode((string) $eventData['description']), 0, 200))
                         );
                     }
 
