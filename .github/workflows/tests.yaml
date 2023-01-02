@@ -31,7 +31,7 @@ jobs:
               run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
             - name: "Cache composer"
-              uses: actions/cache@v3.2.1
+              uses: actions/cache@v3.2.2
               with:
                   path: ${{ steps.composer-cache.outputs.dir }}
                   key: ${{ runner.os }}-8.0-composer-${{ hashFiles('composer.json') }}
