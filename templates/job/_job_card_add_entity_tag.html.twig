@@ -59,8 +59,8 @@
                             Featured
                         </span>
                     {% endif %}
-                    {% for tag in job.tags %}
-                        <span class="border border-1 rounded py-1 px-2 text-muted small">{{ tag }}</span>
+                    {% for tag in job.tag %}
+                        <span class="border border-1 rounded py-1 px-2 text-muted small">{{ tag.label }}</span>
                     {% endfor %}
                     {% if job.locationType %}
                         <span class="border border-1 rounded py-1 px-2 text-muted small"> {{ ('location_type.' ~ job.locationType.value)|trans }}</span>

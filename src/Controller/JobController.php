@@ -59,6 +59,14 @@ class JobController extends AbstractController
         ]);
     }
 
+    #[Route('/entityTag', name: 'job_index_entity_tag', defaults: ['_format' => 'html'], methods: ['GET']), ]
+    public function indexEntityTag(): Response
+    {
+        return $this->render('job/index_add_entity_tag.html.twig', [
+            'jobs' => $this->jobRepository->findLastJobs(),
+        ]);
+    }
+
     #[Route('/job/new', name: 'job_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
