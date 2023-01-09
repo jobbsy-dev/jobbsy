@@ -13,6 +13,8 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use App\Job\EmploymentType;
 use App\Job\LocationType;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidType;
@@ -133,6 +135,9 @@ class Job
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?LocationType $locationType = null;
 
+    #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'job')]
+    private Collection $tag;
+
     public function __construct(?UuidInterface $id = null)
     {
         if (null === $id) {
@@ -142,6 +147,7 @@ class Job
         $this->id = $id;
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
+        $this->tag = new ArrayCollection();
     }
 
     public function getId(): UuidInterface
@@ -356,5 +362,32 @@ class Job
     public function setLocationType(?LocationType $locationType): void
     {
         $this->locationType = $locationType;
+    }
+
+    /**
+     * @return Collection<int, Tags>
+     */
+    public function getTag(): Collection
+    {
+        return $this->tag;
+    }
+
+    public function addTag(Tags $tag): self
+    {
+        if (!$this->tag->contains($tag)) {
+            $this->tag->add($tag);
+            $tag->addJob($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tags $tag): self
+    {
+        if ($this->tag->removeElement($tag)) {
+            $tag->removeJob($this);
+        }
+
+        return $this;
     }
 }
