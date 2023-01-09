@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Job board Symfony - {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="px-4 pb-4 py-md-5 my-3 text-center">
+        <h1 class="display-5 fw-bold">
+            Work for a company which choose <br>a high performance framework
+        </h1>
+        <div class="col-lg-6 mx-auto d-none d-md-block">
+            <p class="lead mb-4">
+                Jobbsy is the best place to reach amazing Symfony developers <br> while contributing to open source 💖
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{{ path('job_new') }}" class="btn btn-primary px-3 gap-3 bg-gradient">Contribute to open source</a>
+                <a href="#getNotifiedAboutNewJobs" class="btn btn-outline-primary px-3 ">Get notified about new jobs  ↓</a>
+            </div>
+        </div>
+    </div>
+    <div class="job-filter d-flex flex-column justify-content-around gap-4">
+    </div>
+    {% if jobs|length > 0 %}
+        <div class="job-list d-flex flex-column justify-content-around gap-4">
+            {% set jobsCount = jobs|length %}
+            {% for job in jobs|slice(0, jobsCount/2) %}
+                {{ include('job/_job_card_add_entity_tag.html.twig', {'job': job}) }}
+            {% endfor %}
+
+            <div id="getNotifiedAboutNewJobs">
+                {{ render(controller('App\\Controller\\JobController::subscriptionForm')) }}
+            </div>
+
+            {% for job in jobs|slice(jobsCount/2, jobsCount) %}
+                {{ include('job/_job_card_add_entity_tag.html.twig', {'job': job}) }}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center">
+            <p>No jobs</p>
+            <a href="{{ path('job_new') }}" class="btn btn-outline-primary">{{ 'action.post_job'|trans }}</a>
+        </div>
+    {% endif %}
+{% endblock %}
