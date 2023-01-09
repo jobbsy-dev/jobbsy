@@ -40,10 +40,6 @@ class UpdateTagCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $oJobs = $this->jobRepository->findAll();
 
-        $context = $this->router->getContext();
-        $context->setHost($this->commandRouterHost);
-        $context->setScheme($this->commandRouterScheme);
-
         $cptNewRelation = 0;
         $cptNewTag = 0;
         $cptJobRelationUpdated = 0;
