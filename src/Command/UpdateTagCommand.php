@@ -24,11 +24,6 @@ class UpdateTagCommand extends Command
 {
     public function __construct(
         private readonly EntityManagerInterface $em,
-        private readonly RouterInterface $router,
-        #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
-        private readonly string $commandRouterHost,
-        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
-        private readonly string $commandRouterScheme,
         private readonly TagsRepository $tagsRepository,
         private readonly JobRepository $jobRepository
     ) {
