@@ -86,6 +86,8 @@ final class JobCrudController extends AbstractCrudController
                 ->onlyOnForms(),
             TextField::new('contactEmail')
                 ->onlyOnForms(),
+            TextField::new('industry')
+                ->onlyOnForms(),
         ];
     }
 
