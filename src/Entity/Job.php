@@ -135,7 +135,7 @@ class Job
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?LocationType $locationType = null;
 
-    #[ORM\ManyToMany(targetEntity: Tags::class, mappedBy: 'job')]
+    #[ORM\ManyToMany(targetEntity: Tag::class, mappedBy: 'job')]
     private Collection $tag;
 
     public function __construct(?UuidInterface $id = null)
@@ -365,14 +365,14 @@ class Job
     }
 
     /**
-     * @return Collection<int, Tags>
+     * @return Collection<int, Tag>
      */
     public function getTag(): Collection
     {
         return $this->tag;
     }
 
-    public function addTag(Tags $tag): self
+    public function addTag(Tag $tag): self
     {
         if (!$this->tag->contains($tag)) {
             $this->tag->add($tag);
@@ -382,7 +382,7 @@ class Job
         return $this;
     }
 
-    public function removeTag(Tags $tag): self
+    public function removeTag(Tag $tag): self
     {
         if ($this->tag->removeElement($tag)) {
             $tag->removeJob($this);

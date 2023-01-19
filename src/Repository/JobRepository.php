@@ -67,6 +67,34 @@ class JobRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function countJob(): int
+    {
+        return (int) $this->createQueryBuilder('job')
+            ->select('COUNT(job)')
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+    public function findJobsByNbr($start, $nbr)
+    {
+        return $this->createQueryBuilder('job')
+            ->setFirstResult($start)
+            ->setMaxResults($nbr)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function findJobsBetweenPublished($start, $nbr)
+    {
+
+        return $this->createQueryBuilder('job')
+            ->addOrderBy('job.publishedAt', Criteria::DESC)
+            ->setFirstResult($start)
+            ->setMaxResults($nbr)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     public function get(UuidInterface $id): Job
     {
         $job = $this->find($id);

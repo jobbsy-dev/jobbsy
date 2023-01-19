@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Tags;
+use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Tags>
+ * @extends ServiceEntityRepository<Tag>
  *
- * @method Tags|null find($id, $lockMode = null, $lockVersion = null)
- * @method Tags|null findOneBy(array $criteria, array $orderBy = null)
- * @method Tags[]    findAll()
- * @method Tags[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Tag[]    findAll()
+ * @method Tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TagsRepository extends ServiceEntityRepository
+class TagRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Tags::class);
+        parent::__construct($registry, Tag::class);
     }
 
-    public function save(Tags $entity, bool $flush = false): void
+    public function save(Tag $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -31,7 +31,7 @@ class TagsRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Tags $entity, bool $flush = false): void
+    public function remove(Tag $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -44,7 +44,7 @@ class TagsRepository extends ServiceEntityRepository
      * @param $label
      * @throws NonUniqueResultException
      */
-    public function findOneByLabelCI(string $label): ?Tags
+    public function findOneByLabelCI(string $label): ?Tag
     {
         $qb = $this->createQueryBuilder('tags');
 
@@ -56,8 +56,10 @@ class TagsRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+
+
 //    /**
-//     * @return Tags[] Returns an array of Tags objects
+//     * @return Tag[] Returns an array of Tag objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -71,7 +73,7 @@ class TagsRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Tags
+//    public function findOneBySomeField($value): ?Tag
 //    {
 //        return $this->createQueryBuilder('t')
 //            ->andWhere('t.exampleField = :val')

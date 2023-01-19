@@ -9,7 +9,7 @@ use ApiPlatform\Metadata\ApiResource;
 
 #[ORM\Entity]
 #[ApiResource]
-class Tags
+class Tag
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
