@@ -5968,16 +5968,16 @@
         },
         {
             "name": "symfony/clock",
-            "version": "v6.2.2",
+            "version": "v6.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/clock.git",
-                "reference": "bb153da89f6990b365649d7bb224ba91799c338a"
+                "reference": "8ab6090989d5190853ec6c439cd92f18b561f09f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/clock/zipball/bb153da89f6990b365649d7bb224ba91799c338a",
-                "reference": "bb153da89f6990b365649d7bb224ba91799c338a",
+                "url": "https://api.github.com/repos/symfony/clock/zipball/8ab6090989d5190853ec6c439cd92f18b561f09f",
+                "reference": "8ab6090989d5190853ec6c439cd92f18b561f09f",
                 "shasum": ""
             },
             "require": {
@@ -6018,7 +6018,7 @@
                 "time"
             ],
             "support": {
-                "source": "https://github.com/symfony/clock/tree/v6.2.2"
+                "source": "https://github.com/symfony/clock/tree/v6.2.5"
             },
             "funding": [
                 {
@@ -6034,7 +6034,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-09T13:09:22+00:00"
+            "time": "2023-01-01T08:38:25+00:00"
         },
         {
             "name": "symfony/config",
