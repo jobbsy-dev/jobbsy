@@ -11170,16 +11170,16 @@
         },
         {
             "name": "symfony/web-link",
-            "version": "v6.2.0",
+            "version": "v6.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/web-link.git",
-                "reference": "068136a48bd945b0b4a4a13ceaa1327ac6606aa3"
+                "reference": "b0d15d82f15f4301531cbef92e34cecaebb18dd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/web-link/zipball/068136a48bd945b0b4a4a13ceaa1327ac6606aa3",
-                "reference": "068136a48bd945b0b4a4a13ceaa1327ac6606aa3",
+                "url": "https://api.github.com/repos/symfony/web-link/zipball/b0d15d82f15f4301531cbef92e34cecaebb18dd5",
+                "reference": "b0d15d82f15f4301531cbef92e34cecaebb18dd5",
                 "shasum": ""
             },
             "require": {
@@ -11236,7 +11236,7 @@
                 "push"
             ],
             "support": {
-                "source": "https://github.com/symfony/web-link/tree/v6.2.0"
+                "source": "https://github.com/symfony/web-link/tree/v6.2.5"
             },
             "funding": [
                 {
@@ -11252,7 +11252,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-25T15:27:04+00:00"
+            "time": "2023-01-01T08:38:09+00:00"
         },
         {
             "name": "symfony/webapp-meta",
