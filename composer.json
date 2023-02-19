@@ -21,7 +21,7 @@
         "ext-intl": "*",
         "ext-pdo_sqlite": "*",
         "api-platform/core": "^3.0",
-        "doctrine/annotations": "^1.14",
+        "doctrine/annotations": "^2.0",
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.2",
