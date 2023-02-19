@@ -24,7 +24,7 @@ final class CreateJobPromptForClassificationTest extends TestCase
         self::assertSame($expected, $prompt);
     }
 
-    public function dataPrompt(): \Generator
+    public static function dataPrompt(): \Generator
     {
         yield ['A description', 'Extract maximum 5 tech keywords separated by comma from this text: A description'];
 
