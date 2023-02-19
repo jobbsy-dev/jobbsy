@@ -2,7 +2,7 @@
     "devDependencies": {
         "@hotwired/stimulus": "^3.0.0",
         "@symfony/stimulus-bridge": "^3.0.0",
-        "@symfony/webpack-encore": "^3.0.0",
+        "@symfony/webpack-encore": "^4.0.0",
         "bootstrap": "^5.2.2",
         "core-js": "^3.0.0",
         "file-loader": "^6.0.0",
