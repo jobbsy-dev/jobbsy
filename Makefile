@@ -4,7 +4,7 @@ RECTOR=php ./vendor/bin/rector
 PHP_STAN=php ./vendor/bin/phpstan
 CONSOLE=bin/console
 COMPOSER=composer
-PHPUNIT=php ./bin/phpunit
+PHPUNIT=php ./vendor/bin/phpunit
 
 .DEFAULT_GOAL := help
 .PHONY: help phpcsfix fixtures
