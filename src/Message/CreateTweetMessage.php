@@ -2,9 +2,9 @@
 
 namespace App\Message;
 
-final class CreateTweetMessage
+final readonly class CreateTweetMessage
 {
-    public function __construct(public readonly string $jobId, public readonly string $jobUrl)
+    public function __construct(public string $jobId, public string $jobUrl)
     {
     }
 }

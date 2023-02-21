@@ -4,24 +4,25 @@ namespace App\Controller;
 
 use App\Analytics\AnalyticsClient;
 use App\Analytics\Plausible\EventRequest;
-use App\Entity\Event;
-use App\Repository\EventRepository;
+use App\Entity\CommunityEvent\Event;
+use App\Repository\CommunityEvent\EventRepository;
 use League\Uri\Uri;
 use League\Uri\UriModifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\Cache;
 use Symfony\Component\Routing\Annotation\Route;
 
-class EventController extends AbstractController
+final class EventController extends AbstractController
 {
-    public function __construct(
-        private readonly AnalyticsClient $client
-    ) {
+    public function __construct(private readonly AnalyticsClient $client)
+    {
     }
 
     #[Route('/events', name: 'event_index', methods: ['GET'])]
+    #[Cache(smaxage: 86400)]
     public function index(EventRepository $eventRepository): Response
     {
         return $this->render('event/index.html.twig', [

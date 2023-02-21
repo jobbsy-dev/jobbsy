@@ -2,15 +2,15 @@
 
 namespace App\News\Aggregator\Atom\Model;
 
-final class Entry
+final readonly class Entry
 {
     public function __construct(
-        public readonly string $title,
-        public readonly string $link,
-        public readonly ?string $summary = null,
-        public readonly ?string $content = null,
-        public readonly ?\DateTimeImmutable $published = null,
-    ) {
+        public string $title,
+        public string $link,
+        public ?string $summary = null,
+        public ?string $content = null,
+        public ?\DateTimeImmutable $published = null,
+        ) {
     }
 
     public static function create(\DOMXPath $xpath, \DOMNode $node): self
@@ -19,7 +19,7 @@ final class Entry
         if (0 !== $xpath->query('./atom:published', $node)->count()) {
             $pubDate = \DateTimeImmutable::createFromFormat(
                 \DateTimeInterface::ATOM,
-                trim($xpath->evaluate('./atom:published', $node)->item(0)->nodeValue)
+                trim((string) $xpath->evaluate('./atom:published', $node)->item(0)->nodeValue)
             );
         }
 

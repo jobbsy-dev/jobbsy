@@ -3,7 +3,7 @@
         <h3 class="card-title">
             <a href="{{ path('event_redirect', {'id': event.id}) }}" class="text-decoration-none text-reset" target="_blank">{{ event.name }}</a>
         </h3>
-        <ul class="list-unstyled mt-3 d-flex gap-2 flex-column">
+        <ul class="list-unstyled mt-3 d-flex gap-2 flex-column mb-0">
             <li class="d-flex align-items-center gap-2">
                 <i icon-name="calendar-days" class="fs-6"></i>
 
@@ -14,16 +14,17 @@
                 {% endif %}
             </li>
             <li class="d-flex align-items-center gap-2">
-                {% set location = event.location|lower %}
-                {% if location starts with 'online' %}
+                {% if event.online %}
                     <i icon-name="cloud" class="fs-6"></i>
-                    {{ event.location }}
+                    Online
                 {% else %}
                     <i icon-name="map-pin" class="fs-6"></i>
-                    {{ event.location }} | <span class="fs-5">{{ event.country|country_emoji }}</span> {{ event.country|country_name }}
+                    {{ event.location }} {% if event.mixed %}& Online {% endif %} | <span class="fs-5">{{ event.country|country_emoji }}</span> {{ event.country|country_name }}
                 {% endif %}
             </li>
         </ul>
-        <p class="card-text">{{ event.abstract }}</p>
+        {% if event.abstract %}
+            <p class="card-text mt-3">{{ event.abstract }}</p>
+        {% endif %}
     </div>
 </div>

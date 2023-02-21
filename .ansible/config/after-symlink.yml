@@ -31,13 +31,20 @@
   ansible.builtin.cron:
     name: "Send weekly jobs letter every saturday at 8am"
     minute: "0"
-    hour: "8"
+    hour: "10"
     day: "*"
     month: "*"
-    weekday: "6"
+    weekday: "1"
     job: "php {{ ansistrano_release_path.stdout }}/bin/console app:send-jobsletter"
 
 - name: Restarting Workers
   command: php bin/console messenger:stop-workers
   args:
     chdir: '{{ ansistrano_release_path.stdout }}'
+
+- name: Aggregate events every day at 2am
+  ansible.builtin.cron:
+    name: "Aggregate events every day at 2am"
+    minute: "0"
+    hour: "2"
+    job: "php {{ ansistrano_release_path.stdout }}/bin/console app:aggregate-events"

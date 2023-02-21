@@ -9,7 +9,6 @@ use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use App\Job\EmploymentType;
 use App\Job\LocationType;
@@ -27,13 +26,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ApiResource(
     types: ['https://schema.org/JobPosting'],
-    operations: [
-        new Get(),
-        new GetCollection(),
-    ],
     normalizationContext: ['groups' => ['read']],
     order: ['createdAt' => OrderFilterInterface::DIRECTION_DESC]
 )]
+#[GetCollection]
 #[ORM\Entity]
 #[Vich\Uploadable]
 #[ApiFilter(filterClass: OrderFilter::class, properties: ['createdAt' => OrderFilterInterface::DIRECTION_DESC])]
@@ -48,13 +44,13 @@ class Job
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?string $title;
+    private ?string $title = null;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?string $location;
+    private ?string $location = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private ?\DateTimeImmutable $createdAt;
@@ -63,13 +59,13 @@ class Job
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?EmploymentType $employmentType;
+    private ?EmploymentType $employmentType = null;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?string $organization;
+    private ?string $organization = null;
 
     #[ORM\Column(type: Types::JSON)]
     #[Assert\Count(max: 5)]
@@ -79,7 +75,7 @@ class Job
     #[ORM\Column(type: Types::STRING)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
-    private ?string $url;
+    private ?string $url = null;
 
     #[Vich\UploadableField(
         mapping: 'organization_image',
@@ -130,13 +126,20 @@ class Job
     private ?string $contactEmail = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true, enumType: LocationType::class)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(allowNull: true)]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?LocationType $locationType = null;
 
     #[ORM\ManyToMany(targetEntity: Tag::class, mappedBy: 'job')]
     private Collection $tag;
+
+    #[ORM\Column(type: Types::STRING, nullable: true)]
+    private ?string $industry = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
 
     public function __construct(?UuidInterface $id = null)
     {
@@ -363,7 +366,7 @@ class Job
     {
         $this->locationType = $locationType;
     }
-
+  
     /**
      * @return Collection<int, Tag>
      */
@@ -389,5 +392,30 @@ class Job
         }
 
         return $this;
+
+    public function getIndustry(): ?string
+    {
+        return $this->industry;
+    }
+
+    public function setIndustry(?string $industry): void
+    {
+        $this->industry = $industry;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+
+    public function isManualPublishing(): bool
+    {
+        return null === $this->source;
+
     }
 }

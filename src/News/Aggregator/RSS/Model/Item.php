@@ -2,17 +2,17 @@
 
 namespace App\News\Aggregator\RSS\Model;
 
-final class Item
+final readonly class Item
 {
     public function __construct(
-        public readonly string $title,
-        public readonly string $link,
-        public readonly string $description,
-        public readonly ?\DateTimeImmutable $pubDate = null,
-        public readonly ?string $author = null,
-        public readonly ?string $guid = null,
-        public readonly ?string $category = null,
-    ) {
+        public string $title,
+        public string $link,
+        public string $description,
+        public ?\DateTimeImmutable $pubDate = null,
+        public ?string $author = null,
+        public ?string $guid = null,
+        public ?string $category = null,
+        ) {
     }
 
     public static function create(\DOMXPath $xpath, \DOMNode $itemNode): self
@@ -21,7 +21,7 @@ final class Item
         if (0 !== $xpath->query('./pubDate', $itemNode)->count()) {
             $pubDate = \DateTimeImmutable::createFromFormat(
                 \DateTimeInterface::RFC2822,
-                trim($xpath->evaluate('./pubDate', $itemNode)->item(0)->nodeValue)
+                trim((string) $xpath->evaluate('./pubDate', $itemNode)->item(0)->nodeValue)
             );
         }
 

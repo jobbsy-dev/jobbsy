@@ -6,7 +6,7 @@ use App\Provider\AccessToken;
 use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\InvalidArgumentException;
 
-class AccessTokenTest extends TestCase
+final class AccessTokenTest extends TestCase
 {
     public function testCreateEmptyAccessTokenThrowsException(): void
     {

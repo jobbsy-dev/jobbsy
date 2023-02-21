@@ -6,9 +6,9 @@ use App\Entity\News\Entry;
 use App\Entity\News\Feed;
 use App\News\Aggregator\Atom\Client as AtomClient;
 
-final class FetchArticlesFromAtomFeed implements FetchArticlesFromFeedInterface
+final readonly class FetchArticlesFromAtomFeed implements FetchArticlesFromFeedInterface
 {
-    public function __construct(private readonly AtomClient $atomClient)
+    public function __construct(private AtomClient $atomClient)
     {
     }
 
@@ -23,9 +23,9 @@ final class FetchArticlesFromAtomFeed implements FetchArticlesFromFeedInterface
         $articles = [];
         foreach ($atomFeed->getEntries() as $entry) {
             $article = new Entry();
-            $article->setTitle(trim($entry->title));
+            $article->setTitle(trim((string) $entry->title));
             $article->setLink($entry->link);
-            $article->setDescription($entry->summary ? trim($entry->summary) : trim($entry->content));
+            $article->setDescription($entry->summary ? trim((string) $entry->summary) : trim((string) $entry->content));
             $article->setPublishedAt($entry->published);
             $article->setFeed($feed);
 

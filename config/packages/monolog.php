@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Sentry\State\HubInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Config\MonologConfig;
 
@@ -25,17 +26,18 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $mainHandler = $config->handler('main')
             ->type('fingers_crossed')
             ->actionLevel('error')
-            ->handler('nested')
-            ->bufferSize(50);
+            ->handler('sentry')
+            ->stopBuffering(false);
 
+        $mainHandler->excludedHttpCode()->code(400);
+        $mainHandler->excludedHttpCode()->code(403);
         $mainHandler->excludedHttpCode()->code(404);
         $mainHandler->excludedHttpCode()->code(405);
 
-        $config->handler('nested')
-            ->type('stream')
-            ->path('php://stderr')
-            ->level('debug')
-            ->formatter('monolog.formatter.json');
+        $config->handler('sentry')
+            ->type('sentry')
+            ->level('error')
+            ->hubId(HubInterface::class);
 
         $config->handler('console')
             ->type('console')

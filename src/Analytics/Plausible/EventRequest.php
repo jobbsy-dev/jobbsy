@@ -4,16 +4,16 @@ namespace App\Analytics\Plausible;
 
 use App\Analytics\EventRequestInterface;
 
-final class EventRequest implements EventRequestInterface
+final readonly class EventRequest implements EventRequestInterface
 {
     private function __construct(
-        private readonly string $userAgent,
-        private readonly string $xForwardedFor,
-        private readonly string $domain,
-        private readonly string $name,
-        private readonly string $url,
-        private readonly string $contentType = 'application/json',
-    ) {
+        private string $userAgent,
+        private string $xForwardedFor,
+        private string $domain,
+        private string $name,
+        private string $url,
+        private string $contentType = 'application/json',
+        ) {
     }
 
     public static function create(array $data): self
@@ -37,6 +37,9 @@ final class EventRequest implements EventRequestInterface
         ];
     }
 
+    /**
+     * @return array{domain: string, name: string, url: string}
+     */
     public function body(): array
     {
         return [

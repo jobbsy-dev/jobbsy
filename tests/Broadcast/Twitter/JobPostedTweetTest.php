@@ -6,7 +6,7 @@ use App\Broadcast\Twitter\JobPostedTweet;
 use App\Entity\Job;
 use PHPUnit\Framework\TestCase;
 
-class JobPostedTweetTest extends TestCase
+final class JobPostedTweetTest extends TestCase
 {
     public function testToTweetText(): void
     {

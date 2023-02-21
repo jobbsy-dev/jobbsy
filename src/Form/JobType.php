@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
-class JobType extends AbstractType
+final class JobType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -34,7 +34,7 @@ class JobType extends AbstractType
             ->add('employmentType', EnumType::class, [
                 'label' => 'form.label.employment_type',
                 'class' => EmploymentType::class,
-                'choice_label' => function (EmploymentType $employmentType) {
+                'choice_label' => function (EmploymentType $employmentType): string {
                     return sprintf('employment_type.%s', $employmentType->value);
                 },
             ])
@@ -81,7 +81,7 @@ class JobType extends AbstractType
             ->add('locationType', EnumType::class, [
                 'label' => false,
                 'class' => LocationType::class,
-                'choice_label' => function (LocationType $locationType) {
+                'choice_label' => function (LocationType $locationType): string {
                     return sprintf('location_type.%s', $locationType->value);
                 },
             ])
@@ -89,7 +89,7 @@ class JobType extends AbstractType
 
         $builder->get('tags')
             ->addModelTransformer(new CallbackTransformer(
-                function ($tagsAsArray) {
+                function ($tagsAsArray): string {
                     // transform the array to a string
                     return implode(', ', array_map('trim', $tagsAsArray));
                 },

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-class TwitterApiTest extends TestCase
+final class TwitterApiTest extends TestCase
 {
     public function testCreateTweet(): void
     {

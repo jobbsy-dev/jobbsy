@@ -2,12 +2,10 @@
 
 namespace App\Mailjet\Model\TestCampaignDraft;
 
-final class TestCampaignDraftRequest
+final readonly class TestCampaignDraftRequest
 {
-    public function __construct(
-        public readonly string $draftId,
-        public readonly array $recipients,
-    ) {
+    public function __construct(public string $draftId, public array $recipients)
+    {
     }
 
     public function toArray(): array

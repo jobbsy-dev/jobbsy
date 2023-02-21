@@ -20,7 +20,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class JobCrudController extends AbstractCrudController
+final class JobCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
@@ -47,26 +47,26 @@ class JobCrudController extends AbstractCrudController
                 ->onlyOnForms(),
             ChoiceField::new('employmentType')
                 ->onlyOnForms()
-                ->setChoices(function () {
-                    $choices = array_map(static fn (?EmploymentType $unit) => [$unit->value => $unit], EmploymentType::cases());
+                ->setChoices(function (): array {
+                    $choices = array_map(static fn (?EmploymentType $unit): array => [$unit->value => $unit], EmploymentType::cases());
 
                     return array_merge(...$choices);
                 })
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', EmploymentType::class)
-                ->setFormTypeOption('choice_label', function (EmploymentType $enum) {
+                ->setFormTypeOption('choice_label', function (EmploymentType $enum): string {
                     return $enum->value;
                 }),
             ChoiceField::new('locationType')
                 ->onlyOnForms()
-                ->setChoices(function () {
-                    $choices = array_map(static fn (?LocationType $unit) => [$unit->value => $unit], LocationType::cases());
+                ->setChoices(function (): array {
+                    $choices = array_map(static fn (?LocationType $unit): array => [$unit->value => $unit], LocationType::cases());
 
                     return array_merge(...$choices);
                 })
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', LocationType::class)
-                ->setFormTypeOption('choice_label', function (LocationType $enum) {
+                ->setFormTypeOption('choice_label', function (LocationType $enum): string {
                     return $enum->value;
                 }),
             ArrayField::new('tags'),
@@ -78,12 +78,15 @@ class JobCrudController extends AbstractCrudController
                 ->onlyOnForms()
                 ->setFormType(VichImageType::class),
             TextField::new('source')
-                ->onlyOnIndex(),
+                ->onlyOnDetail(),
             DateTimeField::new('pinnedUntil')
-                ->setFormat('d/M/Y', 'none'),
+                ->setFormat('d/M/Y', 'none')
+                ->onlyOnForms(),
             TextField::new('tweetId')
                 ->onlyOnForms(),
             TextField::new('contactEmail')
+                ->onlyOnForms(),
+            TextField::new('industry')
                 ->onlyOnForms(),
         ];
     }
@@ -103,6 +106,9 @@ class JobCrudController extends AbstractCrudController
             ->add('organization')
             ->add('employmentType')
             ->add('pinnedUntil')
+            ->add('source')
+            ->add('createdAt')
+            ->add('industry')
         ;
     }
 }

@@ -11,10 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BlogController extends AbstractController
+final class BlogController extends AbstractController
 {
-    public function __construct(private readonly PostRepository $postRepository, private readonly JobRepository $jobRepository)
-    {
+    public function __construct(
+        private readonly PostRepository $postRepository,
+        private readonly JobRepository $jobRepository
+    ) {
     }
 
     #[Route('/blog', name: 'blog_index', methods: ['GET'])]

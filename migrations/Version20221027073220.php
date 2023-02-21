@@ -7,19 +7,10 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-/**
- * Auto-generated Migration: Please modify to your needs!
- */
 final class Version20221027073220 extends AbstractMigration
 {
-    public function getDescription(): string
-    {
-        return '';
-    }
-
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TEMPORARY TABLE __temp__event AS SELECT id, name, start_date, end_date, location, abstract, created_at, url FROM event');
         $this->addSql('DROP TABLE event');
         $this->addSql('CREATE TABLE event (id CHAR(36) NOT NULL --(DC2Type:uuid)
@@ -33,7 +24,6 @@ final class Version20221027073220 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TEMPORARY TABLE __temp__event AS SELECT id, name, start_date, end_date, location, abstract, created_at, url FROM event');
         $this->addSql('DROP TABLE event');
         $this->addSql('CREATE TABLE event (id CHAR(36) NOT NULL --(DC2Type:uuid)

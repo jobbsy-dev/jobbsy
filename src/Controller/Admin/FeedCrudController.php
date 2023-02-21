@@ -14,7 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class FeedCrudController extends AbstractCrudController
+final class FeedCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
@@ -31,14 +31,14 @@ class FeedCrudController extends AbstractCrudController
             UrlField::new('url'),
             ChoiceField::new('type')
                 ->onlyOnForms()
-                ->setChoices(function () {
-                    $choices = array_map(static fn (?FeedType $unit) => [$unit->value => $unit], FeedType::cases());
+                ->setChoices(function (): array {
+                    $choices = array_map(static fn (?FeedType $unit): array => [$unit->value => $unit], FeedType::cases());
 
                     return array_merge(...$choices);
                 })
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', FeedType::class)
-                ->setFormTypeOption('choice_label', function (FeedType $enum) {
+                ->setFormTypeOption('choice_label', function (FeedType $enum): string {
                     return $enum->value;
                 }),
             UrlField::new('imageUrl')

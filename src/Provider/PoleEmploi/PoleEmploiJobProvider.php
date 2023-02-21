@@ -9,31 +9,39 @@ use App\Provider\JobProviderInterface;
 use App\Provider\SearchParameters;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
-final class PoleEmploiJobProvider implements JobProviderInterface
+final readonly class PoleEmploiJobProvider implements JobProviderInterface
 {
     public function __construct(
-        private readonly PoleEmploiApi $api,
-        #[Autowire('%env(POLE_EMPLOI_CLIENT_ID)%')]
-        private readonly string $poleEmploiClientId
+        private PoleEmploiApi $api,
+        #[Autowire('%env(POLE_EMPLOI_CLIENT_ID)%')] private string $poleEmploiClientId
     ) {
     }
 
     public function retrieve(SearchParameters $parameters): JobCollection
     {
-        $this->api->authenticate([
-            'api_offresdemploiv2',
-            'o2dsoffre',
-            'application_'.$this->poleEmploiClientId,
-        ]);
-
-        $results = $this->api->search([
-            'motsCles' => 'symfony',
-            'minCreationDate' => $parameters->from,
-            'maxCreationDate' => $parameters->to,
-            'origineOffre' => 1,
-        ]);
-
         $jobs = new JobCollection();
+
+        try {
+            $this->api->authenticate([
+                'api_offresdemploiv2',
+                'o2dsoffre',
+                'application_'.$this->poleEmploiClientId,
+            ]);
+        } catch (\Throwable) {
+            return $jobs;
+        }
+
+        try {
+            $results = $this->api->search([
+                'motsCles' => 'symfony',
+                'minCreationDate' => $parameters->from,
+                'maxCreationDate' => $parameters->to,
+                'origineOffre' => 1,
+            ]);
+        } catch (\Throwable) {
+            return $jobs;
+        }
+
         foreach ($results as $result) {
             if (false === $this->isOfferCheckConditions($result)) {
                 continue;
@@ -43,10 +51,12 @@ final class PoleEmploiJobProvider implements JobProviderInterface
             $job->setOrganization($result['entreprise']['nom']);
             $job->setUrl($result['origineOffre']['urlOrigine']);
             $job->setTitle($result['intitule']);
+            $job->setIndustry($result['secteurActiviteLibelle'] ?? null);
+            $job->setDescription($result['description'] ?? null);
 
             $location = $result['lieuTravail']['libelle'];
-            if (str_contains($location, '-')) {
-                $job->setLocation(ucfirst(trim(explode('-', $location)[1])));
+            if (str_contains((string) $location, '-')) {
+                $job->setLocation(ucfirst(trim(explode('-', (string) $location)[1])));
             } else {
                 $job->setLocation($location);
             }
@@ -55,7 +65,7 @@ final class PoleEmploiJobProvider implements JobProviderInterface
             $job->setEmploymentType(EmploymentType::FULL_TIME);
             if (isset($result['typeContrat'], $result['natureContrat'])
                 && 'CDD' === $result['typeContrat']
-                && str_contains($result['natureContrat'], 'apprentissage')
+                && str_contains((string) $result['natureContrat'], 'apprentissage')
             ) {
                 $job->setEmploymentType(EmploymentType::INTERNSHIP);
             }
@@ -84,11 +94,7 @@ final class PoleEmploiJobProvider implements JobProviderInterface
             return false;
         }
 
-        if (false === isset($jobOffer['origineOffre']['urlOrigine'])) {
-            return false;
-        }
-
-        return true;
+        return false !== isset($jobOffer['origineOffre']['urlOrigine']);
     }
 
     public function enabled(): bool

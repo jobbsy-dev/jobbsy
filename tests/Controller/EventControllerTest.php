@@ -2,17 +2,19 @@
 
 namespace App\Tests\Controller;
 
-use StellaMaris\Clock\ClockInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Clock\ClockInterface;
+use Symfony\Component\Clock\MockClock;
 
-class EventControllerTest extends WebTestCase
+final class EventControllerTest extends WebTestCase
 {
     public function testIndex(): void
     {
         $client = static::createClient();
 
+        /** @var MockClock $clock */
         $clock = static::getContainer()->get(ClockInterface::class);
-        $clock->setNow(\DateTimeImmutable::createFromFormat('Y-m-d', '2022-06-10'));
+        $clock->modify('2022-06-10');
 
         $client->request('GET', '/events');
 

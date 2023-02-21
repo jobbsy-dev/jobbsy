@@ -2,7 +2,8 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Event;
+use App\CommunityEvent\AttendanceMode;
+use App\Entity\CommunityEvent\Event;
 use App\Entity\Job;
 use App\Entity\News\Entry;
 use App\Entity\News\Feed;
@@ -12,7 +13,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
 
-class AppFixtures extends Fixture
+final class AppFixtures extends Fixture
 {
     public const JOB_1_ID = 'fe094a22-5b0f-4f4d-88ee-5b331aeb6675';
     public const JOB_2_ID = '6bb57d15-313d-403f-8785-58ebebc61852';
@@ -55,7 +56,7 @@ class AppFixtures extends Fixture
 
     private function loadEvents(ObjectManager $manager): void
     {
-        foreach ($this->getEventData() as [$id, $name, $startDate, $endDate, $location, $abstract, $url, $countryCode]) {
+        foreach ($this->getEventData() as [$id, $name, $startDate, $endDate, $location, $abstract, $url, $countryCode, $attendanceMode]) {
             $event = new Event($id ? Uuid::fromString($id) : null);
             $event->setName($name);
             $event->setUrl($url);
@@ -64,6 +65,7 @@ class AppFixtures extends Fixture
             $event->setStartDate(\DateTimeImmutable::createFromFormat('Y-m-d', $startDate));
             $event->setEndDate(\DateTimeImmutable::createFromFormat('Y-m-d', $endDate));
             $event->setCountry($countryCode);
+            $event->setAttendanceMode($attendanceMode);
 
             $manager->persist($event);
         }
@@ -149,6 +151,7 @@ class AppFixtures extends Fixture
             'We are thrilled to welcome you at SymfonyCon Disneyland Paris 2022! This year, we will finally meet you at the Disney\'s Hotel New York - Art of Marvel for the annual international Symfony conference. ',
             'https://live.symfony.com/2022-paris-con/',
             'FR',
+            AttendanceMode::OFFLINE,
         ];
 
         yield [
@@ -156,10 +159,11 @@ class AppFixtures extends Fixture
             'API Platform Conference 2022',
             '2022-09-15',
             '2022-09-16',
-            'Lille & Online',
+            'Lille',
             'The 2nd edition of the API Platform Conference (a popular open source framework for building hypermedia and GraphQL APIs ) is coming!',
             'https://api-platform.com/con/2022/',
             'FR',
+            AttendanceMode::MIXED,
         ];
 
         yield [
@@ -167,10 +171,11 @@ class AppFixtures extends Fixture
             'SymfonyWorld Online 2022 Winter Edition',
             '2022-12-08',
             '2022-12-09',
-            'Online',
+            null,
             'Join us for the fifth edition of the international online SymfonyWorld conference. The entire conference will take place online during 4 days in English.',
             'https://live.symfony.com/2022-world-winter/',
             'FR',
+            AttendanceMode::ONLINE,
         ];
     }
 

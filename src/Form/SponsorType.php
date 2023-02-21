@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class SponsorType extends AbstractType
+final class SponsorType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

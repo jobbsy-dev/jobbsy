@@ -2,13 +2,10 @@
 
 namespace App\Mailjet\Model\CreateCampaignDraft;
 
-final class CreateCampaignDraftResponse
+final readonly class CreateCampaignDraftResponse
 {
-    private function __construct(
-        public readonly int $count,
-        public readonly array $data,
-        public readonly int $total,
-    ) {
+    private function __construct(public int $count, public array $data, public int $total)
+    {
     }
 
     public static function fromArray(array $data): self

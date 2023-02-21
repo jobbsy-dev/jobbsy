@@ -10,12 +10,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-final class CreateTweetMessageHandler
+final readonly class CreateTweetMessageHandler
 {
     public function __construct(
-        private readonly JobRepository $jobRepository,
-        private readonly TwitterApi $twitterApi,
-        private readonly EntityManagerInterface $em
+        private JobRepository $jobRepository,
+        private TwitterApi $twitterApi,
+        private EntityManagerInterface $em
     ) {
     }
 

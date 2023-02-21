@@ -15,8 +15,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 #[AsCommand(
     name: 'app:aggregate-news',
     description: 'Aggregate news from multiple sources',
-)]
-class AggregateNewsCommand extends Command
+)] final class AggregateNewsCommand extends Command
 {
     public function __construct(
         protected readonly AggregateNews $aggregateNews,
@@ -36,7 +35,7 @@ class AggregateNewsCommand extends Command
         $progressBar->start();
         $i = 0;
         foreach ($articles as $article) {
-            if ($this->articleRepository->findOneBy(['link' => $article->getLink()])) {
+            if (null !== $this->articleRepository->findOneBy(['link' => $article->getLink()])) {
                 continue;
             }
 

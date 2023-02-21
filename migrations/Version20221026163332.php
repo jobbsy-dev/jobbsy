@@ -11,7 +11,6 @@ final class Version20221026163332 extends AbstractMigration
 {
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE event (id CHAR(36) NOT NULL --(DC2Type:uuid)
         , name VARCHAR(255) NOT NULL, start_date DATE NOT NULL --(DC2Type:date_immutable)
         , end_date DATE NOT NULL --(DC2Type:date_immutable)
@@ -33,7 +32,6 @@ final class Version20221026163332 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP TABLE event');
         $this->addSql('CREATE TEMPORARY TABLE __temp__job AS SELECT id, title, location, created_at, employment_type, organization, tags, url, organization_image_name, organization_image_size, updated_at, organization_image_url, click_count, source, pinned_until, tweet_id, published_at, salary, contact_email, location_type FROM job');
         $this->addSql('DROP TABLE job');

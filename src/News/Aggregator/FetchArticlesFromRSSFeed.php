@@ -6,9 +6,9 @@ use App\Entity\News\Entry;
 use App\Entity\News\Feed;
 use App\News\Aggregator\RSS\Client as RSSClient;
 
-final class FetchArticlesFromRSSFeed implements FetchArticlesFromFeedInterface
+final readonly class FetchArticlesFromRSSFeed implements FetchArticlesFromFeedInterface
 {
-    public function __construct(private readonly RSSClient $rssClient)
+    public function __construct(private RSSClient $rssClient)
     {
     }
 
@@ -24,9 +24,9 @@ final class FetchArticlesFromRSSFeed implements FetchArticlesFromFeedInterface
         foreach ($document->getChannels() as $channel) {
             foreach ($channel->getItems() as $item) {
                 $article = new Entry();
-                $article->setTitle(trim($item->title));
+                $article->setTitle(trim((string) $item->title));
                 $article->setLink($item->link);
-                $article->setDescription(trim($item->description));
+                $article->setDescription(trim((string) $item->description));
                 $article->setFeed($feed);
 
                 if ($item->pubDate) {

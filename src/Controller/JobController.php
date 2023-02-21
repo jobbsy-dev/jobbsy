@@ -7,10 +7,10 @@ use App\Analytics\Plausible\EventRequest;
 use App\Donation\Command\CreateDonationPaymentUrlCommand;
 use App\Donation\CommandHandler\CreateDonationPaymentUrlCommandHandler;
 use App\Entity\Job;
-use App\Event\JobPostedEvent;
 use App\Form\JobType;
 use App\Form\SponsorType;
 use App\Form\SubscriptionType;
+use App\Job\Event\JobPostedEvent;
 use App\Repository\JobRepository;
 use App\Subscription\SubscribeMailingListCommand;
 use App\Subscription\SubscribeMailingListCommandHandler;
@@ -29,18 +29,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
-class JobController extends AbstractController
+final class JobController extends AbstractController
 {
     public function __construct(
         private readonly EventDispatcherInterface $eventDispatcher,
-        #[Autowire('%env(STRIPE_API_KEY)%')]
-        private readonly string $stripeApiKey,
+        #[Autowire('%env(STRIPE_API_KEY)%')] private readonly string $stripeApiKey,
         private readonly CreateDonationPaymentUrlCommandHandler $commandHandler,
         private readonly JobRepository $jobRepository,
         private readonly EntityManagerInterface $em,
         private readonly LoggerInterface $logger,
         private readonly AnalyticsClient $client,
-    ) {
+        ) {
     }
 
     #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]
@@ -106,7 +105,7 @@ class JobController extends AbstractController
 
             $redirectUrl = ($this->commandHandler)($command);
 
-            return $this->redirect($redirectUrl, 303);
+            return $this->redirect($redirectUrl, Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('job/new.html.twig', [
@@ -170,7 +169,7 @@ class JobController extends AbstractController
         $form = $this->createForm(SubscriptionType::class);
 
         return $this->render('job/_subscription_form.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -178,8 +177,7 @@ class JobController extends AbstractController
     public function subscribe(
         Request $request,
         SubscribeMailingListCommandHandler $handler,
-        #[Autowire('%env(MAILJET_CONTACT_LIST_ID)%')]
-        string $mailjetListId
+        #[Autowire('%env(MAILJET_CONTACT_LIST_ID)%')] string $mailjetListId
     ): Response {
         $form = $this->createForm(SubscriptionType::class);
         $form->handleRequest($request);
@@ -225,7 +223,7 @@ class JobController extends AbstractController
 
             $redirectUrl = ($this->commandHandler)($command);
 
-            return $this->redirect($redirectUrl, 303);
+            return $this->redirect($redirectUrl, Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('job/sponsor.html.twig', [

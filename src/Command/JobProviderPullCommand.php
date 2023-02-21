@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Event\JobPostedEvent;
+use App\Job\Event\JobPostedEvent;
 use App\Provider\JobProvider;
 use App\Provider\SearchParameters;
 use App\Repository\JobRepository;
@@ -20,17 +20,14 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 #[AsCommand(
     name: 'app:job-provider:retrieve',
     description: 'Retrieve jobs from different sources',
-)]
-class JobProviderPullCommand extends Command
+)] final class JobProviderPullCommand extends Command
 {
     public function __construct(
         private readonly JobProvider $provider,
         private readonly EntityManagerInterface $entityManager,
         private readonly RouterInterface $router,
-        #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
-        private readonly string $commandRouterHost,
-        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
-        private readonly string $commandRouterScheme,
+        #[Autowire('%env(COMMAND_ROUTER_HOST)%')] private readonly string $commandRouterHost,
+        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')] private readonly string $commandRouterScheme,
         private readonly EventDispatcherInterface $dispatcher,
         private readonly JobRepository $jobRepository
     ) {
@@ -58,7 +55,7 @@ class JobProviderPullCommand extends Command
         $i = 0;
         $events = [];
         foreach ($jobs->all() as $job) {
-            if ($this->jobRepository->findOneBy(['url' => $job->getUrl()])) {
+            if (null !== $this->jobRepository->findOneBy(['url' => $job->getUrl()])) {
                 continue;
             }
 

@@ -2,98 +2,90 @@
 
 namespace App\Provider\WelcometotheJungle;
 
+use App\Provider\Scraping\JobScraper;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Intl\Countries;
 
-final class WelcometotheJungleClient
+final readonly class WelcometotheJungleClient
 {
-    private Client $goutteClient;
+    private const URL = 'https://www.welcometothejungle.com/fr/pages/emploi-developpeur-symfony';
 
-    public function __construct(?Client $goutteClient = null)
+    public function __construct(private Client $goutteClient, private JobScraper $jobScraping)
     {
-        if (null === $goutteClient) {
-            $goutteClient = new Client();
-        }
-
-        $this->goutteClient = $goutteClient;
     }
 
     public function crawl(): array
     {
-        $crawler = $this->goutteClient->request(
-            'GET',
-            'https://www.welcometothejungle.com/fr/pages/emploi-developpeur-symfony'
-        );
+        $crawler = $this->goutteClient->request('GET', self::URL);
 
-        $urls = $crawler->filter('ol:nth-child(2) > li header a')->each(function (Crawler $crawler) {
+        $urls = $crawler->filter('ol:nth-child(2) li header a')->each(function (Crawler $crawler): string {
             return $crawler->link()->getUri();
         });
 
         $data = [];
         foreach ($urls as $url) {
-            $crawler = $this->goutteClient->request('GET', $url);
+            $jobData = $this->jobScraping->scrap($url);
 
-            $structuredData = null;
-            foreach ($crawler->filter('script[type="application/ld+json"]') as $domElement) {
-                $decodedData = json_decode($domElement->textContent, true, 512, \JSON_THROW_ON_ERROR);
-
-                if (isset($decodedData['@type']) && 'JobPosting' === $decodedData['@type']) {
-                    $structuredData = $decodedData;
-
-                    break;
-                }
-            }
-
-            if (null === $structuredData) {
+            if ($this->shouldSkip($jobData)) {
                 continue;
             }
 
-            $location = null;
-            if (isset($structuredData['jobLocation'])) {
-                // Check is multidimensional array (e.g. array of jobLocation)
-                if (false === isset($structuredData['jobLocation']['@type'])) {
-                    $locations = [];
-                    foreach ($structuredData['jobLocation'] as $jobLocation) {
-                        if (false === isset($jobLocation['@type'])) {
-                            continue;
-                        }
-
-                        if ('Place' !== $jobLocation['@type']) {
-                            continue;
-                        }
-
-                        $locations[] = sprintf(
-                            '%s, %s',
-                            html_entity_decode($jobLocation['address']['addressLocality']),
-                            ucfirst(Countries::getName($jobLocation['address']['addressCountry'])),
-                        );
-                    }
-
-                    $location = implode(', ', $locations);
-                } elseif ('Place' === $structuredData['jobLocation']['@type']) {
-                    $location = sprintf(
-                        '%s, %s',
-                        html_entity_decode($structuredData['jobLocation']['address']['addressLocality']),
-                        ucfirst(Countries::getName($structuredData['jobLocation']['address']['addressCountry'])),
-                    );
-                }
-            }
-
-            if (null === $location) {
-                continue;
-            }
+            $location = $this->getLocation($jobData);
 
             $data[] = [
-                'company' => html_entity_decode(trim($structuredData['hiringOrganization']['name'])),
-                'companyLogo' => $structuredData['hiringOrganization']['logo'],
+                'company' => html_entity_decode(trim((string) $jobData['hiringOrganization']['name'])),
+                'companyLogo' => $jobData['hiringOrganization']['logo'] ?? null,
                 'url' => $url,
-                'title' => html_entity_decode($structuredData['title']),
-                'employmentType' => $structuredData['employmentType'],
+                'title' => html_entity_decode((string) $jobData['title']),
+                'employmentType' => $jobData['employmentType'],
                 'location' => $location,
+                'locationType' => $jobData['jobLocationType'] ?? null,
+                'description' => $jobData['description'] ?? null,
+                'industry' => $jobData['industry'] ?? null,
             ];
         }
 
         return $data;
+    }
+
+    private function shouldSkip(array $data): bool
+    {
+        return false === isset($data['jobLocation']);
+    }
+
+    private function getLocation(array $data): string
+    {
+        // Check is multidimensional array (e.g. array of jobLocation)
+        if (false === isset($data['jobLocation']['@type'])) {
+            $locations = [];
+            foreach ($data['jobLocation'] as $jobLocation) {
+                if (false === isset($jobLocation['@type'])) {
+                    continue;
+                }
+
+                if ('Place' !== $jobLocation['@type']) {
+                    continue;
+                }
+
+                $locations[] = sprintf(
+                    '%s, %s',
+                    html_entity_decode((string) $jobLocation['address']['addressLocality']),
+                    ucfirst(Countries::getName($jobLocation['address']['addressCountry'])),
+                );
+            }
+
+            return implode(', ', $locations);
+        }
+
+        if ('Place' === $data['jobLocation']['@type']) {
+            return sprintf(
+                '%s, %s',
+                html_entity_decode((string) $data['jobLocation']['address']['addressLocality']),
+                ucfirst(Countries::getName($data['jobLocation']['address']['addressCountry'])),
+            );
+        }
+
+        throw new \Exception('Unable to retrieve location.');
     }
 }

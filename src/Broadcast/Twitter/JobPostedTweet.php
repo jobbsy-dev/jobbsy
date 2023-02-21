@@ -4,17 +4,15 @@ namespace App\Broadcast\Twitter;
 
 use App\Entity\Job;
 
-final class JobPostedTweet
+final readonly class JobPostedTweet
 {
-    public function __construct(
-        private readonly Job $job,
-        private readonly string $jobUrl
-    ) {
+    public function __construct(private Job $job, private string $jobUrl)
+    {
     }
 
     public function toTweet(): Tweet
     {
-        $hashtags = array_map(static function (string $tag) {
+        $hashtags = array_map(static function (string $tag): string {
             return '#'.$tag;
         }, $this->job->getTags());
 

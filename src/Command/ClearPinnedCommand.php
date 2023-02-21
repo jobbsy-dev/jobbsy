@@ -11,8 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(
     name: 'app:clear-pinned',
     description: 'Clear pinned jobs',
-)]
-class ClearPinnedCommand extends Command
+)] final class ClearPinnedCommand extends Command
 {
     public function __construct(private readonly JobRepository $jobRepository)
     {

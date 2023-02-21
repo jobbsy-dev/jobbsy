@@ -1,5 +1,6 @@
 {
     "require": {
-        "friendsofphp/php-cs-fixer": "^3.12"
+        "friendsofphp/php-cs-fixer": "^3.12",
+        "pedrotroller/php-cs-custom-fixer": "^2.28"
     }
 }
