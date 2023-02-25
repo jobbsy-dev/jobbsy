@@ -1,6 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base",
+    "group:symfony"
+  ],
+  "packageRules": [
+    {
+      "matchLanguages": ["php"],
+      "addLabels": ["php"]
+    }
   ]
 }
