@@ -41,6 +41,9 @@ final readonly class WelcometotheJungleProvider implements JobProviderInterface
                     break;
                 case 'CONTRACTOR':
                     $job->setEmploymentType(EmploymentType::INTERNSHIP);
+                    break;
+                default:
+                    continue 2;
             }
 
             if ('TELECOMMUTE' === $datum['locationType']) {
