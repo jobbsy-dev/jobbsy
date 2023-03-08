@@ -39,11 +39,7 @@ final class EventCrudController extends AbstractCrudController
                 ->setFormTypeOption('preferred_choices', ['FR', 'DE', 'ES', 'UK', 'IT', 'PL']),
             ChoiceField::new('attendanceMode')
                 ->onlyOnForms()
-                ->setChoices(function (): array {
-                    $choices = array_map(static fn (?AttendanceMode $unit): array => [$unit->value => $unit], AttendanceMode::cases());
-
-                    return array_merge(...$choices);
-                })
+                ->setChoices(['Modes' => AttendanceMode::cases()])
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', AttendanceMode::class)
                 ->setFormTypeOption('choice_label', function (AttendanceMode $enum): string {

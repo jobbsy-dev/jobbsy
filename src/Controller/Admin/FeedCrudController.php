@@ -31,11 +31,7 @@ final class FeedCrudController extends AbstractCrudController
             UrlField::new('url'),
             ChoiceField::new('type')
                 ->onlyOnForms()
-                ->setChoices(function (): array {
-                    $choices = array_map(static fn (?FeedType $unit): array => [$unit->value => $unit], FeedType::cases());
-
-                    return array_merge(...$choices);
-                })
+                ->setChoices(['Types' => FeedType::cases()])
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', FeedType::class)
                 ->setFormTypeOption('choice_label', function (FeedType $enum): string {
