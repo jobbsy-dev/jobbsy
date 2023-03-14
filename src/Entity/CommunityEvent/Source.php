@@ -21,7 +21,8 @@ class Source
 
     public function __construct(
         ?UuidInterface $id = null,
-        #[ORM\Column(type: Types::DATETIME_IMMUTABLE)] public readonly \DateTimeImmutable $createdAt = new \DateTimeImmutable()
+        #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+        public readonly \DateTimeImmutable $createdAt = new \DateTimeImmutable()
     ) {
         if (null === $id) {
             $id = Uuid::uuid4();

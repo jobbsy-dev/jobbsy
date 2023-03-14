@@ -26,8 +26,10 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
         private readonly JobProvider $provider,
         private readonly EntityManagerInterface $entityManager,
         private readonly RouterInterface $router,
-        #[Autowire('%env(COMMAND_ROUTER_HOST)%')] private readonly string $commandRouterHost,
-        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')] private readonly string $commandRouterScheme,
+        #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
+        private readonly string $commandRouterHost,
+        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
+        private readonly string $commandRouterScheme,
         private readonly EventDispatcherInterface $dispatcher,
         private readonly JobRepository $jobRepository
     ) {
