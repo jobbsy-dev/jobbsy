@@ -13,10 +13,14 @@ final readonly class TwitterApi
     private const BASE_URL = 'https://api.twitter.com/2';
 
     public function __construct(
-        #[Autowire('%env(TWITTER_API_KEY)%')] private string $consumerKey,
-        #[Autowire('%env(TWITTER_API_KEY_SECRET)%')] private string $consumerSecret,
-        #[Autowire('%env(TWITTER_ACCESS_TOKEN)%')] private string $accessToken,
-        #[Autowire('%env(TWITTER_ACCESS_TOKEN_SECRET)%')] private string $tokenSecret,
+        #[Autowire('%env(TWITTER_API_KEY)%')]
+        private string $consumerKey,
+        #[Autowire('%env(TWITTER_API_KEY_SECRET)%')]
+        private string $consumerSecret,
+        #[Autowire('%env(TWITTER_ACCESS_TOKEN)%')]
+        private string $accessToken,
+        #[Autowire('%env(TWITTER_ACCESS_TOKEN_SECRET)%')]
+        private string $tokenSecret,
         private HttpClientInterface $httpClient
     ) {
     }
