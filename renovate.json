@@ -1,13 +1,21 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    "group:symfony"
-  ],
-  "packageRules": [
-    {
-      "matchLanguages": ["php"],
-      "addLabels": ["php"]
-    }
-  ]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:base",
+        "group:symfony"
+    ],
+    "packageRules": [
+        {
+            "matchLanguages": ["php"],
+            "addLabels": ["php"]
+        },
+        {
+            "matchLanguages": ["js"],
+            "addLabels": ["javascript"]
+        },
+        {
+            "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+            "automerge": true
+        }
+    ]
 }
