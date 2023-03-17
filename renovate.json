@@ -4,6 +4,8 @@
         "config:base",
         "group:symfony"
     ],
+    "labels": ["dependencies"],
+    "reviewers": ["qdequippe"],
     "packageRules": [
         {
             "matchLanguages": ["php"],
