@@ -6,6 +6,7 @@ use Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector;
 use Rector\CodeQuality\Rector\Identical\SimplifyBoolIdenticalTrueRector;
 use Rector\Config\RectorConfig;
 use Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector;
+use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Privatization\Rector\Class_\ChangeReadOnlyVariableWithDefaultValueToConstantRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
@@ -43,6 +44,9 @@ return static function (RectorConfig $rectorConfig): void {
         ClosureToArrowFunctionRector::class,
         FlipTypeControlToUseExclusiveTypeRector::class,
         SimplifyBoolIdenticalTrueRector::class,
+        ClassPropertyAssignToConstructorPromotionRector::class => [
+            __DIR__.'/src/Entity',
+        ],
         ChangeReadOnlyVariableWithDefaultValueToConstantRector::class => [
             __DIR__.'/tests',
         ],
