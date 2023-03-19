@@ -24,27 +24,30 @@ final readonly class WelcometotheJungleProvider implements JobProviderInterface
         $data = $this->client->crawl();
 
         foreach ($data as $datum) {
-            $job = new Job();
-            $job->setLocation($datum['location']);
-            $job->setTitle($datum['title']);
-            $job->setOrganization($datum['company']);
-            $job->setOrganizationImageUrl($datum['companyLogo'] ?? null);
-            $job->setSource(self::SOURCE_NAME);
-            $job->setTags(['PHP', 'Symfony']);
-            $job->setUrl($datum['url']);
-            $job->setIndustry($datum['industry']);
-            $job->setDescription($datum['description']);
-
+            $employmentType = null;
             switch ($datum['employmentType']) {
                 case 'FULL_TIME':
-                    $job->setEmploymentType(EmploymentType::FULL_TIME);
+                    $employmentType = EmploymentType::FULL_TIME;
                     break;
                 case 'CONTRACTOR':
-                    $job->setEmploymentType(EmploymentType::INTERNSHIP);
+                    $employmentType = EmploymentType::INTERNSHIP;
                     break;
                 default:
                     continue 2;
             }
+
+            $job = new Job(
+                title: $datum['title'],
+                location: $datum['location'],
+                employmentType: $employmentType,
+                organization: $datum['company'],
+                url: $datum['url']
+            );
+            $job->setOrganizationImageUrl($datum['companyLogo'] ?? null);
+            $job->setSource(self::SOURCE_NAME);
+            $job->setTags(['PHP', 'Symfony']);
+            $job->setIndustry($datum['industry']);
+            $job->setDescription($datum['description']);
 
             if ('TELECOMMUTE' === $datum['locationType']) {
                 $job->setLocationType(LocationType::REMOTE);
