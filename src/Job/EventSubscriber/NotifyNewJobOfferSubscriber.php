@@ -42,7 +42,7 @@ final readonly class NotifyNewJobOfferSubscriber implements EventSubscriberInter
             ->field('Type')
             ->field($job->getEmploymentType()->value)
             ->field('Salary')
-            ->field($job->getSalary())
+            ->field($job->getSalary() ?: '')
             ->field('Url')
             ->field($job->getUrl())
         ;
