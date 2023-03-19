@@ -666,6 +666,15 @@
     "symfony/service-contracts": {
         "version": "v3.0.0"
     },
+    "symfony/slack-notifier": {
+        "version": "6.2",
+        "recipe": {
+            "repo": "github.com/schranz-php-recipes/symfony-recipes-php",
+            "branch": "main",
+            "version": "5.2",
+            "ref": "192bc241a3095c6861353e5a7a652ad35659ca92"
+        }
+    },
     "symfony/stopwatch": {
         "version": "v6.0.0"
     },
