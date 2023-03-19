@@ -48,28 +48,31 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
                 continue;
             }
 
-            $job = new Job();
-            $job->setOrganization($result['entreprise']['nom']);
-            $job->setUrl($result['origineOffre']['urlOrigine']);
-            $job->setTitle($result['intitule']);
-            $job->setIndustry($result['secteurActiviteLibelle'] ?? null);
-            $job->setDescription($result['description'] ?? null);
-
             $location = $result['lieuTravail']['libelle'];
             if (str_contains((string) $location, '-')) {
-                $job->setLocation(ucfirst(trim(explode('-', (string) $location)[1])));
-            } else {
-                $job->setLocation($location);
+                $location = ucfirst(trim(explode('-', (string) $location)[1]));
             }
 
-            $job->setOrganizationImageUrl($result['entreprise']['logo'] ?? null);
-            $job->setEmploymentType(EmploymentType::FULL_TIME);
+            $employmentType = EmploymentType::FULL_TIME;
             if (isset($result['typeContrat'], $result['natureContrat'])
                 && 'CDD' === $result['typeContrat']
                 && str_contains((string) $result['natureContrat'], 'apprentissage')
             ) {
-                $job->setEmploymentType(EmploymentType::INTERNSHIP);
+                $employmentType = EmploymentType::INTERNSHIP;
             }
+
+            $job = new Job(
+                title: $result['intitule'],
+                location: $location,
+                employmentType: $employmentType,
+                organization: $result['entreprise']['nom'],
+                url: $result['origineOffre']['urlOrigine']
+            );
+
+            $job->setIndustry($result['secteurActiviteLibelle'] ?? null);
+            $job->setDescription($result['description'] ?? null);
+
+            $job->setOrganizationImageUrl($result['entreprise']['logo'] ?? null);
 
             if (isset($result['salaire']['libelle'])) {
                 $job->setSalary($result['salaire']['libelle']);

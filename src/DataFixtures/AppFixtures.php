@@ -35,15 +35,19 @@ final class AppFixtures extends Fixture
     {
         $publishedAt = new \DateTimeImmutable();
         foreach ($this->getJobData() as [$title, $employmentType, $organization, $location, $url, $tags, $id, $pinned]) {
-            $job = new Job($id ? Uuid::fromString($id) : null);
-            $job->setTitle($title);
-            $job->setEmploymentType($employmentType);
-            $job->setOrganization($organization);
-            $job->setLocation($location);
-            $job->setUrl($url);
+            $id = $id ? Uuid::fromString($id) : null;
+            $job = new Job(
+                $title,
+                $location,
+                $employmentType,
+                $organization,
+                $url,
+                $id,
+            );
             $job->setTags($tags);
             $publishedAt = $publishedAt->modify('- 1 hour');
             $job->publish($publishedAt);
+
             if ($pinned) {
                 $job->pinUntil(new \DateTimeImmutable('+1 month'));
             }

@@ -3,6 +3,7 @@
 namespace App\Tests\Provider;
 
 use App\Entity\Job;
+use App\Job\EmploymentType;
 use App\Provider\JobProvider;
 use App\Provider\SearchParameters;
 use PHPUnit\Framework\TestCase;
@@ -11,15 +12,21 @@ final class JobProviderTest extends TestCase
 {
     public function testRetrieve(): void
     {
-        $job1 = new Job();
-        $job1->setOrganization('Acme');
-        $job1->setLocation('Remote');
-        $job1->setUrl('https://example.com');
+        $job1 = new Job(
+            'Job 1',
+            'Remote',
+            EmploymentType::FULL_TIME,
+            'Acme',
+            'https://example.com'
+        );
 
-        $job2 = new Job();
-        $job2->setOrganization('SensioLabs');
-        $job2->setLocation('Remote');
-        $job2->setUrl('https://symfony.com');
+        $job2 = new Job(
+            'Job 1',
+            'Remote',
+            EmploymentType::FULL_TIME,
+            'Symfony',
+            'https://symfony.com'
+        );
 
         $jobProviders = [
             new InMemoryJobProvider(...[$job1, $job2]),

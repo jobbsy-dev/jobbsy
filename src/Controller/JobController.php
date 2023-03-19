@@ -7,10 +7,11 @@ use App\Analytics\Plausible\EventRequest;
 use App\Donation\Command\CreateDonationPaymentUrlCommand;
 use App\Donation\CommandHandler\CreateDonationPaymentUrlCommandHandler;
 use App\Entity\Job;
-use App\Form\JobType;
+use App\Form\PostJobOfferType;
 use App\Form\SponsorType;
 use App\Form\SubscriptionType;
-use App\Job\Event\JobPostedEvent;
+use App\Job\Command\PostJobOfferCommand;
+use App\Job\Command\PostJobOfferCommandHandler;
 use App\Repository\JobRepository;
 use App\Subscription\SubscribeMailingListCommand;
 use App\Subscription\SubscribeMailingListCommandHandler;
@@ -27,12 +28,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final class JobController extends AbstractController
 {
     public function __construct(
-        private readonly EventDispatcherInterface $eventDispatcher,
         #[Autowire('%env(STRIPE_API_KEY)%')]
         private readonly string $stripeApiKey,
         private readonly CreateDonationPaymentUrlCommandHandler $commandHandler,
@@ -40,7 +39,8 @@ final class JobController extends AbstractController
         private readonly EntityManagerInterface $em,
         private readonly LoggerInterface $logger,
         private readonly AnalyticsClient $client,
-        ) {
+        private readonly PostJobOfferCommandHandler $postJobOfferCommandHandler
+    ) {
     }
 
     #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]
@@ -62,25 +62,16 @@ final class JobController extends AbstractController
     #[Route('/job/new', name: 'job_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
-        $job = new Job();
-        $form = $this->createForm(JobType::class, $job);
+        $command = new PostJobOfferCommand();
+        $form = $this->createForm(PostJobOfferType::class, $command);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $job->publish();
-            // Allow 1 month of boost on manual creation
-            $job->pinUntil(new \DateTimeImmutable('+1 month'));
-            $this->jobRepository->save($job, true);
+            $job = $this->postJobOfferCommandHandler->__invoke($command);
 
             $this->addFlash('success', 'Job posted successfully!');
 
-            $this->eventDispatcher->dispatch(new JobPostedEvent(
-                $job,
-                $this->generateUrl('job', ['id' => $job->getId()], UrlGeneratorInterface::ABSOLUTE_URL),
-            ));
-
-            $donationAmount = $form->get('donationAmount')->getData();
-            if (0 === (int) $donationAmount) {
+            if (0 === (int) $command->donationAmount) {
                 return $this->redirectToRoute('job_index');
             }
 
@@ -91,7 +82,7 @@ final class JobController extends AbstractController
 
             $command = new CreateDonationPaymentUrlCommand(
                 $job->getId(),
-                $donationAmount,
+                $command->donationAmount,
                 $successUrl,
                 $this->generateUrl('job_donation_cancel', [], UrlGeneratorInterface::ABSOLUTE_URL)
             );
@@ -102,7 +93,6 @@ final class JobController extends AbstractController
         }
 
         return $this->render('job/new.html.twig', [
-            'job' => $job,
             'form' => $form,
         ]);
     }

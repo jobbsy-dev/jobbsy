@@ -4,6 +4,7 @@ namespace App\Tests\Broadcast\Twitter;
 
 use App\Broadcast\Twitter\JobPostedTweet;
 use App\Entity\Job;
+use App\Job\EmploymentType;
 use PHPUnit\Framework\TestCase;
 
 final class JobPostedTweetTest extends TestCase
@@ -11,10 +12,13 @@ final class JobPostedTweetTest extends TestCase
     public function testToTweetText(): void
     {
         // Arrange
-        $job = new Job();
-        $job->setTitle('Symfony web developer');
-        $job->setOrganization('Acme');
-        $job->setLocation('Remote');
+        $job = new Job(
+            'Symfony web developer',
+            'Remote',
+            EmploymentType::FULL_TIME,
+            'Acme',
+            ''
+        );
         $job->setTags(['PHP', 'Symfony']);
 
         $expectedTweetText = <<<EOD

@@ -19,7 +19,6 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ApiResource(
@@ -39,41 +38,35 @@ class Job
     private UuidInterface $id;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?string $title = null;
+    private string $title;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?string $location = null;
+    private string $location;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private ?\DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: Types::STRING, enumType: EmploymentType::class)]
-    #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?EmploymentType $employmentType = null;
+    private EmploymentType $employmentType;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
-    private ?string $organization = null;
+    private string $organization;
 
     #[ORM\Column(type: Types::JSON)]
-    #[Assert\Count(max: 5)]
     #[Groups(['read'])]
     private array $tags = [];
 
     #[ORM\Column(type: Types::STRING)]
-    #[Assert\NotBlank]
     #[Groups(['read'])]
-    private ?string $url = null;
+    private string $url;
 
     #[Vich\UploadableField(
         mapping: 'organization_image',
@@ -120,11 +113,9 @@ class Job
     private ?string $salary = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]
-    #[Assert\Email]
     private ?string $contactEmail = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true, enumType: LocationType::class)]
-    #[Assert\NotBlank(allowNull: true)]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private ?LocationType $locationType = null;
@@ -135,8 +126,14 @@ class Job
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    public function __construct(?UuidInterface $id = null)
-    {
+    public function __construct(
+        string $title,
+        string $location,
+        EmploymentType $employmentType,
+        string $organization,
+        string $url,
+        ?UuidInterface $id = null
+    ) {
         if (null === $id) {
             $id = Uuid::uuid4();
         }
@@ -144,6 +141,11 @@ class Job
         $this->id = $id;
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
+        $this->title = $title;
+        $this->location = $location;
+        $this->employmentType = $employmentType;
+        $this->organization = $organization;
+        $this->url = $url;
     }
 
     public function getId(): UuidInterface
@@ -151,7 +153,7 @@ class Job
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -161,7 +163,7 @@ class Job
         $this->title = $title;
     }
 
-    public function getLocation(): ?string
+    public function getLocation(): string
     {
         return $this->location;
     }
@@ -176,7 +178,7 @@ class Job
         return $this->createdAt;
     }
 
-    public function getEmploymentType(): ?EmploymentType
+    public function getEmploymentType(): EmploymentType
     {
         return $this->employmentType;
     }
@@ -186,7 +188,7 @@ class Job
         $this->employmentType = $employmentType;
     }
 
-    public function getOrganization(): ?string
+    public function getOrganization(): string
     {
         return $this->organization;
     }
@@ -196,7 +198,7 @@ class Job
         $this->organization = $organization;
     }
 
-    public function getTags(): ?array
+    public function getTags(): array
     {
         return $this->tags;
     }
@@ -206,12 +208,12 @@ class Job
         $this->tags = $tags;
     }
 
-    public function getUrl(): ?string
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    public function setUrl(?string $url): void
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }

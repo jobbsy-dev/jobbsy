@@ -3,6 +3,7 @@
 namespace App\Tests\MessageHandler\Job;
 
 use App\Entity\Job;
+use App\Job\EmploymentType;
 use App\Message\Job\ClassifyMessage;
 use App\MessageHandler\Job\ClassifyHandler;
 use App\OpenAI\Client;
@@ -17,7 +18,7 @@ final class ClassifyHandlerTest extends TestCase
     public function testClassifyJob(): void
     {
         // Arrange
-        $job = new Job(Uuid::fromString('d43b7e10-cbc7-40d1-a9d4-aa73fc825456'));
+        $job = new Job('', '', EmploymentType::FULL_TIME, '', '', Uuid::fromString('d43b7e10-cbc7-40d1-a9d4-aa73fc825456'));
         $job->setDescription('Amazing job for Symfony developer with AI skills');
 
         $payload = [

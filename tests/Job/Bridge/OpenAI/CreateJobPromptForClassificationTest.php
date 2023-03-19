@@ -4,6 +4,7 @@ namespace App\Tests\Job\Bridge\OpenAI;
 
 use App\Entity\Job;
 use App\Job\Bridge\OpenAI\CreateJobPromptForClassification;
+use App\Job\EmploymentType;
 use PHPUnit\Framework\TestCase;
 
 final class CreateJobPromptForClassificationTest extends TestCase
@@ -14,7 +15,7 @@ final class CreateJobPromptForClassificationTest extends TestCase
     public function testCreate(string $description, string $expected): void
     {
         // Arrange
-        $job = new Job();
+        $job = new Job('', '', EmploymentType::FULL_TIME, '', '');
         $job->setDescription($description);
 
         // Act

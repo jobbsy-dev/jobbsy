@@ -37,14 +37,14 @@ final class JobControllerTest extends WebTestCase
         self::assertResponseIsSuccessful();
 
         $client->submitForm('Post', [
-            'job[title]' => 'Symfony freelance developer',
-            'job[location]' => 'Remote',
-            'job[employmentType]' => EmploymentType::CONTRACT->value,
-            'job[organization]' => 'Symfony',
-            'job[url]' => 'https://symfony.com',
-            'job[tags]' => 'symfony,freelance,sql',
-            'job[donationAmount]' => 0,
-            'job[contactEmail]' => 'test@example.com',
+            'post_job_offer[title]' => 'Symfony freelance developer',
+            'post_job_offer[location]' => 'Remote',
+            'post_job_offer[employmentType]' => EmploymentType::CONTRACT->value,
+            'post_job_offer[organization]' => 'Symfony',
+            'post_job_offer[url]' => 'https://symfony.com',
+            'post_job_offer[tags]' => 'symfony,freelance,sql',
+            'post_job_offer[donationAmount]' => 0,
+            'post_job_offer[contactEmail]' => 'test@example.com',
         ]);
         self::assertResponseRedirects('/');
         $crawler = $client->followRedirect();
@@ -67,14 +67,14 @@ final class JobControllerTest extends WebTestCase
         ApiRequestor::setHttpClient($mockStripeClient);
 
         $client->submitForm('Post', [
-            'job[title]' => 'Symfony freelance developer',
-            'job[location]' => 'Remote',
-            'job[employmentType]' => EmploymentType::CONTRACT->value,
-            'job[organization]' => 'Symfony',
-            'job[url]' => 'https://symfony.com',
-            'job[tags]' => 'symfony,freelance,sql',
-            'job[donationAmount]' => 5000,
-            'job[contactEmail]' => 'test@example.com',
+            'post_job_offer[title]' => 'Symfony freelance developer',
+            'post_job_offer[location]' => 'Remote',
+            'post_job_offer[employmentType]' => EmploymentType::CONTRACT->value,
+            'post_job_offer[organization]' => 'Symfony',
+            'post_job_offer[url]' => 'https://symfony.com',
+            'post_job_offer[tags]' => 'symfony,freelance,sql',
+            'post_job_offer[donationAmount]' => 5000,
+            'post_job_offer[contactEmail]' => 'test@example.com',
         ]);
         self::assertResponseRedirects('https://checkout.stripe.com/pay/xxx');
     }

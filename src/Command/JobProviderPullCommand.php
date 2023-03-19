@@ -63,10 +63,7 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
             $this->entityManager->persist($job);
 
-            $events[] = new JobPostedEvent(
-                $job,
-                $this->router->generate('job', ['id' => $job->getId()], RouterInterface::ABSOLUTE_URL),
-            );
+            $events[] = new JobPostedEvent($job);
 
             if (0 === ($i % 20)) {
                 $this->entityManager->flush();
