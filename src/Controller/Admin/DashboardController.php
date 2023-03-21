@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Blog\Post;
 use App\Entity\CommunityEvent\Event;
 use App\Entity\CommunityEvent\Source;
 use App\Entity\Job;
@@ -35,14 +34,12 @@ final class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): \Iterator
     {
-        yield MenuItem::linkToCrud('Jobs', 'fas fa-list', Job::class);
+        yield MenuItem::linkToCrud('Jobs', 'fas fa-code', Job::class);
 
         yield MenuItem::subMenu('Events & Meetups', 'fas fa-calendar')->setSubItems([
             MenuItem::linkToCrud('Events', 'fas fa-list', Event::class),
             MenuItem::linkToCrud('Sources', 'fas fa-rss', Source::class),
         ]);
-
-        yield MenuItem::linkToCrud('Blog Posts', 'fas fa-file-text', Post::class);
 
         yield MenuItem::subMenu('News', 'fas fa-newspaper')->setSubItems([
             MenuItem::linkToCrud('Entries', 'fas fa-list', Entry::class),

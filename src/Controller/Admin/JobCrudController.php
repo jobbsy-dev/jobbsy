@@ -40,9 +40,11 @@ final class JobCrudController extends AbstractCrudController
             IdField::new('id')
                 ->onlyOnDetail(),
             TextField::new('title')
-                ->setMaxLength(35),
-            TextField::new('organization'),
-            TextField::new('location'),
+                ->setMaxLength(40),
+            TextField::new('organization')
+            ->hideOnIndex(),
+            TextField::new('location')
+                ->hideOnIndex(),
             TextField::new('salary')
                 ->onlyOnForms(),
             ChoiceField::new('employmentType')
@@ -64,7 +66,7 @@ final class JobCrudController extends AbstractCrudController
             ArrayField::new('tags'),
             UrlField::new('url'),
             DateTimeField::new('createdAt')
-                ->setFormat('long', 'none')
+                ->setFormat('dd/MM/y', 'none')
                 ->hideOnForm(),
             Field::new('organizationImageFile')
                 ->onlyOnForms()
