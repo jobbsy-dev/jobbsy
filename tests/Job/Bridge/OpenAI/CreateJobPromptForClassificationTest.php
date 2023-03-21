@@ -15,7 +15,7 @@ final class CreateJobPromptForClassificationTest extends TestCase
     public function testCreate(string $description, string $expected): void
     {
         // Arrange
-        $job = new Job('', '', EmploymentType::FULL_TIME, '', '');
+        $job = new Job('', '', EmploymentType::FULLTIME, '', '');
         $job->setDescription($description);
 
         // Act

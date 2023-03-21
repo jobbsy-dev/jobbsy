@@ -114,7 +114,7 @@ final class AppFixtures extends Fixture
     {
         yield [
             'Symfony developer Remote',
-            EmploymentType::FULL_TIME,
+            EmploymentType::FULLTIME,
             'Acme',
             'Remote',
             'https://example.com',
@@ -124,7 +124,7 @@ final class AppFixtures extends Fixture
         ];
         yield [
             'Lead dev Symfony Paris',
-            EmploymentType::FULL_TIME,
+            EmploymentType::FULLTIME,
             'Acme',
             'Paris',
             'https://example.com',
@@ -134,7 +134,7 @@ final class AppFixtures extends Fixture
         ];
         yield [
             'Backend Symfony developer',
-            EmploymentType::FULL_TIME,
+            EmploymentType::FULLTIME,
             'SensioLabs',
             'Paris',
             'https://example.com',

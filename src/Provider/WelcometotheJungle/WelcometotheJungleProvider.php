@@ -27,7 +27,7 @@ final readonly class WelcometotheJungleProvider implements JobProviderInterface
             $employmentType = null;
             switch ($datum['employmentType']) {
                 case 'FULL_TIME':
-                    $employmentType = EmploymentType::FULL_TIME;
+                    $employmentType = EmploymentType::FULLTIME;
                     break;
                 case 'CONTRACTOR':
                     $employmentType = EmploymentType::INTERNSHIP;

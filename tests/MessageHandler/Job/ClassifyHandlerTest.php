@@ -18,7 +18,7 @@ final class ClassifyHandlerTest extends TestCase
     public function testClassifyJob(): void
     {
         // Arrange
-        $job = new Job('', '', EmploymentType::FULL_TIME, '', '', Uuid::fromString('d43b7e10-cbc7-40d1-a9d4-aa73fc825456'));
+        $job = new Job('', '', EmploymentType::FULLTIME, '', '', Uuid::fromString('d43b7e10-cbc7-40d1-a9d4-aa73fc825456'));
         $job->setDescription('Amazing job for Symfony developer with AI skills');
 
         $payload = [

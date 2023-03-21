@@ -9,7 +9,7 @@ use App\Tests\Mock\MockStripeClient;
 use Stripe\ApiRequestor;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-final class JobControllerTest extends WebTestCase
+class JobControllerTest extends WebTestCase
 {
     public function testListJobsOffers(): void
     {

@@ -15,7 +15,7 @@ final class JobPostedTweetTest extends TestCase
         $job = new Job(
             'Symfony web developer',
             'Remote',
-            EmploymentType::FULL_TIME,
+            EmploymentType::FULLTIME,
             'Acme',
             ''
         );

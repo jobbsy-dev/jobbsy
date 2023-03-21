@@ -53,7 +53,7 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
                 $location = ucfirst(trim(explode('-', (string) $location)[1]));
             }
 
-            $employmentType = EmploymentType::FULL_TIME;
+            $employmentType = EmploymentType::FULLTIME;
             if (isset($result['typeContrat'], $result['natureContrat'])
                 && 'CDD' === $result['typeContrat']
                 && str_contains((string) $result['natureContrat'], 'apprentissage')
