@@ -47,7 +47,7 @@
                 {% for locationType in locationTypes %}
                     <li class="mb-1">
                         <a href="{{ path('job_location_type', {'locationType': locationType.value}) }}" class="link-secondary">
-                            Latest Symfony {{ ('location_type.' ~ locationType.value)|trans }} jobs
+                            Latest {{ ('location_type.' ~ locationType.value)|trans }} Symfony jobs
                         </a>
                     </li>
                 {% endfor %}
@@ -60,7 +60,7 @@
                 {% for employmentType in employmentTypes %}
                     <li class="mb-1">
                         <a href="{{ path('job_employment_type', {'employmentType': employmentType.value}) }}" class="link-secondary">
-                            Latest Symfony {{ ('employment_type.' ~ employmentType.value)|trans }} jobs
+                            Latest {{ ('employment_type.' ~ employmentType.value)|trans }} Symfony jobs
                         </a>
                     </li>
                 {% endfor %}
