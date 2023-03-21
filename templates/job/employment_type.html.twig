@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Latest Symfony {{ ('employment_type.' ~ employmentType.value)|trans }} jobs - {{ parent() }}{% endblock %}
+{% block title %}Latest {{ ('employment_type.' ~ employmentType.value)|trans }} Symfony jobs - {{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="px-4 pb-4 py-md-5 my-3 text-center">
         <h1 class="display-5 fw-bold">
-            Latest Symfony <b>{{ ('employment_type.' ~ employmentType.value)|trans }}</b> Jobs
+            Latest <b>{{ ('employment_type.' ~ employmentType.value)|trans }}</b> Symfony Jobs
         </h1>
         <div class="col-lg-6 mx-auto d-none d-md-block mt-5">
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
