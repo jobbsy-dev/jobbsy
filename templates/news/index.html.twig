@@ -23,6 +23,10 @@
                     <div class="well">No news found</div>
                 {% endfor %}
             </div>
+
+            <div class="navigation mt-5">
+                {{ knp_pagination_render(pagination) }}
+            </div>
         </div>
         <div class="col-md-4 d-none d-md-flex flex-column offset-md-1">
             <h2 class="h4 mb-4">Latest jobs</h2>
@@ -36,9 +40,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="navigation mt-5">
-        {{ knp_pagination_render(pagination) }}
     </div>
 {% endblock %}

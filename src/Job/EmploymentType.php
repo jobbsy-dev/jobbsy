@@ -4,7 +4,7 @@ namespace App\Job;
 
 enum EmploymentType: string
 {
-    case FULL_TIME = 'full_time';
+    case FULLTIME = 'fulltime';
     case CONTRACT = 'contract';
     case INTERNSHIP = 'internship';
 }

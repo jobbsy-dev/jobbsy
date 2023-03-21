@@ -2,8 +2,8 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="employment_type.full_time">
-                <source>employment_type.full_time</source>
+            <trans-unit id="employment_type.fulltime">
+                <source>employment_type.fulltime</source>
                 <target>Full time</target>
             </trans-unit>
             <trans-unit id="employment_type.contract">
@@ -106,9 +106,9 @@
                 <source>location_type.remote</source>
                 <target>Remote</target>
             </trans-unit>
-            <trans-unit id="location_type.on_site">
-                <source>location_type.on_site</source>
-                <target>On site</target>
+            <trans-unit id="location_type.onsite">
+                <source>location_type.onsite</source>
+                <target>Onsite</target>
             </trans-unit>
             <trans-unit id="location_type.hybrid">
                 <source>location_type.hybrid</source>

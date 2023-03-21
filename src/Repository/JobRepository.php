@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Job;
+use App\Job\EmploymentType;
+use App\Job\LocationType;
 use App\Job\Repository\JobRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Criteria;
@@ -17,6 +19,8 @@ use Ramsey\Uuid\UuidInterface;
  */
 final class JobRepository extends ServiceEntityRepository implements JobRepositoryInterface
 {
+    private const MAX_JOBS_PER_PAGE = 30;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Job::class);
@@ -25,7 +29,7 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
     /**
      * @return Job[]
      */
-    public function findLastJobs(int $limit = 30): array
+    public function findLastJobs(int $limit = self::MAX_JOBS_PER_PAGE): array
     {
         $qb = $this->createQueryBuilder('job');
 
@@ -95,5 +99,41 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    /**
+     * @return Job[]
+     */
+    public function jobsByLocationType(LocationType $locationType, int $limit = self::MAX_JOBS_PER_PAGE): array
+    {
+        $qb = $this->createQueryBuilder('job');
+
+        return $qb
+            ->where($qb->expr()->isNotNull('job.publishedAt'))
+            ->andWhere('job.locationType = :locationType')
+            ->setParameter('locationType', $locationType)
+            ->addOrderBy('job.pinnedUntil', Criteria::DESC)
+            ->addOrderBy('job.publishedAt', Criteria::DESC)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Job[]
+     */
+    public function jobsByEmploymentType(EmploymentType $employmentType, int $limit = self::MAX_JOBS_PER_PAGE): array
+    {
+        $qb = $this->createQueryBuilder('job');
+
+        return $qb
+            ->where($qb->expr()->isNotNull('job.publishedAt'))
+            ->andWhere('job.employmentType = :employmentType')
+            ->setParameter('employmentType', $employmentType)
+            ->addOrderBy('job.pinnedUntil', Criteria::DESC)
+            ->addOrderBy('job.publishedAt', Criteria::DESC)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
     }
 }

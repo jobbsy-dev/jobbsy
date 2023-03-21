@@ -12,6 +12,8 @@ use App\Form\SponsorType;
 use App\Form\SubscriptionType;
 use App\Job\Command\PostJobOfferCommand;
 use App\Job\Command\PostJobOfferCommandHandler;
+use App\Job\EmploymentType;
+use App\Job\LocationType;
 use App\Repository\JobRepository;
 use App\Subscription\SubscribeMailingListCommand;
 use App\Subscription\SubscribeMailingListCommandHandler;
@@ -39,8 +41,8 @@ final class JobController extends AbstractController
         private readonly EntityManagerInterface $em,
         private readonly LoggerInterface $logger,
         private readonly AnalyticsClient $client,
-        private readonly PostJobOfferCommandHandler $postJobOfferCommandHandler
-    ) {
+        private readonly PostJobOfferCommandHandler $postJobOfferCommandHandler,
+        ) {
     }
 
     #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]
@@ -48,6 +50,8 @@ final class JobController extends AbstractController
     {
         return $this->render('job/index.html.twig', [
             'jobs' => $this->jobRepository->findLastJobs(),
+            'locationTypes' => LocationType::cases(),
+            'employmentTypes' => EmploymentType::cases(),
         ]);
     }
 
@@ -213,6 +217,24 @@ final class JobController extends AbstractController
         return $this->render('job/sponsor.html.twig', [
             'job' => $job,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/symfony-location-{locationType}-jobs', name: 'job_location_type', methods: ['GET']), ]
+    public function jobsByLocationType(LocationType $locationType): Response
+    {
+        return $this->render('job/location_type.html.twig', [
+            'jobs' => $this->jobRepository->jobsByLocationType($locationType),
+            'locationType' => $locationType,
+        ]);
+    }
+
+    #[Route('/symfony-employment-{employmentType}-jobs', name: 'job_employment_type', methods: ['GET']), ]
+    public function jobsByEmploymentType(EmploymentType $employmentType): Response
+    {
+        return $this->render('job/employment_type.html.twig', [
+            'jobs' => $this->jobRepository->jobsByEmploymentType($employmentType),
+            'employmentType' => $employmentType,
         ]);
     }
 }

@@ -18,9 +18,9 @@
         </div>
     </div>
 
-    {% if jobs|length > 0 %}
+    {% set jobsCount = jobs|length %}
+    {% if jobsCount > 0 %}
         <div class="job-list d-flex flex-column justify-content-around gap-4">
-            {% set jobsCount = jobs|length %}
             {% for job in jobs|slice(0, jobsCount/2) %}
                 {{ include('job/_job_card.html.twig', {'job': job}) }}
             {% endfor %}
@@ -39,4 +39,33 @@
             <a href="{{ path('job_new') }}" class="btn btn-outline-primary">{{ 'action.post_job'|trans }}</a>
         </div>
     {% endif %}
+
+    <div class="d-flex justify-content-center mt-5 gap-5">
+        <div>
+            <h5 class="mb-3">Jobs by Location Type</h5>
+            <ul class="list-unstyled text-small">
+                {% for locationType in locationTypes %}
+                    <li class="mb-1">
+                        <a href="{{ path('job_location_type', {'locationType': locationType.value}) }}" class="link-secondary">
+                            Latest Symfony {{ ('location_type.' ~ locationType.value)|trans }} jobs
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="mb-3">Jobs by Employment Type</h5>
+            <ul class="list-unstyled text-small">
+                {% for employmentType in employmentTypes %}
+                    <li class="mb-1">
+                        <a href="{{ path('job_employment_type', {'employmentType': employmentType.value}) }}" class="link-secondary">
+                            Latest Symfony {{ ('employment_type.' ~ employmentType.value)|trans }} jobs
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
 {% endblock %}

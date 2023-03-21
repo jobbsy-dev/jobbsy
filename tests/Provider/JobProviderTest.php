@@ -15,7 +15,7 @@ final class JobProviderTest extends TestCase
         $job1 = new Job(
             'Job 1',
             'Remote',
-            EmploymentType::FULL_TIME,
+            EmploymentType::FULLTIME,
             'Acme',
             'https://example.com'
         );
@@ -23,7 +23,7 @@ final class JobProviderTest extends TestCase
         $job2 = new Job(
             'Job 1',
             'Remote',
-            EmploymentType::FULL_TIME,
+            EmploymentType::FULLTIME,
             'Symfony',
             'https://symfony.com'
         );

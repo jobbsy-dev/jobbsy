@@ -60,7 +60,7 @@
                 {% block main %}{% endblock %}
             </main>
 
-            <footer class="py-3 px-3 px-md-0 py-md-5 text-center mt-5 border-top bg-light">
+            <footer class="py-3 px-3 px-md-0 py-md-5 text-center border-top bg-light">
                 <ul class="nav justify-content-center pb-3 mb-1 ">
                     <li class="nav-item">
                         <a href="{{ path('job_index') }}" class="nav-link px-2 text-muted">Home</a>
@@ -86,13 +86,6 @@
                 </ul>
                 <p class="text-center text-muted mb-0">{{ ''|date('Y') }} Jobbsy, open source job board for Symfony™</p>
                 <small class="text-muted">Symfony™ is a trademark, please refer to <a href="https://symfony.com/trademark" class="text-reset" target="_blank" rel="nofollow">Trademark and Logo Policy</a>.</small>
-
-                <small class="d-block text-muted mt-3">
-                    External sources:
-                    <a href="https://pole-emploi.io" class="text-reset" target="_blank">Pole Emploi</a>,
-                    <!--, <a href="https://www.arbeitsagentur.de/" class="text-reset" target="_blank">Bundesagentur für Arbeit</a>-->
-                    <a href="https://welcometothejungle.com" class="text-reset" target="_blank">Welcome to the Jungle</a>
-                </small>
             </footer>
         {% endblock %}
     </body>
