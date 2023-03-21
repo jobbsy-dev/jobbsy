@@ -62,6 +62,11 @@ class Feed
         $this->updatedAt = new \DateTimeImmutable();
     }
 
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     public function getId(): UuidInterface
     {
         return $this->id;

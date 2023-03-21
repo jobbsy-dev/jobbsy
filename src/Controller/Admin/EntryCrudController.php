@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\News\Entry;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -26,6 +27,7 @@ final class EntryCrudController extends AbstractCrudController
             TextField::new('title')
                 ->setMaxLength(35),
             UrlField::new('link'),
+            AssociationField::new('feed'),
             TextareaField::new('description')
                 ->onlyOnForms(),
             DateTimeField::new('publishedAt'),
