@@ -5,7 +5,7 @@ namespace App\Tests\Controller;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+final class DefaultControllerTest extends WebTestCase
 {
     #[DataProvider('provideUrls')]
     public function testUrlIsOk(string $url): void
