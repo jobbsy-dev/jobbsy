@@ -6,6 +6,18 @@
         <title>{% block title %}Jobbsy{% endblock %}</title>
         <link rel="icon" href="{{ asset('build/images/icon.svg') }}">
         <meta name="description" content="Looking for a Symfony developer job? or hire Symfony developer ? jobbsy.dev is the place to be.">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Jobbsy">
+        <meta property="og:description" content="Job board Symfony">
+        <meta property="og:url" content="https://jobbsy.dev">
+        <meta property="og:site_name" content="Jobbsy">
+        <meta property="og:image" content="{{ absolute_url(asset('build/images/ogshare.png')) }}">
+        <meta property="og:locale" content="en_US">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@jobbsy">
+        <meta name="twitter:title" content="Jobbsy">
+        <meta name="twitter:image" content="{{ absolute_url(asset('build/images/ogshare.png')) }}">
+        <meta name="twitter:description" content="Job board Symfony">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
