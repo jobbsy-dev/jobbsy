@@ -20,49 +20,49 @@ Online and official website is available on [jobbsy.dev](https://jobbsy.dev).
 
 First fork the project and clone it:
 
-```
-$ git clone git@github.com:<your-fork>/jobbsy.git
-$ cd jobbsy
+```bash
+git clone git@github.com:<your-fork>/jobbsy.git
+cd jobbsy
 ```
 
 Install PHP dependencies using Composer:
 
-```
-$ composer install
+```bash
+composer install
 ```
 
 and javascript dependencies:
 
-```
-$ yarn install
+```bash
+yarn install
 ```
 
 You can now build the assets:
 
-```
-$ yarn dev
+```bash
+yarn dev
 ```
 
 Finally create and run database migrations:
 
-```
-$ php bin/console doctrine:database:create
-$ php bin/console doctrine:migrations:migrate
+```bash
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
 ```
 
 If you want some data to start you can load fixtures:
 
-```
-$ php bin/console doctrine:fixtures:load
+```bash
+php bin/console doctrine:fixtures:load
 ```
 
 ## 🚀 How to launch
 
 If you are using Symfony CLI simply run:
 
-```
-$ cd jobbsy
-$ symfony serve
+```bash
+cd jobbsy
+symfony serve
 ```
 
 Then access the application in your browser at the given URL (https://localhost:8000 by default) and 🎉
@@ -71,14 +71,22 @@ For other cases install and run a web server like Nginx or Apache. You can find 
 
 ## 🧪 Run tests
 
+Init test database and load fixtures:
+
+```bash
+php bin/console doctrine:database:create --env=test
+php bin/console doctrine:migrations:migrate --env=test
+php bin/console doctrine:fixtures:load --env=test
 ```
-$ cd jobbsy
-$ php ./bin/phpunit
+
+Then run test suite:
+
+```bash
+php ./bin/phpunit
 ```
 
 ## Inspirations
 
 - [Larajobs](https://larajobs.com)
 - [VueJobs](https://vuejobs.com)
-- [Flutter Jobs](https://flutterjobs.info)
 - [GoRails Jobs](https://jobs.gorails.com)
