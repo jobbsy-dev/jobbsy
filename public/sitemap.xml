@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://jobbsy.dev</loc>
+    </url>
+    <url>
+        <loc>https://jobbsy.dev/events</loc>
+    </url>
+    <url>
+        <loc>https://jobbsy.dev/news</loc>
+    </url>
+    <url>
+        <loc>https://jobbsy.dev/symfony-location-remote-jobs</loc>
+    </url>
+    <url>
+        <loc>https://jobbsy.dev/symfony-location-onsite-jobs</loc>
+    </url>
+    <url>
+        <loc>https://jobbsy.dev/symfony-location-hybrid-jobs</loc>
+    </url>
+    <url>
+        <loc>https://jobbsy.dev/symfony-employment-fulltime-jobs</loc>
+    </url>
+    <url>
+        <loc>https://jobbsy.dev/symfony-employment-contract-jobs</loc>
+    </url>
+     <url>
+        <loc>https://jobbsy.dev/symfony-employment-internship-jobs</loc>
+    </url>
+</urlset>
