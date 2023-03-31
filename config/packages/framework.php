@@ -11,8 +11,10 @@ return static function (FrameworkConfig $config, ContainerConfigurator $containe
         ->secret(env('APP_SECRET'))
         ->httpMethodOverride(false)
         ->phpErrors()
-        ->log(true)
-    ;
+        ->log(true);
+
+    $config->session()
+        ->gcProbability(0);
 
     $config->httpClient()
         ->scopedClient('mailjet.client')

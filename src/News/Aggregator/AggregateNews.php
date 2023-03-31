@@ -23,7 +23,10 @@ final readonly class AggregateNews
             try {
                 $articles[] = ($this->fetchArticlesFromFeed)($feed);
             } catch (\Exception $exception) {
-                $this->logger->error($exception->getMessage());
+                $this->logger->error($exception->getMessage(), [
+                    'feedName' => $feed->getName(),
+                    'feedUrl' => $feed->getUrl(),
+                ]);
             }
         }
 
