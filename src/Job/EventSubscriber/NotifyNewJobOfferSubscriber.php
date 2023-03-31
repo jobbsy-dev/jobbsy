@@ -41,11 +41,15 @@ final readonly class NotifyNewJobOfferSubscriber implements EventSubscriberInter
             ->field($job->getLocation())
             ->field('Type')
             ->field($job->getEmploymentType()->value)
-            ->field('Salary')
-            ->field($job->getSalary() ?: '')
             ->field('Url')
             ->field($job->getUrl())
         ;
+
+        if (false === empty($job->getSalary())) {
+            $detailsSection
+                ->field('Salary')
+                ->field($job->getSalary());
+        }
 
         $slackOptions = (new SlackOptions())
             ->block($jobTitleSection)
