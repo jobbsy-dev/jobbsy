@@ -3,7 +3,7 @@
 namespace App\Provider\WelcometotheJungle;
 
 use App\Provider\Scraping\JobScraper;
-use Goutte\Client;
+use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Intl\Countries;
 
@@ -11,13 +11,13 @@ final readonly class WelcometotheJungleClient
 {
     private const URL = 'https://www.welcometothejungle.com/fr/pages/emploi-developpeur-symfony';
 
-    public function __construct(private Client $goutteClient, private JobScraper $jobScraping)
+    public function __construct(private HttpBrowser $httpBrowser, private JobScraper $jobScraping)
     {
     }
 
     public function crawl(): array
     {
-        $crawler = $this->goutteClient->request('GET', self::URL);
+        $crawler = $this->httpBrowser->request('GET', self::URL);
 
         $urls = $crawler->filter('ol:nth-child(2) li header a')->each(function (Crawler $crawler): string {
             return $crawler->link()->getUri();

@@ -2,18 +2,18 @@
 
 namespace App\CommunityEvent;
 
-use Goutte\Client;
+use Symfony\Component\BrowserKit\HttpBrowser;
 
 final readonly class EventScraping
 {
-    public function __construct(private Client $goutteClient)
+    public function __construct(private HttpBrowser $httpBrowser)
     {
     }
 
     public function fetch(string $url): array
     {
         $data = [];
-        $crawler = $this->goutteClient->request('GET', $url);
+        $crawler = $this->httpBrowser->request('GET', $url);
 
         $structuredDataElements = $crawler->filter('script[type="application/ld+json"]');
         foreach ($structuredDataElements as $domElement) {

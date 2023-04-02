@@ -3,8 +3,8 @@
 namespace App\Tests\CommunityEvent;
 
 use App\CommunityEvent\EventScraping;
-use Goutte\Client;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
@@ -15,7 +15,7 @@ final class EventScrapingTest extends TestCase
         // Arrange
         $mockResponse = new MockResponse(file_get_contents(__DIR__.'/fixtures/meetup_events_page.html'));
         $mockClient = new MockHttpClient([$mockResponse]);
-        $goutteClient = new Client($mockClient);
+        $goutteClient = new HttpBrowser($mockClient);
         $meetupCrawler = new EventScraping($goutteClient);
 
         // Act

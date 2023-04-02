@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Analytics\AnalyticsClient;
 use App\Analytics\Dummy\DummyClient;
 use App\Analytics\Plausible\PlausibleClient;
-use Goutte\Client;
+use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\Clock\MockClock;
 use Symfony\Component\Clock\NativeClock;
@@ -29,8 +29,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         $services->set(AnalyticsClient::class, DummyClient::class);
     }
 
-    $services->set('goutte.client', Client::class)
+    $services->set(HttpBrowser::class)
         ->autowire();
-
-    $services->alias(Client::class, 'goutte.client');
 };
