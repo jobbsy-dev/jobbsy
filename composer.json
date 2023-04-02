@@ -27,7 +27,6 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
         "easycorp/easyadmin-bundle": "^4.1",
-        "fabpot/goutte": "^4.0",
         "knplabs/knp-paginator-bundle": "^6.0",
         "knplabs/knp-time-bundle": "^1.18",
         "league/commonmark": "^2.3",

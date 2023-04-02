@@ -6,9 +6,9 @@ use App\CommunityEvent\EventImporter;
 use App\CommunityEvent\EventScraping;
 use App\Entity\CommunityEvent\Source;
 use App\Tests\Repository\CommunityEvent\InMemorySourceRepository;
-use Goutte\Client;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
+use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
@@ -19,7 +19,7 @@ final class EventImporterTest extends TestCase
         // Arrange
         $mockResponse = new MockResponse(file_get_contents(__DIR__.'/fixtures/meetup_events_page.html'));
         $mockClient = new MockHttpClient([$mockResponse]);
-        $goutteClient = new Client($mockClient);
+        $goutteClient = new HttpBrowser($mockClient);
 
         $source1 = new Source();
         $source1->setUrl('https://www.meetup.com/backendos/events');

@@ -2,19 +2,19 @@
 
 namespace App\Provider\Scraping;
 
-use Goutte\Client;
+use Symfony\Component\BrowserKit\HttpBrowser;
 
 final readonly class JobScraper
 {
     private const JOB_SCHEMA_TYPE = 'JobPosting';
 
-    public function __construct(private Client $goutteClient)
+    public function __construct(private HttpBrowser $httpBrowser)
     {
     }
 
     public function scrap(string $url): array
     {
-        $crawler = $this->goutteClient->request('GET', $url);
+        $crawler = $this->httpBrowser->request('GET', $url);
 
         $structuredData = null;
         foreach ($crawler->filter('script[type="application/ld+json"]') as $domElement) {

@@ -6,8 +6,8 @@ use App\Provider\Scraping\JobScraper;
 use App\Provider\SearchParameters;
 use App\Provider\WelcometotheJungle\WelcometotheJungleClient;
 use App\Provider\WelcometotheJungle\WelcometotheJungleProvider;
-use Goutte\Client;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
@@ -19,7 +19,7 @@ final class WelcometotheJungleProviderTest extends TestCase
         $mockResponseList = new MockResponse(file_get_contents(__DIR__.'/data/wttj_list.html'));
 
         $httpClient1 = new MockHttpClient([$mockResponseList]);
-        $goutteClient1 = new Client($httpClient1);
+        $goutteClient1 = new HttpBrowser($httpClient1);
 
         $mockResponseJob1 = new MockResponse(file_get_contents(__DIR__.'/data/wttj_job1.html'));
         $mockResponseJob2 = new MockResponse(file_get_contents(__DIR__.'/data/wttj_job2.html'));
@@ -27,7 +27,7 @@ final class WelcometotheJungleProviderTest extends TestCase
             $mockResponseJob1,
             $mockResponseJob2,
         ]);
-        $goutteClient2 = new Client($httpClient2);
+        $goutteClient2 = new HttpBrowser($httpClient2);
         $jobScraping = new JobScraper($goutteClient2);
 
         $client = new WelcometotheJungleClient($goutteClient1, $jobScraping);
