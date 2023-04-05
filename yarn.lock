@@ -2899,9 +2899,9 @@ lru-cache@^6.0.0:
     yallist "^4.0.0"
 
 lucide@^0.130.0:
-  version "0.130.0"
-  resolved "https://registry.yarnpkg.com/lucide/-/lucide-0.130.0.tgz#a9b181b9f40fcd7a59a43ecf9ac5e47a96b78f5b"
-  integrity sha512-lWWyIFrfntap1gN8c3ZPNW679WphwmTMTBKinLXsNZOxNez6M1kjp+y45cZMdjXLjh8RSiLUp8mjOmtWCwEX/g==
+  version "0.130.1"
+  resolved "https://registry.yarnpkg.com/lucide/-/lucide-0.130.1.tgz#302210e56dfe74397cb40a68de34470a3726dc50"
+  integrity sha512-aZvaEXWJpwOqUrOcHLcFTFGAhVR7yiphqSqfy4gfpZRmFtKxYljo1XJ94dxY0lywv4ET1ioxJzABfPN/0dU0hw==
 
 make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"
