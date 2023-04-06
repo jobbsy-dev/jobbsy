@@ -2,6 +2,7 @@
 
 namespace App\News\Aggregator\Atom\Model;
 
+use App\News\Aggregator\XmlHelper;
 use Webmozart\Assert\Assert;
 
 final class Feed
@@ -33,9 +34,10 @@ final class Feed
 
         $xpath->registerNamespace('atom', 'http://www.w3.org/2005/Atom');
 
-        Assert::notNull($xpath->evaluate('/atom:feed/atom:title')->item(0)->nodeValue);
+        $title = XmlHelper::getNodeValue($xpath, '/atom:feed/atom:title');
+        Assert::notNull($title);
 
-        $feed = new self($xpath->evaluate('/atom:feed/atom:title')->item(0)->nodeValue);
+        $feed = new self($title);
 
         $entries = $xpath->query('/atom:feed/atom:entry');
 

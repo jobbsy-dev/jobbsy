@@ -10,7 +10,7 @@ final readonly class Entry
         public ?string $summary = null,
         public ?string $content = null,
         public ?\DateTimeImmutable $published = null,
-        ) {
+    ) {
     }
 
     public static function create(\DOMXPath $xpath, \DOMNode $node): self

@@ -23,7 +23,7 @@ final class NewsController extends AbstractController
         private readonly EntryRepository $articleRepository,
         private readonly JobRepository $jobRepository,
         private readonly AnalyticsClient $client,
-        ) {
+    ) {
     }
 
     #[Route('/news', name: 'news_index', methods: ['GET'])]

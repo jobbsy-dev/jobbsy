@@ -9,7 +9,7 @@ final readonly class ManageContactRequest
         public Action $action,
         public string $email,
         public ?string $name = null,
-        ) {
+    ) {
     }
 
     /**

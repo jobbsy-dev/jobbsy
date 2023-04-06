@@ -12,7 +12,7 @@ final readonly class Item
         public ?string $author = null,
         public ?string $guid = null,
         public ?string $category = null,
-        ) {
+    ) {
     }
 
     public static function create(\DOMXPath $xpath, \DOMNode $itemNode): self
