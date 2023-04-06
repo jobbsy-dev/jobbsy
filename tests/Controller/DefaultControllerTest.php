@@ -24,5 +24,8 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/symfony-employment-fulltime-jobs'];
         yield ['/symfony-employment-contract-jobs'];
         yield ['/symfony-employment-internship-jobs'];
+        yield ['/rss.xml'];
+        yield ['/events/rss.xml'];
+        yield ['/news/rss.xml'];
     }
 }

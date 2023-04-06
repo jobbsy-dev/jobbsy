@@ -17,17 +17,27 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class EventController extends AbstractController
 {
-    public function __construct(private readonly AnalyticsClient $client)
-    {
+    public function __construct(
+        private readonly AnalyticsClient $client,
+        private readonly EventRepository $eventRepository
+    ) {
     }
 
     #[Route('/events', name: 'event_index', methods: ['GET'])]
     #[Cache(smaxage: 86400)]
-    public function index(EventRepository $eventRepository): Response
+    public function index(): Response
     {
         return $this->render('event/index.html.twig', [
-            'upcomingEvents' => $eventRepository->findUpcomingEvents(),
-            'pastEvents' => $eventRepository->findPastEvents(),
+            'upcomingEvents' => $this->eventRepository->findUpcomingEvents(),
+            'pastEvents' => $this->eventRepository->findPastEvents(),
+        ]);
+    }
+
+    #[Route('/events/rss.xml', name: 'event_rss', defaults: ['_format' => 'xml'], methods: ['GET']), ]
+    public function rss(): Response
+    {
+        return $this->render('event/index.xml.twig', [
+            'events' => $this->eventRepository->findBy([], ['startDate' => 'DESC'], 30),
         ]);
     }
 

@@ -18,6 +18,9 @@
         <meta name="twitter:title" content="Jobbsy">
         <meta name="twitter:image" content="{{ absolute_url(asset('build/images/ogshare.png')) }}">
         <meta name="twitter:description" content="Job board Symfony">
+
+        {% block extra_head %}{% endblock %}
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
