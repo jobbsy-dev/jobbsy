@@ -2,6 +2,10 @@
 
 {% block title %}Symfony News - {{ parent() }}{% endblock %}
 
+{% block extra_head %}
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Jobbsy curated news" href="{{ path('news_rss') }}" />
+{% endblock %}
+
 {% block main %}
     <div class="px-4 pb-4 py-md-5 my-3 text-center">
         <h1 class="display-5 fw-bold">

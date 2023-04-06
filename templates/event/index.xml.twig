@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>{{ 'rss.title_events'|trans }}</title>
+        <description>{{ 'rss.description_events'|trans }}</description>
+        <pubDate>{{ 'now'|date('r', timezone='GMT') }}</pubDate>
+        <lastBuildDate>{{ (events|last).publishedAt|default('now')|date('r', timezone='GMT') }}</lastBuildDate>
+        <link>{{ url('event_index') }}</link>
+        <language>{{ app.request.locale }}</language>
+
+        {% for event in events %}
+            <item>
+                <title>{{ event.name }}</title>
+                <link>{{ event.url }}</link>
+                <pubDate>{{ event.createdAt|date(format='r', timezone='GMT') }}</pubDate>
+                <guid isPermaLink="false">{{ url('event_redirect', {'id': event.id}) }}</guid>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

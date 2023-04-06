@@ -22,13 +22,29 @@
                 <source>form.label.organization_logo</source>
                 <target>Organization logo</target>
             </trans-unit>
-            <trans-unit id="rss.title">
-                <source>rss.title</source>
-                <target>Jobbsy</target>
+            <trans-unit id="rss.title_news">
+                <source>rss.title_news</source>
+                <target>Jobbsy news</target>
+            </trans-unit>
+            <trans-unit id="rss.title_jobs">
+                <source>rss.title_jobs</source>
+                <target>Jobbsy jobs</target>
+            </trans-unit>
+            <trans-unit id="rss.title_events">
+                <source>rss.title_events</source>
+                <target>Jobbsy events</target>
             </trans-unit>
             <trans-unit id="rss.description">
                 <source>rss.description</source>
-                <target>Last job offers published on the job board for Symfony</target>
+                <target>Last Symfony job offers published and curated on Jobbsy</target>
+            </trans-unit>
+            <trans-unit id="rss.description_events">
+                <source>rss.description_events</source>
+                <target>Last Symfony events curated on Jobbsy</target>
+            </trans-unit>
+            <trans-unit id="rss.description_news">
+                <source>rss.description_news</source>
+                <target>Last Symfony news curated on Jobbsy</target>
             </trans-unit>
             <trans-unit id="form.label.job_title">
                 <source>form.label.job_title</source>

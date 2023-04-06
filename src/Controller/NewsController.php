@@ -45,6 +45,14 @@ final class NewsController extends AbstractController
         ]);
     }
 
+    #[Route('/news/rss.xml', name: 'news_rss', defaults: ['_format' => 'xml'], methods: ['GET']), ]
+    public function rss(): Response
+    {
+        return $this->render('news/index.xml.twig', [
+            'entries' => $this->articleRepository->findBy([], ['publishedAt' => 'DESC'], 30),
+        ]);
+    }
+
     #[Route('/news/{id}', name: 'news_entry', methods: ['GET'])]
     public function entry(Request $request, Entry $article): RedirectResponse
     {

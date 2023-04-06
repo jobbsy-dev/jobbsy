@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
     <channel>
-        <title>{{ 'rss.title'|trans }}</title>
+        <title>{{ 'rss.title_jobs'|trans }}</title>
         <description>{{ 'rss.description'|trans }}</description>
         <pubDate>{{ 'now'|date('r', timezone='GMT') }}</pubDate>
         <lastBuildDate>{{ (jobs|last).publishedAt|default('now')|date('r', timezone='GMT') }}</lastBuildDate>
