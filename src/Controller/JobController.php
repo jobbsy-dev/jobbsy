@@ -42,7 +42,7 @@ final class JobController extends AbstractController
         private readonly LoggerInterface $logger,
         private readonly AnalyticsClient $client,
         private readonly PostJobOfferCommandHandler $postJobOfferCommandHandler,
-        ) {
+    ) {
     }
 
     #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]

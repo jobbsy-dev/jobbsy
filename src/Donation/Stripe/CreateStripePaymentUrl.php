@@ -15,7 +15,7 @@ final readonly class CreateStripePaymentUrl implements CreatePaymentUrlInterface
         private string $taxRateId,
         #[Autowire('%env(STRIPE_API_KEY)%')]
         private string $stripeApiKey,
-        ) {
+    ) {
     }
 
     public function __invoke(Job $job, int $amount, string $redirectSuccessUrl, string $redirectCancelUrl): string

@@ -37,7 +37,7 @@ use Twig\Environment;
         private readonly string $commandRouterHost,
         #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
         private readonly string $commandRouterScheme,
-        ) {
+    ) {
         parent::__construct();
     }
 

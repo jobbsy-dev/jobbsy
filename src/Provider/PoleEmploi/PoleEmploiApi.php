@@ -16,7 +16,7 @@ final class PoleEmploiApi
         #[Autowire('%env(POLE_EMPLOI_CLIENT_SECRET)%')]
         private readonly string $poleEmploiClientSecret,
         private readonly HttpClientInterface $httpClient,
-        ) {
+    ) {
     }
 
     public function authenticate(array $scope = [], bool $force = false): void
