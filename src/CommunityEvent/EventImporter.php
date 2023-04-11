@@ -39,16 +39,16 @@ final readonly class EventImporter
                     $event->setStartDate(new \DateTimeImmutable($eventData['startDate']));
                     $event->setEndDate(new \DateTimeImmutable($eventData['endDate']));
 
-                    switch (true) {
-                        case str_contains((string) $eventData['eventAttendanceMode'], 'OnlineEventAttendanceMode'):
-                            $event->setAttendanceMode(AttendanceMode::ONLINE);
-                            break;
-                        case str_contains((string) $eventData['eventAttendanceMode'], 'MixedEventAttendanceMode'):
-                            $event->setAttendanceMode(AttendanceMode::MIXED);
-                            break;
-                        case str_contains((string) $eventData['eventAttendanceMode'], 'OfflineEventAttendanceMode'):
-                            $event->setAttendanceMode(AttendanceMode::OFFLINE);
-                            break;
+                    if (str_contains((string) $eventData['eventAttendanceMode'], 'OnlineEventAttendanceMode')) {
+                        $event->setAttendanceMode(AttendanceMode::ONLINE);
+                    }
+
+                    if (str_contains((string) $eventData['eventAttendanceMode'], 'MixedEventAttendanceMode')) {
+                        $event->setAttendanceMode(AttendanceMode::MIXED);
+                    }
+
+                    if (str_contains((string) $eventData['eventAttendanceMode'], 'OfflineEventAttendanceMode')) {
+                        $event->setAttendanceMode(AttendanceMode::OFFLINE);
                     }
 
                     if (isset($eventData['location']['@type'])) {
