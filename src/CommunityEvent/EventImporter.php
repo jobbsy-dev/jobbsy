@@ -38,17 +38,17 @@ final readonly class EventImporter
 
                     $event->setStartDate(new \DateTimeImmutable($eventData['startDate']));
                     $event->setEndDate(new \DateTimeImmutable($eventData['endDate']));
+
                     if (str_contains((string) $eventData['eventAttendanceMode'], 'OnlineEventAttendanceMode')) {
                         $event->setAttendanceMode(AttendanceMode::ONLINE);
-                        break;
                     }
+
                     if (str_contains((string) $eventData['eventAttendanceMode'], 'MixedEventAttendanceMode')) {
                         $event->setAttendanceMode(AttendanceMode::MIXED);
-                        break;
                     }
+
                     if (str_contains((string) $eventData['eventAttendanceMode'], 'OfflineEventAttendanceMode')) {
                         $event->setAttendanceMode(AttendanceMode::OFFLINE);
-                        break;
                     }
 
                     if (isset($eventData['location']['@type'])) {
