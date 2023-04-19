@@ -37,7 +37,8 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $config->handler('sentry')
             ->type('sentry')
             ->level('error')
-            ->hubId(HubInterface::class);
+            ->hubId(HubInterface::class)
+            ->fillExtraContext(true);
 
         $config->handler('console')
             ->type('console')
