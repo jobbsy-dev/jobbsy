@@ -68,3 +68,12 @@ vendor/composer/installed.php: composer.lock
 	$(SYMFONY_CLI) $(COMPOSER) install
 
 vendor: vendor/composer/installed.php
+
+aggregate-news:
+	$(SYMFONY_CLI) console app:aggregate-news
+
+aggregate-events:
+	$(SYMFONY_CLI) console app:aggregate-events
+
+aggregate-jobs:
+	$(SYMFONY_CLI) app:job-provider:retrieve
