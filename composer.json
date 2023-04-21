@@ -32,6 +32,7 @@
         "league/commonmark": "^2.3",
         "league/flysystem-async-aws-s3": "^3.13",
         "league/flysystem-bundle": "^3.0",
+        "league/flysystem-memory": "^3.13",
         "league/glide-symfony": "^2.0",
         "league/uri": "^6.8",
         "league/uri-components": "^2.4",
@@ -86,7 +87,6 @@
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^7.1",
-        "league/flysystem-memory": "^3.0",
         "phpstan/phpstan": "^1.4",
         "phpunit/phpunit": "^10.0",
         "rector/rector": "^0.15.2",
