@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Extension\RuntimeExtensionInterface;
 
-readonly class AssetExtensionRuntime implements RuntimeExtensionInterface
+final readonly class AssetExtensionRuntime implements RuntimeExtensionInterface
 {
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
@@ -19,7 +19,7 @@ readonly class AssetExtensionRuntime implements RuntimeExtensionInterface
     public function assetUrl(
         string $path,
         array $parameters = [],
-        $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
+        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
     ): string {
         $parameters['s'] = SignatureFactory::create($this->secret)->generateSignature($path, $parameters);
         $parameters['path'] = ltrim($path, '/');
