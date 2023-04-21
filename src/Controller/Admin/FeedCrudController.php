@@ -12,7 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 final class FeedCrudController extends AbstractCrudController
 {
@@ -41,7 +41,7 @@ final class FeedCrudController extends AbstractCrudController
                 ->onlyOnForms(),
             Field::new('imageFile')
                 ->onlyOnForms()
-                ->setFormType(VichImageType::class),
+                ->setFormType(FileType::class),
         ];
     }
 
