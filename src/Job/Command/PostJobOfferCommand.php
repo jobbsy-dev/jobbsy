@@ -5,11 +5,9 @@ namespace App\Job\Command;
 use App\Entity\Job;
 use App\Job\EmploymentType;
 use App\Job\LocationType;
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[Vich\Uploadable]
 final class PostJobOfferCommand
 {
     #[Assert\NotBlank]
@@ -30,16 +28,11 @@ final class PostJobOfferCommand
     #[Assert\NotBlank]
     public ?string $url = null;
 
-    #[Vich\UploadableField(
-        mapping: 'organization_image',
-        fileNameProperty: 'organizationImageName',
-        size: 'organizationImageSize'
+    #[Assert\File(
+        maxSize: '2M',
+        extensions: ['jpg', 'jpeg', 'png', 'webp']
     )]
-    public ?File $organizationImageFile = null;
-
-    public ?string $organizationImageName = null;
-
-    public ?int $organizationImageSize = null;
+    public ?UploadedFile $organizationImageFile = null;
 
     public ?string $salary = null;
 
@@ -67,7 +60,6 @@ final class PostJobOfferCommand
         $job->setContactEmail($this->contactEmail);
         $job->setSalary($this->salary);
         $job->setTags($this->tags);
-        $job->setOrganizationImageFile($this->organizationImageFile);
 
         return $job;
     }

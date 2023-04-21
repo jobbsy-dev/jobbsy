@@ -17,9 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidType;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ApiResource(
     types: ['https://schema.org/JobPosting'],
@@ -28,7 +26,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 )]
 #[GetCollection]
 #[ORM\Entity]
-#[Vich\Uploadable]
 #[ApiFilter(filterClass: OrderFilter::class, properties: ['createdAt' => OrderFilterInterface::DIRECTION_DESC])]
 class Job
 {
@@ -68,19 +65,8 @@ class Job
     #[Groups(['read'])]
     private string $url;
 
-    #[Vich\UploadableField(
-        mapping: 'organization_image',
-        fileNameProperty: 'organizationImageName',
-        size: 'organizationImageSize'
-    )]
-    private ?File $organizationImageFile = null;
-
-    #[ORM\Column(type: Types::STRING, nullable: true)]
-    #[Groups(['read'])]
-    private ?string $organizationImageName = null;
-
-    #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    private ?int $organizationImageSize = null;
+    #[ORM\Embedded(class: Media::class, columnPrefix: 'organization_image_')]
+    private ?Media $organizationImage = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private ?\DateTimeImmutable $updatedAt;
@@ -218,41 +204,6 @@ class Job
         $this->url = $url;
     }
 
-    public function setOrganizationImageFile(?File $organizationImageFile = null): void
-    {
-        $this->organizationImageFile = $organizationImageFile;
-        if (null !== $organizationImageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
-    }
-
-    public function getOrganizationImageFile(): ?File
-    {
-        return $this->organizationImageFile;
-    }
-
-    public function setOrganizationImageName(?string $organizationImageName): void
-    {
-        $this->organizationImageName = $organizationImageName;
-    }
-
-    public function getOrganizationImageName(): ?string
-    {
-        return $this->organizationImageName;
-    }
-
-    public function setOrganizationImageSize(?int $organizationImageSize): void
-    {
-        $this->organizationImageSize = $organizationImageSize;
-    }
-
-    public function getOrganizationImageSize(): ?int
-    {
-        return $this->organizationImageSize;
-    }
-
     public function getUpdatedAt(): \DateTimeImmutable
     {
         return $this->updatedAt;
@@ -385,5 +336,15 @@ class Job
     public function isManualPublishing(): bool
     {
         return null === $this->source;
+    }
+
+    public function getOrganizationImage(): ?Media
+    {
+        return $this->organizationImage;
+    }
+
+    public function changeOrganizationImage(Media $organizationImage): void
+    {
+        $this->organizationImage = $organizationImage;
     }
 }

@@ -9,12 +9,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
 final class PostJobOfferType extends AbstractType
 {
@@ -48,7 +48,7 @@ final class PostJobOfferType extends AbstractType
                 'required' => false,
                 'help' => 'form.help.tags',
             ])
-            ->add('organizationImageFile', VichFileType::class, [
+            ->add('organizationImageFile', FileType::class, [
                 'label' => 'form.label.organization_logo',
                 'required' => false,
                 'help' => 'form.help.organization_logo',

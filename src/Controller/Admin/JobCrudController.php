@@ -18,7 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 final class JobCrudController extends AbstractCrudController
 {
@@ -68,9 +68,10 @@ final class JobCrudController extends AbstractCrudController
             DateTimeField::new('createdAt')
                 ->setFormat('dd/MM/y', 'none')
                 ->hideOnForm(),
-            Field::new('organizationImageFile')
+            Field::new('organizationImage.file')
                 ->onlyOnForms()
-                ->setFormType(VichImageType::class),
+                ->setFormType(FileType::class)
+                ->setLabel('Organization Image File'),
             TextField::new('source')
                 ->onlyOnDetail(),
             DateTimeField::new('pinnedUntil')

@@ -2,8 +2,12 @@
 <div class="card card-job border-3 shadow-sm">
     <div class="card-body">
         <div class="d-flex align-items-center">
-            {% if job.organizationImageName %}
-                <img src="{{ vich_uploader_asset(job) }}" alt="{{ job.organization }}" class="img-fluid rounded job-organization-logo d-none d-md-block">
+            {% if job.organizationImage and job.organizationImage.name %}
+                <img src="{{ asset_url(job.organizationImage.path, {'w': 75, 'h': 75}) }}"
+                     srcset="{{ asset_url(job.organizationImage.path, {'w': 75, 'h': 75, 'dpr': 2}) }} 2x"
+                     alt="{{ job.organization }}"
+                     loading="lazy"
+                     class="img-fluid rounded job-organization-logo d-none d-md-block">
             {% elseif job.organizationImageUrl %}
                 <img src="{{ job.organizationImageUrl }}" class="img-fluid rounded job-organization-logo d-none d-md-block" alt="{{ job.organization }}">
             {% else %}
