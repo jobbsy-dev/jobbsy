@@ -1,6 +1,6 @@
-- name: restart php8.1-fpm
+- name: restart php8.2-fpm
   become: true
-  service: name=php8.1-fpm state=restarted
+  service: name=php8.2-fpm state=restarted
 
 #- name: restart caddy
 #  become: true
