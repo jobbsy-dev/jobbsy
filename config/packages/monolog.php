@@ -26,7 +26,7 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $mainHandler = $config->handler('main')
             ->type('fingers_crossed')
             ->actionLevel('error')
-            ->handler('grouped')
+            ->handler('group')
             ->stopBuffering(false);
 
         $mainHandler->excludedHttpCode()->code(400);
