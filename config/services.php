@@ -5,7 +5,9 @@ declare(strict_types=1);
 use App\Analytics\AnalyticsClient;
 use App\Analytics\Dummy\DummyClient;
 use App\Analytics\Plausible\PlausibleClient;
+use App\Doctrine\EventListener\FixPostgreSQLDefaultSchemaListener;
 use AsyncAws\S3\S3Client;
+use Doctrine\ORM\Tools\ToolEvents;
 use League\Glide\Server;
 use League\Glide\ServerFactory;
 use Symfony\Component\BrowserKit\HttpBrowser;
@@ -53,4 +55,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'cache' => service('media.storage.memory'),
             'max_image_size' => 2000*2000,
         ]);
+
+    $services
+        ->set(FixPostgreSQLDefaultSchemaListener::class)
+        ->tag('doctrine.event_listener', ['event' => ToolEvents::postGenerateSchema]);
 };

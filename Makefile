@@ -47,7 +47,7 @@ encrypt-vault:						## Encrypt Ansible vault
 	ansible-vault encrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass
 
 bootstrap-tests:					## Bootstrap tests
-	$(SYMFONY_CLI) console d:d:d --env=test --force
+	$(SYMFONY_CLI) console d:d:d --env=test --force --if-exists
 	$(SYMFONY_CLI) console d:d:c --env=test
 	$(SYMFONY_CLI) console d:m:m --env=test --no-interaction
 
