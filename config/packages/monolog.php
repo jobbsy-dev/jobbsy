@@ -26,7 +26,7 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $mainHandler = $config->handler('main')
             ->type('fingers_crossed')
             ->actionLevel('error')
-            ->handler('sentry')
+            ->handler('grouped')
             ->stopBuffering(false);
 
         $mainHandler->excludedHttpCode()->code(400);
@@ -34,11 +34,19 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $mainHandler->excludedHttpCode()->code(404);
         $mainHandler->excludedHttpCode()->code(405);
 
+        $config->handler('group')
+            ->members(['streamed', 'sentry']);
+
         $config->handler('sentry')
             ->type('sentry')
             ->level('error')
             ->hubId(HubInterface::class)
             ->fillExtraContext(true);
+
+        $config->handler('streamed')
+            ->type('stream')
+            ->level('debug')
+            ->path('php://stderr');
 
         $config->handler('console')
             ->type('console')
