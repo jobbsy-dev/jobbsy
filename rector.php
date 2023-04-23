@@ -57,6 +57,6 @@ return static function (RectorConfig $rectorConfig): void {
         ],
         CallableThisArrayToAnonymousFunctionRector::class => [
             __DIR__.'/config',
-        ]
+        ],
     ]);
 };

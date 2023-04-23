@@ -11,6 +11,15 @@ jobs:
         runs-on: 'ubuntu-latest'
         env:
             fail-fast: true
+        services:
+            postgres:
+                image: postgres:14
+                env:
+                    POSTGRES_PASSWORD: main
+                    POSTGRES_USER: main
+                    POSTGRES_DB: main_test
+                ports:
+                    - 5432:5432
         steps:
             - name: "Checkout code"
               uses: actions/checkout@v3
@@ -19,9 +28,14 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   coverage: "none"
-                  extensions: intl, pdo_sqlite, ctype, iconv
+                  extensions: intl, ctype, iconv, gd
                   php-version: 8.2
-                  tools: composer:v2
+                  tools: composer
+
+            - uses: actions/setup-node@v3
+              with:
+                node-version: latest
+                cache: 'npm'
 
             - name: "Add PHPUnit matcher"
               run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
@@ -34,8 +48,8 @@ jobs:
               uses: actions/cache@v3
               with:
                   path: ${{ steps.composer-cache.outputs.dir }}
-                  key: ${{ runner.os }}-8.0-composer-${{ hashFiles('composer.json') }}
-                  restore-keys: ${{ runner.os }}-8.0-composer-
+                  key: composer-${{ hashFiles('composer.json') }}
+                  restore-keys: composer-
 
             - name: "Composer install"
               id: install
@@ -47,7 +61,7 @@ jobs:
                   yarn dev
 
             - name: "Init database"
-              run: ./bin/console doctrine:database:create --env=test
+              run: ./bin/console doctrine:database:create --env=test --if-not-exists
 
             - name: "Execute migrations"
               run: ./bin/console doctrine:migration:migrate -n --env=test

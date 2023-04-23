@@ -29,7 +29,7 @@ final class AssetsController extends AbstractController
     {
         $parameters = $request->query->all();
 
-        if ($parameters !== []) {
+        if ([] !== $parameters) {
             try {
                 SignatureFactory::create($this->secret)->validateRequest($path, $parameters);
             } catch (SignatureException $e) {

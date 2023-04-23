@@ -11,7 +11,7 @@ Online and official website is available on [jobbsy.dev](https://jobbsy.dev).
 ## 📋 Requirements
 
 - PHP 8.1 or higher
-- PDO-SQLite PHP extension, PHP intl extension
+- PHP intl extension
 - Node.js v17.2 or higher and yarn
 - [Composer](https://getcomposer.org)
 - (optional) [Symfony CLI](https://symfony.com/download) to easily launch project

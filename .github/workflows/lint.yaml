@@ -14,17 +14,13 @@ jobs:
             - name: "Checkout code"
               uses: actions/checkout@v3
 
-#            - name: PHP-CS-Fixer
-#              uses: docker://oskarstark/php-cs-fixer-ga
-#              with:
-#                  args: --diff --dry-run
             - name: "Install PHP with extensions"
               uses: shivammathur/setup-php@v2
               with:
                   coverage: "none"
-                  extensions: intl, pdo_sqlite, ctype, iconv
+                  extensions: intl, ctype, iconv
                   php-version: 8.2
-                  tools: composer:v2, symfony
+                  tools: composer, symfony
 
             - name: "PHP-CS-Fixer"
               run: make phpcsfix
@@ -41,9 +37,9 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   coverage: "none"
-                  extensions: intl, pdo_sqlite, ctype, iconv
+                  extensions: intl, ctype, iconv
                   php-version: 8.2
-                  tools: composer:v2, symfony
+                  tools: composer, symfony
 
             - name: "Set composer cache directory"
               id: composer-cache
@@ -53,8 +49,8 @@ jobs:
               uses: actions/cache@v3
               with:
                   path: ${{ steps.composer-cache.outputs.dir }}
-                  key: ${{ runner.os }}-8.1-composer-${{ hashFiles('composer.lock') }}
-                  restore-keys: ${{ runner.os }}-8.0-composer-
+                  key: composer-${{ hashFiles('composer.lock') }}
+                  restore-keys: composer-
 
             - name: "Composer install"
               id: install
