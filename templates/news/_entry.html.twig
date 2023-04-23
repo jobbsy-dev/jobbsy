@@ -3,8 +3,12 @@
         {% if entry.feed %}
             {% if entry.feed.image or entry.feed.imageUrl %}
                 <div class="me-2">
-                    {% if entry.feed.image and entry.feed.image.name %}
-                        <img src="{{ asset_url(entry.feed.image.path, {'w': 30}) }}" alt="" width="30" class="rounded-circle">
+                    {% if entry.feed.image and entry.feed.image.path %}
+                        <img src="{{ asset_url(entry.feed.image.path, {'w': 30}) }}"
+                             srcset="{{ asset_url(entry.feed.image.path, {'w': 30, 'dpr': 2}) }} 2x"
+                             alt=""
+                             width="30"
+                             class="rounded-circle">
                     {% elseif entry.feed.imageUrl %}
                         <img src="{{ entry.feed.imageUrl }}" alt="" width="30" class="rounded-circle">
                     {% endif %}

@@ -2,7 +2,7 @@
 <div class="card card-job border-3 shadow-sm">
     <div class="card-body">
         <div class="d-flex align-items-center">
-            {% if job.organizationImage and job.organizationImage.name %}
+            {% if job.organizationImage and job.organizationImage.path %}
                 <img src="{{ asset_url(job.organizationImage.path, {'w': 75, 'h': 75}) }}"
                      srcset="{{ asset_url(job.organizationImage.path, {'w': 75, 'h': 75, 'dpr': 2}) }} 2x"
                      alt="{{ job.organization }}"
