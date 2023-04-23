@@ -35,6 +35,7 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $mainHandler->excludedHttpCode()->code(405);
 
         $config->handler('group')
+            ->type('group')
             ->members(['streamed', 'sentry']);
 
         $config->handler('sentry')
