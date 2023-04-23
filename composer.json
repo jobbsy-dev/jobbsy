@@ -17,6 +17,7 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-dom": "*",
+        "ext-exif": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
         "ext-intl": "*",
