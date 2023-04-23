@@ -14,20 +14,10 @@ jobs:
             - name: "Checkout code"
               uses: actions/checkout@v3
 
-#            - name: PHP-CS-Fixer
-#              uses: docker://oskarstark/php-cs-fixer-ga
-#              with:
-#                  args: --diff --dry-run
-            - name: "Install PHP with extensions"
-              uses: shivammathur/setup-php@v2
+            - name: PHP-CS-Fixer
+              uses: docker://oskarstark/php-cs-fixer-ga
               with:
-                  coverage: "none"
-                  extensions: intl, pdo_sqlite, ctype, iconv
-                  php-version: 8.2
-                  tools: composer:v2, symfony
-
-            - name: "PHP-CS-Fixer"
-              run: make phpcsfix
+                  args: --diff --dry-run
 
     linters:
         name: Linters

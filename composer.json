@@ -21,7 +21,6 @@
         "ext-gd": "*",
         "ext-iconv": "*",
         "ext-intl": "*",
-        "ext-pdo_sqlite": "*",
         "api-platform/core": "^3.0",
         "doctrine/annotations": "^2.0",
         "doctrine/doctrine-bundle": "^2.5",
