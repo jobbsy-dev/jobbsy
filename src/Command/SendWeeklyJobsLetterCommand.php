@@ -18,17 +18,20 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
+use Zenstruck\ScheduleBundle\Schedule\SelfSchedulingCommand;
+use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
 
 #[AsCommand(
     name: 'app:send-jobsletter',
-    description: 'Add a short description for your command',
-)] final class SendWeeklyJobsLetterCommand extends Command
+    description: 'Send the weekly jobs-letter to subscribers.',
+)]
+final class SendWeeklyJobsLetterCommand extends Command implements SelfSchedulingCommand
 {
     public function __construct(
         private readonly Environment $twig,
         private readonly JobRepository $jobRepository,
         private readonly MailjetApi $mailjetApi,
-        #[Autowire('%env(MAILJET_CONTACT_LIST_ID)%')]
+        #[Autowire('%env(int:MAILJET_CONTACT_LIST_ID)%')]
         private readonly int $mailjetContactListId,
         #[Autowire('%env(MAILJET_SENDER_ID)%')]
         private readonly string $mailjetSenderId,
@@ -105,5 +108,13 @@ use Twig\Environment;
         $io->info('Test send. Campaign status : '.$response->data[0]['Status']);
 
         return Command::SUCCESS;
+    }
+
+    public function schedule(CommandTask $task): void
+    {
+        $task
+            ->mondays()
+            ->at('12:42')
+        ;
     }
 }

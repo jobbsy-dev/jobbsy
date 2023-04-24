@@ -143,6 +143,7 @@ final class MailjetApiTest extends TestCase
             $mockResponse->getRequestOptions()['headers']
         );
         self::assertSame($expectedRequestData, $mockResponse->getRequestOptions()['body']);
+        self::assertNotNull($response);
         self::assertSame(65, $response->data[0]['ID']);
     }
 
@@ -185,6 +186,7 @@ final class MailjetApiTest extends TestCase
             $mockResponse->getRequestOptions()['headers']
         );
         self::assertSame($expectedRequestData, $mockResponse->getRequestOptions()['body']);
+        self::assertNotNull($response);
         self::assertSame('<h1>My title</h1>', $response->data[0]['Html-part']);
     }
 
@@ -215,6 +217,7 @@ final class MailjetApiTest extends TestCase
         self::assertSame('POST', $mockResponse->getRequestMethod());
         self::assertSame('https://example.com/campaigndraft/1/send', $mockResponse->getRequestUrl());
         self::assertSame($expectedResponseData['Data'], $response->data);
+        self::assertNotNull($response);
         self::assertSame('Programmed', $response->data[0]['Status']);
     }
 
@@ -262,6 +265,7 @@ final class MailjetApiTest extends TestCase
             $mockResponse->getRequestOptions()['headers']
         );
         self::assertSame($expectedRequestData, $mockResponse->getRequestOptions()['body']);
+        self::assertNotNull($response);
         self::assertSame('test@example.com', $response->data[0]['Email']);
     }
 }

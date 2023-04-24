@@ -1,0 +1,5 @@
+includes:
+	- phpstan.neon.dist
+
+parameters:
+    editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'

@@ -6,7 +6,7 @@ use App\Subscription\SubscriptionMailingListInterface;
 
 final class NullSubscriptionAdapter implements SubscriptionMailingListInterface
 {
-    public function subscribe(string $email, string $mailingList): void
+    public function subscribe(string $email, mixed $mailingList): void
     {
     }
 }

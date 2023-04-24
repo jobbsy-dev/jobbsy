@@ -16,6 +16,9 @@ final readonly class AssetExtensionRuntime implements RuntimeExtensionInterface
     ) {
     }
 
+    /**
+     * @param array<string, mixed> $parameters
+     */
     public function assetUrl(
         string $path,
         array $parameters = [],

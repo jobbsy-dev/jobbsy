@@ -1,0 +1,686 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method App\\\\Analytics\\\\EventRequestInterface\\:\\:body\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Analytics/EventRequestInterface.php
+
+		-
+			message: "#^Method App\\\\Analytics\\\\EventRequestInterface\\:\\:headers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Analytics/EventRequestInterface.php
+
+		-
+			message: "#^Method App\\\\Analytics\\\\Plausible\\\\EventRequest\\:\\:create\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Analytics/Plausible/EventRequest.php
+
+		-
+			message: "#^Method App\\\\Analytics\\\\Plausible\\\\EventRequest\\:\\:headers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Analytics/Plausible/EventRequest.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function md5 expects string, int\\<0, max\\> given\\.$#"
+			count: 1
+			path: src/Broadcast/Twitter/TwitterApi.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function rawurlencode expects string, int\\<1, max\\>\\|string given\\.$#"
+			count: 2
+			path: src/Broadcast/Twitter/TwitterApi.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of class App\\\\Mailjet\\\\Model\\\\TestCampaignDraft\\\\Recipient constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Command/SendWeeklyJobsLetterCommand.php
+
+		-
+			message: "#^Method App\\\\CommunityEvent\\\\EventImporter\\:\\:import\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/CommunityEvent/EventImporter.php
+
+		-
+			message: "#^Parameter \\#1 \\$country of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setCountry\\(\\) expects string\\|null, string\\|false given\\.$#"
+			count: 1
+			path: src/CommunityEvent/EventImporter.php
+
+		-
+			message: "#^Parameter \\#1 \\$url of method App\\\\CommunityEvent\\\\EventScraping\\:\\:fetch\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/CommunityEvent/EventImporter.php
+
+		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/CommunityEvent/EventScraping.php
+
+		-
+			message: "#^Cannot access offset '@type' on mixed\\.$#"
+			count: 4
+			path: src/CommunityEvent/EventScraping.php
+
+		-
+			message: "#^Cannot access offset 'organizer' on mixed\\.$#"
+			count: 2
+			path: src/CommunityEvent/EventScraping.php
+
+		-
+			message: "#^Cannot access offset 'url' on mixed\\.$#"
+			count: 2
+			path: src/CommunityEvent/EventScraping.php
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 1
+			path: src/CommunityEvent/EventScraping.php
+
+		-
+			message: "#^Method App\\\\CommunityEvent\\\\EventScraping\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/CommunityEvent/EventScraping.php
+
+		-
+			message: "#^Parameter \\#1 \\$uri of static method League\\\\Uri\\\\Uri\\:\\:createFromString\\(\\) expects string\\|Stringable, string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/EventController.php
+
+		-
+			message: "#^Cannot access offset 'email' on mixed\\.$#"
+			count: 1
+			path: src/Controller/JobController.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of class App\\\\Subscription\\\\SubscribeMailingListCommand constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Controller/JobController.php
+
+		-
+			message: "#^Parameter \\#1 \\$id of static method Stripe\\\\Checkout\\\\Session\\:\\:retrieve\\(\\) expects array\\|string, mixed given\\.$#"
+			count: 1
+			path: src/Controller/JobController.php
+
+		-
+			message: "#^Parameter \\#2 \\$amount of class App\\\\Donation\\\\Command\\\\CreateDonationPaymentUrlCommand constructor expects int, int\\|null given\\.$#"
+			count: 1
+			path: src/Controller/JobController.php
+
+		-
+			message: "#^Parameter \\#2 \\$amount of class App\\\\Donation\\\\Command\\\\CreateDonationPaymentUrlCommand constructor expects int, mixed given\\.$#"
+			count: 1
+			path: src/Controller/JobController.php
+
+		-
+			message: "#^Parameter \\#1 \\$uri of static method League\\\\Uri\\\\Uri\\:\\:createFromString\\(\\) expects string\\|Stringable, string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/NewsController.php
+
+		-
+			message: "#^Parameter \\#1 \\$abstract of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setAbstract\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$attendanceMode of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setAttendanceMode\\(\\) expects App\\\\CommunityEvent\\\\AttendanceMode, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$country of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setCountry\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$description of method App\\\\Entity\\\\News\\\\Entry\\:\\:setDescription\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$endDate of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setEndDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$link of method App\\\\Entity\\\\News\\\\Entry\\:\\:setLink\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$location of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setLocation\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$name of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setName\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$publishedAt of method App\\\\Entity\\\\News\\\\Entry\\:\\:setPublishedAt\\(\\) expects DateTimeImmutable\\|null, DateTimeImmutable\\|false given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$startDate of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setStartDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$tags of method App\\\\Entity\\\\Job\\:\\:setTags\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of method App\\\\Entity\\\\News\\\\Entry\\:\\:setTitle\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$url of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setUrl\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$uuid of static method Ramsey\\\\Uuid\\\\Uuid\\:\\:fromString\\(\\) expects string, mixed given\\.$#"
+			count: 3
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
+			count: 3
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#2 \\$location of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#3 \\$employmentType of class App\\\\Entity\\\\Job constructor expects App\\\\Job\\\\EmploymentType, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#4 \\$organization of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Parameter \\#5 \\$url of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Method App\\\\Donation\\\\Stripe\\\\CreateStripePaymentUrl\\:\\:__invoke\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/Donation/Stripe/CreateStripePaymentUrl.php
+
+		-
+			message: "#^Parameter \\#1 \\$file of method App\\\\Media\\\\MediaFactory\\:\\:createFromUploadedFile\\(\\) expects Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile, Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile\\|null given\\.$#"
+			count: 1
+			path: src/EasyAdmin/UploadMediaOnFeedCreatedSubscriber.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Job\\:\\:getCreatedAt\\(\\) should return DateTimeImmutable but returns DateTimeImmutable\\|null\\.$#"
+			count: 1
+			path: src/Entity/Job.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Job\\:\\:getTags\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Entity/Job.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Job\\:\\:getUpdatedAt\\(\\) should return DateTimeImmutable but returns DateTimeImmutable\\|null\\.$#"
+			count: 1
+			path: src/Entity/Job.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Job\\:\\:setTags\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Entity/Job.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Job\\:\\:\\$tags type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Entity/Job.php
+
+		-
+			message: "#^Cannot call method getContent\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile\\|null\\.$#"
+			count: 1
+			path: src/Entity/Media.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Media\\:\\:getDimensions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Entity/Media.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Media\\:\\:setDimensions\\(\\) has parameter \\$dimensions with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Entity/Media.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of class App\\\\Entity\\\\Job constructor expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Job/Command/PostJobOfferCommand.php
+
+		-
+			message: "#^Parameter \\#2 \\$location of class App\\\\Entity\\\\Job constructor expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Job/Command/PostJobOfferCommand.php
+
+		-
+			message: "#^Parameter \\#3 \\$employmentType of class App\\\\Entity\\\\Job constructor expects App\\\\Job\\\\EmploymentType, App\\\\Job\\\\EmploymentType\\|null given\\.$#"
+			count: 1
+			path: src/Job/Command/PostJobOfferCommand.php
+
+		-
+			message: "#^Parameter \\#4 \\$organization of class App\\\\Entity\\\\Job constructor expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Job/Command/PostJobOfferCommand.php
+
+		-
+			message: "#^Parameter \\#5 \\$url of class App\\\\Entity\\\\Job constructor expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Job/Command/PostJobOfferCommand.php
+
+		-
+			message: "#^Property App\\\\Job\\\\Command\\\\PostJobOfferCommand\\:\\:\\$tags type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Job/Command/PostJobOfferCommand.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\MailjetApi\\:\\:addContactToList\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/MailjetApi.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\MailjetApi\\:\\:createContact\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/MailjetApi.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\CreateCampaignDraft\\\\CreateCampaignDraftRequest\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/CreateCampaignDraft/CreateCampaignDraftRequest.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\CreateCampaignDraft\\\\CreateCampaignDraftResponse\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/CreateCampaignDraft/CreateCampaignDraftResponse.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\CreateCampaignDraft\\\\CreateCampaignDraftResponse\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/CreateCampaignDraft/CreateCampaignDraftResponse.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\CreateCampaignDraftContent\\\\CreateCampaignDraftContentResponse\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/CreateCampaignDraftContent/CreateCampaignDraftContentResponse.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\CreateCampaignDraftContent\\\\CreateCampaignDraftContentResponse\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/CreateCampaignDraftContent/CreateCampaignDraftContentResponse.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\ManageContact\\\\ManageContactResponse\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/ManageContact/ManageContactResponse.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\ManageContact\\\\ManageContactResponse\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/ManageContact/ManageContactResponse.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\SendCampaignDraft\\\\SendCampaignDraftResponse\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/SendCampaignDraft/SendCampaignDraftResponse.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\SendCampaignDraft\\\\SendCampaignDraftResponse\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/SendCampaignDraft/SendCampaignDraftResponse.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\TestCampaignDraft\\\\TestCampaignDraftRequest\\:\\:__construct\\(\\) has parameter \\$recipients with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/TestCampaignDraft/TestCampaignDraftRequest.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\TestCampaignDraft\\\\TestCampaignDraftRequest\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/TestCampaignDraft/TestCampaignDraftRequest.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\TestCampaignDraft\\\\TestCampaignDraftResponse\\:\\:__construct\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/TestCampaignDraft/TestCampaignDraftResponse.php
+
+		-
+			message: "#^Method App\\\\Mailjet\\\\Model\\\\TestCampaignDraft\\\\TestCampaignDraftResponse\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Mailjet/Model/TestCampaignDraft/TestCampaignDraftResponse.php
+
+		-
+			message: "#^Method App\\\\News\\\\Aggregator\\\\AggregateNews\\:\\:__invoke\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/News/Aggregator/AggregateNews.php
+
+		-
+			message: "#^Cannot access property \\$attributes on DOMNode\\|null\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Entry.php
+
+		-
+			message: "#^Cannot access property \\$nodeValue on DOMNode\\|null\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Entry.php
+
+		-
+			message: "#^Cannot call method count\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 2
+			path: src/News/Aggregator/Atom/Model/Entry.php
+
+		-
+			message: "#^Cannot call method getNamedItem\\(\\) on DOMNamedNodeMap\\|null\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Entry.php
+
+		-
+			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Entry.php
+
+		-
+			message: "#^Cannot call method item\\(\\) on mixed\\.$#"
+			count: 2
+			path: src/News/Aggregator/Atom/Model/Entry.php
+
+		-
+			message: "#^Method App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Entry\\:\\:getLink\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Entry.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of class App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Entry constructor expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Entry.php
+
+		-
+			message: "#^Parameter \\#5 \\$published of class App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Entry constructor expects DateTimeImmutable\\|null, DateTimeImmutable\\|false\\|null given\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Entry.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Feed.php
+
+		-
+			message: "#^Method App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Feed\\:\\:getEntries\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Feed.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of class App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Feed constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/News/Aggregator/Atom/Model/Feed.php
+
+		-
+			message: "#^Method App\\\\News\\\\Aggregator\\\\FetchArticlesFromFeed\\:\\:__invoke\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/News/Aggregator/FetchArticlesFromFeed.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/News/Aggregator/RSS/Model/Channel.php
+
+		-
+			message: "#^Cannot call method item\\(\\) on mixed\\.$#"
+			count: 3
+			path: src/News/Aggregator/RSS/Model/Channel.php
+
+		-
+			message: "#^Method App\\\\News\\\\Aggregator\\\\RSS\\\\Model\\\\Channel\\:\\:getItems\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/News/Aggregator/RSS/Model/Channel.php
+
+		-
+			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: src/News/Aggregator/RSS/Model/Document.php
+
+		-
+			message: "#^Method App\\\\News\\\\Aggregator\\\\RSS\\\\Model\\\\Document\\:\\:getChannels\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/News/Aggregator/RSS/Model/Document.php
+
+		-
+			message: "#^Cannot call method count\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 3
+			path: src/News/Aggregator/RSS/Model/Item.php
+
+		-
+			message: "#^Cannot call method item\\(\\) on mixed\\.$#"
+			count: 6
+			path: src/News/Aggregator/RSS/Model/Item.php
+
+		-
+			message: "#^Parameter \\#4 \\$pubDate of class App\\\\News\\\\Aggregator\\\\RSS\\\\Model\\\\Item constructor expects DateTimeImmutable\\|null, DateTimeImmutable\\|false\\|null given\\.$#"
+			count: 1
+			path: src/News/Aggregator/RSS/Model/Item.php
+
+		-
+			message: "#^Cannot access property \\$length on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 2
+			path: src/News/Aggregator/XmlHelper.php
+
+		-
+			message: "#^Cannot access property \\$nodeValue on DOMNode\\|null\\.$#"
+			count: 1
+			path: src/News/Aggregator/XmlHelper.php
+
+		-
+			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			count: 1
+			path: src/News/Aggregator/XmlHelper.php
+
+		-
+			message: "#^Method App\\\\News\\\\Aggregator\\\\XmlHelper\\:\\:getNodeValue\\(\\) has parameter \\$index with no type specified\\.$#"
+			count: 1
+			path: src/News/Aggregator/XmlHelper.php
+
+		-
+			message: "#^Method App\\\\News\\\\Aggregator\\\\XmlHelper\\:\\:getNodeValue\\(\\) has parameter \\$query with no type specified\\.$#"
+			count: 1
+			path: src/News/Aggregator/XmlHelper.php
+
+		-
+			message: "#^Method App\\\\News\\\\Aggregator\\\\XmlHelper\\:\\:sanitizeValue\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: src/News/Aggregator/XmlHelper.php
+
+		-
+			message: "#^Method App\\\\OpenAI\\\\Client\\:\\:completions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/OpenAI/Client.php
+
+		-
+			message: "#^Method App\\\\OpenAI\\\\Model\\\\CompletionRequest\\:\\:__construct\\(\\) has parameter \\$prompt with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/OpenAI/Model/CompletionRequest.php
+
+		-
+			message: "#^Method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiApi\\:\\:authenticate\\(\\) has parameter \\$scope with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiApi.php
+
+		-
+			message: "#^Method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiApi\\:\\:search\\(\\) has parameter \\$queryParams with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiApi.php
+
+		-
+			message: "#^Method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiApi\\:\\:search\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiApi.php
+
+		-
+			message: "#^Method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) has parameter \\$jobOffer with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Method App\\\\Provider\\\\Scraping\\\\JobScraper\\:\\:scrap\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/Scraping/JobScraper.php
+
+		-
+			message: "#^Method App\\\\Provider\\\\Scraping\\\\JobScraper\\:\\:scrap\\(\\) should return array but returns array\\|null\\.$#"
+			count: 1
+			path: src/Provider/Scraping/JobScraper.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$decodedData has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/Scraping/JobScraper.php
+
+		-
+			message: "#^Method App\\\\Provider\\\\WelcometotheJungle\\\\WelcometotheJungleClient\\:\\:crawl\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/WelcometotheJungle/WelcometotheJungleClient.php
+
+		-
+			message: "#^Method App\\\\Provider\\\\WelcometotheJungle\\\\WelcometotheJungleClient\\:\\:getLocation\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/WelcometotheJungle/WelcometotheJungleClient.php
+
+		-
+			message: "#^Method App\\\\Provider\\\\WelcometotheJungle\\\\WelcometotheJungleClient\\:\\:shouldSkip\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/WelcometotheJungle/WelcometotheJungleClient.php
+
+		-
+			message: "#^Class App\\\\Repository\\\\JobRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: src/Repository/JobRepository.php
+
+		-
+			message: "#^Method App\\\\Repository\\\\JobRepository\\:\\:jobsByEmploymentType\\(\\) should return array\\<App\\\\Entity\\\\Job\\> but returns mixed\\.$#"
+			count: 1
+			path: src/Repository/JobRepository.php
+
+		-
+			message: "#^Method App\\\\Repository\\\\JobRepository\\:\\:jobsByLocationType\\(\\) should return array\\<App\\\\Entity\\\\Job\\> but returns mixed\\.$#"
+			count: 1
+			path: src/Repository/JobRepository.php
+
+		-
+			message: "#^Method App\\\\Security\\\\User\\:\\:getPassword\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/Security/User.php
+
+		-
+			message: "#^Method App\\\\Security\\\\User\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/User.php
+
+		-
+			message: "#^Property App\\\\Security\\\\User\\:\\:\\$roles type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Security/User.php
+
+		-
+			message: "#^Parameter \\#1 \\$contactListId of class App\\\\Mailjet\\\\Model\\\\ManageContact\\\\ManageContactRequest constructor expects int, mixed given\\.$#"
+			count: 1
+			path: src/Subscription/MailjetSubscriptionAdapter.php
+
+		-
+			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
+			count: 1
+			path: tests/CommunityEvent/EventImporterTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
+			count: 1
+			path: tests/CommunityEvent/EventScrapingTest.php
+
+		-
+			message: "#^Cannot call method find\\(\\) on object\\|null\\.$#"
+			count: 2
+			path: tests/Controller/JobControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$createSessionResponse of class App\\\\Tests\\\\Mock\\\\MockStripeClient constructor expects string\\|null, string\\|false given\\.$#"
+			count: 2
+			path: tests/Controller/JobControllerTest.php
+
+		-
+			message: "#^Parameter \\$retrieveSessionResponse of class App\\\\Tests\\\\Mock\\\\MockStripeClient constructor expects string\\|null, string\\|false given\\.$#"
+			count: 2
+			path: tests/Controller/JobControllerTest.php
+
+		-
+			message: "#^Cannot access property \\$data on App\\\\Mailjet\\\\Model\\\\SendCampaignDraft\\\\SendCampaignDraftResponse\\|null\\.$#"
+			count: 1
+			path: tests/Mailjet/MailjetApiTest.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Mock\\\\MockStripeClient\\:\\:request\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Mock/MockStripeClient.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Mock\\\\MockStripeClient\\:\\:request\\(\\) has parameter \\$params with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Mock/MockStripeClient.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Mock\\\\MockStripeClient\\:\\:request\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Mock/MockStripeClient.php
+
+		-
+			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
+			count: 1
+			path: tests/News/Aggregator/Atom/ClientTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
+			count: 2
+			path: tests/News/Aggregator/RSS/ClientTest.php
+
+		-
+			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 2
+			path: tests/Provider/PoleEmploi/PoleEmploiApiTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
+			count: 3
+			path: tests/Provider/WelcometotheJungle/WelcometotheJungleClientTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
+			count: 3
+			path: tests/Provider/WelcometotheJungle/WelcometotheJungleProviderTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Repository\\\\InMemoryJobRepository\\:\\:\\$jobs \\(array\\<string, App\\\\Entity\\\\Job\\>\\) does not accept array\\<int\\|string, App\\\\Entity\\\\Job\\>\\.$#"
+			count: 1
+			path: tests/Repository/InMemoryJobRepository.php

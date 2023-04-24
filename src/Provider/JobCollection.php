@@ -25,6 +25,9 @@ final class JobCollection implements \Countable
         }
     }
 
+    /**
+     * @return Job[]
+     */
     public function all(): array
     {
         return $this->jobs;

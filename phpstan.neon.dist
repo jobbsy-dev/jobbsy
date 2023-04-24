@@ -1,0 +1,10 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 9
+    paths:
+        - src
+        - tests
+    ignoreErrors:
+        - '#Method App\\Repository\\(\w+\\)*\w+Repository::(get|find)\w+\(\) should return ((array|iterable)<)?App\\Entity\\(\w+\\)*\w+(>)?(\|null)? but returns (object|mixed)\.#'

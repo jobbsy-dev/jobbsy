@@ -4,5 +4,5 @@ namespace App\Subscription;
 
 interface SubscriptionMailingListInterface
 {
-    public function subscribe(string $email, string $mailingList): void;
+    public function subscribe(string $email, mixed $mailingList): void;
 }
