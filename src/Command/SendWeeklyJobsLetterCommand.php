@@ -21,7 +21,7 @@ use Twig\Environment;
 
 #[AsCommand(
     name: 'app:send-jobsletter',
-    description: 'Add a short description for your command',
+    description: 'Send the weekly jobs-letter to subscribers.',
 )] final class SendWeeklyJobsLetterCommand extends Command
 {
     public function __construct(
