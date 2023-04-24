@@ -14,6 +14,10 @@ final readonly class FetchArticlesFromAtomFeed implements FetchArticlesFromFeedI
 
     public function __invoke(Feed $feed): array
     {
+        if (null === $feed->getUrl()) {
+            return [];
+        }
+
         $atomFeed = $this->atomClient->get($feed->getUrl());
 
         if (null === $atomFeed) {

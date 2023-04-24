@@ -13,6 +13,10 @@ final readonly class MediaRemover
 
     public function delete(Media $media): void
     {
-        $this->mediaStorage->delete($media->getPath());
+        if (null === ($path = $media->getPath())) {
+            return;
+        }
+
+        $this->mediaStorage->delete($path);
     }
 }

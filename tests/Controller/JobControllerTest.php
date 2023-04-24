@@ -20,12 +20,12 @@ final class JobControllerTest extends WebTestCase
         self::assertSelectorTextContains('a.btn.btn-primary', 'Post a job');
 
         self::assertSame(
-            'Lead dev Symfony Paris',
+            'Symfony developer Remote',
             $crawler->filter('.card-job p.h5')->eq(0)->text(),
             'Pinned job'
         );
         self::assertSame(
-            'Backend Symfony developer',
+            'Lead dev Symfony Paris',
             $crawler->filter('.card-job p.h5')->eq(1)->text()
         );
     }
@@ -50,7 +50,7 @@ final class JobControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         self::assertSame(
-            'Lead dev Symfony Paris',
+            'Symfony freelance developer',
             $crawler->filter('.card-job p.h5')->eq(0)->text()
         );
     }

@@ -18,6 +18,7 @@ final readonly class JobScraper
 
         $structuredData = null;
         foreach ($crawler->filter('script[type="application/ld+json"]') as $domElement) {
+            /** @var array $decodedData */
             $decodedData = json_decode($domElement->textContent, true, 512, \JSON_THROW_ON_ERROR);
 
             if (isset($decodedData['@type']) && self::JOB_SCHEMA_TYPE === $decodedData['@type']) {

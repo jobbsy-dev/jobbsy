@@ -187,6 +187,10 @@ class Event
             return AttendanceMode::ONLINE === $this->attendanceMode;
         }
 
+        if (null === $this->location) {
+            return false;
+        }
+
         return 'online' === mb_strtolower(trim($this->location));
     }
 
@@ -194,6 +198,10 @@ class Event
     {
         if (null !== $this->attendanceMode) {
             return AttendanceMode::MIXED === $this->attendanceMode;
+        }
+
+        if (null === $this->location) {
+            return false;
         }
 
         return str_contains(mb_strtolower(trim($this->location)), 'online');

@@ -35,7 +35,7 @@ class Feed implements \Stringable
     private ?Media $image = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    private ?\DateTimeImmutable $updatedAt;
+    private \DateTimeImmutable $updatedAt;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $imageUrl = null;

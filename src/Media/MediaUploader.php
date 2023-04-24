@@ -13,6 +13,10 @@ final readonly class MediaUploader
 
     public function upload(Media $media): void
     {
-        $this->mediaStorage->write($media->getPath(), $media->getContent());
+        if (null === ($path = $media->getPath())) {
+            return;
+        }
+
+        $this->mediaStorage->write($path, $media->getContent());
     }
 }
