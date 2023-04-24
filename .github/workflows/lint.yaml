@@ -37,7 +37,7 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   coverage: "none"
-                  extensions: intl, ctype, iconv
+                  extensions: intl, ctype, iconv, gd
                   php-version: 8.2
                   tools: composer, symfony
 
@@ -82,7 +82,7 @@ jobs:
 
             - name: PHPStan
               if: always() && steps.install.outcome == 'success'
-              run: ./vendor/bin/phpstan analyze --level 1 src/
+              run: ./vendor/bin/phpstan analyze
 
             - name: Rector
               if: always() && steps.install.outcome == 'success'
