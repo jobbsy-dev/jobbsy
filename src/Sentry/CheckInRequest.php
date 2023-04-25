@@ -32,6 +32,9 @@ final readonly class CheckInRequest
         );
     }
 
+    /**
+     * @return array{status: string}
+     */
     public function payload(): array
     {
         return [
