@@ -11,11 +11,14 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Zenstruck\ScheduleBundle\Schedule\SelfSchedulingCommand;
+use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
 
 #[AsCommand(
     name: 'app:aggregate-events',
     description: 'Aggregate events from multiple sources',
-)] final class AggregateCommunityEventCommand extends Command
+)]
+final class AggregateCommunityEventCommand extends Command implements SelfSchedulingCommand
 {
     public function __construct(
         protected readonly AggregateNews $aggregateNews,
@@ -45,5 +48,10 @@ use Symfony\Component\Console\Style\SymfonyStyle;
         $io->success('Successful pull');
 
         return Command::SUCCESS;
+    }
+
+    public function schedule(CommandTask $task): void
+    {
+        $task->dailyAt('02:30');
     }
 }

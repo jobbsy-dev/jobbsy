@@ -16,11 +16,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Zenstruck\ScheduleBundle\Schedule\SelfSchedulingCommand;
+use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
 
 #[AsCommand(
     name: 'app:job-provider:retrieve',
     description: 'Retrieve jobs from different sources',
-)] final class JobProviderPullCommand extends Command
+)]
+final class JobProviderPullCommand extends Command implements SelfSchedulingCommand
 {
     public function __construct(
         private readonly JobProvider $provider,
@@ -31,7 +34,7 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
         #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
         private readonly string $commandRouterScheme,
         private readonly EventDispatcherInterface $dispatcher,
-        private readonly JobRepository $jobRepository
+        private readonly JobRepository $jobRepository,
     ) {
         parent::__construct();
     }
@@ -95,5 +98,10 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
         foreach ($events as $event) {
             $this->dispatcher->dispatch($event);
         }
+    }
+
+    public function schedule(CommandTask $task): void
+    {
+        $task->dailyAt('1:40');
     }
 }
