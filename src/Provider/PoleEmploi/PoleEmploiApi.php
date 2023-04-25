@@ -4,6 +4,11 @@ namespace App\Provider\PoleEmploi;
 
 use App\Provider\AccessToken;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final class PoleEmploiApi
@@ -19,6 +24,15 @@ final class PoleEmploiApi
     ) {
     }
 
+    /**
+     * @param string[] $scope
+     *
+     * @throws ClientExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
+     */
     public function authenticate(array $scope = [], bool $force = false): void
     {
         if (false === $force && (null !== $this->accessToken && false === $this->accessToken->hasExpired())) {
@@ -42,6 +56,17 @@ final class PoleEmploiApi
         $this->accessToken = AccessToken::create($data['access_token'], $data['expires_in']);
     }
 
+    /**
+     * @param array<string, mixed> $queryParams
+     *
+     * @throws ClientExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
+     *
+     * @return array<string, mixed|array>
+     */
     public function search(array $queryParams = []): array
     {
         $url = 'https://api.pole-emploi.io/partenaire/offresdemploi/v2/offres/search';

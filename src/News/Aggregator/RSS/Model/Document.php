@@ -2,6 +2,8 @@
 
 namespace App\News\Aggregator\RSS\Model;
 
+use Webmozart\Assert\Assert;
+
 final class Document
 {
     /**
@@ -18,6 +20,9 @@ final class Document
         $this->channels[] = $channel;
     }
 
+    /**
+     * @return Channel[]
+     */
     public function getChannels(): array
     {
         return $this->channels;
@@ -32,6 +37,12 @@ final class Document
         $xpath = new \DOMXPath($document);
 
         $channelsNode = $xpath->query('/rss/channel');
+
+        if (false === $channelsNode) {
+            return $rssDocument;
+        }
+
+        Assert::isIterable($channelsNode);
 
         foreach ($channelsNode as $channelNode) {
             $rssDocument->addChannel(Channel::create($xpath, $channelNode));

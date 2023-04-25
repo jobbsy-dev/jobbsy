@@ -16,8 +16,9 @@ final readonly class EventScraping
         $crawler = $this->httpBrowser->request('GET', $url);
 
         $structuredDataElements = $crawler->filter('script[type="application/ld+json"]');
+        /** @var \DOMElement $domElement */
         foreach ($structuredDataElements as $domElement) {
-            $schemas = json_decode($domElement->textContent, true, 512, \JSON_THROW_ON_ERROR);
+            $schemas = (array) json_decode($domElement->textContent, true, 512, \JSON_THROW_ON_ERROR);
 
             if (isset($schemas['@type']) && 'Event' === $schemas['@type']) {
                 $data[] = $schemas;
@@ -25,6 +26,7 @@ final readonly class EventScraping
                 continue;
             }
 
+            /** @var array<string, array<string, string>|string> $schema */
             foreach ($schemas as $schema) {
                 if (false === isset($schema['@type'])) {
                     continue;
@@ -38,7 +40,7 @@ final readonly class EventScraping
                     continue;
                 }
 
-                if (false === str_contains($url, (string) $schema['organizer']['url'])) {
+                if (false === str_contains($url, $schema['organizer']['url'])) {
                     continue;
                 }
 

@@ -21,6 +21,9 @@ final class Feed
         $this->entries[] = $entry;
     }
 
+    /**
+     * @return Entry[]
+     */
     public function getEntries(): array
     {
         return $this->entries;
@@ -36,10 +39,12 @@ final class Feed
 
         $title = XmlHelper::getNodeValue($xpath, '/atom:feed/atom:title');
         Assert::notNull($title);
+        Assert::string($title);
 
         $feed = new self($title);
 
         $entries = $xpath->query('/atom:feed/atom:entry');
+        Assert::isIterable($entries);
 
         foreach ($entries as $entryNode) {
             $feed->addEntry(Entry::create($xpath, $entryNode));

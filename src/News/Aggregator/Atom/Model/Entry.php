@@ -2,6 +2,9 @@
 
 namespace App\News\Aggregator\Atom\Model;
 
+use App\News\Aggregator\XmlHelper;
+use Webmozart\Assert\Assert;
+
 final readonly class Entry
 {
     public function __construct(
@@ -16,33 +19,49 @@ final readonly class Entry
     public static function create(\DOMXPath $xpath, \DOMNode $node): self
     {
         $pubDate = null;
-        if (0 !== $xpath->query('./atom:published', $node)->count()) {
+        $publishedDate = XmlHelper::getNodeValue($xpath, './atom:published', $node);
+        if (\is_string($publishedDate)) {
             $pubDate = \DateTimeImmutable::createFromFormat(
                 \DateTimeInterface::ATOM,
-                trim((string) $xpath->evaluate('./atom:published', $node)->item(0)->nodeValue)
+                trim($publishedDate)
             );
+            $pubDate = false === $pubDate ? null : $pubDate;
         }
 
+        Assert::string($link = self::getLink($xpath, $node));
+        Assert::string($title = XmlHelper::getNodeValue($xpath, './atom:title', $node));
+
+        $summary = XmlHelper::getNodeValue($xpath, './atom:summary', $node);
+        $summary = \is_string($summary) ? $summary : null;
+
+        $content = XmlHelper::getNodeValue($xpath, './atom:content', $node);
+        $content = \is_string($content) ? $content : null;
+
         return new self(
-            self::getNodeValue('./atom:title', $xpath, $node),
-            self::getLink($xpath, $node),
-            self::getNodeValue('./atom:summary', $xpath, $node),
-            self::getNodeValue('./atom:content', $xpath, $node),
-            $pubDate
+            $title,
+            $link,
+            $summary,
+            $content,
+            $pubDate,
         );
     }
 
-    private static function getLink(\DOMXPath $xpath, \DOMNode $node): string
+    private static function getLink(\DOMXPath $xpath, \DOMNode $node): ?string
     {
-        return $xpath->query('./atom:link', $node)->item(0)->attributes->getNamedItem('href')->nodeValue;
-    }
+        $linkNodes = $xpath->query('./atom:link', $node);
 
-    private static function getNodeValue(string $expression, \DOMXPath $xpath, \DOMNode $node): ?string
-    {
-        if (0 === $xpath->query($expression, $node)->count()) {
+        if (false === $linkNodes) {
             return null;
         }
 
-        return $xpath->evaluate($expression, $node)->item(0)->nodeValue;
+        if ($linkNodes->length <= 0) {
+            return null;
+        }
+
+        return $linkNodes
+            ->item(0)
+            ?->attributes
+            ?->getNamedItem('href')
+            ?->nodeValue;
     }
 }

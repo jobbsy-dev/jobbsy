@@ -31,11 +31,6 @@ parameters:
 			path: src/Broadcast/Twitter/TwitterApi.php
 
 		-
-			message: "#^Parameter \\#1 \\$email of class App\\\\Mailjet\\\\Model\\\\TestCampaignDraft\\\\Recipient constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/Command/SendWeeklyJobsLetterCommand.php
-
-		-
 			message: "#^Method App\\\\CommunityEvent\\\\EventImporter\\:\\:import\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/CommunityEvent/EventImporter.php
@@ -44,36 +39,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$country of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setCountry\\(\\) expects string\\|null, string\\|false given\\.$#"
 			count: 1
 			path: src/CommunityEvent/EventImporter.php
-
-		-
-			message: "#^Parameter \\#1 \\$url of method App\\\\CommunityEvent\\\\EventScraping\\:\\:fetch\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/CommunityEvent/EventImporter.php
-
-		-
-			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: src/CommunityEvent/EventScraping.php
-
-		-
-			message: "#^Cannot access offset '@type' on mixed\\.$#"
-			count: 4
-			path: src/CommunityEvent/EventScraping.php
-
-		-
-			message: "#^Cannot access offset 'organizer' on mixed\\.$#"
-			count: 2
-			path: src/CommunityEvent/EventScraping.php
-
-		-
-			message: "#^Cannot access offset 'url' on mixed\\.$#"
-			count: 2
-			path: src/CommunityEvent/EventScraping.php
-
-		-
-			message: "#^Cannot cast mixed to string\\.$#"
-			count: 1
-			path: src/CommunityEvent/EventScraping.php
 
 		-
 			message: "#^Method App\\\\CommunityEvent\\\\EventScraping\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -96,24 +61,9 @@ parameters:
 			path: src/Controller/JobController.php
 
 		-
-			message: "#^Parameter \\#1 \\$id of static method Stripe\\\\Checkout\\\\Session\\:\\:retrieve\\(\\) expects array\\|string, mixed given\\.$#"
-			count: 1
-			path: src/Controller/JobController.php
-
-		-
-			message: "#^Parameter \\#2 \\$amount of class App\\\\Donation\\\\Command\\\\CreateDonationPaymentUrlCommand constructor expects int, int\\|null given\\.$#"
-			count: 1
-			path: src/Controller/JobController.php
-
-		-
 			message: "#^Parameter \\#2 \\$amount of class App\\\\Donation\\\\Command\\\\CreateDonationPaymentUrlCommand constructor expects int, mixed given\\.$#"
 			count: 1
 			path: src/Controller/JobController.php
-
-		-
-			message: "#^Parameter \\#1 \\$uri of static method League\\\\Uri\\\\Uri\\:\\:createFromString\\(\\) expects string\\|Stringable, string\\|null given\\.$#"
-			count: 1
-			path: src/Controller/NewsController.php
 
 		-
 			message: "#^Parameter \\#1 \\$abstract of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setAbstract\\(\\) expects string\\|null, mixed given\\.$#"
@@ -166,7 +116,7 @@ parameters:
 			path: src/DataFixtures/AppFixtures.php
 
 		-
-			message: "#^Parameter \\#1 \\$tags of method App\\\\Entity\\\\Job\\:\\:setTags\\(\\) expects array, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$tags of method App\\\\Entity\\\\Job\\:\\:setTags\\(\\) expects array\\<string\\>, mixed given\\.$#"
 			count: 1
 			path: src/DataFixtures/AppFixtures.php
 
@@ -219,81 +169,6 @@ parameters:
 			message: "#^Parameter \\#5 \\$url of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
 			count: 1
 			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Method App\\\\Donation\\\\Stripe\\\\CreateStripePaymentUrl\\:\\:__invoke\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: src/Donation/Stripe/CreateStripePaymentUrl.php
-
-		-
-			message: "#^Parameter \\#1 \\$file of method App\\\\Media\\\\MediaFactory\\:\\:createFromUploadedFile\\(\\) expects Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile, Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile\\|null given\\.$#"
-			count: 1
-			path: src/EasyAdmin/UploadMediaOnFeedCreatedSubscriber.php
-
-		-
-			message: "#^Method App\\\\Entity\\\\Job\\:\\:getCreatedAt\\(\\) should return DateTimeImmutable but returns DateTimeImmutable\\|null\\.$#"
-			count: 1
-			path: src/Entity/Job.php
-
-		-
-			message: "#^Method App\\\\Entity\\\\Job\\:\\:getTags\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Entity/Job.php
-
-		-
-			message: "#^Method App\\\\Entity\\\\Job\\:\\:getUpdatedAt\\(\\) should return DateTimeImmutable but returns DateTimeImmutable\\|null\\.$#"
-			count: 1
-			path: src/Entity/Job.php
-
-		-
-			message: "#^Method App\\\\Entity\\\\Job\\:\\:setTags\\(\\) has parameter \\$tags with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Entity/Job.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\Job\\:\\:\\$tags type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Entity/Job.php
-
-		-
-			message: "#^Cannot call method getContent\\(\\) on Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile\\|null\\.$#"
-			count: 1
-			path: src/Entity/Media.php
-
-		-
-			message: "#^Method App\\\\Entity\\\\Media\\:\\:getDimensions\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Entity/Media.php
-
-		-
-			message: "#^Method App\\\\Entity\\\\Media\\:\\:setDimensions\\(\\) has parameter \\$dimensions with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Entity/Media.php
-
-		-
-			message: "#^Parameter \\#1 \\$title of class App\\\\Entity\\\\Job constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Job/Command/PostJobOfferCommand.php
-
-		-
-			message: "#^Parameter \\#2 \\$location of class App\\\\Entity\\\\Job constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Job/Command/PostJobOfferCommand.php
-
-		-
-			message: "#^Parameter \\#3 \\$employmentType of class App\\\\Entity\\\\Job constructor expects App\\\\Job\\\\EmploymentType, App\\\\Job\\\\EmploymentType\\|null given\\.$#"
-			count: 1
-			path: src/Job/Command/PostJobOfferCommand.php
-
-		-
-			message: "#^Parameter \\#4 \\$organization of class App\\\\Entity\\\\Job constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Job/Command/PostJobOfferCommand.php
-
-		-
-			message: "#^Parameter \\#5 \\$url of class App\\\\Entity\\\\Job constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Job/Command/PostJobOfferCommand.php
 
 		-
 			message: "#^Property App\\\\Job\\\\Command\\\\PostJobOfferCommand\\:\\:\\$tags type has no value type specified in iterable type array\\.$#"
@@ -376,69 +251,24 @@ parameters:
 			path: src/Mailjet/Model/TestCampaignDraft/TestCampaignDraftResponse.php
 
 		-
+			message: "#^Cannot access offset 'text' on mixed\\.$#"
+			count: 2
+			path: src/MessageHandler/Job/ClassifyHandler.php
+
+		-
+			message: "#^Cannot access offset 0 on mixed\\.$#"
+			count: 2
+			path: src/MessageHandler/Job/ClassifyHandler.php
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 1
+			path: src/MessageHandler/Job/ClassifyHandler.php
+
+		-
 			message: "#^Method App\\\\News\\\\Aggregator\\\\AggregateNews\\:\\:__invoke\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/News/Aggregator/AggregateNews.php
-
-		-
-			message: "#^Cannot access property \\$attributes on DOMNode\\|null\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Entry.php
-
-		-
-			message: "#^Cannot access property \\$nodeValue on DOMNode\\|null\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Entry.php
-
-		-
-			message: "#^Cannot call method count\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
-			count: 2
-			path: src/News/Aggregator/Atom/Model/Entry.php
-
-		-
-			message: "#^Cannot call method getNamedItem\\(\\) on DOMNamedNodeMap\\|null\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Entry.php
-
-		-
-			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Entry.php
-
-		-
-			message: "#^Cannot call method item\\(\\) on mixed\\.$#"
-			count: 2
-			path: src/News/Aggregator/Atom/Model/Entry.php
-
-		-
-			message: "#^Method App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Entry\\:\\:getLink\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Entry.php
-
-		-
-			message: "#^Parameter \\#1 \\$title of class App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Entry constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Entry.php
-
-		-
-			message: "#^Parameter \\#5 \\$published of class App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Entry constructor expects DateTimeImmutable\\|null, DateTimeImmutable\\|false\\|null given\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Entry.php
-
-		-
-			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Feed.php
-
-		-
-			message: "#^Method App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Feed\\:\\:getEntries\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Feed.php
-
-		-
-			message: "#^Parameter \\#1 \\$title of class App\\\\News\\\\Aggregator\\\\Atom\\\\Model\\\\Feed constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/News/Aggregator/Atom/Model/Feed.php
 
 		-
 			message: "#^Method App\\\\News\\\\Aggregator\\\\FetchArticlesFromFeed\\:\\:__invoke\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -446,102 +276,132 @@ parameters:
 			path: src/News/Aggregator/FetchArticlesFromFeed.php
 
 		-
-			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
 			count: 1
-			path: src/News/Aggregator/RSS/Model/Channel.php
+			path: src/Provider/PoleEmploi/PoleEmploiApi.php
 
 		-
-			message: "#^Cannot call method item\\(\\) on mixed\\.$#"
-			count: 3
-			path: src/News/Aggregator/RSS/Model/Channel.php
-
-		-
-			message: "#^Method App\\\\News\\\\Aggregator\\\\RSS\\\\Model\\\\Channel\\:\\:getItems\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Parameter \\#3 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
 			count: 1
-			path: src/News/Aggregator/RSS/Model/Channel.php
+			path: src/Provider/PoleEmploi/PoleEmploiApi.php
 
 		-
-			message: "#^Argument of an invalid type DOMNodeList\\<DOMNode\\>\\|false supplied for foreach, only iterables are supported\\.$#"
+			message: "#^Cannot access offset 'description' on mixed\\.$#"
 			count: 1
-			path: src/News/Aggregator/RSS/Model/Document.php
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Method App\\\\News\\\\Aggregator\\\\RSS\\\\Model\\\\Document\\:\\:getChannels\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/News/Aggregator/RSS/Model/Document.php
-
-		-
-			message: "#^Cannot call method count\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
-			count: 3
-			path: src/News/Aggregator/RSS/Model/Item.php
-
-		-
-			message: "#^Cannot call method item\\(\\) on mixed\\.$#"
-			count: 6
-			path: src/News/Aggregator/RSS/Model/Item.php
-
-		-
-			message: "#^Parameter \\#4 \\$pubDate of class App\\\\News\\\\Aggregator\\\\RSS\\\\Model\\\\Item constructor expects DateTimeImmutable\\|null, DateTimeImmutable\\|false\\|null given\\.$#"
-			count: 1
-			path: src/News/Aggregator/RSS/Model/Item.php
-
-		-
-			message: "#^Cannot access property \\$length on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
+			message: "#^Cannot access offset 'entreprise' on mixed\\.$#"
 			count: 2
-			path: src/News/Aggregator/XmlHelper.php
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Cannot access property \\$nodeValue on DOMNode\\|null\\.$#"
+			message: "#^Cannot access offset 'intitule' on mixed\\.$#"
 			count: 1
-			path: src/News/Aggregator/XmlHelper.php
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Cannot call method item\\(\\) on DOMNodeList\\<DOMNode\\>\\|false\\.$#"
-			count: 1
-			path: src/News/Aggregator/XmlHelper.php
+			message: "#^Cannot access offset 'libelle' on mixed\\.$#"
+			count: 3
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Method App\\\\News\\\\Aggregator\\\\XmlHelper\\:\\:getNodeValue\\(\\) has parameter \\$index with no type specified\\.$#"
+			message: "#^Cannot access offset 'lieuTravail' on mixed\\.$#"
 			count: 1
-			path: src/News/Aggregator/XmlHelper.php
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Method App\\\\News\\\\Aggregator\\\\XmlHelper\\:\\:getNodeValue\\(\\) has parameter \\$query with no type specified\\.$#"
+			message: "#^Cannot access offset 'logo' on mixed\\.$#"
 			count: 1
-			path: src/News/Aggregator/XmlHelper.php
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Method App\\\\News\\\\Aggregator\\\\XmlHelper\\:\\:sanitizeValue\\(\\) has parameter \\$value with no type specified\\.$#"
-			count: 1
-			path: src/News/Aggregator/XmlHelper.php
+			message: "#^Cannot access offset 'natureContrat' on mixed\\.$#"
+			count: 2
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Method App\\\\OpenAI\\\\Client\\:\\:completions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Cannot access offset 'nom' on mixed\\.$#"
 			count: 1
-			path: src/OpenAI/Client.php
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Method App\\\\OpenAI\\\\Model\\\\CompletionRequest\\:\\:__construct\\(\\) has parameter \\$prompt with no value type specified in iterable type array\\.$#"
+			message: "#^Cannot access offset 'origineOffre' on mixed\\.$#"
 			count: 1
-			path: src/OpenAI/Model/CompletionRequest.php
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiApi\\:\\:authenticate\\(\\) has parameter \\$scope with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiApi.php
+			message: "#^Cannot access offset 'salaire' on mixed\\.$#"
+			count: 2
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiApi\\:\\:search\\(\\) has parameter \\$queryParams with no value type specified in iterable type array\\.$#"
+			message: "#^Cannot access offset 'secteurActiviteLibe…' on mixed\\.$#"
 			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiApi.php
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiApi\\:\\:search\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Cannot access offset 'typeContrat' on mixed\\.$#"
+			count: 2
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'urlOrigine' on mixed\\.$#"
 			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiApi.php
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 3
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
 			message: "#^Method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) has parameter \\$jobOffer with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$description of method App\\\\Entity\\\\Job\\:\\:setDescription\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$industry of method App\\\\Entity\\\\Job\\:\\:setIndustry\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$jobOffer of method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$organizationImageUrl of method App\\\\Entity\\\\Job\\:\\:setOrganizationImageUrl\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$salary of method App\\\\Entity\\\\Job\\:\\:setSalary\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\$location of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\$organization of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\$title of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\$url of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
 			count: 1
 			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
 
@@ -576,11 +436,6 @@ parameters:
 			path: src/Provider/WelcometotheJungle/WelcometotheJungleClient.php
 
 		-
-			message: "#^Class App\\\\Repository\\\\JobRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: src/Repository/JobRepository.php
-
-		-
 			message: "#^Method App\\\\Repository\\\\JobRepository\\:\\:jobsByEmploymentType\\(\\) should return array\\<App\\\\Entity\\\\Job\\> but returns mixed\\.$#"
 			count: 1
 			path: src/Repository/JobRepository.php
@@ -589,11 +444,6 @@ parameters:
 			message: "#^Method App\\\\Repository\\\\JobRepository\\:\\:jobsByLocationType\\(\\) should return array\\<App\\\\Entity\\\\Job\\> but returns mixed\\.$#"
 			count: 1
 			path: src/Repository/JobRepository.php
-
-		-
-			message: "#^Method App\\\\Security\\\\User\\:\\:getPassword\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: src/Security/User.php
 
 		-
 			message: "#^Method App\\\\Security\\\\User\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"

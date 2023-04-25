@@ -51,6 +51,10 @@ final readonly class CreateStripePaymentUrl implements CreatePaymentUrlInterface
             'customer_email' => $job->getContactEmail(),
         ]);
 
-        return $session->url;
+        if (null === ($url = $session->url)) {
+            throw new \Exception('Unable to generate payment url.');
+        }
+
+        return $url;
     }
 }

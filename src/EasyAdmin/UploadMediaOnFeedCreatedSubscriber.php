@@ -29,6 +29,10 @@ final readonly class UploadMediaOnFeedCreatedSubscriber implements EventSubscrib
             return;
         }
 
+        if (null === $entity->getImageFile()) {
+            return;
+        }
+
         $media = $this->mediaFactory->createFromUploadedFile($entity->getImageFile());
         $entity->changeImage($media);
         $this->mediaUploader->upload($media);

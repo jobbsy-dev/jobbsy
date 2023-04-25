@@ -75,7 +75,7 @@ final class JobController extends AbstractController
 
             $this->addFlash('success', 'Job posted successfully!');
 
-            if (0 === (int) $command->donationAmount) {
+            if (0 === $command->donationAmount) {
                 return $this->redirectToRoute('job_index');
             }
 
@@ -104,9 +104,7 @@ final class JobController extends AbstractController
     #[Route('/job/{id}/donation/success', name: 'job_donation_success', methods: ['GET'])]
     public function jobDonationSuccess(Job $job, Request $request): Response
     {
-        if (null === ($stripeSessionId = $request->get('session_id'))) {
-            throw $this->createNotFoundException();
-        }
+        $stripeSessionId = $request->query->getAlnum('session_id');
 
         Stripe::setApiKey($this->stripeApiKey);
         try {

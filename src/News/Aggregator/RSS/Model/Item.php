@@ -2,6 +2,9 @@
 
 namespace App\News\Aggregator\RSS\Model;
 
+use App\News\Aggregator\XmlHelper;
+use Webmozart\Assert\Assert;
+
 final readonly class Item
 {
     public function __construct(
@@ -18,17 +21,25 @@ final readonly class Item
     public static function create(\DOMXPath $xpath, \DOMNode $itemNode): self
     {
         $pubDate = null;
-        if (0 !== $xpath->query('./pubDate', $itemNode)->count()) {
+        $publishDate = XmlHelper::getNodeValue($xpath, './pubDate', $itemNode);
+        Assert::nullOrString($publishDate);
+
+        if (null !== $publishDate) {
             $pubDate = \DateTimeImmutable::createFromFormat(
                 \DateTimeInterface::RFC2822,
-                trim((string) $xpath->evaluate('./pubDate', $itemNode)->item(0)->nodeValue)
+                trim($publishDate)
             );
+            $pubDate = false !== $pubDate ? $pubDate : null;
         }
 
+        Assert::string($title = XmlHelper::getNodeValue($xpath, './title', $itemNode));
+        Assert::string($link = XmlHelper::getNodeValue($xpath, './link', $itemNode));
+        Assert::string($description = XmlHelper::getNodeValue($xpath, './description', $itemNode));
+
         return new self(
-            $xpath->evaluate('./title', $itemNode)->item(0)->nodeValue,
-            $xpath->evaluate('./link', $itemNode)->item(0)->nodeValue,
-            $xpath->evaluate('./description', $itemNode)->item(0)->nodeValue,
+            $title,
+            $link,
+            $description,
             $pubDate,
             self::extractAuthor($xpath, $itemNode)
         );
@@ -36,16 +47,17 @@ final readonly class Item
 
     private static function extractAuthor(\DOMXPath $xpath, \DOMNode $itemNode): ?string
     {
-        if (0 !== $xpath->query('./author', $itemNode)->count()) {
-            return $xpath->evaluate('./author', $itemNode)->item(0)->nodeValue;
+        $author = XmlHelper::getNodeValue($xpath, './author', $itemNode);
+        Assert::nullOrString($author);
+
+        if (null !== $author) {
+            return $author;
         }
 
         $xpath->registerNamespace('dc', 'dc');
+        $creator = XmlHelper::getNodeValue($xpath, './dc:creator', $itemNode);
+        Assert::nullOrString($creator);
 
-        if (0 !== $xpath->query('./dc:creator', $itemNode)->count()) {
-            return $xpath->evaluate('./dc:creator', $itemNode)->item(0)->nodeValue;
-        }
-
-        return null;
+        return $creator;
     }
 }

@@ -27,7 +27,7 @@ final readonly class FetchArticlesFromAtomFeed implements FetchArticlesFromFeedI
         $articles = [];
         foreach ($atomFeed->getEntries() as $entry) {
             $article = new Entry();
-            $article->setTitle(trim((string) $entry->title));
+            $article->setTitle(trim($entry->title));
             $article->setLink($entry->link);
             $article->setDescription($entry->summary ? trim((string) $entry->summary) : trim((string) $entry->content));
             $article->setPublishedAt($entry->published);

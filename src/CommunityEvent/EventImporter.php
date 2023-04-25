@@ -22,6 +22,10 @@ final readonly class EventImporter
         $sources = $this->sourceRepository->getAll();
 
         foreach ($sources as $source) {
+            if (null === $source->getUrl()) {
+                continue;
+            }
+
             try {
                 $eventsData = $this->eventScraping->fetch($source->getUrl());
 
