@@ -16,6 +16,8 @@ use Ramsey\Uuid\UuidInterface;
  * @method Job|null findOneBy(array $criteria, array $orderBy = null)
  * @method Job[]    findAll()
  * @method Job[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ *
+ * @extends ServiceEntityRepository<Job>
  */
 final class JobRepository extends ServiceEntityRepository implements JobRepositoryInterface
 {

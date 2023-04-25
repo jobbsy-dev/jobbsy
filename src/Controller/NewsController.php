@@ -64,6 +64,10 @@ final class NewsController extends AbstractController
             'url' => $request->getUri(),
         ]));
 
+        if (null === $article->getLink()) {
+            throw $this->createNotFoundException();
+        }
+
         $uri = Uri::createFromString($article->getLink());
         $uri = UriModifier::appendQuery($uri, 'ref=jobbsy');
 

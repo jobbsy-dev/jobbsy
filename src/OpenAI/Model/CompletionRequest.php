@@ -4,6 +4,9 @@ namespace App\OpenAI\Model;
 
 final readonly class CompletionRequest
 {
+    /**
+     * @param string|string[] $prompt
+     */
     public function __construct(
         public string $model,
         public string|array $prompt,

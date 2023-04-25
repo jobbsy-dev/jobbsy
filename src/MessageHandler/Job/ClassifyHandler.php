@@ -7,6 +7,7 @@ use App\Job\Repository\JobRepositoryInterface;
 use App\Message\Job\ClassifyMessage;
 use App\OpenAI\Client;
 use App\OpenAI\Model\CompletionRequest;
+use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
@@ -18,7 +19,8 @@ final readonly class ClassifyHandler
         private Client $openAIClient,
         private JobRepositoryInterface $jobRepository,
         #[Autowire('%env(OPENAI_API_COMPLETION_MODEL)%')]
-        private string $model
+        private string $model,
+        private LoggerInterface $logger
     ) {
     }
 
@@ -27,7 +29,13 @@ final readonly class ClassifyHandler
         $job = $this->jobRepository->get(Uuid::fromString($message->jobId));
 
         $prompt = CreateJobPromptForClassification::create($job);
-        $result = $this->openAIClient->completions(new CompletionRequest($this->model, $prompt, 0.8, 30));
+        try {
+            $result = $this->openAIClient->completions(new CompletionRequest($this->model, $prompt, 0.8, 30));
+        } catch (\Exception $exception) {
+            $this->logger->error($exception->getMessage());
+
+            return;
+        }
 
         if (false === isset($result['choices'][0]['text'])) {
             return;

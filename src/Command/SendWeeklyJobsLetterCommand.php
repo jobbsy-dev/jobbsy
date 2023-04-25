@@ -98,6 +98,10 @@ final class SendWeeklyJobsLetterCommand extends Command implements SelfSchedulin
             return Command::SUCCESS;
         }
 
+        if (false === \is_string($test)) {
+            return Command::FAILURE;
+        }
+
         $response = $this->mailjetApi->testCampaignDraft(new TestCampaignDraftRequest($id, [new Recipient($test)]));
 
         if (null === $response) {

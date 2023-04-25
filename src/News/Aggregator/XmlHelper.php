@@ -4,9 +4,18 @@ namespace App\News\Aggregator;
 
 final class XmlHelper
 {
-    public static function getNodeValue(\DOMXPath $xpath, $query, \DOMNode $element = null, $index = 0): mixed
-    {
+    public static function getNodeValue(
+        \DOMXPath $xpath,
+        string $query,
+        \DOMNode $element = null,
+        int $index = 0
+    ): mixed {
         $nodeList = $xpath->query($query, $element);
+
+        if (false === $nodeList) {
+            return false;
+        }
+
         if ($nodeList->length <= 0) {
             return null;
         }
@@ -15,10 +24,10 @@ final class XmlHelper
             return null;
         }
 
-        return self::sanitizeValue($nodeList->item($index)->nodeValue);
+        return self::sanitizeValue($nodeList->item($index)?->nodeValue);
     }
 
-    private static function sanitizeValue($value): mixed
+    private static function sanitizeValue(mixed $value): mixed
     {
         if ('true' === $value) {
             return true;

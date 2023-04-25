@@ -25,7 +25,7 @@ final class Media
     private ?int $size = null;
 
     /**
-     * @var array<int, int>|null
+     * @var int[]|null
      */
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private ?array $dimensions;
@@ -72,11 +72,17 @@ final class Media
         $this->size = $size;
     }
 
+    /**
+     * @return int[]|null
+     */
     public function getDimensions(): ?array
     {
         return $this->dimensions;
     }
 
+    /**
+     * @param int[]|null $dimensions
+     */
     public function setDimensions(?array $dimensions): void
     {
         $this->dimensions = $dimensions;
@@ -97,9 +103,9 @@ final class Media
         $this->file = $file;
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
-        return $this->file->getContent();
+        return $this->file?->getContent();
     }
 
     public function getFile(): ?UploadedFile

@@ -11,22 +11,27 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class PostJobOfferCommand
 {
     #[Assert\NotBlank]
-    public ?string $title = null;
+    #[Assert\Length(min: 20, max: 255)]
+    public string $title = '';
 
     #[Assert\NotBlank]
-    public ?string $location = null;
+    #[Assert\Length(min: 2, max: 255)]
+    public string $location = '';
 
     #[Assert\NotBlank]
-    public ?EmploymentType $employmentType = null;
+    public EmploymentType $employmentType = EmploymentType::FULLTIME;
 
     #[Assert\NotBlank]
-    public ?string $organization = null;
+    #[Assert\Length(max: 255)]
+    public string $organization = '';
 
     #[Assert\Count(max: 5)]
     public array $tags = [];
 
     #[Assert\NotBlank]
-    public ?string $url = null;
+    #[Assert\Length(min: 5, max: 255)]
+    #[Assert\Url]
+    public string $url = '';
 
     #[Assert\File(
         maxSize: '2M',
@@ -37,14 +42,15 @@ final class PostJobOfferCommand
     public ?string $salary = null;
 
     #[Assert\Email]
-    public ?string $contactEmail = null;
+    #[Assert\Length(min: 5, max: 255)]
+    public string $contactEmail = '';
 
     #[Assert\NotBlank(allowNull: true)]
-    public ?LocationType $locationType = null;
+    public LocationType $locationType = LocationType::REMOTE;
 
     #[Assert\GreaterThanOrEqual(0)]
     #[Assert\NotBlank]
-    public ?int $donationAmount = 5000;
+    public int $donationAmount = 5000;
 
     public function toEntity(): Job
     {

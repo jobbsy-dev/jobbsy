@@ -45,7 +45,7 @@ class Job
     private string $location;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    private ?\DateTimeImmutable $createdAt;
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: Types::STRING, enumType: EmploymentType::class)]
     #[Groups(['read'])]
@@ -57,6 +57,9 @@ class Job
     #[ApiFilter(filterClass: SearchFilter::class, strategy: SearchFilterInterface::STRATEGY_PARTIAL)]
     private string $organization;
 
+    /**
+     * @var string[]
+     */
     #[ORM\Column(type: Types::JSON)]
     #[Groups(['read'])]
     private array $tags = [];
@@ -69,7 +72,7 @@ class Job
     private ?Media $organizationImage = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    private ?\DateTimeImmutable $updatedAt;
+    private \DateTimeImmutable $updatedAt;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]
     #[Groups(['read'])]
@@ -184,11 +187,17 @@ class Job
         $this->organization = $organization;
     }
 
+    /**
+     * @return string[]
+     */
     public function getTags(): array
     {
         return $this->tags;
     }
 
+    /**
+     * @param string[] $tags
+     */
     public function setTags(array $tags): void
     {
         $this->tags = $tags;

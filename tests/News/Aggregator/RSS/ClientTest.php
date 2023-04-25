@@ -27,7 +27,7 @@ final class ClientTest extends TestCase
         self::assertSame('Symfony Blog', $channel->title);
         self::assertCount(4, $channel->getItems());
         $item = $channel->getItems()[0];
-        self::assertSame('A Week of Symfony #826 (24-30 October 2022)', trim((string) $item->title));
+        self::assertSame('A Week of Symfony #826 (24-30 October 2022)', trim($item->title));
     }
 
     public function testReadRssDocumentExtraProperties(): void
@@ -47,6 +47,6 @@ final class ClientTest extends TestCase
         $channel = $document->getChannels()[0];
         $item = $channel->getItems()[0];
         self::assertSame('Javier Eguiluz', trim((string) $item->author));
-        self::assertSame('2022-10-30', $item->pubDate->format('Y-m-d'));
+        self::assertSame('2022-10-30', $item->pubDate?->format('Y-m-d'));
     }
 }

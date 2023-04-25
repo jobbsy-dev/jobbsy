@@ -17,6 +17,10 @@ final readonly class MediaUploader
             return;
         }
 
+        if (null === $media->getContent()) {
+            return;
+        }
+
         $this->mediaStorage->write($path, $media->getContent());
     }
 }
