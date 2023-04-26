@@ -39,7 +39,7 @@ final class SendWeeklyJobsLetterCommand extends Command implements SelfSchedulin
         #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
         private readonly string $commandRouterHost,
         #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
-        private readonly string $commandRouterScheme,
+        private readonly string $commandRouterScheme
     ) {
         parent::__construct();
     }
@@ -118,7 +118,7 @@ final class SendWeeklyJobsLetterCommand extends Command implements SelfSchedulin
     {
         $task
             ->mondays()
-            ->at('12:42')
+            ->at('12:40')
         ;
     }
 }
