@@ -9,8 +9,6 @@ use App\Mailjet\Model\SendCampaignDraft\SendCampaignDraftRequest;
 use App\Mailjet\Model\TestCampaignDraft\Recipient;
 use App\Mailjet\Model\TestCampaignDraft\TestCampaignDraftRequest;
 use App\Repository\JobRepository;
-use App\Sentry\CheckInRequest;
-use App\Sentry\Client;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -41,8 +39,7 @@ final class SendWeeklyJobsLetterCommand extends Command implements SelfSchedulin
         #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
         private readonly string $commandRouterHost,
         #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
-        private readonly string $commandRouterScheme,
-        private readonly Client $sentryClient
+        private readonly string $commandRouterScheme
     ) {
         parent::__construct();
     }
@@ -119,20 +116,6 @@ final class SendWeeklyJobsLetterCommand extends Command implements SelfSchedulin
 
     public function schedule(CommandTask $task): void
     {
-        $monitorSlug = 'jobs-letter';
-
-        $task->before(function () use ($monitorSlug) {
-            $this->sentryClient->checkIns(CheckInRequest::createInProgress($monitorSlug));
-        });
-
-        $task->onSuccess(function () use ($monitorSlug) {
-            $this->sentryClient->checkIns(CheckInRequest::createOk($monitorSlug));
-        });
-
-        $task->onFailure(function () use ($monitorSlug) {
-            $this->sentryClient->checkIns(CheckInRequest::createError($monitorSlug));
-        });
-
         $task
             ->mondays()
             ->at('12:40')
