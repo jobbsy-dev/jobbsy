@@ -13,7 +13,7 @@ jobs:
             fail-fast: true
         services:
             postgres:
-                image: postgres:14
+                image: postgres:15
                 env:
                     POSTGRES_PASSWORD: main
                     POSTGRES_USER: main
