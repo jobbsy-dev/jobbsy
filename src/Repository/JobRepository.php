@@ -37,9 +37,24 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
 
         return $qb
             ->where($qb->expr()->isNotNull('job.publishedAt'))
+            ->andWhere($qb->expr()->isNull('job.pinnedUntil'))
             ->addOrderBy('job.publishedAt', Criteria::DESC)
             ->addOrderBy('job.pinnedUntil', Criteria::DESC)
             ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Job[]
+     */
+    public function findFeaturedJobs(): array
+    {
+        $qb = $this->createQueryBuilder('job');
+
+        return $qb
+            ->where($qb->expr()->isNotNull('job.pinnedUntil'))
+            ->addOrderBy('job.pinnedUntil', Criteria::DESC)
             ->getQuery()
             ->getResult();
     }

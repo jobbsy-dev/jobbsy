@@ -23,26 +23,23 @@
     </div>
 
     {% set jobsCount = jobs|length %}
-    {% if jobsCount > 0 %}
-        <div class="job-list d-flex flex-column justify-content-around gap-4">
-            {% for job in jobs|slice(0, jobsCount/2) %}
-                {{ include('job/_job_card.html.twig', {'job': job}) }}
-            {% endfor %}
+    <div class="job-list d-flex flex-column justify-content-around gap-4">
+        {% for job in featuredJobs %}
+            {{ include('job/_job_card.html.twig', {'job': job}) }}
+        {% endfor %}
 
-            <div id="getNotifiedAboutNewJobs">
-                {{ render(controller('App\\Controller\\JobController::subscriptionForm')) }}
-            </div>
+        {% for job in jobs|slice(0, jobsCount/2) %}
+            {{ include('job/_job_card.html.twig', {'job': job}) }}
+        {% endfor %}
 
-            {% for job in jobs|slice(jobsCount/2, jobsCount) %}
-                {{ include('job/_job_card.html.twig', {'job': job}) }}
-            {% endfor %}
+        <div id="getNotifiedAboutNewJobs">
+            {{ render(controller('App\\Controller\\JobController::subscriptionForm')) }}
         </div>
-    {% else %}
-        <div class="text-center">
-            <p>No jobs</p>
-            <a href="{{ path('job_new') }}" class="btn btn-outline-primary">{{ 'action.post_job'|trans }}</a>
-        </div>
-    {% endif %}
+
+        {% for job in jobs|slice(jobsCount/2, jobsCount) %}
+            {{ include('job/_job_card.html.twig', {'job': job}) }}
+        {% endfor %}
+    </div>
 
     <div class="d-flex justify-content-center mt-5 gap-5">
         <div>
