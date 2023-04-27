@@ -54,7 +54,7 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
 
         return $qb
             ->where($qb->expr()->isNotNull('job.pinnedUntil'))
-            ->addOrderBy('job.pinnedUntil', Criteria::DESC)
+            ->addOrderBy('job.publishedAt', Criteria::DESC)
             ->getQuery()
             ->getResult();
     }
