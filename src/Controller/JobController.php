@@ -49,6 +49,7 @@ final class JobController extends AbstractController
     public function index(): Response
     {
         return $this->render('job/index.html.twig', [
+            'featuredJobs' => $this->jobRepository->findFeaturedJobs(),
             'jobs' => $this->jobRepository->findLastJobs(),
             'locationTypes' => LocationType::cases(),
             'employmentTypes' => EmploymentType::cases(),

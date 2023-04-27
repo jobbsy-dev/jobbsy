@@ -118,7 +118,7 @@ final class SendWeeklyJobsLetterCommand extends Command implements SelfSchedulin
     {
         $task
             ->mondays()
-            ->at('12:40')
+            ->at('10')
         ;
     }
 }

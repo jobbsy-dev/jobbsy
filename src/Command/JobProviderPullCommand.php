@@ -102,6 +102,6 @@ final class JobProviderPullCommand extends Command implements SelfSchedulingComm
 
     public function schedule(CommandTask $task): void
     {
-        $task->dailyAt('1:40');
+        $task->twiceDaily(3, 10);
     }
 }

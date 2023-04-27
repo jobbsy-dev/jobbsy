@@ -62,6 +62,6 @@ final class AggregateNewsCommand extends Command implements SelfSchedulingComman
 
     public function schedule(CommandTask $task): void
     {
-        $task->twiceDaily(7, 14);
+        $task->twiceDaily(2, 10);
     }
 }

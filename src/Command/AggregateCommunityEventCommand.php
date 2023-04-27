@@ -52,6 +52,6 @@ final class AggregateCommunityEventCommand extends Command implements SelfSchedu
 
     public function schedule(CommandTask $task): void
     {
-        $task->dailyAt('02:30');
+        $task->daily();
     }
 }
