@@ -47,7 +47,7 @@ class Entry
     #[Groups(groups: ['entry:read'])]
     private \DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE, nullable: true)]
     #[ApiProperty(types: ['https://schema.org/datePublished'])]
     #[Groups(groups: ['entry:read'])]
     private ?\DateTimeImmutable $publishedAt = null;
