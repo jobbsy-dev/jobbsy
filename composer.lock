@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "api-platform/core",
-            "version": "v3.1.9",
+            "version": "v3.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "4e1b0c92271a92da3dc4d285b560714f2d504c5f"
+                "reference": "8bede6d7d913aaaa186c1e0221758d8cde790424"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/4e1b0c92271a92da3dc4d285b560714f2d504c5f",
-                "reference": "4e1b0c92271a92da3dc4d285b560714f2d504c5f",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/8bede6d7d913aaaa186c1e0221758d8cde790424",
+                "reference": "8bede6d7d913aaaa186c1e0221758d8cde790424",
                 "shasum": ""
             },
             "require": {
@@ -166,7 +166,7 @@
             ],
             "support": {
                 "issues": "https://github.com/api-platform/core/issues",
-                "source": "https://github.com/api-platform/core/tree/v3.1.9"
+                "source": "https://github.com/api-platform/core/tree/v3.1.10"
             },
             "funding": [
                 {
@@ -174,7 +174,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-24T09:09:39+00:00"
+            "time": "2023-04-28T09:09:20+00:00"
         },
         {
             "name": "async-aws/core",
