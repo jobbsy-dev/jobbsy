@@ -31,11 +31,6 @@ parameters:
 			path: src/Broadcast/Twitter/TwitterApi.php
 
 		-
-			message: "#^Method App\\\\CommunityEvent\\\\EventImporter\\:\\:import\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/CommunityEvent/EventImporter.php
-
-		-
 			message: "#^Parameter \\#1 \\$country of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setCountry\\(\\) expects string\\|null, string\\|false given\\.$#"
 			count: 1
 			path: src/CommunityEvent/EventImporter.php

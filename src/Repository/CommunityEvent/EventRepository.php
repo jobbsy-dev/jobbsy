@@ -2,6 +2,7 @@
 
 namespace App\Repository\CommunityEvent;
 
+use App\CommunityEvent\EventRepositoryInterface;
 use App\Entity\CommunityEvent\Event;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Criteria;
@@ -16,29 +17,23 @@ use Symfony\Component\Clock\ClockInterface;
  * @method Event[]    findAll()
  * @method Event[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-final class EventRepository extends ServiceEntityRepository
+final class EventRepository extends ServiceEntityRepository implements EventRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry, private readonly ClockInterface $clock)
     {
         parent::__construct($registry, Event::class);
     }
 
-    public function save(Event $entity, bool $flush = false): void
+    public function save(Event $event): void
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->persist($event);
+        $this->getEntityManager()->flush();
     }
 
-    public function remove(Event $entity, bool $flush = false): void
+    public function remove(Event $entity): void
     {
         $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->flush();
     }
 
     /**
@@ -66,5 +61,15 @@ final class EventRepository extends ServiceEntityRepository
             ->orderBy('event.startDate', Criteria::DESC)
             ->getQuery()
             ->getResult();
+    }
+
+    public function getAll(): array
+    {
+        return $this->findAll();
+    }
+
+    public function ofUrl(string $url): ?Event
+    {
+        return $this->findOneBy(['url' => $url]);
     }
 }

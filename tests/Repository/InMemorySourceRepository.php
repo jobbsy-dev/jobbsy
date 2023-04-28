@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Tests\Repository\CommunityEvent;
+namespace App\Tests\Repository;
 
-use App\CommunityEvent\Repository\SourceRepositoryInterface;
+use App\CommunityEvent\SourceRepositoryInterface;
 use App\Entity\CommunityEvent\Source;
 
 final class InMemorySourceRepository implements SourceRepositoryInterface
@@ -25,5 +25,10 @@ final class InMemorySourceRepository implements SourceRepositoryInterface
     public function getAll(): array
     {
         return $this->sources;
+    }
+
+    public function get(string $id): ?Source
+    {
+        return $this->sources[$id] ?? null;
     }
 }
