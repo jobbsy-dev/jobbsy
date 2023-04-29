@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Donation\Command\CreateDonationPaymentUrlCommand;
 use App\Message\CreateTweetMessage;
 use App\Message\Job\ClassifyMessage;
+use App\Shared\AsyncMessageInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\Mailer\Messenger\SendEmailMessage;
 use Symfony\Component\Notifier\Message\ChatMessage;
@@ -33,7 +34,7 @@ return static function (FrameworkConfig $config, ContainerConfigurator $containe
     $messenger->routing(SmsMessage::class)->senders(['async']);
     $messenger->routing(CreateTweetMessage::class)->senders(['async']);
     $messenger->routing(CreateDonationPaymentUrlCommand::class)->senders(['sync']);
-    $messenger->routing(ClassifyMessage::class)->senders(['async']);
+    $messenger->routing(AsyncMessageInterface::class)->senders(['async']);
 
     if ('test' === $containerConfigurator->env()) {
         $messenger

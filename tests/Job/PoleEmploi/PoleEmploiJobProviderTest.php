@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Tests\Provider\PoleEmploi;
+namespace App\Tests\Job\PoleEmploi;
 
-use App\Provider\PoleEmploi\PoleEmploiApi;
-use App\Provider\PoleEmploi\PoleEmploiJobProvider;
-use App\Provider\SearchParameters;
+use App\Job\PoleEmploi\PoleEmploiApi;
+use App\Job\PoleEmploi\PoleEmploiJobProvider;
+use App\Job\SearchParameters;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;

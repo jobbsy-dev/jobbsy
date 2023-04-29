@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Provider\WelcometotheJungle;
+namespace App\Job\WelcometotheJungle;
 
 use App\Entity\Job;
 use App\Job\EmploymentType;
+use App\Job\JobCollection;
+use App\Job\JobProviderInterface;
 use App\Job\LocationType;
-use App\Provider\JobCollection;
-use App\Provider\JobProviderInterface;
-use App\Provider\SearchParameters;
+use App\Job\SearchParameters;
 
 final readonly class WelcometotheJungleProvider implements JobProviderInterface
 {
