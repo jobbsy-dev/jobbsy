@@ -7,6 +7,7 @@ namespace App\Tests\CommunityEvent;
 use App\CommunityEvent\EventScraping;
 use App\CommunityEvent\FetchSourceCommand;
 use App\CommunityEvent\FetchSourceCommandHandler;
+use App\Entity\CommunityEvent\Event;
 use App\Entity\CommunityEvent\Source;
 use App\Tests\Repository\InMemoryEventRepository;
 use App\Tests\Repository\InMemorySourceRepository;
@@ -22,7 +23,9 @@ final class FetchSourceCommandHandlerTest extends TestCase
     public function testImport(): void
     {
         // Arrange
-        $mockResponse = new MockResponse(file_get_contents(__DIR__.'/fixtures/meetup_events_page.html'));
+        /** @var string $body */
+        $body = file_get_contents(__DIR__.'/fixtures/meetup_events_page.html');
+        $mockResponse = new MockResponse($body);
         $mockClient = new MockHttpClient([$mockResponse]);
         $goutteClient = new HttpBrowser($mockClient);
 
@@ -47,8 +50,10 @@ final class FetchSourceCommandHandlerTest extends TestCase
         $events = $eventRepository->getAll();
         self::assertCount(1, $events);
         $meetup = current($events);
+        self::assertNotNull($meetup);
+        self::assertInstanceOf(Event::class, $meetup);
         self::assertSame('Backend User Group #21', $meetup->getName());
         self::assertSame('https://www.meetup.com/backendos/events/290348177/', $meetup->getUrl());
-        self::assertSame('2023-01-19T18:30+01:00', $meetup->getStartDate()->format('Y-m-d\TH:iP'));
+        self::assertSame('2023-01-19T18:30+01:00', $meetup->getStartDate()?->format('Y-m-d\TH:iP'));
     }
 }

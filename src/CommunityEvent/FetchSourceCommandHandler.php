@@ -71,7 +71,9 @@ final readonly class FetchSourceCommandHandler
                             $event->setCountry($countryName);
                         } else {
                             $key = array_search($countryName, Countries::getNames(), true);
-                            $event->setCountry($key);
+                            if (false !== $key) {
+                                $event->setCountry($key);
+                            }
                         }
                     } elseif ('VirtualLocation' === $eventData['location']['@type']) {
                         $event->setAttendanceMode(AttendanceMode::ONLINE);
@@ -87,6 +89,10 @@ final readonly class FetchSourceCommandHandler
         }
 
         foreach ($events as $event) {
+            if (null === $event->getUrl()) {
+                continue;
+            }
+
             if (null !== $this->eventRepository->ofUrl($event->getUrl())) {
                 continue;
             }

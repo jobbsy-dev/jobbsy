@@ -31,11 +31,6 @@ parameters:
 			path: src/Broadcast/Twitter/TwitterApi.php
 
 		-
-			message: "#^Parameter \\#1 \\$country of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setCountry\\(\\) expects string\\|null, string\\|false given\\.$#"
-			count: 1
-			path: src/CommunityEvent/EventImporter.php
-
-		-
 			message: "#^Method App\\\\CommunityEvent\\\\EventScraping\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/CommunityEvent/EventScraping.php
@@ -454,11 +449,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$contactListId of class App\\\\Mailjet\\\\Model\\\\ManageContact\\\\ManageContactRequest constructor expects int, mixed given\\.$#"
 			count: 1
 			path: src/Subscription/MailjetSubscriptionAdapter.php
-
-		-
-			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
-			count: 1
-			path: tests/CommunityEvent/EventImporterTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"

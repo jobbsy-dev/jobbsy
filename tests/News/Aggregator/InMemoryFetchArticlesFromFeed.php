@@ -8,16 +8,13 @@ use App\Entity\News\Entry;
 use App\Entity\News\Feed;
 use App\News\Aggregator\FetchArticlesFromFeedInterface;
 
-final class InMemoryFetchArticlesFromFeed implements FetchArticlesFromFeedInterface
+final readonly class InMemoryFetchArticlesFromFeed implements FetchArticlesFromFeedInterface
 {
     /**
-     * @var Entry[]
+     * @param Entry[] $entries
      */
-    private array $entries;
-
-    public function __construct(array $entries)
+    public function __construct(private array $entries)
     {
-        $this->entries = $entries;
     }
 
     public function __invoke(Feed $feed): array
