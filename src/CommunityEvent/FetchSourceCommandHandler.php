@@ -83,7 +83,12 @@ final readonly class FetchSourceCommandHandler
                 $events[] = $event;
             }
         } catch (\Throwable $throwable) {
-            $this->logger->error($throwable->getMessage());
+            $this->logger->notice(
+                sprintf('Unable to fetch events from source "%s". Reason: %s', $source->getUrl(), $throwable->getMessage()),
+                [
+                    'sourceId' => $source->getId(),
+                ]
+            );
 
             return;
         }

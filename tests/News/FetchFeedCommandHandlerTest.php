@@ -13,6 +13,7 @@ use App\Tests\News\Aggregator\InMemoryFetchArticlesFromFeed;
 use App\Tests\Repository\InMemoryEntryRepository;
 use App\Tests\Repository\InMemoryFeedRepository;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\NullLogger;
 use Ramsey\Uuid\Uuid;
 
 final class FetchFeedCommandHandlerTest extends TestCase
@@ -33,7 +34,8 @@ final class FetchFeedCommandHandlerTest extends TestCase
         $handler = new FetchFeedCommandHandler(
             $feedRepository,
             $fetchArticlesFromFeedMain,
-            $entryRepository
+            $entryRepository,
+            new NullLogger()
         );
 
         // Act
