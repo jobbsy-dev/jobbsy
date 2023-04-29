@@ -2,7 +2,7 @@
 
 namespace App\Repository\CommunityEvent;
 
-use App\CommunityEvent\Repository\SourceRepositoryInterface;
+use App\CommunityEvent\SourceRepositoryInterface;
 use App\Entity\CommunityEvent\Source;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -43,5 +43,10 @@ final class SourceRepository extends ServiceEntityRepository implements SourceRe
     public function getAll(): array
     {
         return $this->findAll();
+    }
+
+    public function get(string $id): ?Source
+    {
+        return $this->find($id);
     }
 }

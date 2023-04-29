@@ -3,6 +3,7 @@
 namespace App\Repository\News;
 
 use App\Entity\News\Feed;
+use App\News\FeedRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,28 +15,27 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Feed[]    findAll()
  * @method Feed[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-final class FeedRepository extends ServiceEntityRepository
+final class FeedRepository extends ServiceEntityRepository implements FeedRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Feed::class);
     }
 
-    public function save(Feed $entity, bool $flush = false): void
+    public function save(Feed $feed): void
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->persist($feed);
+        $this->getEntityManager()->flush();
     }
 
-    public function remove(Feed $entity, bool $flush = false): void
+    public function remove(Feed $feed): void
     {
-        $this->getEntityManager()->remove($entity);
+        $this->getEntityManager()->remove($feed);
+        $this->getEntityManager()->flush();
+    }
 
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+    public function get(string $id): ?Feed
+    {
+        return $this->find($id);
     }
 }

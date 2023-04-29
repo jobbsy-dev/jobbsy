@@ -2,15 +2,14 @@
 
 namespace App\Command;
 
-use App\News\Aggregator\AggregateNews;
-use App\Repository\News\EntryRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\News\FetchFeedCommand;
+use App\Repository\News\FeedRepository;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Zenstruck\ScheduleBundle\Schedule\SelfSchedulingCommand;
 use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
 
@@ -21,9 +20,8 @@ use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
 final class AggregateNewsCommand extends Command implements SelfSchedulingCommand
 {
     public function __construct(
-        protected readonly AggregateNews $aggregateNews,
-        private readonly EntryRepository $articleRepository,
-        private readonly EntityManagerInterface $entityManager
+        private readonly FeedRepository $feedRepository,
+        private readonly MessageBusInterface $bus
     ) {
         parent::__construct();
     }
@@ -32,30 +30,13 @@ final class AggregateNewsCommand extends Command implements SelfSchedulingComman
     {
         $io = new SymfonyStyle($input, $output);
 
-        $articles = ($this->aggregateNews)();
+        $feeds = $this->feedRepository->findAll();
 
-        $progressBar = new ProgressBar($output, \count($articles));
-        $progressBar->start();
-        $i = 0;
-        foreach ($articles as $article) {
-            if (null !== $this->articleRepository->findOneBy(['link' => $article->getLink()])) {
-                continue;
-            }
+        foreach ($feeds as $feed) {
+            $this->bus->dispatch(new FetchFeedCommand($feed->getId()->toString()));
 
-            $this->entityManager->persist($article);
-
-            if (0 === ($i % 20)) {
-                $this->entityManager->flush();
-            }
-            ++$i;
-            $progressBar->advance();
+            $io->info(sprintf('Feed "%s" fetching scheduled...', $feed->getName()));
         }
-
-        $this->entityManager->flush();
-
-        $progressBar->finish();
-
-        $io->success('Successful pull');
 
         return Command::SUCCESS;
     }
