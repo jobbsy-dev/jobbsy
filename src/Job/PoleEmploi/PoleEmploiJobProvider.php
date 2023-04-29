@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Provider\PoleEmploi;
+namespace App\Job\PoleEmploi;
 
 use App\Entity\Job;
 use App\Job\EmploymentType;
-use App\Provider\JobCollection;
-use App\Provider\JobProviderInterface;
-use App\Provider\SearchParameters;
+use App\Job\JobCollection;
+use App\Job\JobProviderInterface;
+use App\Job\SearchParameters;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 final readonly class PoleEmploiJobProvider implements JobProviderInterface

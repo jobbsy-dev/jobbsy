@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Tests\Provider;
+namespace App\Tests\Job;
 
-use App\Provider\AccessToken;
+use App\Job\AccessToken;
 use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\InvalidArgumentException;
 

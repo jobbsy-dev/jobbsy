@@ -2,7 +2,9 @@
 
 namespace App\Message\Job;
 
-final readonly class ClassifyMessage
+use App\Shared\AsyncMessageInterface;
+
+final readonly class ClassifyMessage implements AsyncMessageInterface
 {
     public function __construct(public string $jobId)
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Provider\PoleEmploi;
+namespace App\Job\PoleEmploi;
 
-use App\Provider\AccessToken;
+use App\Job\AccessToken;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;

@@ -3,8 +3,8 @@
 namespace App\Command;
 
 use App\Job\Event\JobPostedEvent;
-use App\Provider\JobProvider;
-use App\Provider\SearchParameters;
+use App\Job\JobProvider;
+use App\Job\SearchParameters;
 use App\Repository\JobRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -13,8 +13,6 @@ use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Zenstruck\ScheduleBundle\Schedule\SelfSchedulingCommand;
 use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
@@ -28,11 +26,6 @@ final class JobProviderPullCommand extends Command implements SelfSchedulingComm
     public function __construct(
         private readonly JobProvider $provider,
         private readonly EntityManagerInterface $entityManager,
-        private readonly RouterInterface $router,
-        #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
-        private readonly string $commandRouterHost,
-        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
-        private readonly string $commandRouterScheme,
         private readonly EventDispatcherInterface $dispatcher,
         private readonly JobRepository $jobRepository,
     ) {
@@ -50,10 +43,6 @@ final class JobProviderPullCommand extends Command implements SelfSchedulingComm
         $parameters->to = $now;
 
         $jobs = $this->provider->retrieve($parameters);
-
-        $context = $this->router->getContext();
-        $context->setHost($this->commandRouterHost);
-        $context->setScheme($this->commandRouterScheme);
 
         $progressBar = new ProgressBar($output, $jobs->count());
         $progressBar->start();

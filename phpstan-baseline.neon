@@ -166,6 +166,166 @@ parameters:
 			path: src/Job/Command/PostJobOfferCommand.php
 
 		-
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiApi.php
+
+		-
+			message: "#^Parameter \\#3 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiApi.php
+
+		-
+			message: "#^Cannot access offset 'description' on mixed\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'entreprise' on mixed\\.$#"
+			count: 2
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'intitule' on mixed\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'libelle' on mixed\\.$#"
+			count: 3
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'lieuTravail' on mixed\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'logo' on mixed\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'natureContrat' on mixed\\.$#"
+			count: 2
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'nom' on mixed\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'origineOffre' on mixed\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'salaire' on mixed\\.$#"
+			count: 2
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'secteurActiviteLibe…' on mixed\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'typeContrat' on mixed\\.$#"
+			count: 2
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot access offset 'urlOrigine' on mixed\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 3
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Method App\\\\Job\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) has parameter \\$jobOffer with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$description of method App\\\\Entity\\\\Job\\:\\:setDescription\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$industry of method App\\\\Entity\\\\Job\\:\\:setIndustry\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$jobOffer of method App\\\\Job\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$organizationImageUrl of method App\\\\Entity\\\\Job\\:\\:setOrganizationImageUrl\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$salary of method App\\\\Entity\\\\Job\\:\\:setSalary\\(\\) expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\$location of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\$organization of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\$title of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Parameter \\$url of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+
+		-
+			message: "#^Method App\\\\Job\\\\Scraping\\\\JobScraper\\:\\:scrap\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Job/Scraping/JobScraper.php
+
+		-
+			message: "#^Method App\\\\Job\\\\Scraping\\\\JobScraper\\:\\:scrap\\(\\) should return array but returns array\\|null\\.$#"
+			count: 1
+			path: src/Job/Scraping/JobScraper.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$decodedData has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Job/Scraping/JobScraper.php
+
+		-
+			message: "#^Method App\\\\Job\\\\WelcometotheJungle\\\\WelcometotheJungleClient\\:\\:crawl\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Job/WelcometotheJungle/WelcometotheJungleClient.php
+
+		-
+			message: "#^Method App\\\\Job\\\\WelcometotheJungle\\\\WelcometotheJungleClient\\:\\:getLocation\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Job/WelcometotheJungle/WelcometotheJungleClient.php
+
+		-
+			message: "#^Method App\\\\Job\\\\WelcometotheJungle\\\\WelcometotheJungleClient\\:\\:shouldSkip\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Job/WelcometotheJungle/WelcometotheJungleClient.php
+
+		-
 			message: "#^Method App\\\\Mailjet\\\\MailjetApi\\:\\:addContactToList\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Mailjet/MailjetApi.php
@@ -266,166 +426,6 @@ parameters:
 			path: src/News/Aggregator/FetchArticlesFromFeed.php
 
 		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiApi.php
-
-		-
-			message: "#^Parameter \\#3 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiApi.php
-
-		-
-			message: "#^Cannot access offset 'description' on mixed\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'entreprise' on mixed\\.$#"
-			count: 2
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'intitule' on mixed\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'libelle' on mixed\\.$#"
-			count: 3
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'lieuTravail' on mixed\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'logo' on mixed\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'natureContrat' on mixed\\.$#"
-			count: 2
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'nom' on mixed\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'origineOffre' on mixed\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'salaire' on mixed\\.$#"
-			count: 2
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'secteurActiviteLibe…' on mixed\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'typeContrat' on mixed\\.$#"
-			count: 2
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'urlOrigine' on mixed\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot cast mixed to string\\.$#"
-			count: 3
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) has parameter \\$jobOffer with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\#1 \\$description of method App\\\\Entity\\\\Job\\:\\:setDescription\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\#1 \\$industry of method App\\\\Entity\\\\Job\\:\\:setIndustry\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\#1 \\$jobOffer of method App\\\\Provider\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) expects array, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\#1 \\$organizationImageUrl of method App\\\\Entity\\\\Job\\:\\:setOrganizationImageUrl\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\#1 \\$salary of method App\\\\Entity\\\\Job\\:\\:setSalary\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\$location of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\$organization of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\$title of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\$url of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/Provider/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Method App\\\\Provider\\\\Scraping\\\\JobScraper\\:\\:scrap\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Provider/Scraping/JobScraper.php
-
-		-
-			message: "#^Method App\\\\Provider\\\\Scraping\\\\JobScraper\\:\\:scrap\\(\\) should return array but returns array\\|null\\.$#"
-			count: 1
-			path: src/Provider/Scraping/JobScraper.php
-
-		-
-			message: "#^PHPDoc tag @var for variable \\$decodedData has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Provider/Scraping/JobScraper.php
-
-		-
-			message: "#^Method App\\\\Provider\\\\WelcometotheJungle\\\\WelcometotheJungleClient\\:\\:crawl\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Provider/WelcometotheJungle/WelcometotheJungleClient.php
-
-		-
-			message: "#^Method App\\\\Provider\\\\WelcometotheJungle\\\\WelcometotheJungleClient\\:\\:getLocation\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Provider/WelcometotheJungle/WelcometotheJungleClient.php
-
-		-
-			message: "#^Method App\\\\Provider\\\\WelcometotheJungle\\\\WelcometotheJungleClient\\:\\:shouldSkip\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Provider/WelcometotheJungle/WelcometotheJungleClient.php
-
-		-
 			message: "#^Method App\\\\Repository\\\\JobRepository\\:\\:jobsByEmploymentType\\(\\) should return array\\<App\\\\Entity\\\\Job\\> but returns mixed\\.$#"
 			count: 1
 			path: src/Repository/JobRepository.php
@@ -471,6 +471,21 @@ parameters:
 			path: tests/Controller/JobControllerTest.php
 
 		-
+			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
+			count: 2
+			path: tests/Job/PoleEmploi/PoleEmploiApiTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
+			count: 3
+			path: tests/Job/WelcometotheJungle/WelcometotheJungleClientTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
+			count: 3
+			path: tests/Job/WelcometotheJungle/WelcometotheJungleProviderTest.php
+
+		-
 			message: "#^Cannot access property \\$data on App\\\\Mailjet\\\\Model\\\\SendCampaignDraft\\\\SendCampaignDraftResponse\\|null\\.$#"
 			count: 1
 			path: tests/Mailjet/MailjetApiTest.php
@@ -499,21 +514,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
 			count: 2
 			path: tests/News/Aggregator/RSS/ClientTest.php
-
-		-
-			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
-			count: 2
-			path: tests/Provider/PoleEmploi/PoleEmploiApiTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
-			count: 3
-			path: tests/Provider/WelcometotheJungle/WelcometotheJungleClientTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
-			count: 3
-			path: tests/Provider/WelcometotheJungle/WelcometotheJungleProviderTest.php
 
 		-
 			message: "#^Property App\\\\Tests\\\\Repository\\\\InMemoryJobRepository\\:\\:\\$jobs \\(array\\<string, App\\\\Entity\\\\Job\\>\\) does not accept array\\<int\\|string, App\\\\Entity\\\\Job\\>\\.$#"

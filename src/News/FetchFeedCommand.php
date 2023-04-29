@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\News;
 
-final readonly class FetchFeedCommand
+use App\Shared\AsyncMessageInterface;
+
+final readonly class FetchFeedCommand implements AsyncMessageInterface
 {
     public function __construct(public string $feedId)
     {
