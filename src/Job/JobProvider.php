@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Provider;
+namespace App\Job;
 
 use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 

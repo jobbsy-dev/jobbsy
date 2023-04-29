@@ -76,7 +76,7 @@ aggregate-events:
 	$(SYMFONY_CLI) console app:aggregate-events
 
 aggregate-jobs:
-	$(SYMFONY_CLI) app:job-provider:retrieve
+	$(SYMFONY_CLI) console app:job-provider:retrieve
 
 schedule:
 	$(SYMFONY_CLI) console schedule:list

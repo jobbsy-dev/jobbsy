@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Provider\WelcometotheJungle;
+namespace App\Job\WelcometotheJungle;
 
-use App\Provider\Scraping\JobScraper;
+use App\Job\Scraping\JobScraper;
 use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Intl\Countries;

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Tests\Provider;
+namespace App\Tests\Job;
 
 use App\Entity\Job;
 use App\Job\EmploymentType;
-use App\Provider\JobProvider;
-use App\Provider\SearchParameters;
+use App\Job\JobProvider;
+use App\Job\SearchParameters;
 use PHPUnit\Framework\TestCase;
 
 final class JobProviderTest extends TestCase

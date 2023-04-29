@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Tests\Provider\PoleEmploi;
+namespace App\Tests\Job\PoleEmploi;
 
-use App\Provider\PoleEmploi\PoleEmploiApi;
+use App\Job\PoleEmploi\PoleEmploiApi;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;

@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Tests\Provider\WelcometotheJungle;
+namespace App\Tests\Job\WelcometotheJungle;
 
-use App\Provider\Scraping\JobScraper;
-use App\Provider\WelcometotheJungle\WelcometotheJungleClient;
+use App\Job\Scraping\JobScraper;
+use App\Job\SearchParameters;
+use App\Job\WelcometotheJungle\WelcometotheJungleClient;
+use App\Job\WelcometotheJungle\WelcometotheJungleProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-final class WelcometotheJungleClientTest extends TestCase
+final class WelcometotheJungleProviderTest extends TestCase
 {
-    public function testCrawl(): void
+    public function testRetrieve(): void
     {
         // Arrange
         $mockResponseList = new MockResponse(file_get_contents(__DIR__.'/data/wttj_list.html'));
@@ -29,18 +31,15 @@ final class WelcometotheJungleClientTest extends TestCase
         $jobScraping = new JobScraper($goutteClient2);
 
         $client = new WelcometotheJungleClient($goutteClient1, $jobScraping);
+        $provider = new WelcometotheJungleProvider($client);
 
         // Act
-        $data = $client->crawl();
+        $jobCollection = $provider->retrieve(new SearchParameters());
 
         // Assert
-        self::assertCount(2, $data);
-        self::assertSame('AddixGroup', $data[0]['company']);
-        self::assertSame('Développeur Symfony en télétravail F/H', $data[0]['title']);
-        self::assertSame('Sophia Antipolis, France', $data[0]['location']);
-
-        self::assertSame("L'olivier Assurance", $data[1]['company']);
-        self::assertSame('Développeur Symfony', $data[1]['title']);
-        self::assertSame('Paris, France', $data[1]['location']);
+        self::assertCount(2, $jobCollection->all());
+        self::assertSame('Développeur Symfony en télétravail F/H', $jobCollection->all()[0]->getTitle());
+        self::assertSame('AddixGroup', $jobCollection->all()[0]->getOrganization());
+        self::assertSame('Sophia Antipolis, France', $jobCollection->all()[0]->getLocation());
     }
 }

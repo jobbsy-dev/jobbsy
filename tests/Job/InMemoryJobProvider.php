@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Tests\Provider;
+namespace App\Tests\Job;
 
 use App\Entity\Job;
-use App\Provider\JobCollection;
-use App\Provider\JobProviderInterface;
-use App\Provider\SearchParameters;
+use App\Job\JobCollection;
+use App\Job\JobProviderInterface;
+use App\Job\SearchParameters;
 
 final class InMemoryJobProvider implements JobProviderInterface
 {

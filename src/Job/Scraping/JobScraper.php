@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Provider\Scraping;
+namespace App\Job\Scraping;
 
 use Symfony\Component\BrowserKit\HttpBrowser;
 
