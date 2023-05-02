@@ -39,7 +39,6 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
             ->where($qb->expr()->isNotNull('job.publishedAt'))
             ->andWhere($qb->expr()->isNull('job.pinnedUntil'))
             ->addOrderBy('job.publishedAt', Criteria::DESC)
-            ->addOrderBy('job.pinnedUntil', Criteria::DESC)
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
@@ -129,7 +128,6 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
             ->where($qb->expr()->isNotNull('job.publishedAt'))
             ->andWhere('job.locationType = :locationType')
             ->setParameter('locationType', $locationType)
-            ->addOrderBy('job.pinnedUntil', Criteria::DESC)
             ->addOrderBy('job.publishedAt', Criteria::DESC)
             ->setMaxResults($limit)
             ->getQuery()
@@ -147,7 +145,6 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
             ->where($qb->expr()->isNotNull('job.publishedAt'))
             ->andWhere('job.employmentType = :employmentType')
             ->setParameter('employmentType', $employmentType)
-            ->addOrderBy('job.pinnedUntil', Criteria::DESC)
             ->addOrderBy('job.publishedAt', Criteria::DESC)
             ->setMaxResults($limit)
             ->getQuery()
