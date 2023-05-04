@@ -32,6 +32,7 @@
         {% block extra_scripts %}
             {% if app.environment is same as 'prod' %}
                 <script defer data-domain="jobbsy.dev" src="https://analytics.jobbsy.dev/js/plausible.js"></script>
+                <script defer data-domain="jobbsy.dev" src="https://plausible.io/js/script.js"></script>
             {% endif %}
         {% endblock %}
     </head>
