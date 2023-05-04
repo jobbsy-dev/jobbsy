@@ -14,6 +14,7 @@ Online and official website is available on [jobbsy.dev](https://jobbsy.dev).
 - PHP intl extension
 - Node.js v17.2 or higher and yarn
 - [Composer](https://getcomposer.org)
+- [Docker](https://www.docker.com/)
 - (optional) [Symfony CLI](https://symfony.com/download) to easily launch project
 
 ## 🏗 How to install
@@ -43,10 +44,15 @@ You can now build the assets:
 yarn dev
 ```
 
-Finally create and run database migrations:
+Launch database service (and adapt it to your needs by copying `docker-compose.override.yaml.dist` to `docker-compose.override.yaml`)
 
 ```bash
-php bin/console doctrine:database:create
+docker compose up -d
+```
+
+Finally, run database migrations:
+
+```bash
 php bin/console doctrine:migrations:migrate
 ```
 
