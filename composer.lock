@@ -3518,21 +3518,21 @@
         },
         {
             "name": "league/flysystem-memory",
-            "version": "3.13.0",
+            "version": "3.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-memory.git",
-                "reference": "c85484b1336a080d4591038315a7b2008ccb4eee"
+                "reference": "b6caa40a84ae1d7dd9c4c1ff8b797e08790ee892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-memory/zipball/c85484b1336a080d4591038315a7b2008ccb4eee",
-                "reference": "c85484b1336a080d4591038315a7b2008ccb4eee",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-memory/zipball/b6caa40a84ae1d7dd9c4c1ff8b797e08790ee892",
+                "reference": "b6caa40a84ae1d7dd9c4c1ff8b797e08790ee892",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "league/flysystem": "^2.0.0 || ^3.0.0",
+                "league/flysystem": "^3.0.0",
                 "php": "^8.0.2"
             },
             "type": "library",
@@ -3561,7 +3561,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem-memory/issues",
-                "source": "https://github.com/thephpleague/flysystem-memory/tree/3.13.0"
+                "source": "https://github.com/thephpleague/flysystem-memory/tree/3.15.0"
             },
             "funding": [
                 {
@@ -3573,7 +3573,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-04-11T17:15:27+00:00"
+            "time": "2023-05-02T20:02:14+00:00"
         },
         {
             "name": "league/glide",
