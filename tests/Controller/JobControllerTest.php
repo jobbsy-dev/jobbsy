@@ -43,7 +43,6 @@ final class JobControllerTest extends WebTestCase
             'post_job_offer[organization]' => 'Symfony',
             'post_job_offer[url]' => 'https://symfony.com',
             'post_job_offer[tags]' => 'symfony,freelance,sql',
-            'post_job_offer[donationAmount]' => 0,
             'post_job_offer[contactEmail]' => 'test@example.com',
         ]);
         self::assertResponseRedirects('/');
