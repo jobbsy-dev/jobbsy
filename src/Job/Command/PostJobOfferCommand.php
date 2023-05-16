@@ -49,8 +49,7 @@ final class PostJobOfferCommand
     public LocationType $locationType = LocationType::REMOTE;
 
     #[Assert\GreaterThanOrEqual(0)]
-    #[Assert\NotBlank]
-    public int $donationAmount = 5000;
+    public ?int $donationAmount = null;
 
     public function toEntity(): Job
     {

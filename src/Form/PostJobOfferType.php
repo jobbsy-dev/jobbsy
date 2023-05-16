@@ -54,7 +54,8 @@ final class PostJobOfferType extends AbstractType
                 'help' => 'form.help.organization_logo',
             ])
             ->add('donationAmount', MoneyType::class, [
-                'label' => 'form.label.donation_amount',
+                'required' => false,
+                'label' => false,
                 'divisor' => 100,
                 'html5' => true,
                 'attr' => [

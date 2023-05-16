@@ -76,7 +76,7 @@ final class JobController extends AbstractController
 
             $this->addFlash('success', 'Job posted successfully!');
 
-            if (0 === $command->donationAmount) {
+            if (null === $command->donationAmount) {
                 return $this->redirectToRoute('job_index');
             }
 

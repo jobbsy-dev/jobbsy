@@ -37,15 +37,6 @@ fixtures: vendor						## Load fixtures test env
 test: vendor bootstrap-tests fixtures	## Run tests
 	$(SYMFONY_CLI) $(PHPUNIT)
 
-deploy:								## Deploy
-	ansible-playbook --vault-password-file=.ansible/.vault_pass .ansible/deploy.yml -i .ansible/inventory.yml
-
-decrypt-vault:						## Decrypt Ansible vault
-	ansible-vault decrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass
-
-encrypt-vault:						## Encrypt Ansible vault
-	ansible-vault encrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass
-
 bootstrap-tests:					## Bootstrap tests
 	$(SYMFONY_CLI) console d:d:d --env=test --force --if-exists
 	$(SYMFONY_CLI) console d:d:c --env=test
@@ -80,3 +71,9 @@ aggregate-jobs:
 
 schedule:
 	$(SYMFONY_CLI) console schedule:list
+
+assets:
+	yarn install
+	yarn dev
+
+install: vendor assets
