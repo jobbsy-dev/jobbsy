@@ -22,4 +22,6 @@ docker-compose.override.yaml
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
 .ansible/.vault_pass
+phpstan.neon
