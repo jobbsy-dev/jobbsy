@@ -22,8 +22,30 @@ jobs:
                   php-version: 8.2
                   tools: composer, symfony
 
+            - name: "Set composer cache directory"
+              id: composer-cache
+              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+            - name: "Cache composer"
+              uses: actions/cache@v3
+              with:
+                  path: ${{ steps.composer-cache.outputs.dir }}
+                  key: composer-phpcsfixer-${{ hashFiles('tools/php-cs-fixer/composer.lock') }}
+                  restore-keys: composer-phpcsfixer-
+
+            - name: "Cache phpcsfixer"
+              uses: actions/cache@v3
+              with:
+                  path: var/.php-cs-fixer.cache
+                  key: phpcsfixer-${{ github.sha }}
+                  restore-keys: phpcsfixer-
+
+            - name: "Composer install"
+              id: install
+              run: composer install --no-interaction --no-progress --working-dir=tools/php-cs-fixer
+
             - name: "PHP-CS-Fixer"
-              run: make phpcsfix
+              run: ./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff --dry-run
 
     linters:
         name: Linters
@@ -39,11 +61,11 @@ jobs:
                   coverage: "none"
                   extensions: intl, ctype, iconv, gd
                   php-version: 8.2
-                  tools: composer, symfony
+                  tools: composer
 
             - name: "Set composer cache directory"
               id: composer-cache
-              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
             - name: "Cache composer"
               uses: actions/cache@v3
@@ -78,7 +100,7 @@ jobs:
 
             - name: Check if any dependencies are compromised
               if: always() && steps.install.outcome == 'success'
-              run: symfony check:security
+              run: composer audit
 
             - name: PHPStan
               if: always() && steps.install.outcome == 'success'

@@ -32,5 +32,5 @@ return (new PhpCsFixer\Config())
         'PedroTroller/doctrine_migrations' => true,
     ])
     ->setFinder($finder)
-    ->setCacheFile(__DIR__.'/var/.php_cs.cache')
+    ->setCacheFile(__DIR__.'/var/.php-cs-fixer.cache')
 ;
