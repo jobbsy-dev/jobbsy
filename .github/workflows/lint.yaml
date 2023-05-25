@@ -20,7 +20,7 @@ jobs:
                   coverage: "none"
                   extensions: intl, ctype, iconv
                   php-version: 8.2
-                  tools: composer
+                  tools: composer, symfony
 
             - name: "Set composer cache directory"
               id: composer-cache
