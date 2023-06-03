@@ -71,7 +71,7 @@ class Event
     #[ApiProperty(types: ['https://schema.org/eventAttendanceMode'])]
     private ?AttendanceMode $attendanceMode = null;
 
-    public function __construct(?UuidInterface $id = null)
+    public function __construct(UuidInterface $id = null)
     {
         if (null === $id) {
             $id = Uuid::uuid4();

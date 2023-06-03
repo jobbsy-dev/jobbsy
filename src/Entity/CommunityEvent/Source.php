@@ -20,7 +20,7 @@ class Source
     private ?string $url = null;
 
     public function __construct(
-        ?UuidInterface $id = null,
+        UuidInterface $id = null,
         #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
         public readonly \DateTimeImmutable $createdAt = new \DateTimeImmutable()
     ) {
