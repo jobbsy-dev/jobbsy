@@ -3,6 +3,7 @@
 namespace App\Tests\Controller;
 
 use App\DataFixtures\AppFixtures;
+use App\Entity\Job;
 use App\Job\EmploymentType;
 use App\Repository\JobRepository;
 use App\Tests\Mock\MockStripeClient;
@@ -89,7 +90,10 @@ final class JobControllerTest extends WebTestCase
         $client->request('GET', sprintf('/job/%s/donation/success?session_id=10', AppFixtures::JOB_2_ID));
         self::assertResponseIsSuccessful();
 
-        $job = static::getContainer()->get(JobRepository::class)->find(AppFixtures::JOB_2_ID);
+        /** @var JobRepository $jobRepository */
+        $jobRepository = static::getContainer()->get(JobRepository::class);
+        /** @var Job $job */
+        $job = $jobRepository->find(AppFixtures::JOB_2_ID);
 
         self::assertFalse($job->isPinned());
     }
@@ -105,7 +109,10 @@ final class JobControllerTest extends WebTestCase
         $client->request('GET', sprintf('/job/%s/donation/success?session_id=10', AppFixtures::JOB_2_ID));
         self::assertResponseIsSuccessful();
 
-        $job = static::getContainer()->get(JobRepository::class)->find(AppFixtures::JOB_2_ID);
+        /** @var JobRepository $jobRepository */
+        $jobRepository = static::getContainer()->get(JobRepository::class);
+        /** @var Job $job */
+        $job = $jobRepository->find(AppFixtures::JOB_2_ID);
 
         self::assertTrue($job->isPinned());
     }

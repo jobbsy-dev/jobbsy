@@ -456,11 +456,6 @@ parameters:
 			path: tests/CommunityEvent/EventScrapingTest.php
 
 		-
-			message: "#^Cannot call method find\\(\\) on object\\|null\\.$#"
-			count: 2
-			path: tests/Controller/JobControllerTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$createSessionResponse of class App\\\\Tests\\\\Mock\\\\MockStripeClient constructor expects string\\|null, string\\|false given\\.$#"
 			count: 2
 			path: tests/Controller/JobControllerTest.php
