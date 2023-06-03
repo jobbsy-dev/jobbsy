@@ -2116,16 +2116,16 @@
         },
         {
             "name": "easycorp/easyadmin-bundle",
-            "version": "v4.6.5",
+            "version": "v4.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
-                "reference": "3cdf4c2767e16d101cad33b32223052c1fe512a8"
+                "reference": "ef10d412109429cf47bb5a406bbba6a256255350"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/3cdf4c2767e16d101cad33b32223052c1fe512a8",
-                "reference": "3cdf4c2767e16d101cad33b32223052c1fe512a8",
+                "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/ef10d412109429cf47bb5a406bbba6a256255350",
+                "reference": "ef10d412109429cf47bb5a406bbba6a256255350",
                 "shasum": ""
             },
             "require": {
@@ -2164,6 +2164,7 @@
                 "psr/log": "^1.0",
                 "symfony/browser-kit": "^5.4|^6.0",
                 "symfony/css-selector": "^5.4|^6.0",
+                "symfony/debug-bundle": "^5.4|^6.0",
                 "symfony/dom-crawler": "^5.4|^6.0",
                 "symfony/phpunit-bridge": "^5.4|^6.0"
             },
@@ -2197,7 +2198,7 @@
             ],
             "support": {
                 "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
-                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.6.5"
+                "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.6.6"
             },
             "funding": [
                 {
@@ -2205,7 +2206,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-04T18:22:06+00:00"
+            "time": "2023-05-30T18:19:51+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -6860,36 +6861,38 @@
         },
         {
             "name": "symfony/doctrine-bridge",
-            "version": "v6.2.9",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/doctrine-bridge.git",
-                "reference": "4b3aeaa90d41c5527d7ba211d12102cedf06936e"
+                "reference": "501d0c8dc627d2f6ad6185920d4db74477a98e75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/doctrine-bridge/zipball/4b3aeaa90d41c5527d7ba211d12102cedf06936e",
-                "reference": "4b3aeaa90d41c5527d7ba211d12102cedf06936e",
+                "url": "https://api.github.com/repos/symfony/doctrine-bridge/zipball/501d0c8dc627d2f6ad6185920d4db74477a98e75",
+                "reference": "501d0c8dc627d2f6ad6185920d4db74477a98e75",
                 "shasum": ""
             },
             "require": {
                 "doctrine/event-manager": "^1.2|^2",
                 "doctrine/persistence": "^2|^3",
                 "php": ">=8.1",
-                "symfony/deprecation-contracts": "^2.1|^3",
+                "symfony/deprecation-contracts": "^2.5|^3",
                 "symfony/polyfill-ctype": "~1.8",
                 "symfony/polyfill-mbstring": "~1.0",
-                "symfony/service-contracts": "^1.1|^2|^3"
+                "symfony/service-contracts": "^2.5|^3"
             },
             "conflict": {
+                "doctrine/annotations": "<1.13.1",
                 "doctrine/dbal": "<2.13.1",
                 "doctrine/lexer": "<1.1",
-                "doctrine/orm": "<2.7.4",
-                "phpunit/phpunit": "<5.4.3",
+                "doctrine/orm": "<2.12",
                 "symfony/cache": "<5.4",
-                "symfony/dependency-injection": "<5.4",
+                "symfony/dependency-injection": "<6.2",
                 "symfony/form": "<5.4.21|>=6,<6.2.7",
+                "symfony/http-foundation": "<6.3",
                 "symfony/http-kernel": "<6.2",
+                "symfony/lock": "<6.3",
                 "symfony/messenger": "<5.4",
                 "symfony/property-info": "<5.4",
                 "symfony/security-bundle": "<5.4",
@@ -6897,19 +6900,20 @@
                 "symfony/validator": "<5.4"
             },
             "require-dev": {
-                "doctrine/annotations": "^1.10.4|^2",
+                "doctrine/annotations": "^1.13.1|^2",
                 "doctrine/collections": "^1.0|^2.0",
                 "doctrine/data-fixtures": "^1.1",
                 "doctrine/dbal": "^2.13.1|^3.0",
-                "doctrine/orm": "^2.7.4",
+                "doctrine/orm": "^2.12",
                 "psr/log": "^1|^2|^3",
                 "symfony/cache": "^5.4|^6.0",
                 "symfony/config": "^5.4|^6.0",
-                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/dependency-injection": "^6.2",
                 "symfony/doctrine-messenger": "^5.4|^6.0",
                 "symfony/expression-language": "^5.4|^6.0",
                 "symfony/form": "^5.4.21|^6.2.7",
-                "symfony/http-kernel": "^6.2",
+                "symfony/http-kernel": "^6.3",
+                "symfony/lock": "^6.3",
                 "symfony/messenger": "^5.4|^6.0",
                 "symfony/property-access": "^5.4|^6.0",
                 "symfony/property-info": "^5.4|^6.0",
@@ -6920,14 +6924,6 @@
                 "symfony/uid": "^5.4|^6.0",
                 "symfony/validator": "^5.4|^6.0",
                 "symfony/var-dumper": "^5.4|^6.0"
-            },
-            "suggest": {
-                "doctrine/data-fixtures": "",
-                "doctrine/dbal": "",
-                "doctrine/orm": "",
-                "symfony/form": "",
-                "symfony/property-info": "",
-                "symfony/validator": ""
             },
             "type": "symfony-bridge",
             "autoload": {
@@ -6955,7 +6951,7 @@
             "description": "Provides integration for Doctrine with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/doctrine-bridge/tree/v6.2.9"
+                "source": "https://github.com/symfony/doctrine-bridge/tree/v6.3.0"
             },
             "funding": [
                 {
@@ -6971,7 +6967,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-11T16:08:35+00:00"
+            "time": "2023-05-25T13:09:35+00:00"
         },
         {
             "name": "symfony/doctrine-messenger",
