@@ -39,7 +39,7 @@ final class EventRepository extends ServiceEntityRepository implements EventRepo
     /**
      * @return Event[]
      */
-    public function findUpcomingEvents(?int $limit = null): array
+    public function findUpcomingEvents(int $limit = null): array
     {
         return $this->createQueryBuilder('event')
             ->where('event.startDate >= :today')

@@ -121,7 +121,7 @@ class Job
         EmploymentType $employmentType,
         string $organization,
         string $url,
-        ?UuidInterface $id = null
+        UuidInterface $id = null
     ) {
         if (null === $id) {
             $id = Uuid::uuid4();
@@ -273,7 +273,7 @@ class Job
         $this->tweetId = $tweetId;
     }
 
-    public function publish(?\DateTimeImmutable $publishedAt = null): void
+    public function publish(\DateTimeImmutable $publishedAt = null): void
     {
         if (null === $publishedAt) {
             $publishedAt = new \DateTimeImmutable();
