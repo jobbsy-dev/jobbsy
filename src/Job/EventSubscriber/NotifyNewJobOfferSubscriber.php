@@ -45,7 +45,7 @@ final readonly class NotifyNewJobOfferSubscriber implements EventSubscriberInter
             ->field($job->getUrl())
         ;
 
-        if (false === empty($job->getSalary())) {
+        if (false === ($job->getSalary() === null || $job->getSalary() === '')) {
             $detailsSection
                 ->field('Salary')
                 ->field($job->getSalary());
