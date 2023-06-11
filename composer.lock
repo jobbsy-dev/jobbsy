@@ -12388,16 +12388,16 @@
         },
         {
             "name": "zenstruck/schedule-bundle",
-            "version": "v1.6.0",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zenstruck/schedule-bundle.git",
-                "reference": "871e484a1b155a5566bbafa8834cc0648248fae5"
+                "reference": "8df2a991aae50b6bedf4759f0252556e80086a96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/schedule-bundle/zipball/871e484a1b155a5566bbafa8834cc0648248fae5",
-                "reference": "871e484a1b155a5566bbafa8834cc0648248fae5",
+                "url": "https://api.github.com/repos/zenstruck/schedule-bundle/zipball/8df2a991aae50b6bedf4759f0252556e80086a96",
+                "reference": "8df2a991aae50b6bedf4759f0252556e80086a96",
                 "shasum": ""
             },
             "require": {
@@ -12455,7 +12455,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zenstruck/schedule-bundle/issues",
-                "source": "https://github.com/zenstruck/schedule-bundle/tree/v1.6.0"
+                "source": "https://github.com/zenstruck/schedule-bundle/tree/v1.7.0"
             },
             "funding": [
                 {
@@ -12463,7 +12463,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-04T19:28:29+00:00"
+            "time": "2023-06-05T22:02:03+00:00"
         }
     ],
     "packages-dev": [
