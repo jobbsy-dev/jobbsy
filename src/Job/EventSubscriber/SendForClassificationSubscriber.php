@@ -28,7 +28,7 @@ final readonly class SendForClassificationSubscriber implements EventSubscriberI
             return;
         }
 
-        if ($job->getDescription() === null || $job->getDescription() === '') {
+        if (null === $job->getDescription() || '' === $job->getDescription()) {
             return;
         }
 
