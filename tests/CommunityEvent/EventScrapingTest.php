@@ -10,7 +10,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class EventScrapingTest extends TestCase
 {
-    public function testCrawl(): void
+    public function test_crawl(): void
     {
         // Arrange
         $mockResponse = new MockResponse(file_get_contents(__DIR__.'/fixtures/meetup_events_page.html'));

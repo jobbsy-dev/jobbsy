@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class JobProviderTest extends TestCase
 {
-    public function testRetrieve(): void
+    public function test_retrieve(): void
     {
         $job1 = new Job(
             'Job 1',

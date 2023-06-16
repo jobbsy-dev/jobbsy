@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class JobControllerTest extends WebTestCase
 {
-    public function testListJobsOffers(): void
+    public function test_list_jobs_offers(): void
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/');
@@ -31,7 +31,7 @@ final class JobControllerTest extends WebTestCase
         );
     }
 
-    public function testCreateJobOfferWithoutDonation(): void
+    public function test_create_job_offer_without_donation(): void
     {
         $client = static::createClient();
         $client->request('GET', '/job/new');
@@ -55,7 +55,7 @@ final class JobControllerTest extends WebTestCase
         );
     }
 
-    public function testCreateJobOfferWithDonation(): void
+    public function test_create_job_offer_with_donation(): void
     {
         $client = static::createClient();
         $client->request('GET', '/job/new');
@@ -79,7 +79,7 @@ final class JobControllerTest extends WebTestCase
         self::assertResponseRedirects('https://checkout.stripe.com/pay/xxx');
     }
 
-    public function testJobDonationSuccessWithUnpaidPayment(): void
+    public function test_job_donation_success_with_unpaid_payment(): void
     {
         $mockStripeClient = new MockStripeClient(
             retrieveSessionResponse: file_get_contents(__DIR__.'/../Mock/retrieve_session_unpaid.json')
@@ -98,7 +98,7 @@ final class JobControllerTest extends WebTestCase
         self::assertFalse($job->isPinned());
     }
 
-    public function testJobDonationSuccessWithPaidPayment(): void
+    public function test_job_donation_success_with_paid_payment(): void
     {
         $mockStripeClient = new MockStripeClient(
             retrieveSessionResponse: file_get_contents(__DIR__.'/../Mock/retrieve_session_paid.json')
@@ -117,21 +117,21 @@ final class JobControllerTest extends WebTestCase
         self::assertTrue($job->isPinned());
     }
 
-    public function testJobDonationCancelled(): void
+    public function test_job_donation_cancelled(): void
     {
         $client = static::createClient();
         $client->request('GET', '/job/donation/cancel');
         self::assertResponseIsSuccessful('Donation cancelled');
     }
 
-    public function testJobRedirect(): void
+    public function test_job_redirect(): void
     {
         $client = static::createClient();
         $client->request('GET', '/job/'.AppFixtures::JOB_1_ID);
         self::assertResponseRedirects('https://example.com?ref=jobbsy');
     }
 
-    public function testSponsorJob(): void
+    public function test_sponsor_job(): void
     {
         $client = static::createClient();
         $client->request('GET', sprintf('/job/%s/sponsor', AppFixtures::JOB_1_ID));

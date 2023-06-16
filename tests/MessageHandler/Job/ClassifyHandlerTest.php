@@ -16,7 +16,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class ClassifyHandlerTest extends TestCase
 {
-    public function testClassifyJob(): void
+    public function test_classify_job(): void
     {
         // Arrange
         $job = new Job('', '', EmploymentType::FULLTIME, '', '', Uuid::fromString('d43b7e10-cbc7-40d1-a9d4-aa73fc825456'));

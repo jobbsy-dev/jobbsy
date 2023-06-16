@@ -11,7 +11,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class WelcometotheJungleClientTest extends TestCase
 {
-    public function testCrawl(): void
+    public function test_crawl(): void
     {
         // Arrange
         $mockResponseList = new MockResponse(file_get_contents(__DIR__.'/data/wttj_list.html'));

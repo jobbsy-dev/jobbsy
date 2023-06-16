@@ -9,7 +9,7 @@ final class DefaultControllerTest extends WebTestCase
     /**
      * @dataProvider provideUrls
      */
-    public function testUrlIsOk(string $url): void
+    public function test_url_is_ok(string $url): void
     {
         $client = static::createClient();
         $client->request('GET', $url);

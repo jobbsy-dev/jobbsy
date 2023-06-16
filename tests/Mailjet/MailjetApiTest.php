@@ -14,7 +14,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class MailjetApiTest extends TestCase
 {
-    public function testCreateContact(): void
+    public function test_create_contact(): void
     {
         // Arrange
         $requestData = [
@@ -53,7 +53,7 @@ final class MailjetApiTest extends TestCase
         self::assertSame($expectedResponseData['Data'], $responseData);
     }
 
-    public function testAddContactToList(): void
+    public function test_add_contact_to_list(): void
     {
         // Arrange
         $requestData = [
@@ -93,7 +93,7 @@ final class MailjetApiTest extends TestCase
         self::assertSame($expectedResponseData['Data'], $responseData);
     }
 
-    public function testCreateCampaignDraft(): void
+    public function test_create_campaign_draft(): void
     {
         // Arrange
         $requestData = [
@@ -147,7 +147,7 @@ final class MailjetApiTest extends TestCase
         self::assertSame(65, $response->data[0]['ID']);
     }
 
-    public function testCreateCampaignDraftContent(): void
+    public function test_create_campaign_draft_content(): void
     {
         // Arrange
         $requestData = [
@@ -190,7 +190,7 @@ final class MailjetApiTest extends TestCase
         self::assertSame('<h1>My title</h1>', $response->data[0]['Html-part']);
     }
 
-    public function testSendCampaignDraft(): void
+    public function test_send_campaign_draft(): void
     {
         // Arrange
         $expectedResponseData = [
@@ -221,7 +221,7 @@ final class MailjetApiTest extends TestCase
         self::assertSame('Programmed', $response->data[0]['Status']);
     }
 
-    public function testManageContact(): void
+    public function test_manage_contact(): void
     {
         // Arrange
         $requestData = [

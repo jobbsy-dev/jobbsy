@@ -20,7 +20,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class FetchSourceCommandHandlerTest extends TestCase
 {
-    public function testImport(): void
+    public function test_import(): void
     {
         // Arrange
         /** @var string $body */

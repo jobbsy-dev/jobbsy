@@ -9,7 +9,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class ClientTest extends TestCase
 {
-    public function testReadFeed(): void
+    public function test_read_feed(): void
     {
         // Arrange
         $xmlResponse = file_get_contents(__DIR__.'/data/feed.xml');

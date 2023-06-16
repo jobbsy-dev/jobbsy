@@ -9,7 +9,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class PoleEmploiApiTest extends TestCase
 {
-    public function testSearchWithISO8601DateTimeFormat(): void
+    public function test_search_with_is_o8601_date_time_format(): void
     {
         // Arrange
         $minCreationDate = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2022-09-01 10:00:00')

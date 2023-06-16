@@ -9,7 +9,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class ClientTest extends TestCase
 {
-    public function testReadRssDocument(): void
+    public function test_read_rss_document(): void
     {
         // Arrange
         $xmlResponse = file_get_contents(__DIR__.'/data/symfony_blog.xml');
@@ -30,7 +30,7 @@ final class ClientTest extends TestCase
         self::assertSame('A Week of Symfony #826 (24-30 October 2022)', trim($item->title));
     }
 
-    public function testReadRssDocumentExtraProperties(): void
+    public function test_read_rss_document_extra_properties(): void
     {
         // Arrange
         $xmlResponse = file_get_contents(__DIR__.'/data/symfony_blog.xml');
