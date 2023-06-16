@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SubscribeMailingListCommandHandlerTest extends TestCase
 {
-    public function testSubscribe(): void
+    public function test_subscribe(): void
     {
         $this->expectNotToPerformAssertions();
 

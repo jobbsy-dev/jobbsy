@@ -13,7 +13,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class WelcometotheJungleProviderTest extends TestCase
 {
-    public function testRetrieve(): void
+    public function test_retrieve(): void
     {
         // Arrange
         $mockResponseList = new MockResponse(file_get_contents(__DIR__.'/data/wttj_list.html'));

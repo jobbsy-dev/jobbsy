@@ -8,7 +8,7 @@ use Symfony\Component\Clock\MockClock;
 
 final class EventControllerTest extends WebTestCase
 {
-    public function testIndex(): void
+    public function test_index(): void
     {
         $client = static::createClient();
 

@@ -26,6 +26,9 @@ return (new PhpCsFixer\Config())
         'phpdoc_order' => true,
         'strict_comparison' => true,
         'strict_param' => true,
+        'php_unit_method_casing' => [
+            'case' => 'snake_case',
+        ],
         'PedroTroller/exceptions_punctuation' => true,
         'PedroTroller/line_break_between_method_arguments' => [ 'max-args' => 4, 'max-length' => 120, 'automatic-argument-merge' => true ],
         'PedroTroller/line_break_between_statements' => true,

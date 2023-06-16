@@ -10,7 +10,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class TwitterApiTest extends TestCase
 {
-    public function testCreateTweet(): void
+    public function test_create_tweet(): void
     {
         // Arrange
         $requestData = ['text' => 'Hello World!'];
@@ -47,7 +47,7 @@ final class TwitterApiTest extends TestCase
         self::assertSame($tweetId, '1234');
     }
 
-    public function testDeleteTweet(): void
+    public function test_delete_tweet(): void
     {
         // Arrange
         $expectedResponseData = [

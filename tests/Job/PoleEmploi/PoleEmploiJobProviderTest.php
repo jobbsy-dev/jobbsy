@@ -11,7 +11,7 @@ use Symfony\Component\HttpClient\Response\MockResponse;
 
 final class PoleEmploiJobProviderTest extends TestCase
 {
-    public function testRetrieve(): void
+    public function test_retrieve(): void
     {
         // Arrange
         $requestDataAuthentication = [

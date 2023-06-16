@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class JobPostedTweetTest extends TestCase
 {
-    public function testToTweetText(): void
+    public function test_to_tweet_text(): void
     {
         // Arrange
         $job = new Job(

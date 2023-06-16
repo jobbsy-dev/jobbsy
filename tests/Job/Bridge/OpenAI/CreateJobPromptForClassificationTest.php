@@ -12,7 +12,7 @@ final class CreateJobPromptForClassificationTest extends TestCase
     /**
      * @dataProvider dataPrompt
      */
-    public function testCreate(string $description, string $expected): void
+    public function test_create(string $description, string $expected): void
     {
         // Arrange
         $job = new Job('', '', EmploymentType::FULLTIME, '', '');

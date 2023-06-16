@@ -18,7 +18,7 @@ use Ramsey\Uuid\Uuid;
 
 final class FetchFeedCommandHandlerTest extends TestCase
 {
-    public function testFetch(): void
+    public function test_fetch(): void
     {
         // Arrange
         $feed = new Feed(Uuid::fromString('305a2ac5-0615-46f5-91b7-36d5c43e4ef0'));

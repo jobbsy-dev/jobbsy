@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class NewsControllerTest extends WebTestCase
 {
-    public function testIndex(): void
+    public function test_index(): void
     {
         $client = static::createClient();
 

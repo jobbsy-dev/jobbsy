@@ -8,19 +8,19 @@ use Webmozart\Assert\InvalidArgumentException;
 
 final class AccessTokenTest extends TestCase
 {
-    public function testCreateEmptyAccessTokenThrowsException(): void
+    public function test_create_empty_access_token_throws_exception(): void
     {
         $this->expectException(InvalidArgumentException::class);
         AccessToken::create('', 2);
     }
 
-    public function testCreateAccessTokenWithNegativeExpirationThrowsException(): void
+    public function test_create_access_token_with_negative_expiration_throws_exception(): void
     {
         $this->expectException(InvalidArgumentException::class);
         AccessToken::create('xxx', -5);
     }
 
-    public function testAccessTokenHasExpired(): void
+    public function test_access_token_has_expired(): void
     {
         $accessToken = AccessToken::create('xxx', 1);
         sleep(2);
@@ -28,7 +28,7 @@ final class AccessTokenTest extends TestCase
         self::assertTrue($accessToken->hasExpired());
     }
 
-    public function testAccessTokenHasNotExpired(): void
+    public function test_access_token_has_not_expired(): void
     {
         $accessToken = AccessToken::create('xxx', 1500);
 
