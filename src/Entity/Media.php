@@ -28,7 +28,7 @@ final class Media
      * @var int[]|null
      */
     #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
-    private ?array $dimensions;
+    private ?array $dimensions = null;
 
     private ?UploadedFile $file = null;
 
