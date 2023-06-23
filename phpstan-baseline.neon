@@ -161,6 +161,61 @@ parameters:
 			path: src/DataFixtures/AppFixtures.php
 
 		-
+			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:\\$endDate type mapping mismatch\\: property can contain DateTimeImmutable\\|null but database expects DateTimeImmutable\\.$#"
+			count: 1
+			path: src/Entity/CommunityEvent/Event.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:\\$name type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
+			count: 1
+			path: src/Entity/CommunityEvent/Event.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:\\$startDate type mapping mismatch\\: property can contain DateTimeImmutable\\|null but database expects DateTimeImmutable\\.$#"
+			count: 1
+			path: src/Entity/CommunityEvent/Event.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:\\$url type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
+			count: 1
+			path: src/Entity/CommunityEvent/Event.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Source\\:\\:\\$url type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
+			count: 1
+			path: src/Entity/CommunityEvent/Source.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\News\\\\Entry\\:\\:\\$description type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
+			count: 1
+			path: src/Entity/News/Entry.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\News\\\\Entry\\:\\:\\$link type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
+			count: 1
+			path: src/Entity/News/Entry.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\News\\\\Entry\\:\\:\\$title type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
+			count: 1
+			path: src/Entity/News/Entry.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\News\\\\Feed\\:\\:\\$name type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
+			count: 1
+			path: src/Entity/News/Feed.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\News\\\\Feed\\:\\:\\$type type mapping mismatch\\: property can contain App\\\\News\\\\Aggregator\\\\FeedType\\|null but database expects App\\\\News\\\\Aggregator\\\\FeedType\\.$#"
+			count: 1
+			path: src/Entity/News/Feed.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\News\\\\Feed\\:\\:\\$url type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
+			count: 1
+			path: src/Entity/News/Feed.php
+
+		-
 			message: "#^Property App\\\\Job\\\\Command\\\\PostJobOfferCommand\\:\\:\\$tags type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Job/Command/PostJobOfferCommand.php
@@ -424,16 +479,6 @@ parameters:
 			message: "#^Method App\\\\News\\\\Aggregator\\\\FetchArticlesFromFeed\\:\\:__invoke\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/News/Aggregator/FetchArticlesFromFeed.php
-
-		-
-			message: "#^Method App\\\\Repository\\\\JobRepository\\:\\:jobsByEmploymentType\\(\\) should return array\\<App\\\\Entity\\\\Job\\> but returns mixed\\.$#"
-			count: 1
-			path: src/Repository/JobRepository.php
-
-		-
-			message: "#^Method App\\\\Repository\\\\JobRepository\\:\\:jobsByLocationType\\(\\) should return array\\<App\\\\Entity\\\\Job\\> but returns mixed\\.$#"
-			count: 1
-			path: src/Repository/JobRepository.php
 
 		-
 			message: "#^Method App\\\\Security\\\\User\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
