@@ -2,9 +2,13 @@ includes:
     - phpstan-baseline.neon
 
 parameters:
-    level: 9
+    level: max
     paths:
         - src
         - tests
-    ignoreErrors:
-        - '#Method App\\Repository\\(\w+\\)*\w+Repository::(get|find)\w+\(\) should return ((array|iterable)<)?App\\Entity\\(\w+\\)*\w+(>)?(\|null)? but returns (object|mixed)\.#'
+    symfony:
+        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
+    scanDirectories:
+        - var/cache/dev/Symfony/Config
+    doctrine:
+        objectManagerLoader: tests/object-manager.php
