@@ -10,7 +10,7 @@
     },
     "ghcr.io/devcontainers/features/sshd:1": {
       "version": "latest"
-    },
+    }
   },
   "updateContentCommand": {
     "composer install": ["composer", "install"],
