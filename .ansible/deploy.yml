@@ -13,7 +13,6 @@
         - public/images
     ansistrano_shared_files:
         - '{{ private_key_path }}'
-        - '{{ database_path }}'
     symfony_console_path: 'bin/console'
     symfony_run_composer: false
     symfony_run_assetic_dump: false
