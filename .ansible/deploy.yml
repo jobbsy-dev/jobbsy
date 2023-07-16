@@ -10,7 +10,6 @@
     ansistrano_shared_paths:
         - var/log
         - var/sessions
-        - public/images
     ansistrano_shared_files:
         - '{{ private_key_path }}'
     symfony_console_path: 'bin/console'
