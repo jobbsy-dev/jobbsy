@@ -77,3 +77,12 @@ assets:
 	yarn dev
 
 install: vendor assets
+
+deploy:								## Deploy
+	ansible-playbook --vault-password-file=.ansible/.vault_pass .ansible/deploy.yml -i .ansible/inventory.yml
+
+decrypt-vault:						## Decrypt Ansible vault
+	ansible-vault decrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass
+
+encrypt-vault:						## Encrypt Ansible vault
+	ansible-vault encrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass
