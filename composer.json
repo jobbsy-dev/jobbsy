@@ -29,7 +29,7 @@
         "doctrine/orm": "^2.10",
         "easycorp/easyadmin-bundle": "^4.1",
         "knplabs/knp-paginator-bundle": "^6.0",
-        "knplabs/knp-time-bundle": "^1.18",
+        "knplabs/knp-time-bundle": "^2.0",
         "league/commonmark": "^2.3",
         "league/flysystem-async-aws-s3": "^3.13",
         "league/flysystem-bundle": "^3.0",
