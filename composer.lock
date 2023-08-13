@@ -2918,16 +2918,16 @@
         },
         {
             "name": "knplabs/knp-time-bundle",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpTimeBundle.git",
-                "reference": "af3aa65dcbb935bf5791ab7585d9227c54e21900"
+                "reference": "d68712ac4f40ab4fd09c6a326883c1e00522a495"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpTimeBundle/zipball/af3aa65dcbb935bf5791ab7585d9227c54e21900",
-                "reference": "af3aa65dcbb935bf5791ab7585d9227c54e21900",
+                "url": "https://api.github.com/repos/KnpLabs/KnpTimeBundle/zipball/d68712ac4f40ab4fd09c6a326883c1e00522a495",
+                "reference": "d68712ac4f40ab4fd09c6a326883c1e00522a495",
                 "shasum": ""
             },
             "require": {
@@ -2987,9 +2987,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/KnpTimeBundle/issues",
-                "source": "https://github.com/KnpLabs/KnpTimeBundle/tree/v2.0.1"
+                "source": "https://github.com/KnpLabs/KnpTimeBundle/tree/v2.0.2"
             },
-            "time": "2023-07-31T20:02:47+00:00"
+            "time": "2023-08-07T15:22:09+00:00"
         },
         {
             "name": "laminas/laminas-code",
