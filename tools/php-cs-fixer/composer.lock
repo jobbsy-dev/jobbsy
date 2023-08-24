@@ -476,16 +476,16 @@
         },
         {
             "name": "pedrotroller/php-cs-custom-fixer",
-            "version": "v2.32.1",
+            "version": "v2.32.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers.git",
-                "reference": "206ffeeb11130b651ba58fbb0bd982fb1ff904ae"
+                "reference": "87a6c1ce65471307939d9be1b7ae8ed150f6f94c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PedroTroller/PhpCSFixer-Custom-Fixers/zipball/206ffeeb11130b651ba58fbb0bd982fb1ff904ae",
-                "reference": "206ffeeb11130b651ba58fbb0bd982fb1ff904ae",
+                "url": "https://api.github.com/repos/PedroTroller/PhpCSFixer-Custom-Fixers/zipball/87a6c1ce65471307939d9be1b7ae8ed150f6f94c",
+                "reference": "87a6c1ce65471307939d9be1b7ae8ed150f6f94c",
                 "shasum": ""
             },
             "require": {
@@ -516,9 +516,9 @@
             "description": "PHP-CS-FIXER : my custom fixers",
             "support": {
                 "issues": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers/issues",
-                "source": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers/tree/v2.32.1"
+                "source": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers/tree/v2.32.2"
             },
-            "time": "2023-06-14T10:11:06+00:00"
+            "time": "2023-08-23T16:01:18+00:00"
         },
         {
             "name": "psr/cache",
