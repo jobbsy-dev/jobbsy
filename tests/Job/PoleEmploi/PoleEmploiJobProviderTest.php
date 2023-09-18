@@ -32,6 +32,7 @@ final class PoleEmploiJobProviderTest extends TestCase
                     'intitule' => 'Développeur Symfony',
                     'entreprise' => [
                         'nom' => 'Acme',
+                        'logo' => 'https://example.com/logo',
                     ],
                     'origineOffre' => [
                         'urlOrigine' => 'https://example.com',
@@ -42,6 +43,19 @@ final class PoleEmploiJobProviderTest extends TestCase
                 ],
                 [
                     'intitule' => 'Développeur React',
+                ],
+                [
+                    'intitule' => 'Développeur Front Angular H/F (H/F)',
+                    'entreprise' => [
+                        'nom' => 'Acme',
+                        'logo' => 'https://example.com/logo',
+                    ],
+                    'origineOffre' => [
+                        'urlOrigine' => 'https://example.com',
+                    ],
+                    'lieuTravail' => [
+                        'libelle' => 'Remote',
+                    ],
                 ],
             ],
         ];
