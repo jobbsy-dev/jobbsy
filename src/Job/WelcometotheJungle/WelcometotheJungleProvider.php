@@ -30,7 +30,7 @@ final readonly class WelcometotheJungleProvider implements JobProviderInterface
                     $employmentType = EmploymentType::FULLTIME;
                     break;
                 case 'CONTRACTOR':
-                    $employmentType = EmploymentType::INTERNSHIP;
+                    $employmentType = EmploymentType::CONTRACT;
                     break;
                 default:
                     continue 2;
