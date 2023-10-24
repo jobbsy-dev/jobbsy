@@ -9,7 +9,6 @@ use Rector\Config\RectorConfig;
 use Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php81\Rector\Array_\FirstClassCallableRector;
-use Rector\Privatization\Rector\Class_\ChangeReadOnlyVariableWithDefaultValueToConstantRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Symfony\Set\SymfonySetList;
@@ -17,7 +16,6 @@ use Rector\Symfony\Set\SymfonySetList;
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
         __DIR__.'/config',
-        __DIR__.'/migrations',
         __DIR__.'/src',
         __DIR__.'/tests',
     ]);
@@ -48,9 +46,6 @@ return static function (RectorConfig $rectorConfig): void {
         SimplifyBoolIdenticalTrueRector::class,
         ClassPropertyAssignToConstructorPromotionRector::class => [
             __DIR__.'/src/Entity',
-        ],
-        ChangeReadOnlyVariableWithDefaultValueToConstantRector::class => [
-            __DIR__.'/tests',
         ],
         FirstClassCallableRector::class => [
             __DIR__.'/config',

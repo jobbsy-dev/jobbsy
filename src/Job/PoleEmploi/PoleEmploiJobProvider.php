@@ -98,6 +98,15 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
             return false;
         }
 
+        if (false === isset($jobOffer['entreprise']['logo'])) {
+            return false;
+        }
+
+        $wordsIntitule = explode(' ', (string) $jobOffer['intitule']);
+        if (\in_array('Front', $wordsIntitule, true) && \in_array('Angular', $wordsIntitule, true)) {
+            return false;
+        }
+
         return false !== isset($jobOffer['origineOffre']['urlOrigine']);
     }
 

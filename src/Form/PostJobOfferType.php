@@ -86,7 +86,7 @@ final class PostJobOfferType extends AbstractType
                     // transform the array to a string
                     return implode(', ', array_map('trim', $tagsAsArray));
                 },
-                function ($tagsAsString) {
+                function ($tagsAsString): array {
                     if (null === $tagsAsString) {
                         return [];
                     }
