@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "api-platform/core",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "ad2cbe073b1cf0d5589c2ef1e48603e4426286ad"
+                "reference": "633bde85eb58b16d8cd161ecc3bb5b6934a753bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/ad2cbe073b1cf0d5589c2ef1e48603e4426286ad",
-                "reference": "ad2cbe073b1cf0d5589c2ef1e48603e4426286ad",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/633bde85eb58b16d8cd161ecc3bb5b6934a753bd",
+                "reference": "633bde85eb58b16d8cd161ecc3bb5b6934a753bd",
                 "shasum": ""
             },
             "require": {
@@ -166,9 +166,9 @@
             ],
             "support": {
                 "issues": "https://github.com/api-platform/core/issues",
-                "source": "https://github.com/api-platform/core/tree/v3.2.2"
+                "source": "https://github.com/api-platform/core/tree/v3.2.3"
             },
-            "time": "2023-10-27T09:37:13+00:00"
+            "time": "2023-10-30T10:39:11+00:00"
         },
         {
             "name": "async-aws/core",
