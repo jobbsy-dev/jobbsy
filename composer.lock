@@ -3401,26 +3401,26 @@
         },
         {
             "name": "league/flysystem-bundle",
-            "version": "3.2.0",
+            "version": "3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-bundle.git",
-                "reference": "c056bef0e8e0cdfb349e568d69e8337ce17ef6e1"
+                "reference": "956c039258e3ed44747c8d97f5132e3e9a6d6765"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-bundle/zipball/c056bef0e8e0cdfb349e568d69e8337ce17ef6e1",
-                "reference": "c056bef0e8e0cdfb349e568d69e8337ce17ef6e1",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-bundle/zipball/956c039258e3ed44747c8d97f5132e3e9a6d6765",
+                "reference": "956c039258e3ed44747c8d97f5132e3e9a6d6765",
                 "shasum": ""
             },
             "require": {
                 "league/flysystem": "^3.0",
                 "php": ">=8.0",
-                "symfony/config": "^5.4|^6.0",
-                "symfony/dependency-injection": "^5.4|^6.0",
-                "symfony/deprecation-contracts": "^2.1|^3",
-                "symfony/http-kernel": "^5.4|^6.0",
-                "symfony/options-resolver": "^5.4|^6.0"
+                "symfony/config": "^5.4 || ^6.0 || ^7.0",
+                "symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
+                "symfony/deprecation-contracts": "^2.1 || ^3",
+                "symfony/http-kernel": "^5.4 || ^6.0 || ^7.0",
+                "symfony/options-resolver": "^5.4 || ^6.0 || ^7.0"
             },
             "require-dev": {
                 "league/flysystem-async-aws-s3": "^3.1",
@@ -3429,12 +3429,13 @@
                 "league/flysystem-ftp": "^3.1",
                 "league/flysystem-google-cloud-storage": "^3.1",
                 "league/flysystem-memory": "^3.1",
+                "league/flysystem-read-only": "^3.15",
                 "league/flysystem-sftp-v3": "^3.1",
-                "symfony/dotenv": "^5.4|^6.0",
-                "symfony/framework-bundle": "^5.4|^6.0",
-                "symfony/phpunit-bridge": "^5.4|^6.0",
-                "symfony/var-dumper": "^5.4|^6.0",
-                "symfony/yaml": "^5.4|^6.0"
+                "symfony/dotenv": "^5.4 || ^6.0 || ^7.0",
+                "symfony/framework-bundle": "^5.4 || ^6.0 || ^7.0",
+                "symfony/phpunit-bridge": "^5.4 || ^6.0 || ^7.0",
+                "symfony/var-dumper": "^5.4 || ^6.0 || ^7.0",
+                "symfony/yaml": "^5.4 || ^6.0 || ^7.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -3455,9 +3456,9 @@
             "description": "Symfony bundle integrating Flysystem into Symfony 5.4+ applications",
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem-bundle/issues",
-                "source": "https://github.com/thephpleague/flysystem-bundle/tree/3.2.0"
+                "source": "https://github.com/thephpleague/flysystem-bundle/tree/3.3.1"
             },
-            "time": "2023-08-21T15:19:15+00:00"
+            "time": "2023-11-02T12:55:29+00:00"
         },
         {
             "name": "league/flysystem-local",
