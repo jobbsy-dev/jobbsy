@@ -3522,16 +3522,16 @@
         },
         {
             "name": "league/flysystem-memory",
-            "version": "3.18.0",
+            "version": "3.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-memory.git",
-                "reference": "5113f648f82561c0e908b4eabafdcec0a9e3da10"
+                "reference": "52456fb814b25a4c44414c50a6026cd7250ce835"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-memory/zipball/5113f648f82561c0e908b4eabafdcec0a9e3da10",
-                "reference": "5113f648f82561c0e908b4eabafdcec0a9e3da10",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-memory/zipball/52456fb814b25a4c44414c50a6026cd7250ce835",
+                "reference": "52456fb814b25a4c44414c50a6026cd7250ce835",
                 "shasum": ""
             },
             "require": {
@@ -3565,7 +3565,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem-memory/issues",
-                "source": "https://github.com/thephpleague/flysystem-memory/tree/3.18.0"
+                "source": "https://github.com/thephpleague/flysystem-memory/tree/3.19.0"
             },
             "funding": [
                 {
@@ -3577,7 +3577,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-10-19T20:07:13+00:00"
+            "time": "2023-11-07T08:50:56+00:00"
         },
         {
             "name": "league/glide",
