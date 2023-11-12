@@ -6,8 +6,7 @@ use App\Analytics\AnalyticsClient;
 use App\Analytics\Plausible\EventRequest;
 use App\Entity\CommunityEvent\Event;
 use App\Repository\CommunityEvent\EventRepository;
-use League\Uri\Uri;
-use League\Uri\UriModifier;
+use League\Uri\Modifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,8 +51,9 @@ final class EventController extends AbstractController
             'url' => $request->getUri(),
         ]));
 
-        $uri = Uri::createFromString($event->getUrl());
-        $uri = UriModifier::appendQuery($uri, 'ref=jobbsy');
+        /** @var string $eventUrl */
+        $eventUrl = $event->getUrl();
+        $uri = Modifier::from($eventUrl)->appendQuery('ref=jobbsy');
 
         return $this->redirect($uri);
     }

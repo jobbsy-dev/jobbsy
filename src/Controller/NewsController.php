@@ -8,8 +8,7 @@ use App\Entity\News\Entry;
 use App\Repository\JobRepository;
 use App\Repository\News\EntryRepository;
 use Knp\Component\Pager\PaginatorInterface;
-use League\Uri\Uri;
-use League\Uri\UriModifier;
+use League\Uri\Modifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,8 +67,9 @@ final class NewsController extends AbstractController
             throw $this->createNotFoundException();
         }
 
-        $uri = Uri::createFromString($article->getLink());
-        $uri = UriModifier::appendQuery($uri, 'ref=jobbsy');
+        /** @var string $articleLink */
+        $articleLink = $article->getLink();
+        $uri = Modifier::from($articleLink)->appendQuery('ref=jobbsy');
 
         return $this->redirect($uri);
     }
