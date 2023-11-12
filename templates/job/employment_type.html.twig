@@ -7,11 +7,11 @@
         <h1 class="display-5 fw-bold">
             Latest <b>{{ ('employment_type.' ~ employmentType.value)|trans }}</b> Symfony Jobs
         </h1>
-        <div class="col-lg-6 mx-auto d-none d-md-block mt-5">
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a href="#getNotifiedAboutNewJobs" class="btn btn-outline-primary px-3 ">Get notified about new jobs  ↓</a>
-            </div>
-        </div>
+{#        <div class="col-lg-6 mx-auto d-none d-md-block mt-5">#}
+{#            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">#}
+{#                <a href="#getNotifiedAboutNewJobs" class="btn btn-outline-primary px-3 ">Get notified about new jobs  ↓</a>#}
+{#            </div>#}
+{#        </div>#}
     </div>
 
     {% set jobsCount = jobs|length %}
@@ -20,11 +20,11 @@
             {% for job in jobs %}
                 {{ include('job/_job_card.html.twig', {'job': job}) }}
 
-                {% if loop.index == (jobsCount/2)|round %}
-                    <div id="getNotifiedAboutNewJobs">
-                        {{ render(controller('App\\Controller\\JobController::subscriptionForm')) }}
-                    </div>
-                {% endif %}
+{#                {% if loop.index == (jobsCount/2)|round %}#}
+{#                    <div id="getNotifiedAboutNewJobs">#}
+{#                        {{ render(controller('App\\Controller\\JobController::subscriptionForm')) }}#}
+{#                    </div>#}
+{#                {% endif %}#}
             {% endfor %}
         </div>
     {% else %}

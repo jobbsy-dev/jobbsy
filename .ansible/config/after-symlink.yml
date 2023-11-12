@@ -29,6 +29,7 @@
 
 - name: Send weekly jobs letter
   ansible.builtin.cron:
+    disabled: true
     name: "Send weekly jobs letter every saturday at 8am"
     minute: "0"
     hour: "10"
