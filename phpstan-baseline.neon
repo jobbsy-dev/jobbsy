@@ -36,11 +36,6 @@ parameters:
 			path: src/CommunityEvent/EventScraping.php
 
 		-
-			message: "#^Parameter \\#1 \\$uri of static method League\\\\Uri\\\\Uri\\:\\:createFromString\\(\\) expects string\\|Stringable, string\\|null given\\.$#"
-			count: 1
-			path: src/Controller/EventController.php
-
-		-
 			message: "#^Cannot access offset 'email' on mixed\\.$#"
 			count: 1
 			path: src/Controller/JobController.php

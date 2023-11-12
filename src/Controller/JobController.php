@@ -18,8 +18,7 @@ use App\Repository\JobRepository;
 use App\Subscription\SubscribeMailingListCommand;
 use App\Subscription\SubscribeMailingListCommandHandler;
 use Doctrine\ORM\EntityManagerInterface;
-use League\Uri\Uri;
-use League\Uri\UriModifier;
+use League\Uri\Modifier;
 use Psr\Log\LoggerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
@@ -144,8 +143,7 @@ final class JobController extends AbstractController
             'url' => $request->getUri(),
         ]));
 
-        $uri = Uri::createFromString($job->getUrl());
-        $uri = UriModifier::appendQuery($uri, 'ref=jobbsy');
+        $uri = Modifier::from($job->getUrl())->appendQuery('ref=jobbsy');
 
         return $this->redirect($uri);
     }
