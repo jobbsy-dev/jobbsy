@@ -33,15 +33,15 @@ final readonly class ReplaceMediaOnJobUpdatedSubscriber implements EventSubscrib
             return;
         }
 
-        if (null === ($file = $entity->getOrganizationImage()?->getFile())) {
+        if (null === ($media = $entity->getOrganizationImage())) {
             return;
         }
 
-        $media = $entity->getOrganizationImage();
-
-        if (null !== $media) {
-            $this->mediaRemover->delete($media);
+        if (null === ($file = $media->getFile())) {
+            return;
         }
+
+        $this->mediaRemover->delete($media);
 
         $newMedia = $this->mediaFactory->createFromUploadedFile($file);
         $entity->changeOrganizationImage($newMedia);
