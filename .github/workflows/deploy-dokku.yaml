@@ -1,0 +1,27 @@
+name: 'Deploy to Dokku 🚀'
+
+on:
+    workflow_dispatch: ~
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        environment:
+            name: production
+            url: https://jobbsy.dequippe.tech
+        steps:
+            - name: Cloning repo
+              uses: actions/checkout@v4
+              with:
+                 fetch-depth: 0
+
+            - name: Push to dokku
+              uses: dokku/github-action@master
+              with:
+                 git_remote_url: ${{ secrets.GIT_REMOTE_URL }}
+                 ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+                 branch: main
