@@ -1,0 +1,20 @@
+{
+    "cron": [
+        {
+            "command": "bin/console app:job-provider:retrieve",
+            "schedule": "0 */6 * * *"
+        },
+        {
+            "command": "bin/console app:aggregate-news",
+            "schedule": "0 */4 * * *"
+        },
+        {
+            "command": "bin/console app:clear-pinned",
+            "schedule": "0 3 * * *"
+        },
+        {
+            "command": "bin/console app:aggregate-events",
+            "schedule": "0 2 * * *"
+        }
+    ]
+}
