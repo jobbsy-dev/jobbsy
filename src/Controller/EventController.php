@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Analytics\AnalyticsClient;
-use App\Analytics\Plausible\EventRequest;
 use App\Entity\CommunityEvent\Event;
 use App\Repository\CommunityEvent\EventRepository;
 use League\Uri\Modifier;
@@ -16,10 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class EventController extends AbstractController
 {
-    public function __construct(
-        private readonly AnalyticsClient $client,
-        private readonly EventRepository $eventRepository
-    ) {
+    public function __construct(private readonly EventRepository $eventRepository)
+    {
     }
 
     #[Route('/events', name: 'event_index', methods: ['GET'])]
@@ -41,20 +37,8 @@ final class EventController extends AbstractController
     }
 
     #[Route('/events/{id}', name: 'event_redirect', methods: ['GET'])]
-    public function event(Request $request, Event $event): RedirectResponse
+    public function event(Event $event): RedirectResponse
     {
-        try {
-            $this->client->event(EventRequest::create([
-                'User-Agent' => $request->headers->get('User-Agent'),
-                'X-Forwarded-For' => implode(',', $request->getClientIps()),
-                'domain' => 'jobbsy.dev',
-                'name' => 'pageview',
-                'url' => $request->getUri(),
-            ]));
-        } catch (\Throwable) {
-        }
-
-
         /** @var string $eventUrl */
         $eventUrl = $event->getUrl();
         $uri = Modifier::from($eventUrl)->appendQuery('ref=jobbsy');

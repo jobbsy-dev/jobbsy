@@ -1,26 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method App\\\\Analytics\\\\EventRequestInterface\\:\\:body\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Analytics/EventRequestInterface.php
-
-		-
-			message: "#^Method App\\\\Analytics\\\\EventRequestInterface\\:\\:headers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Analytics/EventRequestInterface.php
-
-		-
-			message: "#^Method App\\\\Analytics\\\\Plausible\\\\EventRequest\\:\\:create\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Analytics/Plausible/EventRequest.php
-
-		-
-			message: "#^Method App\\\\Analytics\\\\Plausible\\\\EventRequest\\:\\:headers\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Analytics/Plausible/EventRequest.php
-
-		-
 			message: "#^Parameter \\#1 \\$string of function md5 expects string, int\\<0, max\\> given\\.$#"
 			count: 1
 			path: src/Broadcast/Twitter/TwitterApi.php
