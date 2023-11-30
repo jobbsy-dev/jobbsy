@@ -87,7 +87,7 @@
         "zenstruck/schedule-bundle": "^1.6"
     },
     "require-dev": {
-        "dama/doctrine-test-bundle": "^7.1",
+        "dama/doctrine-test-bundle": "^8.0",
         "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan": "^1.4",
         "phpstan/phpstan-doctrine": "^1.3",

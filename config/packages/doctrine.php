@@ -10,7 +10,8 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig, ContainerConfigurator $containerConfigurator): void {
     $config->dbal()
         ->connection('default')
-        ->url(env('DATABASE_URL')->resolve());
+        ->url(env('DATABASE_URL')->resolve())
+        ->useSavepoints(true);
 
     $emDefault = $config->orm()->entityManager('default');
 
