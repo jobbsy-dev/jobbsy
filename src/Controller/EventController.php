@@ -43,13 +43,17 @@ final class EventController extends AbstractController
     #[Route('/events/{id}', name: 'event_redirect', methods: ['GET'])]
     public function event(Request $request, Event $event): RedirectResponse
     {
-        $this->client->event(EventRequest::create([
-            'User-Agent' => $request->headers->get('User-Agent'),
-            'X-Forwarded-For' => implode(',', $request->getClientIps()),
-            'domain' => 'jobbsy.dev',
-            'name' => 'pageview',
-            'url' => $request->getUri(),
-        ]));
+        try {
+            $this->client->event(EventRequest::create([
+                'User-Agent' => $request->headers->get('User-Agent'),
+                'X-Forwarded-For' => implode(',', $request->getClientIps()),
+                'domain' => 'jobbsy.dev',
+                'name' => 'pageview',
+                'url' => $request->getUri(),
+            ]));
+        } catch (\Throwable) {
+        }
+
 
         /** @var string $eventUrl */
         $eventUrl = $event->getUrl();

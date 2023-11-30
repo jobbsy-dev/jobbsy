@@ -135,13 +135,16 @@ final class JobController extends AbstractController
         $job->clicked();
         $this->em->flush();
 
-        $this->client->event(EventRequest::create([
-            'User-Agent' => $request->headers->get('User-Agent'),
-            'X-Forwarded-For' => implode(',', $request->getClientIps()),
-            'domain' => 'jobbsy.dev',
-            'name' => 'pageview',
-            'url' => $request->getUri(),
-        ]));
+        try {
+            $this->client->event(EventRequest::create([
+                'User-Agent' => $request->headers->get('User-Agent'),
+                'X-Forwarded-For' => implode(',', $request->getClientIps()),
+                'domain' => 'jobbsy.dev',
+                'name' => 'pageview',
+                'url' => $request->getUri(),
+            ]));
+        } catch (\Throwable) {
+        }
 
         $uri = Modifier::from($job->getUrl())->appendQuery('ref=jobbsy');
 
