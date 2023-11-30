@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Analytics\AnalyticsClient;
-use App\Analytics\Plausible\EventRequest;
 use App\Entity\News\Entry;
 use App\Repository\JobRepository;
 use App\Repository\News\EntryRepository;
@@ -21,7 +19,6 @@ final class NewsController extends AbstractController
     public function __construct(
         private readonly EntryRepository $articleRepository,
         private readonly JobRepository $jobRepository,
-        private readonly AnalyticsClient $client,
     ) {
     }
 
@@ -53,19 +50,8 @@ final class NewsController extends AbstractController
     }
 
     #[Route('/news/{id}', name: 'news_entry', methods: ['GET'])]
-    public function entry(Request $request, Entry $article): RedirectResponse
+    public function entry(Entry $article): RedirectResponse
     {
-        try {
-            $this->client->event(EventRequest::create([
-                'User-Agent' => $request->headers->get('User-Agent'),
-                'X-Forwarded-For' => implode(',', $request->getClientIps()),
-                'domain' => 'jobbsy.dev',
-                'name' => 'pageview',
-                'url' => $request->getUri(),
-            ]));
-        } catch (\Throwable) {
-        }
-
         if (null === $article->getLink()) {
             throw $this->createNotFoundException();
         }

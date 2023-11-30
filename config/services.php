@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Analytics\AnalyticsClient;
-use App\Analytics\Dummy\DummyClient;
-use App\Analytics\Plausible\PlausibleClient;
 use App\Doctrine\EventListener\FixPostgreSQLDefaultSchemaListener;
 use AsyncAws\S3\S3Client;
 use Doctrine\ORM\Tools\ToolEvents;
@@ -29,11 +26,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->exclude([__DIR__.'/../src/DependencyInjection/', __DIR__.'/../src/Entity/', __DIR__.'/../src/Kernel.php']);
 
     $services->set(ClockInterface::class, NativeClock::class);
-    $services->set(AnalyticsClient::class, PlausibleClient::class);
 
     if ('dev' === $containerConfigurator->env() || 'test' === $containerConfigurator->env()) {
         $services->set(ClockInterface::class, MockClock::class);
-        $services->set(AnalyticsClient::class, DummyClient::class);
     }
 
     $services->set(HttpBrowser::class)
