@@ -2064,16 +2064,16 @@
         },
         {
             "name": "dragonmantank/cron-expression",
-            "version": "v3.3.2",
+            "version": "v3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dragonmantank/cron-expression.git",
-                "reference": "782ca5968ab8b954773518e9e49a6f892a34b2a8"
+                "reference": "adfb1f505deb6384dc8b39804c5065dd3c8c8c0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/782ca5968ab8b954773518e9e49a6f892a34b2a8",
-                "reference": "782ca5968ab8b954773518e9e49a6f892a34b2a8",
+                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/adfb1f505deb6384dc8b39804c5065dd3c8c8c0a",
+                "reference": "adfb1f505deb6384dc8b39804c5065dd3c8c8c0a",
                 "shasum": ""
             },
             "require": {
@@ -2113,7 +2113,7 @@
             ],
             "support": {
                 "issues": "https://github.com/dragonmantank/cron-expression/issues",
-                "source": "https://github.com/dragonmantank/cron-expression/tree/v3.3.2"
+                "source": "https://github.com/dragonmantank/cron-expression/tree/v3.3.3"
             },
             "funding": [
                 {
@@ -2121,7 +2121,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-10T18:51:20+00:00"
+            "time": "2023-08-10T19:36:49+00:00"
         },
         {
             "name": "easycorp/easyadmin-bundle",
@@ -12346,40 +12346,40 @@
         },
         {
             "name": "zenstruck/schedule-bundle",
-            "version": "v1.7.0",
+            "version": "v1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zenstruck/schedule-bundle.git",
-                "reference": "8df2a991aae50b6bedf4759f0252556e80086a96"
+                "reference": "dd05ac51dd0857721bde1c8dd329f74f864cbc72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/schedule-bundle/zipball/8df2a991aae50b6bedf4759f0252556e80086a96",
-                "reference": "8df2a991aae50b6bedf4759f0252556e80086a96",
+                "url": "https://api.github.com/repos/zenstruck/schedule-bundle/zipball/dd05ac51dd0857721bde1c8dd329f74f864cbc72",
+                "reference": "dd05ac51dd0857721bde1c8dd329f74f864cbc72",
                 "shasum": ""
             },
             "require": {
                 "dragonmantank/cron-expression": "^2.3|^3.0",
                 "php": ">=8.0",
-                "symfony/console": "^4.4|^5.4|^6.0",
-                "symfony/dependency-injection": "^4.4|^5.4|^6.0",
-                "symfony/event-dispatcher": "^4.4|^5.4|^6.0",
-                "symfony/http-kernel": "^4.4|^5.4|^6.0"
+                "symfony/console": "^5.4|^6.0|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
+                "symfony/http-kernel": "^5.4|^6.0|^7.0"
             },
             "require-dev": {
                 "lorisleiva/cron-translator": "^0.1.0|^0.3.1|^0.4.0",
-                "matthiasnoback/symfony-dependency-injection-test": "^4.1",
+                "matthiasnoback/symfony-dependency-injection-test": "^4.1|^5.0",
                 "phpstan/phpstan": "^1.4",
                 "phpunit/phpunit": "^9.5",
                 "psr/log": "^1.1",
-                "symfony/framework-bundle": "^4.4|^5.4|^6.0",
-                "symfony/http-client": "^4.4|^5.4|^6.0",
-                "symfony/lock": "^4.4|^5.4|^6.0",
-                "symfony/mailer": "^4.4|^5.4|^6.0",
-                "symfony/messenger": "^4.4|^5.4|^6.0",
-                "symfony/notifier": "^5.4|^6.0",
-                "symfony/phpunit-bridge": "^6.2",
-                "symfony/process": "^4.4|^5.4|^6.0"
+                "symfony/framework-bundle": "^5.4|^6.0|^7.0",
+                "symfony/http-client": "^5.4|^6.0|^7.0",
+                "symfony/lock": "^5.4|^6.0|^7.0",
+                "symfony/mailer": "^5.4|^6.0|^7.0",
+                "symfony/messenger": "^5.4|^6.0|^7.0",
+                "symfony/notifier": "^5.4|^6.0|^7.0",
+                "symfony/phpunit-bridge": "^6.2|^7.0",
+                "symfony/process": "^5.4|^6.0|^7.0"
             },
             "suggest": {
                 "lorisleiva/cron-translator": "Displays human readable cron expression in schedule:list",
@@ -12413,7 +12413,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zenstruck/schedule-bundle/issues",
-                "source": "https://github.com/zenstruck/schedule-bundle/tree/v1.7.0"
+                "source": "https://github.com/zenstruck/schedule-bundle/tree/v1.8.0"
             },
             "funding": [
                 {
@@ -12421,7 +12421,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-05T22:02:03+00:00"
+            "time": "2023-11-16T18:40:42+00:00"
         }
     ],
     "packages-dev": [
