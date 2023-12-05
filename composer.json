@@ -144,7 +144,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.2.*",
+            "require": "6.4.*",
             "endpoint": [
                 "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php/flex/main/index.json",
                 "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php-contrib/flex/main/index.json",
