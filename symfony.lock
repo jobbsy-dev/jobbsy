@@ -795,8 +795,5 @@
     },
     "willdurand/negotiation": {
         "version": "3.1.0"
-    },
-    "zenstruck/schedule-bundle": {
-        "version": "v1.6.0"
     }
 }

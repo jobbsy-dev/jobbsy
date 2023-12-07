@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11c8995fe5e82eb56cf80b9380b542e7",
+    "content-hash": "adddc09c83ec68954a114a8568120b0a",
     "packages": [
         {
             "name": "api-platform/core",
@@ -10178,6 +10178,86 @@
             "time": "2023-10-18T09:43:34+00:00"
         },
         {
+            "name": "symfony/scheduler",
+            "version": "v7.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/scheduler.git",
+                "reference": "d61403ee1c93790a3fe162942017fc30521bed90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/scheduler/zipball/d61403ee1c93790a3fe162942017fc30521bed90",
+                "reference": "d61403ee1c93790a3fe162942017fc30521bed90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/clock": "^6.4|^7.0"
+            },
+            "require-dev": {
+                "dragonmantank/cron-expression": "^3.1",
+                "symfony/cache": "^6.4|^7.0",
+                "symfony/console": "^6.4|^7.0",
+                "symfony/dependency-injection": "^6.4|^7.0",
+                "symfony/event-dispatcher": "^6.4|^7.0",
+                "symfony/lock": "^6.4|^7.0",
+                "symfony/messenger": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Scheduler\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Rabochiy",
+                    "email": "upyx.00@gmail.com"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides scheduling through Symfony Messenger",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "cron",
+                "schedule",
+                "scheduler"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/scheduler/tree/v7.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-11-20T16:43:42+00:00"
+        },
+        {
             "name": "symfony/security-bundle",
             "version": "v6.4.0",
             "source": {
@@ -12341,85 +12421,6 @@
                 "source": "https://github.com/willdurand/Negotiation/tree/3.1.0"
             },
             "time": "2022-01-30T20:08:53+00:00"
-        },
-        {
-            "name": "zenstruck/schedule-bundle",
-            "version": "v1.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zenstruck/schedule-bundle.git",
-                "reference": "dd05ac51dd0857721bde1c8dd329f74f864cbc72"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/schedule-bundle/zipball/dd05ac51dd0857721bde1c8dd329f74f864cbc72",
-                "reference": "dd05ac51dd0857721bde1c8dd329f74f864cbc72",
-                "shasum": ""
-            },
-            "require": {
-                "dragonmantank/cron-expression": "^2.3|^3.0",
-                "php": ">=8.0",
-                "symfony/console": "^5.4|^6.0|^7.0",
-                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
-                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
-                "symfony/http-kernel": "^5.4|^6.0|^7.0"
-            },
-            "require-dev": {
-                "lorisleiva/cron-translator": "^0.1.0|^0.3.1|^0.4.0",
-                "matthiasnoback/symfony-dependency-injection-test": "^4.1|^5.0",
-                "phpstan/phpstan": "^1.4",
-                "phpunit/phpunit": "^9.5",
-                "psr/log": "^1.1",
-                "symfony/framework-bundle": "^5.4|^6.0|^7.0",
-                "symfony/http-client": "^5.4|^6.0|^7.0",
-                "symfony/lock": "^5.4|^6.0|^7.0",
-                "symfony/mailer": "^5.4|^6.0|^7.0",
-                "symfony/messenger": "^5.4|^6.0|^7.0",
-                "symfony/notifier": "^5.4|^6.0|^7.0",
-                "symfony/phpunit-bridge": "^6.2|^7.0",
-                "symfony/process": "^5.4|^6.0|^7.0"
-            },
-            "suggest": {
-                "lorisleiva/cron-translator": "Displays human readable cron expression in schedule:list",
-                "symfony/http-client": "Allows usage of ping* extensions",
-                "symfony/lock": "Allows usage of withoutOverlapping and onSingleServer extensions",
-                "symfony/mailer": "Allows usage of email* extensions",
-                "symfony/notifier": "Allows usage of notify* extensions",
-                "symfony/process": "Allows usage of ProcessTask"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Zenstruck\\ScheduleBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kevin Bond",
-                    "email": "kevinbond@gmail.com"
-                }
-            ],
-            "description": "Schedule Cron jobs (commands/callbacks/bash scripts) within your Symfony application.",
-            "homepage": "https://github.com/zenstruck/schedule-bundle",
-            "keywords": [
-                "cron",
-                "schedule"
-            ],
-            "support": {
-                "issues": "https://github.com/zenstruck/schedule-bundle/issues",
-                "source": "https://github.com/zenstruck/schedule-bundle/tree/v1.8.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/kbond",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-11-16T18:40:42+00:00"
         }
     ],
     "packages-dev": [
