@@ -13,15 +13,15 @@ use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Scheduler\Attribute\AsCronTask;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use Zenstruck\ScheduleBundle\Schedule\SelfSchedulingCommand;
-use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
 
 #[AsCommand(
     name: 'app:job-provider:retrieve',
     description: 'Retrieve jobs from different sources',
 )]
-final class JobProviderPullCommand extends Command implements SelfSchedulingCommand
+#[AsCronTask(expression: '46 */12 * * *')]
+final class JobProviderPullCommand extends Command
 {
     public function __construct(
         private readonly JobProvider $provider,
@@ -87,10 +87,5 @@ final class JobProviderPullCommand extends Command implements SelfSchedulingComm
         foreach ($events as $event) {
             $this->dispatcher->dispatch($event);
         }
-    }
-
-    public function schedule(CommandTask $task): void
-    {
-        $task->twiceDaily(3, 10);
     }
 }

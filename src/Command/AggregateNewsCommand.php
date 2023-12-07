@@ -10,14 +10,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Zenstruck\ScheduleBundle\Schedule\SelfSchedulingCommand;
-use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
+use Symfony\Component\Scheduler\Attribute\AsCronTask;
 
 #[AsCommand(
     name: 'app:aggregate-news',
     description: 'Aggregate news from multiple sources',
 )]
-final class AggregateNewsCommand extends Command implements SelfSchedulingCommand
+#[AsCronTask(expression: '14 */12 * * *')]
+final class AggregateNewsCommand extends Command
 {
     public function __construct(
         private readonly FeedRepository $feedRepository,
@@ -39,10 +39,5 @@ final class AggregateNewsCommand extends Command implements SelfSchedulingComman
         }
 
         return Command::SUCCESS;
-    }
-
-    public function schedule(CommandTask $task): void
-    {
-        $task->twiceDaily(2, 10);
     }
 }

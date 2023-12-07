@@ -10,14 +10,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Zenstruck\ScheduleBundle\Schedule\SelfSchedulingCommand;
-use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
+use Symfony\Component\Scheduler\Attribute\AsPeriodicTask;
 
 #[AsCommand(
     name: 'app:aggregate-events',
     description: 'Aggregate events from multiple sources',
 )]
-final class AggregateCommunityEventCommand extends Command implements SelfSchedulingCommand
+#[AsPeriodicTask(frequency: '1 day', from: '00:26')]
+final class AggregateCommunityEventCommand extends Command
 {
     public function __construct(
         private readonly EventSourceRepository $sourceRepository,
@@ -38,10 +38,5 @@ final class AggregateCommunityEventCommand extends Command implements SelfSchedu
         }
 
         return Command::SUCCESS;
-    }
-
-    public function schedule(CommandTask $task): void
-    {
-        $task->daily();
     }
 }

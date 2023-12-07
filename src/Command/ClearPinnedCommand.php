@@ -7,14 +7,14 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Zenstruck\ScheduleBundle\Schedule\SelfSchedulingCommand;
-use Zenstruck\ScheduleBundle\Schedule\Task\CommandTask;
+use Symfony\Component\Scheduler\Attribute\AsPeriodicTask;
 
 #[AsCommand(
     name: 'app:clear-pinned',
     description: 'Clear pinned jobs',
 )]
-final class ClearPinnedCommand extends Command implements SelfSchedulingCommand
+#[AsPeriodicTask(frequency: '1 day')]
+final class ClearPinnedCommand extends Command
 {
     public function __construct(private readonly JobRepository $jobRepository)
     {
@@ -26,10 +26,5 @@ final class ClearPinnedCommand extends Command implements SelfSchedulingCommand
         $this->jobRepository->clearExpiredPinnedJobs();
 
         return Command::SUCCESS;
-    }
-
-    public function schedule(CommandTask $task): void
-    {
-        $task->daily();
     }
 }

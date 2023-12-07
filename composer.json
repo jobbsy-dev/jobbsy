@@ -27,6 +27,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
+        "dragonmantank/cron-expression": "^3.3",
         "easycorp/easyadmin-bundle": "^4.1",
         "knplabs/knp-paginator-bundle": "^6.0",
         "knplabs/knp-time-bundle": "^2.0",
@@ -66,6 +67,7 @@
         "symfony/property-info": "6.4.*",
         "symfony/proxy-manager-bridge": "6.4.*",
         "symfony/runtime": "6.4.*",
+        "symfony/scheduler": "^7.0",
         "symfony/security-bundle": "6.4.*",
         "symfony/serializer": "6.4.*",
         "symfony/slack-notifier": "6.4.*",
@@ -83,8 +85,7 @@
         "twig/markdown-extra": "^3.4",
         "twig/string-extra": "^3.4",
         "twig/twig": "^2.12|^3.0",
-        "webmozart/assert": "^1.10",
-        "zenstruck/schedule-bundle": "^1.6"
+        "webmozart/assert": "^1.10"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^8.0",
