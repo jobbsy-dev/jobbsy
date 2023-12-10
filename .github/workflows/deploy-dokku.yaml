@@ -15,7 +15,7 @@ jobs:
         runs-on: ubuntu-latest
         environment:
             name: production
-            url: https://jobbsy.dequippe.tech
+            url: https://jobbsy.dev
         steps:
             - name: Cloning repo
               uses: actions/checkout@v4
