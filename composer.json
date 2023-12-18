@@ -14,7 +14,7 @@
         "symfony/polyfill-php80": "*"
     },
     "require": {
-        "php": ">=8.2",
+        "php": "~8.2",
         "ext-ctype": "*",
         "ext-dom": "*",
         "ext-exif": "*",
@@ -114,7 +114,7 @@
         },
         "sort-packages": true,
         "platform": {
-            "php": "8.3"
+            "php": "8.2"
         }
     },
     "autoload": {
