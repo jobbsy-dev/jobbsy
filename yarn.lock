@@ -3061,10 +3061,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-lucide@^0.299.0:
-  version "0.299.0"
-  resolved "https://registry.yarnpkg.com/lucide/-/lucide-0.299.0.tgz#17020e6cf0465d72568e51af4066eccfc6103d3c"
-  integrity sha512-yYw6PfkpyKhNDt4Ay1lsj0wwTAoM/ccSbZdSh6b77gRMvCC2fqKed16Jo+lWbxWOAWHoxVUpO4nx72fVZvadaw==
+lucide@^0.300.0:
+  version "0.300.0"
+  resolved "https://registry.yarnpkg.com/lucide/-/lucide-0.300.0.tgz#c4f1a7be8b109be19243e944f086c9126f9d6ce8"
+  integrity sha512-aioqzx9hgnYzm7HhNAZR7lHd32zlnJlIweo1JxCf9xXGEEj90f05RMhaq1tY5nz20WUW7ZFOZ9sXVvlv3zs0Iw==
 
 mdn-data@2.0.28:
   version "2.0.28"
