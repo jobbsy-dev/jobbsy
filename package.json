@@ -9,7 +9,7 @@
         "bootstrap": "^5.2.2",
         "core-js": "^3.0.0",
         "file-loader": "^6.0.0",
-        "lucide": "^0.301.0",
+        "lucide": "^0.302.0",
         "regenerator-runtime": "^0.14.0",
         "sass": "^1.45.0",
         "sass-loader": "^13.0.2",
