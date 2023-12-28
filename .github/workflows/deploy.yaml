@@ -29,16 +29,14 @@ jobs:
               run: composer install --no-dev --optimize-autoloader --no-interaction
 
             - name: "Compile CSS and Javascript"
-              run: |
-                  yarn install
-                  yarn build
+              run: php bin/console asset-map:compile
 
             - name: "Create deployment artifact"
               uses: thedoctor0/zip-release@master
               with:
                   type: 'zip'
                   filename: app-latest.zip
-                  exclusions: '*.git* /*node_modules/* /*tests/* /*var/cache/*'
+                  exclusions: '*.git* /*tests/* /*var/cache/*'
 
             - name: "Store artifact for distribution"
               uses: appleboy/scp-action@master

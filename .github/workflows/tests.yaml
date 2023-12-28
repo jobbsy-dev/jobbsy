@@ -32,11 +32,6 @@ jobs:
                   php-version: 8.2
                   tools: composer
 
-            - uses: actions/setup-node@v4
-              with:
-                node-version: 18
-                cache: 'npm'
-
             - name: "Add PHPUnit matcher"
               run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
@@ -54,11 +49,6 @@ jobs:
             - name: "Composer install"
               id: install
               run: composer install --no-interaction --no-progress
-
-            - name: "Compile CSS and Javascript"
-              run: |
-                  yarn install
-                  yarn dev
 
             - name: "Init database"
               run: ./bin/console doctrine:database:create --env=test --if-not-exists
