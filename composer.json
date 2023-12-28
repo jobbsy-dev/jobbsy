@@ -44,6 +44,7 @@
         "sentry/sentry-symfony": "^4.2",
         "stripe/stripe-php": "^13.0",
         "symfony/asset": "6.4.*",
+        "symfony/asset-mapper": "^7.0",
         "symfony/browser-kit": "6.4.*",
         "symfony/clock": "6.4.*",
         "symfony/console": "6.4.*",
@@ -71,6 +72,7 @@
         "symfony/security-bundle": "6.4.*",
         "symfony/serializer": "6.4.*",
         "symfony/slack-notifier": "6.4.*",
+        "symfony/stimulus-bundle": "^2.13",
         "symfony/string": "6.4.*",
         "symfony/translation": "6.4.*",
         "symfony/twig-bundle": "6.4.*",
@@ -78,8 +80,9 @@
         "symfony/validator": "6.4.*",
         "symfony/web-link": "6.4.*",
         "symfony/webapp-meta": "^1.0",
-        "symfony/webpack-encore-bundle": "^2.0",
         "symfony/yaml": "6.4.*",
+        "symfonycasts/sass-bundle": "^0.4.0",
+        "twbs/bootstrap": "^5.3",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/intl-extra": "^3.4",
         "twig/markdown-extra": "^3.4",
@@ -130,7 +133,9 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "importmap:install": "symfony-cmd",
+            "sass:build": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"

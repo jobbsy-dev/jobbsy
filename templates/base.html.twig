@@ -4,29 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>{% block title %}Jobbsy{% endblock %}</title>
-        <link rel="icon" href="{{ asset('build/images/icon.svg') }}">
+        <link rel="icon" href="{{ asset('images/icon.svg') }}">
         <meta name="description" content="Looking for a Symfony developer job? or hire Symfony developer ? jobbsy.dev is the place to be.">
         <meta property="og:type" content="website">
         <meta property="og:title" content="Jobbsy">
         <meta property="og:description" content="Job board Symfony">
         <meta property="og:url" content="https://jobbsy.dev">
         <meta property="og:site_name" content="Jobbsy">
-        <meta property="og:image" content="{{ absolute_url(asset('build/images/ogshare.png')) }}">
+        <meta property="og:image" content="{{ absolute_url(asset('images/ogshare.png')) }}">
         <meta property="og:locale" content="en_US">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@jobbsy">
         <meta name="twitter:title" content="Jobbsy">
-        <meta name="twitter:image" content="{{ absolute_url(asset('build/images/ogshare.png')) }}">
+        <meta name="twitter:image" content="{{ absolute_url(asset('images/ogshare.png')) }}">
         <meta name="twitter:description" content="Job board Symfony">
 
         {% block extra_head %}{% endblock %}
 
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
 
         {% block extra_scripts %}{% endblock %}
@@ -37,7 +33,7 @@
                 <div class="container">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <a href="{{ path('job_index') }}" class="mb-2 mb-sm-0 mb-md-0">
-                            <img src="{{ asset('build/images/logo_jobbsy.svg') }}" alt="logo" width="120">
+                            <img src="{{ asset('images/logo_jobbsy.svg') }}" alt="logo" width="120">
                         </a>
                         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-md-3">
                             <li class="nav-item">
@@ -102,5 +98,15 @@
                 <small class="text-muted">Symfony™ is a trademark, please refer to <a href="https://symfony.com/trademark" class="text-reset" target="_blank" rel="nofollow">Trademark and Logo Policy</a>.</small>
             </footer>
         {% endblock %}
+
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+            lucide.createIcons({
+                attrs: {
+                    width: 20,
+                    height: 20,
+                }
+            });
+        </script>
     </body>
 </html>
