@@ -28,7 +28,7 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::PRIVATIZATION,
         SetList::TYPE_DECLARATION,
         SetList::EARLY_RETURN,
-        SymfonySetList::SYMFONY_62,
+        SymfonySetList::SYMFONY_64,
         SymfonySetList::SYMFONY_CODE_QUALITY,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
         SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,

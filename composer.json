@@ -21,6 +21,7 @@
         "ext-gd": "*",
         "ext-iconv": "*",
         "ext-intl": "*",
+        "ext-mbstring": "*",
         "api-platform/core": "^3.0",
         "doctrine/annotations": "^2.0",
         "doctrine/doctrine-bundle": "^2.5",
