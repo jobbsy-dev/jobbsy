@@ -1,7 +1,7 @@
 $primary: #3dabde;
 $min-contrast-ratio: 2;
 
-@import "~bootstrap/scss/bootstrap";
+@import '../../vendor/twbs/bootstrap/scss/bootstrap';
 
 .pinned {
     border: 1px solid $primary;

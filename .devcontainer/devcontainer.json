@@ -5,19 +5,16 @@
     "ghcr.io/shyim/devcontainers-features/php:0": {
       "version": "8.2"
     },
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts"
-    },
     "ghcr.io/devcontainers/features/sshd:1": {
       "version": "latest"
     }
   },
   "updateContentCommand": {
     "composer install": ["composer", "install"],
-    "yarn": ["yarn"]
+    "importmap:install": ["symfony", "console", "importmap:install"]
   },
   "postAttachCommand": {
     "server": "symfony server:start",
-    "yarn": ["yarn", "watch"]
+    "sass build": ["symfony", "console", "sass:build", "-w"]
   }
 }

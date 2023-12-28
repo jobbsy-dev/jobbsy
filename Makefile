@@ -72,10 +72,6 @@ aggregate-jobs:
 schedule:
 	$(SYMFONY_CLI) console schedule:list
 
-assets:
-	yarn install
-	yarn dev
-
 install: vendor assets
 
 deploy:								## Deploy

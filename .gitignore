@@ -8,15 +8,7 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-###> symfony/webpack-encore-bundle ###
-/node_modules/
-/public/build/
-/public/images/
-npm-debug.log
-yarn-error.log
-###< symfony/webpack-encore-bundle ###
-
-docker-compose.override.yaml
+compose.override.yaml
 
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
@@ -25,3 +17,8 @@ docker-compose.override.yaml
 
 .ansible/.vault_pass
 phpstan.neon
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor
+###< symfony/asset-mapper ###

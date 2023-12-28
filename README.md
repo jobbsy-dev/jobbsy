@@ -10,9 +10,8 @@ Online and official website is available on [jobbsy.dev](https://jobbsy.dev).
 
 ## 📋 Requirements
 
-- PHP 8.1 or higher
+- PHP 8.2 or higher
 - PHP intl extension
-- Node.js v17.2 or higher and yarn
 - [Composer](https://getcomposer.org)
 - [Docker](https://www.docker.com/)
 - (optional) [Symfony CLI](https://symfony.com/download) to easily launch project
@@ -30,18 +29,6 @@ Install PHP dependencies using Composer:
 
 ```bash
 composer install
-```
-
-and javascript dependencies:
-
-```bash
-yarn install
-```
-
-You can now build the assets:
-
-```bash
-yarn dev
 ```
 
 Launch database service (and adapt it to your needs by copying `docker-compose.override.yaml.dist` to `docker-compose.override.yaml`)

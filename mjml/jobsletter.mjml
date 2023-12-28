@@ -12,7 +12,7 @@
         </mj-section>
         <mj-section background-color="#ffffff" background-repeat="repeat" padding-bottom="40px" padding-left="40px" padding-right="40px" padding-top="40px" padding="40px 40px 40px 40px" text-align="center">
             <mj-column vertical-align="middle">
-                <mj-image align="center" alt="Jobbsy" border="none" height="auto" href="https://jobbsy.dev/" padding-bottom="0px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px" src="{{ absolute_url(asset('build/images/logo_jobbsy.svg')) }}" target="_blank" title="" width="130px"></mj-image>
+                <mj-image align="center" alt="Jobbsy" border="none" height="auto" href="https://jobbsy.dev/" padding-bottom="0px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px" src="{{ absolute_url(asset('images/logo_jobbsy.svg')) }}" target="_blank" title="" width="130px"></mj-image>
             </mj-column>
         </mj-section>
 

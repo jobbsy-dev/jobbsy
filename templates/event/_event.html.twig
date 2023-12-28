@@ -5,7 +5,7 @@
         </h3>
         <ul class="list-unstyled mt-3 d-flex gap-2 flex-column mb-0">
             <li class="d-flex align-items-center gap-2">
-                <i icon-name="calendar-days" class="fs-6"></i>
+                <i data-lucide="calendar-days" class="fs-6"></i>
 
                 {% if event.startDate|date is same as event.endDate|date %}
                     {{ event.startDate|format_datetime('medium', 'none') }}
@@ -15,10 +15,10 @@
             </li>
             <li class="d-flex align-items-center gap-2">
                 {% if event.online %}
-                    <i icon-name="cloud" class="fs-6"></i>
+                    <i data-lucide="cloud" class="fs-6"></i>
                     Online
                 {% else %}
-                    <i icon-name="map-pin" class="fs-6"></i>
+                    <i data-lucide="map-pin" class="fs-6"></i>
                     {{ event.location }} {% if event.mixed %}& Online {% endif %} | <span class="fs-5">{{ event.country|country_emoji }}</span> {{ event.country|country_name }}
                 {% endif %}
             </li>
