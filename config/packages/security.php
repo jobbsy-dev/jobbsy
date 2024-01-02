@@ -10,9 +10,6 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
 return static function (SecurityConfig $config, ContainerConfigurator $containerConfigurator): void {
     $config
-        ->enableAuthenticatorManager(true);
-
-    $config
         ->passwordHasher(PasswordAuthenticatedUserInterface::class)
         ->algorithm('auto');
 
