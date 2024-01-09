@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c494ad3d202017796e6786c488dd07a5",
+    "content-hash": "8f2949fa7532951f8296f357baedd6ad",
     "packages": [
         {
             "name": "api-platform/core",
@@ -12093,16 +12093,16 @@
         },
         {
             "name": "symfonycasts/sass-bundle",
-            "version": "v0.4.0",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyCasts/sass-bundle.git",
-                "reference": "5b831bfbc4eaa8ab3374729696b9087490a90835"
+                "reference": "50bc699fab4d2999ecfc681d0bf73c9d529eb63e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/sass-bundle/zipball/5b831bfbc4eaa8ab3374729696b9087490a90835",
-                "reference": "5b831bfbc4eaa8ab3374729696b9087490a90835",
+                "url": "https://api.github.com/repos/SymfonyCasts/sass-bundle/zipball/50bc699fab4d2999ecfc681d0bf73c9d529eb63e",
+                "reference": "50bc699fab4d2999ecfc681d0bf73c9d529eb63e",
                 "shasum": ""
             },
             "require": {
@@ -12142,9 +12142,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SymfonyCasts/sass-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/sass-bundle/tree/v0.4.0"
+                "source": "https://github.com/SymfonyCasts/sass-bundle/tree/v0.5.0"
             },
-            "time": "2023-12-21T16:27:08+00:00"
+            "time": "2024-01-05T17:18:25+00:00"
         },
         {
             "name": "twbs/bootstrap",
