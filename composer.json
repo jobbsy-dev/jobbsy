@@ -14,7 +14,7 @@
         "symfony/polyfill-php80": "*"
     },
     "require": {
-        "php": "~8.2",
+        "php": ">=8.3",
         "ext-ctype": "*",
         "ext-dom": "*",
         "ext-exif": "*",
@@ -67,7 +67,6 @@
         "symfony/process": "7.0.*",
         "symfony/property-access": "7.0.*",
         "symfony/property-info": "7.0.*",
-        "symfony/proxy-manager-bridge": "6.4.*",
         "symfony/runtime": "7.0.*",
         "symfony/scheduler": "^7.0",
         "symfony/security-bundle": "7.0.*",
@@ -118,7 +117,7 @@
         },
         "sort-packages": true,
         "platform": {
-            "php": "8.2"
+            "php": "8.3"
         }
     },
     "autoload": {
@@ -151,12 +150,8 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.4.*",
-            "endpoint": [
-                "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php/flex/main/index.json",
-                "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php-contrib/flex/main/index.json",
-                "flex://defaults"
-            ]
+            "require": "7.0.*",
+            "endpoint": ["https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php/flex/main/index.json", "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php-contrib/flex/main/index.json", "flex://defaults"]
         }
     }
 }
