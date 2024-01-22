@@ -27,14 +27,14 @@ jobs:
               run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
             - name: "Cache composer"
-              uses: actions/cache@v3
+              uses: actions/cache@v4
               with:
                   path: ${{ steps.composer-cache.outputs.dir }}
                   key: composer-phpcsfixer-${{ hashFiles('tools/php-cs-fixer/composer.lock') }}
                   restore-keys: composer-phpcsfixer-
 
             - name: "Cache phpcsfixer"
-              uses: actions/cache@v3
+              uses: actions/cache@v4
               with:
                   path: var/.php-cs-fixer.cache
                   key: phpcsfixer-${{ github.sha }}
@@ -68,7 +68,7 @@ jobs:
               run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
             - name: "Cache composer"
-              uses: actions/cache@v3
+              uses: actions/cache@v4
               with:
                   path: ${{ steps.composer-cache.outputs.dir }}
                   key: composer-${{ hashFiles('composer.lock') }}
