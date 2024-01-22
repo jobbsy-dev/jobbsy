@@ -11,7 +11,7 @@ use App\Job\SearchParameters;
 
 final readonly class WelcometotheJungleProvider implements JobProviderInterface
 {
-    public const SOURCE_NAME = 'WTTJ';
+    public const string SOURCE_NAME = 'WTTJ';
 
     public function __construct(private WelcometotheJungleClient $client)
     {

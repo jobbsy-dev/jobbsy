@@ -10,7 +10,7 @@ final readonly class TwitterApi
     /**
      * @var string
      */
-    private const BASE_URL = 'https://api.twitter.com/2';
+    private const string BASE_URL = 'https://api.twitter.com/2';
 
     public function __construct(
         #[Autowire('%env(TWITTER_API_KEY)%')]

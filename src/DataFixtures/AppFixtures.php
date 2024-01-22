@@ -15,14 +15,14 @@ use Ramsey\Uuid\Uuid;
 
 final class AppFixtures extends Fixture
 {
-    public const JOB_1_ID = 'fe094a22-5b0f-4f4d-88ee-5b331aeb6675';
-    public const JOB_2_ID = '6bb57d15-313d-403f-8785-58ebebc61852';
+    public const string JOB_1_ID = 'fe094a22-5b0f-4f4d-88ee-5b331aeb6675';
+    public const string JOB_2_ID = '6bb57d15-313d-403f-8785-58ebebc61852';
 
-    public const EVENT_1_ID = '9594a801-ff90-4be5-a3b4-ff8497f13ecf';
+    public const string EVENT_1_ID = '9594a801-ff90-4be5-a3b4-ff8497f13ecf';
 
-    public const FEED_RSS_ID = '02f25238-795d-42b9-a569-cb79531a6195';
-    public const FEED_ATOM_ID = '5492e5a8-2865-486b-b9c0-f8313fdfcb24';
-    public const NEWS_1_ID = '867fd3ce-77d2-4447-a97e-643ddec9f435';
+    public const string FEED_RSS_ID = '02f25238-795d-42b9-a569-cb79531a6195';
+    public const string FEED_ATOM_ID = '5492e5a8-2865-486b-b9c0-f8313fdfcb24';
+    public const string NEWS_1_ID = '867fd3ce-77d2-4447-a97e-643ddec9f435';
 
     public function load(ObjectManager $manager): void
     {

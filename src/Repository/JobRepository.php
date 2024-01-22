@@ -21,7 +21,7 @@ use Ramsey\Uuid\UuidInterface;
  */
 final class JobRepository extends ServiceEntityRepository implements JobRepositoryInterface
 {
-    private const MAX_JOBS_PER_PAGE = 30;
+    private const int MAX_JOBS_PER_PAGE = 30;
 
     public function __construct(ManagerRegistry $registry)
     {

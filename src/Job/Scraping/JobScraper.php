@@ -6,7 +6,7 @@ use Symfony\Component\BrowserKit\HttpBrowser;
 
 final readonly class JobScraper
 {
-    private const JOB_SCHEMA_TYPE = 'JobPosting';
+    private const string JOB_SCHEMA_TYPE = 'JobPosting';
 
     public function __construct(private HttpBrowser $httpBrowser)
     {

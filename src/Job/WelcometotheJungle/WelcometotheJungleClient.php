@@ -9,7 +9,7 @@ use Symfony\Component\Intl\Countries;
 
 final readonly class WelcometotheJungleClient
 {
-    private const URL = 'https://www.welcometothejungle.com/fr/pages/emploi-developpeur-symfony';
+    private const string URL = 'https://www.welcometothejungle.com/fr/pages/emploi-developpeur-symfony';
 
     public function __construct(private HttpBrowser $httpBrowser, private JobScraper $jobScraping)
     {
