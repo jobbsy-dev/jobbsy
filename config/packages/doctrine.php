@@ -13,12 +13,17 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
         ->url(env('DATABASE_URL')->resolve())
         ->useSavepoints(true);
 
+    $config->orm()
+        ->autoGenerateProxyClasses(true)
+        ->enableLazyGhostObjects(true);
+
     $emDefault = $config->orm()->entityManager('default');
 
     $emDefault
         ->connection('default')
         ->namingStrategy('doctrine.orm.naming_strategy.underscore_number_aware')
-        ->autoMapping(true);
+        ->autoMapping(true)
+        ->reportFieldsWhereDeclared(true);
 
     $emDefault->mapping('App')
         ->isBundle(false)
