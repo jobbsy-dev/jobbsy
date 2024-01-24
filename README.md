@@ -10,7 +10,7 @@ Online and official website is available on [jobbsy.dev](https://jobbsy.dev).
 
 ## 📋 Requirements
 
-- PHP 8.2 or higher
+- PHP 8.3 or higher
 - PHP intl extension
 - [Composer](https://getcomposer.org)
 - [Docker](https://www.docker.com/)
