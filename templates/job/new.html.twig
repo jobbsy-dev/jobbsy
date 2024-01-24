@@ -26,6 +26,7 @@
             <h4 class="mb-3">🏢 Company details</h4>
             {{ form_row(form.organization, {'row_attr': {'class': 'my-4'}}) }}
             {{ form_row(form.organizationImageFile, {'row_attr': {'class': 'my-4'}}) }}
+            {{ form_row(form.contactEmail, {'row_attr': {'class': 'my-4'}}) }}
 
             <h4 class="mb-3 mt-5">💻 Job details</h4>
             {{ form_row(form.title, {'row_attr': {'class': 'my-4'}}) }}
@@ -43,15 +44,15 @@
             {{ form_row(form.salary, {'row_attr': {'class': 'my-4'}}) }}
             {{ form_row(form.tags, {'row_attr': {'class': 'my-4'}}) }}
 
-            <h4 class="mb-3 mt-5">💖 Donation to Open Source (optional)</h4>
-            <div class="my-4">
-                {{ form_row(form.donationAmount) }}
-                <div class="p-4 bg-light border rounded">
-                    {{ include('job/_donation_description.html.twig') }}
-                </div>
-            </div>
-            {{ form_row(form.contactEmail, {'row_attr': {'class': 'my-4'}}) }}
-            <div class="d-grid mt-4">
+{#            <h4 class="mb-3 mt-5">💖 Donation to Open Source (optional)</h4>#}
+{#            <div class="my-4">#}
+{#                {{ form_row(form.donationAmount) }}#}
+{#                <div class="p-4 bg-light border rounded">#}
+{#                    {{ include('job/_donation_description.html.twig') }}#}
+{#                </div>#}
+{#            </div>#}
+
+            <div class="d-grid mt-5">
                 <button class="btn btn-primary btn-lg bg-gradient px-3" type="submit">{{ button_label|default('Post') }}</button>
             </div>
             {{ form_end(form) }}

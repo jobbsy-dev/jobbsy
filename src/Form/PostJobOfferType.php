@@ -53,23 +53,24 @@ final class PostJobOfferType extends AbstractType
                 'required' => false,
                 'help' => 'form.help.organization_logo',
             ])
-            ->add('donationAmount', MoneyType::class, [
-                'required' => false,
-                'label' => false,
-                'divisor' => 100,
-                'html5' => true,
-                'attr' => [
-                    'step' => 5,
-                    'min' => 0,
-                ],
-            ])
+//            ->add('donationAmount', MoneyType::class, [
+//                'required' => false,
+//                'label' => false,
+//                'divisor' => 100,
+//                'html5' => true,
+//                'attr' => [
+//                    'step' => 5,
+//                    'min' => 0,
+//                ],
+//            ])
             ->add('salary', TextType::class, [
                 'label' => 'form.label.salary',
                 'help' => 'form.help.salary',
                 'required' => false,
             ])
             ->add('contactEmail', EmailType::class, [
-                'label' => 'form.label.email_address',
+                'label' => 'form.label.your_company_email_address',
+                'help' => 'form.help.your_company_email_address',
             ])
             ->add('locationType', EnumType::class, [
                 'label' => false,

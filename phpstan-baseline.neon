@@ -476,13 +476,13 @@ parameters:
 			path: tests/CommunityEvent/EventScrapingTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$createSessionResponse of class App\\\\Tests\\\\Mock\\\\MockStripeClient constructor expects string\\|null, string\\|false given\\.$#"
+			message: "#^Parameter \\$retrieveSessionResponse of class App\\\\Tests\\\\Mock\\\\MockStripeClient constructor expects string\\|null, string\\|false given\\.$#"
 			count: 2
 			path: tests/Controller/JobControllerTest.php
 
 		-
-			message: "#^Parameter \\$retrieveSessionResponse of class App\\\\Tests\\\\Mock\\\\MockStripeClient constructor expects string\\|null, string\\|false given\\.$#"
-			count: 2
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
 			path: tests/Controller/JobControllerTest.php
 
 		-
