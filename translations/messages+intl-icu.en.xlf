@@ -110,9 +110,9 @@
                 <source>form.help.salary</source>
                 <target>Examples: 45 000€ – 55 000€ or $80,000 — $102,000</target>
             </trans-unit>
-            <trans-unit id="form.label.email_address">
-                <source>form.label.email_address</source>
-                <target>Email address</target>
+            <trans-unit id="form.label.your_company_email_address">
+                <source>form.label.your_company_email_address</source>
+                <target>Your company email address</target>
             </trans-unit>
             <trans-unit id="form.help.email_address">
                 <source>form.help.email_address</source>
@@ -133,6 +133,10 @@
             <trans-unit id="form.label.location_type">
                 <source>form.label.location_type</source>
                 <target>Type</target>
+            </trans-unit>
+            <trans-unit id="form.help.your_company_email_address">
+                <source>form.help.your_company_email_address</source>
+                <target>Example: jane@mycompany.com</target>
             </trans-unit>
         </body>
     </file>

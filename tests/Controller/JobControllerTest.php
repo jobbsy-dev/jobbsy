@@ -57,6 +57,8 @@ final class JobControllerTest extends WebTestCase
 
     public function test_create_job_offer_with_donation(): void
     {
+        $this->markTestSkipped('Donation disabled');
+
         $client = static::createClient();
         $client->request('GET', '/job/new');
         self::assertResponseIsSuccessful();
