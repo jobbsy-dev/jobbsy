@@ -11882,16 +11882,16 @@
         },
         {
             "name": "symfonycasts/sass-bundle",
-            "version": "v0.5.0",
+            "version": "v0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyCasts/sass-bundle.git",
-                "reference": "50bc699fab4d2999ecfc681d0bf73c9d529eb63e"
+                "reference": "ab60d0208dda1ce1f967a2c528e08b897878f927"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/sass-bundle/zipball/50bc699fab4d2999ecfc681d0bf73c9d529eb63e",
-                "reference": "50bc699fab4d2999ecfc681d0bf73c9d529eb63e",
+                "url": "https://api.github.com/repos/SymfonyCasts/sass-bundle/zipball/ab60d0208dda1ce1f967a2c528e08b897878f927",
+                "reference": "ab60d0208dda1ce1f967a2c528e08b897878f927",
                 "shasum": ""
             },
             "require": {
@@ -11931,9 +11931,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SymfonyCasts/sass-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/sass-bundle/tree/v0.5.0"
+                "source": "https://github.com/SymfonyCasts/sass-bundle/tree/v0.5.1"
             },
-            "time": "2024-01-05T17:18:25+00:00"
+            "time": "2024-01-18T09:55:10+00:00"
         },
         {
             "name": "twbs/bootstrap",
