@@ -3284,16 +3284,16 @@
         },
         {
             "name": "league/flysystem-async-aws-s3",
-            "version": "3.23.1",
+            "version": "3.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-async-aws-s3.git",
-                "reference": "93a7f1466ad13038a81230e38492c94057ae0e73"
+                "reference": "97bb30830dbabdb778c358967bd659d90a8eb219"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-async-aws-s3/zipball/93a7f1466ad13038a81230e38492c94057ae0e73",
-                "reference": "93a7f1466ad13038a81230e38492c94057ae0e73",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-async-aws-s3/zipball/97bb30830dbabdb778c358967bd659d90a8eb219",
+                "reference": "97bb30830dbabdb778c358967bd659d90a8eb219",
                 "shasum": ""
             },
             "require": {
@@ -3303,11 +3303,10 @@
                 "php": "^8.0.2"
             },
             "conflict": {
-                "async-aws/simple-s3": "<1.1",
                 "symfony/http-client": "<5.2"
             },
             "require-dev": {
-                "async-aws/simple-s3": "^1.1 || ^2.0"
+                "async-aws/simple-s3": "^2.1"
             },
             "type": "library",
             "autoload": {
@@ -3337,8 +3336,7 @@
                 "storage"
             ],
             "support": {
-                "issues": "https://github.com/thephpleague/flysystem-async-aws-s3/issues",
-                "source": "https://github.com/thephpleague/flysystem-async-aws-s3/tree/3.23.1"
+                "source": "https://github.com/thephpleague/flysystem-async-aws-s3/tree/3.24.0"
             },
             "funding": [
                 {
@@ -3350,7 +3348,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-26T18:25:23+00:00"
+            "time": "2024-02-03T22:31:49+00:00"
         },
         {
             "name": "league/flysystem-bundle",
@@ -7995,16 +7993,16 @@
         },
         {
             "name": "symfony/http-client",
-            "version": "v7.0.2",
+            "version": "v7.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "db714986d3b84330bb6196fdb201c9f79b3a8853"
+                "reference": "3d2605c07cd14aec294f72f5bf8147702f7a5ada"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/db714986d3b84330bb6196fdb201c9f79b3a8853",
-                "reference": "db714986d3b84330bb6196fdb201c9f79b3a8853",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/3d2605c07cd14aec294f72f5bf8147702f7a5ada",
+                "reference": "3d2605c07cd14aec294f72f5bf8147702f7a5ada",
                 "shasum": ""
             },
             "require": {
@@ -8067,7 +8065,7 @@
                 "http"
             ],
             "support": {
-                "source": "https://github.com/symfony/http-client/tree/v7.0.2"
+                "source": "https://github.com/symfony/http-client/tree/v7.0.3"
             },
             "funding": [
                 {
@@ -8083,7 +8081,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-02T12:51:19+00:00"
+            "time": "2024-01-29T15:41:16+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
