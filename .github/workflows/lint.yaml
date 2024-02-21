@@ -57,33 +57,25 @@ jobs:
               uses: ramsey/composer-install@v2
 
             - name: Lint YAML files
-              if: always() && steps.install.outcome == 'success'
               run: ./bin/console lint:yaml config --parse-tags
 
             - name: Lint Twig templates
-              if: always() && steps.install.outcome == 'success'
               run: ./bin/console lint:twig templates --env=prod
 
             - name: Lint XLIFF translations
-              if: always() && steps.install.outcome == 'success'
               run: ./bin/console lint:xliff translations
 
             - name: Lint Parameters and Services
-              if: always() && steps.install.outcome == 'success'
               run: ./bin/console lint:container --no-debug
 
             - name: Lint Doctrine entities
-              if: always() && steps.install.outcome == 'success'
               run: ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
 
             - name: Check if any dependencies are compromised
-              if: always() && steps.install.outcome == 'success'
               run: composer audit
 
             - name: PHPStan
-              if: always() && steps.install.outcome == 'success'
               run: ./vendor/bin/phpstan analyze
 
             - name: Rector
-              if: always() && steps.install.outcome == 'success'
               run: ./vendor/bin/rector process --dry-run
