@@ -32,23 +32,8 @@ jobs:
                   php-version: 8.3
                   tools: composer
 
-            - name: "Add PHPUnit matcher"
-              run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
-
-            - name: "Set composer cache directory"
-              id: composer-cache
-              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-            - name: "Cache composer"
-              uses: actions/cache@v4
-              with:
-                  path: ${{ steps.composer-cache.outputs.dir }}
-                  key: composer-${{ hashFiles('composer.json') }}
-                  restore-keys: composer-
-
             - name: "Composer install"
-              id: install
-              run: composer install --no-interaction --no-progress
+              uses: ramsey/composer-install@v2
 
             - name: "Init database"
               run: ./bin/console doctrine:database:create --env=test --if-not-exists

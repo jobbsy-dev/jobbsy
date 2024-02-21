@@ -22,17 +22,6 @@ jobs:
                   php-version: 8.3
                   tools: composer, symfony
 
-            - name: "Set composer cache directory"
-              id: composer-cache
-              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-            - name: "Cache composer"
-              uses: actions/cache@v4
-              with:
-                  path: ${{ steps.composer-cache.outputs.dir }}
-                  key: composer-phpcsfixer-${{ hashFiles('tools/php-cs-fixer/composer.lock') }}
-                  restore-keys: composer-phpcsfixer-
-
             - name: "Cache phpcsfixer"
               uses: actions/cache@v4
               with:
@@ -41,8 +30,9 @@ jobs:
                   restore-keys: phpcsfixer-
 
             - name: "Composer install"
-              id: install
-              run: composer install --no-interaction --no-progress --working-dir=tools/php-cs-fixer
+              uses: ramsey/composer-install@v2
+              with:
+                  working-directory: "tools/php-cs-fixer"
 
             - name: "PHP-CS-Fixer"
               run: ./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff --dry-run
@@ -63,20 +53,8 @@ jobs:
                   php-version: 8.3
                   tools: composer
 
-            - name: "Set composer cache directory"
-              id: composer-cache
-              run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-            - name: "Cache composer"
-              uses: actions/cache@v4
-              with:
-                  path: ${{ steps.composer-cache.outputs.dir }}
-                  key: composer-${{ hashFiles('composer.lock') }}
-                  restore-keys: composer-
-
             - name: "Composer install"
-              id: install
-              run: composer install --no-interaction --no-progress
+              uses: ramsey/composer-install@v2
 
             - name: Lint YAML files
               if: always() && steps.install.outcome == 'success'
