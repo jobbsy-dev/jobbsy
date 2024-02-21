@@ -27,7 +27,7 @@
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.10",
+        "doctrine/orm": "^3.0",
         "dragonmantank/cron-expression": "^3.3",
         "easycorp/easyadmin-bundle": "^4.1",
         "knplabs/knp-paginator-bundle": "^6.0",
