@@ -456,6 +456,16 @@ parameters:
 			path: src/News/Aggregator/FetchArticlesFromFeed.php
 
 		-
+			message: "#^Method App\\\\Repository\\\\CommunityEvent\\\\EventRepository\\:\\:findPastEvents\\(\\) should return array\\<App\\\\Entity\\\\CommunityEvent\\\\Event\\> but returns mixed\\.$#"
+			count: 1
+			path: src/Repository/CommunityEvent/EventRepository.php
+
+		-
+			message: "#^Method App\\\\Repository\\\\CommunityEvent\\\\EventRepository\\:\\:findUpcomingEvents\\(\\) should return array\\<App\\\\Entity\\\\CommunityEvent\\\\Event\\> but returns mixed\\.$#"
+			count: 1
+			path: src/Repository/CommunityEvent/EventRepository.php
+
+		-
 			message: "#^Method App\\\\Security\\\\User\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Security/User.php
