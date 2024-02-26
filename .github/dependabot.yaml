@@ -5,7 +5,7 @@ updates:
     - package-ecosystem: "github-actions"
       directory: "/"
       schedule:
-          interval: "weekly"
+          interval: "monthly"
       labels:
           - "github-actions"
           - "dependencies"
@@ -14,7 +14,7 @@ updates:
     - package-ecosystem: "composer"
       directory: "/"
       schedule:
-          interval: "weekly"
+          interval: "monthly"
       labels:
           - "php"
           - "dependencies"
@@ -27,7 +27,7 @@ updates:
     - package-ecosystem: "composer"
       directory: "/tools/php-cs-fixer/"
       schedule:
-          interval: "weekly"
+          interval: "monthly"
       labels:
           - "php"
           - "dependencies"
