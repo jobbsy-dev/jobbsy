@@ -148,7 +148,8 @@
         ]
     },
     "conflict": {
-        "symfony/symfony": "*"
+        "symfony/symfony": "*",
+        "symfony/asset-mapper": "7.0.4"
     },
     "extra": {
         "symfony": {

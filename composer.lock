@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "799f20312e23d6b57834aa63d21656c6",
+    "content-hash": "702019bb530f39212ae9ff81fadfbafd",
     "packages": [
         {
             "name": "api-platform/core",
@@ -6001,16 +6001,16 @@
         },
         {
             "name": "symfony/asset-mapper",
-            "version": "v7.0.4",
+            "version": "v7.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/asset-mapper.git",
-                "reference": "7cd421551f53849f641a1a3499392ed5c81598a8"
+                "reference": "537b9575df2f0a809abe9dd1117bb4ec578f7a21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/asset-mapper/zipball/7cd421551f53849f641a1a3499392ed5c81598a8",
-                "reference": "7cd421551f53849f641a1a3499392ed5c81598a8",
+                "url": "https://api.github.com/repos/symfony/asset-mapper/zipball/537b9575df2f0a809abe9dd1117bb4ec578f7a21",
+                "reference": "537b9575df2f0a809abe9dd1117bb4ec578f7a21",
                 "shasum": ""
             },
             "require": {
@@ -6059,7 +6059,7 @@
             "description": "Maps directories of assets & makes them available in a public directory with versioned filenames.",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/asset-mapper/tree/v7.0.4"
+                "source": "https://github.com/symfony/asset-mapper/tree/v7.0.3"
             },
             "funding": [
                 {
@@ -6075,7 +6075,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-22T20:27:20+00:00"
+            "time": "2024-01-23T19:26:06+00:00"
         },
         {
             "name": "symfony/browser-kit",
