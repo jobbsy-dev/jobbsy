@@ -3091,16 +3091,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.26.0",
+            "version": "3.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "072735c56cc0da00e10716dd90d5a7f7b40b36be"
+                "reference": "4729745b1ab737908c7d055148c9a6b3e959832f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/072735c56cc0da00e10716dd90d5a7f7b40b36be",
-                "reference": "072735c56cc0da00e10716dd90d5a7f7b40b36be",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4729745b1ab737908c7d055148c9a6b3e959832f",
+                "reference": "4729745b1ab737908c7d055148c9a6b3e959832f",
                 "shasum": ""
             },
             "require": {
@@ -3165,7 +3165,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.26.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.27.0"
             },
             "funding": [
                 {
@@ -3177,20 +3177,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-25T11:49:53+00:00"
+            "time": "2024-04-07T19:17:50+00:00"
         },
         {
             "name": "league/flysystem-async-aws-s3",
-            "version": "3.26.0",
+            "version": "3.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-async-aws-s3.git",
-                "reference": "8a26a9cf4bfcf51ec641ac9c2d18d5f53a8b017a"
+                "reference": "fea8ce406a252777ea06a90ad9f6c8ff361c3913"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-async-aws-s3/zipball/8a26a9cf4bfcf51ec641ac9c2d18d5f53a8b017a",
-                "reference": "8a26a9cf4bfcf51ec641ac9c2d18d5f53a8b017a",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-async-aws-s3/zipball/fea8ce406a252777ea06a90ad9f6c8ff361c3913",
+                "reference": "fea8ce406a252777ea06a90ad9f6c8ff361c3913",
                 "shasum": ""
             },
             "require": {
@@ -3233,7 +3233,7 @@
                 "storage"
             ],
             "support": {
-                "source": "https://github.com/thephpleague/flysystem-async-aws-s3/tree/3.26.0"
+                "source": "https://github.com/thephpleague/flysystem-async-aws-s3/tree/3.27.0"
             },
             "funding": [
                 {
@@ -3245,7 +3245,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-18T13:56:24+00:00"
+            "time": "2024-04-04T15:08:22+00:00"
         },
         {
             "name": "league/flysystem-bundle",
