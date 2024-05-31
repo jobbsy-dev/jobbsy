@@ -39,7 +39,7 @@ final class PoleEmploiApi
             return;
         }
 
-        $response = $this->httpClient->request('POST', 'https://entreprise.pole-emploi.fr/connexion/oauth2/access_token', [
+        $response = $this->httpClient->request('POST', 'https://entreprise.francetravail.fr/connexion/oauth2/access_token', [
             'body' => [
                 'grant_type' => 'client_credentials',
                 'client_id' => $this->poleEmploiClientId,
@@ -69,7 +69,7 @@ final class PoleEmploiApi
      */
     public function search(array $queryParams = []): array
     {
-        $url = 'https://api.pole-emploi.io/partenaire/offresdemploi/v2/offres/search';
+        $url = 'https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search';
 
         // Workaround here because this API does not accept DateTime format encoded
         if (\array_key_exists('minCreationDate', $queryParams) || \array_key_exists('maxCreationDate', $queryParams)) {

@@ -17,7 +17,7 @@ final class PoleEmploiApiTest extends TestCase
         $maxCreationDate = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2022-09-02 10:00:00')
             ->setTimezone(new \DateTimeZone('UTC'));
         $expectedSearchUrl = sprintf(
-            'https://api.pole-emploi.io/partenaire/offresdemploi/v2/offres/search?minCreationDate=%s&maxCreationDate=%s',
+            'https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?minCreationDate=%s&maxCreationDate=%s',
             '2022-09-01T10:00:00Z',
             '2022-09-02T10:00:00Z'
         );
