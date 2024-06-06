@@ -46,6 +46,7 @@ final class JobProviderPullCommand extends Command
 
         $progressBar = new ProgressBar($output, $jobs->count());
         $progressBar->start();
+
         $i = 0;
         $events = [];
         foreach ($jobs->all() as $job) {
@@ -64,6 +65,7 @@ final class JobProviderPullCommand extends Command
                 $this->dispatchEvents($events);
                 $events = [];
             }
+
             ++$i;
             $progressBar->advance();
         }

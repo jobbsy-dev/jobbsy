@@ -27,13 +27,11 @@ final class EventRepository extends ServiceEntityRepository implements EventRepo
     public function save(Event $event): void
     {
         $this->getEntityManager()->persist($event);
-        $this->getEntityManager()->flush();
     }
 
-    public function remove(Event $entity): void
+    public function remove(Event $event): void
     {
-        $this->getEntityManager()->remove($entity);
-        $this->getEntityManager()->flush();
+        $this->getEntityManager()->remove($event);
     }
 
     /**

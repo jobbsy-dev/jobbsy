@@ -12,6 +12,7 @@ final class ClientTest extends TestCase
     public function test_read_rss_document(): void
     {
         // Arrange
+        /** @var string $xmlResponse */
         $xmlResponse = file_get_contents(__DIR__.'/data/symfony_blog.xml');
         $mockResponse = new MockResponse($xmlResponse);
         $mockHttpClient = new MockHttpClient($mockResponse);
@@ -33,6 +34,7 @@ final class ClientTest extends TestCase
     public function test_read_rss_document_extra_properties(): void
     {
         // Arrange
+        /** @var string $xmlResponse */
         $xmlResponse = file_get_contents(__DIR__.'/data/symfony_blog.xml');
         $mockResponse = new MockResponse($xmlResponse);
         $mockHttpClient = new MockHttpClient($mockResponse);

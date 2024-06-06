@@ -42,7 +42,7 @@ final class EventCrudController extends AbstractCrudController
                 ->setChoices(['Modes' => AttendanceMode::cases()])
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', AttendanceMode::class)
-                ->setFormTypeOption('choice_label', function (AttendanceMode $enum): string {
+                ->setFormTypeOption('choice_label', static function (AttendanceMode $enum): string {
                     return $enum->value;
                 }),
         ];

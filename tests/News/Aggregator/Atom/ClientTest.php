@@ -12,6 +12,7 @@ final class ClientTest extends TestCase
     public function test_read_feed(): void
     {
         // Arrange
+        /** @var string $xmlResponse */
         $xmlResponse = file_get_contents(__DIR__.'/data/feed.xml');
         $mockResponse = new MockResponse($xmlResponse);
         $mockHttpClient = new MockHttpClient($mockResponse);

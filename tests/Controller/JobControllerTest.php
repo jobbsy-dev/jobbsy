@@ -59,32 +59,34 @@ final class JobControllerTest extends WebTestCase
     {
         $this->markTestSkipped('Donation disabled');
 
-        $client = static::createClient();
-        $client->request('GET', '/job/new');
-        self::assertResponseIsSuccessful();
-
-        $mockStripeClient = new MockStripeClient(
-            file_get_contents(__DIR__.'/../Mock/create_session.json')
-        );
-        ApiRequestor::setHttpClient($mockStripeClient);
-
-        $client->submitForm('Post', [
-            'post_job_offer[title]' => 'Symfony freelance developer',
-            'post_job_offer[location]' => 'Remote',
-            'post_job_offer[employmentType]' => EmploymentType::CONTRACT->value,
-            'post_job_offer[organization]' => 'Symfony',
-            'post_job_offer[url]' => 'https://symfony.com',
-            'post_job_offer[tags]' => 'symfony,freelance,sql',
-            'post_job_offer[donationAmount]' => 5000,
-            'post_job_offer[contactEmail]' => 'test@example.com',
-        ]);
-        self::assertResponseRedirects('https://checkout.stripe.com/pay/xxx');
+        //        $client = static::createClient();
+        //        $client->request('GET', '/job/new');
+        //        self::assertResponseIsSuccessful();
+        //
+        //        $mockStripeClient = new MockStripeClient(
+        //            file_get_contents(__DIR__.'/../Mock/create_session.json')
+        //        );
+        //        ApiRequestor::setHttpClient($mockStripeClient);
+        //
+        //        $client->submitForm('Post', [
+        //            'post_job_offer[title]' => 'Symfony freelance developer',
+        //            'post_job_offer[location]' => 'Remote',
+        //            'post_job_offer[employmentType]' => EmploymentType::CONTRACT->value,
+        //            'post_job_offer[organization]' => 'Symfony',
+        //            'post_job_offer[url]' => 'https://symfony.com',
+        //            'post_job_offer[tags]' => 'symfony,freelance,sql',
+        //            'post_job_offer[donationAmount]' => 5000,
+        //            'post_job_offer[contactEmail]' => 'test@example.com',
+        //        ]);
+        //        self::assertResponseRedirects('https://checkout.stripe.com/pay/xxx');
     }
 
     public function test_job_donation_success_with_unpaid_payment(): void
     {
+        /** @var string $retrieveSessionResponseData */
+        $retrieveSessionResponseData = file_get_contents(__DIR__.'/../Mock/retrieve_session_unpaid.json');
         $mockStripeClient = new MockStripeClient(
-            retrieveSessionResponse: file_get_contents(__DIR__.'/../Mock/retrieve_session_unpaid.json')
+            retrieveSessionResponse: $retrieveSessionResponseData
         );
         ApiRequestor::setHttpClient($mockStripeClient);
 
@@ -102,8 +104,10 @@ final class JobControllerTest extends WebTestCase
 
     public function test_job_donation_success_with_paid_payment(): void
     {
+        /** @var string $retrieveSessionResponseData */
+        $retrieveSessionResponseData = file_get_contents(__DIR__.'/../Mock/retrieve_session_paid.json');
         $mockStripeClient = new MockStripeClient(
-            retrieveSessionResponse: file_get_contents(__DIR__.'/../Mock/retrieve_session_paid.json')
+            retrieveSessionResponse: $retrieveSessionResponseData
         );
         ApiRequestor::setHttpClient($mockStripeClient);
 

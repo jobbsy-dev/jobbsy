@@ -216,6 +216,7 @@ final class MailjetApiTest extends TestCase
         // Assert
         self::assertSame('POST', $mockResponse->getRequestMethod());
         self::assertSame('https://example.com/campaigndraft/1/send', $mockResponse->getRequestUrl());
+        $this->assertNotNull($response);
         self::assertSame($expectedResponseData['Data'], $response->data);
         self::assertNotNull($response);
         self::assertSame('Programmed', $response->data[0]['Status']);

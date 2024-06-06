@@ -20,16 +20,16 @@ class Feed implements \Stringable
     private UuidInterface $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $url = null;
+    private string $url = '';
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private string $name = '';
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: Types::STRING, enumType: FeedType::class)]
-    private ?FeedType $type = null;
+    private FeedType $type = FeedType::RSS;
 
     #[ORM\Embedded(class: Media::class, columnPrefix: 'image_')]
     private ?Media $image = null;
@@ -59,7 +59,7 @@ class Feed implements \Stringable
 
     public function __toString(): string
     {
-        return (string) $this->name;
+        return $this->name;
     }
 
     public function getId(): UuidInterface
@@ -96,12 +96,12 @@ class Feed implements \Stringable
         return $this->createdAt;
     }
 
-    public function getType(): ?FeedType
+    public function getType(): FeedType
     {
         return $this->type;
     }
 
-    public function setType(?FeedType $type): void
+    public function setType(FeedType $type): void
     {
         $this->type = $type;
     }

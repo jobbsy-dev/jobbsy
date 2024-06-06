@@ -7,6 +7,7 @@ use App\Job\Repository\JobRepositoryInterface;
 use App\Message\Job\ClassifyMessage;
 use App\OpenAI\Client;
 use App\OpenAI\Model\CompletionRequest;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -20,7 +21,8 @@ final readonly class ClassifyHandler
         private JobRepositoryInterface $jobRepository,
         #[Autowire('%env(OPENAI_API_COMPLETION_MODEL)%')]
         private string $model,
-        private LoggerInterface $logger
+        private LoggerInterface $logger,
+        private EntityManagerInterface $entityManager,
     ) {
     }
 
@@ -45,6 +47,8 @@ final readonly class ClassifyHandler
 
         $job->setTags(\array_slice($keywords, 0, 5));
 
-        $this->jobRepository->save($job, true);
+        $this->jobRepository->save($job);
+
+        $this->entityManager->flush();
     }
 }

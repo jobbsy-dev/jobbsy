@@ -2,6 +2,7 @@
 
 namespace App\News\Aggregator;
 
+use App\Entity\News\Entry;
 use App\Repository\News\FeedRepository;
 use Psr\Log\LoggerInterface;
 
@@ -14,6 +15,9 @@ final readonly class AggregateNews
     ) {
     }
 
+    /**
+     * @return Entry[]
+     */
     public function __invoke(): array
     {
         $feeds = $this->feedRepository->findAll();

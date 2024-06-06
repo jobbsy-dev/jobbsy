@@ -17,7 +17,7 @@ class Source
     private UuidInterface $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $url = null;
+    private string $url = '';
 
     public function __construct(
         UuidInterface $id = null,

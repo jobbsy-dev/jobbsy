@@ -52,11 +52,6 @@ final class NewsController extends AbstractController
     #[Route('/news/{id}', name: 'news_entry', methods: ['GET'])]
     public function entry(Entry $article): RedirectResponse
     {
-        if (null === $article->getLink()) {
-            throw $this->createNotFoundException();
-        }
-
-        /** @var string $articleLink */
         $articleLink = $article->getLink();
         $uri = Modifier::from($articleLink)->appendQuery('ref=jobbsy');
 

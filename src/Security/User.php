@@ -8,7 +8,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 final class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     private ?string $username = null;
+
+    /**
+     * @var string[]
+     */
     private array $roles = [];
+
     private ?string $password = null;
 
     public function getUsername(): ?string
@@ -16,11 +21,9 @@ final class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->username;
     }
 
-    public function setUsername(string $username): self
+    public function setUsername(string $username): void
     {
         $this->username = $username;
-
-        return $this;
     }
 
     /**
@@ -45,11 +48,12 @@ final class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
+    /**
+     * @param string[] $roles
+     */
+    public function setRoles(array $roles): void
     {
         $this->roles = $roles;
-
-        return $this;
     }
 
     /**
@@ -60,11 +64,9 @@ final class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $password): void
     {
         $this->password = $password;
-
-        return $this;
     }
 
     /**

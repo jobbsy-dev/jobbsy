@@ -2,6 +2,7 @@
 
 namespace App\News\Aggregator;
 
+use App\Entity\News\Entry;
 use App\Entity\News\Feed;
 use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 
@@ -14,6 +15,9 @@ final readonly class FetchArticlesFromFeed
     {
     }
 
+    /**
+     * @return Entry[]
+     */
     public function __invoke(Feed $feed): array
     {
         foreach ($this->providers as $provider) {

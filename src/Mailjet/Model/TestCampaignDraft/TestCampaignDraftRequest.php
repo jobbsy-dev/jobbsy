@@ -4,6 +4,9 @@ namespace App\Mailjet\Model\TestCampaignDraft;
 
 final readonly class TestCampaignDraftRequest
 {
+    /**
+     * @param Recipient[] $recipients
+     */
     public function __construct(public string $draftId, public array $recipients)
     {
     }

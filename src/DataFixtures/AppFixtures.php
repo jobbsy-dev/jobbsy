@@ -16,12 +16,15 @@ use Ramsey\Uuid\Uuid;
 final class AppFixtures extends Fixture
 {
     public const string JOB_1_ID = 'fe094a22-5b0f-4f4d-88ee-5b331aeb6675';
+
     public const string JOB_2_ID = '6bb57d15-313d-403f-8785-58ebebc61852';
 
     public const string EVENT_1_ID = '9594a801-ff90-4be5-a3b4-ff8497f13ecf';
 
     public const string FEED_RSS_ID = '02f25238-795d-42b9-a569-cb79531a6195';
+
     public const string FEED_ATOM_ID = '5492e5a8-2865-486b-b9c0-f8313fdfcb24';
+
     public const string NEWS_1_ID = '867fd3ce-77d2-4447-a97e-643ddec9f435';
 
     public function load(ObjectManager $manager): void
@@ -34,6 +37,16 @@ final class AppFixtures extends Fixture
     private function loadJobs(ObjectManager $manager): void
     {
         $publishedAt = new \DateTimeImmutable();
+        /**
+         * @var string         $title
+         * @var EmploymentType $employmentType
+         * @var string         $organization
+         * @var string         $location
+         * @var string         $url
+         * @var string[]       $tags
+         * @var string|null    $id
+         * @var bool           $pinned
+         */
         foreach ($this->getJobData() as [$title, $employmentType, $organization, $location, $url, $tags, $id, $pinned]) {
             $id = $id ? Uuid::fromString($id) : null;
             $job = new Job(
@@ -60,14 +73,25 @@ final class AppFixtures extends Fixture
 
     private function loadEvents(ObjectManager $manager): void
     {
+        /**
+         * @var string|null        $id
+         * @var string             $name
+         * @var \DateTimeImmutable $startDate
+         * @var \DateTimeImmutable $endDate
+         * @var string|null        $location
+         * @var string             $abstract
+         * @var string             $url
+         * @var string             $countryCode
+         * @var AttendanceMode     $attendanceMode
+         */
         foreach ($this->getEventData() as [$id, $name, $startDate, $endDate, $location, $abstract, $url, $countryCode, $attendanceMode]) {
             $event = new Event($id ? Uuid::fromString($id) : null);
             $event->setName($name);
             $event->setUrl($url);
             $event->setAbstract($abstract);
             $event->setLocation($location);
-            $event->setStartDate(\DateTimeImmutable::createFromFormat('Y-m-d', $startDate));
-            $event->setEndDate(\DateTimeImmutable::createFromFormat('Y-m-d', $endDate));
+            $event->setStartDate($startDate);
+            $event->setEndDate($endDate);
             $event->setCountry($countryCode);
             $event->setAttendanceMode($attendanceMode);
 
@@ -83,6 +107,7 @@ final class AppFixtures extends Fixture
         $feedRSS->setName('RSS Feed');
         $feedRSS->setUrl('https://localhost/rss');
         $feedRSS->setType(FeedType::RSS);
+
         $manager->persist($feedRSS);
         $this->addReference(sprintf('feed-%s', self::FEED_RSS_ID), $feedRSS);
 
@@ -90,9 +115,18 @@ final class AppFixtures extends Fixture
         $feedAtom->setName('Atom Feed');
         $feedAtom->setUrl('https://localhost/atom');
         $feedAtom->setType(FeedType::ATOM);
+
         $manager->persist($feedAtom);
         $this->addReference(sprintf('feed-%s', self::FEED_ATOM_ID), $feedAtom);
 
+        /**
+         * @var string|null        $id
+         * @var string             $title
+         * @var string             $link
+         * @var string             $description
+         * @var \DateTimeImmutable $publishedAt
+         * @var string             $feedId
+         */
         foreach ($this->getNewsData() as [$id, $title, $link, $description, $publishedAt, $feedId]) {
             /** @var Feed $feed */
             $feed = $this->getReference(sprintf('feed-%s', $feedId));
@@ -102,7 +136,7 @@ final class AppFixtures extends Fixture
             $article->setTitle($title);
             $article->setLink($link);
             $article->setDescription($description);
-            $article->setPublishedAt(\DateTimeImmutable::createFromFormat('Y-m-d', $publishedAt));
+            $article->setPublishedAt($publishedAt);
 
             $manager->persist($article);
         }
@@ -149,10 +183,10 @@ final class AppFixtures extends Fixture
         yield [
             self::EVENT_1_ID,
             'SymfonyCon 2022 Disneyland Paris',
-            '2022-11-17',
-            '2022-11-18',
+            \DateTimeImmutable::createFromFormat('Y-m-d', '2022-11-17'),
+            \DateTimeImmutable::createFromFormat('Y-m-d', '2022-11-18'),
             'Paris',
-            'We are thrilled to welcome you at SymfonyCon Disneyland Paris 2022! This year, we will finally meet you at the Disney\'s Hotel New York - Art of Marvel for the annual international Symfony conference. ',
+            "We are thrilled to welcome you at SymfonyCon Disneyland Paris 2022! This year, we will finally meet you at the Disney's Hotel New York - Art of Marvel for the annual international Symfony conference. ",
             'https://live.symfony.com/2022-paris-con/',
             'FR',
             AttendanceMode::OFFLINE,
@@ -161,8 +195,8 @@ final class AppFixtures extends Fixture
         yield [
             null,
             'API Platform Conference 2022',
-            '2022-09-15',
-            '2022-09-16',
+            \DateTimeImmutable::createFromFormat('Y-m-d', '2022-09-15'),
+            \DateTimeImmutable::createFromFormat('Y-m-d', '2022-09-16'),
             'Lille',
             'The 2nd edition of the API Platform Conference (a popular open source framework for building hypermedia and GraphQL APIs ) is coming!',
             'https://api-platform.com/con/2022/',
@@ -173,8 +207,8 @@ final class AppFixtures extends Fixture
         yield [
             null,
             'SymfonyWorld Online 2022 Winter Edition',
-            '2022-12-08',
-            '2022-12-09',
+            \DateTimeImmutable::createFromFormat('Y-m-d', '2022-12-08'),
+            \DateTimeImmutable::createFromFormat('Y-m-d', '2022-12-09'),
             null,
             'Join us for the fifth edition of the international online SymfonyWorld conference. The entire conference will take place online during 4 days in English.',
             'https://live.symfony.com/2022-world-winter/',
@@ -190,7 +224,7 @@ final class AppFixtures extends Fixture
             'Write your first tests',
             'https://localhost/write-first-tests',
             'Ready to write your first tests? Use PHPUnit on your Symfony app',
-            '2022-11-03',
+            \DateTimeImmutable::createFromFormat('Y-m-d', '2022-11-03'),
             self::FEED_RSS_ID,
         ];
 
@@ -199,7 +233,7 @@ final class AppFixtures extends Fixture
             'Why you should migrate your Symfony configs to PHP',
             'https://localhost/php-config',
             '<p>Yesterday, I had a quick discussion on Slack in the Symfony Support channel where somebody was asking about splitting up their services.yaml file into multiple included files.</p>',
-            '2022-11-03',
+            \DateTimeImmutable::createFromFormat('Y-m-d', '2022-11-03'),
             self::FEED_ATOM_ID,
         ];
     }

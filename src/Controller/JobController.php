@@ -106,8 +106,8 @@ final class JobController extends AbstractController
         Stripe::setApiKey($this->stripeApiKey);
         try {
             $session = Session::retrieve($stripeSessionId);
-        } catch (\Exception $e) {
-            $this->logger->notice($e->getMessage());
+        } catch (\Exception $exception) {
+            $this->logger->notice($exception->getMessage());
 
             throw $this->createNotFoundException();
         }
@@ -151,14 +151,16 @@ final class JobController extends AbstractController
         Request $request,
         SubscribeMailingListCommandHandler $handler,
         #[Autowire('%env(MAILJET_CONTACT_LIST_ID)%')]
-        string $mailjetListId
+        int $mailjetListId
     ): Response {
         $form = $this->createForm(SubscriptionType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var string $email */
+            $email = $form->get('email')->getData();
             $command = new SubscribeMailingListCommand(
-                $form->getData()['email'],
+                $email,
                 $mailjetListId,
             );
             ($handler)($command);
@@ -181,6 +183,7 @@ final class JobController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var int $donationAmount */
             $donationAmount = $form->get('donationAmount')->getData();
 
             $successUrl = $this->generateUrl('job_donation_success', [

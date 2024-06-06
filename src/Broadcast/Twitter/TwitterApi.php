@@ -59,13 +59,18 @@ final readonly class TwitterApi
             'oauth_token' => $this->accessToken,
             'oauth_signature_method' => 'HMAC-SHA1',
             'oauth_timestamp' => time(),
-            'oauth_nonce' => md5(random_int(0, mt_getrandmax())),
+            'oauth_nonce' => md5((string) random_int(0, mt_getrandmax())),
             'oauth_version' => '1.0',
         ];
 
         ksort($oauthParameters);
 
         $return = [];
+
+        /**
+         * @var string $key
+         * @var string $value
+         */
         foreach ($oauthParameters as $key => $value) {
             $return[] = rawurlencode($key).'='.rawurlencode($value);
         }
@@ -78,8 +83,12 @@ final readonly class TwitterApi
 
         $return = 'OAuth ';
         $values = [];
+        /**
+         * @var string $key
+         * @var string $value
+         */
         foreach ($oauthParameters as $key => $value) {
-            $values[] = "$key=\"".rawurlencode($value).'"';
+            $values[] = $key.'="'.rawurlencode($value).'"';
         }
 
         return $return.implode(', ', $values);

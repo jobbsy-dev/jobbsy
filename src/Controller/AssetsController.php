@@ -42,8 +42,8 @@ final class AssetsController extends AbstractController
         try {
             /** @var Response $response */
             $response = $this->glide->getImageResponse($path, $request->query->all());
-        } catch (FileNotFoundException $e) {
-            throw $this->createNotFoundException('', $e);
+        } catch (FileNotFoundException $fileNotFoundException) {
+            throw $this->createNotFoundException('', $fileNotFoundException);
         }
 
         return $response;

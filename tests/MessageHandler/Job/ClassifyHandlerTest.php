@@ -8,6 +8,7 @@ use App\Message\Job\ClassifyMessage;
 use App\MessageHandler\Job\ClassifyHandler;
 use App\OpenAI\Client;
 use App\Tests\Repository\InMemoryJobRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 use Ramsey\Uuid\Uuid;
@@ -35,7 +36,7 @@ final class ClassifyHandlerTest extends TestCase
 
         $repository = new InMemoryJobRepository([$job]);
 
-        $handler = new ClassifyHandler($client, $repository, 'model', new NullLogger());
+        $handler = new ClassifyHandler($client, $repository, 'model', new NullLogger(), $this->createMock(EntityManagerInterface::class));
         $message = new ClassifyMessage('d43b7e10-cbc7-40d1-a9d4-aa73fc825456');
 
         // Act

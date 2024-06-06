@@ -25,6 +25,9 @@ final class PostJobOfferCommand
     #[Assert\Length(max: 255)]
     public string $organization = '';
 
+    /**
+     * @var string[]
+     */
     #[Assert\Count(max: 5)]
     public array $tags = [];
 

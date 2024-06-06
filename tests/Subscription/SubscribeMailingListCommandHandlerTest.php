@@ -15,7 +15,7 @@ final class SubscribeMailingListCommandHandlerTest extends TestCase
         $subscriptionAdapter = new NullSubscriptionAdapter();
         $commandHandler = new SubscribeMailingListCommandHandler($subscriptionAdapter);
 
-        $command = new SubscribeMailingListCommand('john@example.com', '1234');
+        $command = new SubscribeMailingListCommand('john@example.com', 1234);
 
         ($commandHandler)($command);
     }

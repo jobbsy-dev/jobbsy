@@ -13,7 +13,9 @@ final class EventScrapingTest extends TestCase
     public function test_crawl(): void
     {
         // Arrange
-        $mockResponse = new MockResponse(file_get_contents(__DIR__.'/fixtures/meetup_events_page.html'));
+        /** @var string $body */
+        $body = file_get_contents(__DIR__.'/fixtures/meetup_events_page.html');
+        $mockResponse = new MockResponse($body);
         $mockClient = new MockHttpClient([$mockResponse]);
         $goutteClient = new HttpBrowser($mockClient);
         $meetupCrawler = new EventScraping($goutteClient);
