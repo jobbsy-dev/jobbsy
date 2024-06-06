@@ -99,22 +99,14 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
         return $job;
     }
 
-    public function save(Job $entity, bool $flush = false): void
+    public function save(Job $job): void
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->persist($job);
     }
 
-    public function remove(Job $entity, bool $flush = false): void
+    public function remove(Job $job): void
     {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        $this->getEntityManager()->remove($job);
     }
 
     /**

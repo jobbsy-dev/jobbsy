@@ -12,10 +12,12 @@ final class PoleEmploiApiTest extends TestCase
     public function test_search_with_is_o8601_date_time_format(): void
     {
         // Arrange
-        $minCreationDate = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2022-09-01 10:00:00')
-            ->setTimezone(new \DateTimeZone('UTC'));
-        $maxCreationDate = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2022-09-02 10:00:00')
-            ->setTimezone(new \DateTimeZone('UTC'));
+        /** @var \DateTimeImmutable $minCreationDate */
+        $minCreationDate = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2022-09-01 10:00:00', new \DateTimeZone('UTC'));
+
+        /** @var \DateTimeImmutable $maxCreationDate */
+        $maxCreationDate = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', '2022-09-02 10:00:00', new \DateTimeZone('UTC'));
+
         $expectedSearchUrl = sprintf(
             'https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?minCreationDate=%s&maxCreationDate=%s',
             '2022-09-01T10:00:00Z',

@@ -19,7 +19,7 @@ final readonly class WelcometotheJungleClient
     {
         $crawler = $this->httpBrowser->request('GET', self::URL);
 
-        $urls = $crawler->filter('ol:nth-child(2) li header a')->each(function (Crawler $crawler): string {
+        $urls = $crawler->filter('ol:nth-child(2) li header a')->each(static function (Crawler $crawler): string {
             return $crawler->link()->getUri();
         });
 

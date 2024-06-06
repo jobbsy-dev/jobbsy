@@ -17,6 +17,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ],
         ]);
     }
+
     if ($containerConfigurator->env() === 'test') {
         $containerConfigurator->extension('web_profiler', [
             'toolbar' => false,

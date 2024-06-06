@@ -12,7 +12,7 @@ final readonly class MailjetSubscriptionAdapter implements SubscriptionMailingLi
     {
     }
 
-    public function subscribe(string $email, mixed $mailingList): void
+    public function subscribe(string $email, int $mailingList): void
     {
         $this->api->manageContact(new ManageContactRequest(
             $mailingList,

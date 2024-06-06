@@ -10,7 +10,6 @@ use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,7 +31,7 @@ final class PostJobOfferType extends AbstractType
             ->add('employmentType', EnumType::class, [
                 'label' => 'form.label.employment_type',
                 'class' => EmploymentType::class,
-                'choice_label' => function (EmploymentType $employmentType): string {
+                'choice_label' => static function (EmploymentType $employmentType): string {
                     return sprintf('employment_type.%s', $employmentType->value);
                 },
             ])
@@ -75,7 +74,7 @@ final class PostJobOfferType extends AbstractType
             ->add('locationType', EnumType::class, [
                 'label' => false,
                 'class' => LocationType::class,
-                'choice_label' => function (LocationType $locationType): string {
+                'choice_label' => static function (LocationType $locationType): string {
                     return sprintf('location_type.%s', $locationType->value);
                 },
             ])
@@ -83,11 +82,11 @@ final class PostJobOfferType extends AbstractType
 
         $builder->get('tags')
             ->addModelTransformer(new CallbackTransformer(
-                function ($tagsAsArray): string {
+                static function ($tagsAsArray): string {
                     // transform the array to a string
                     return implode(', ', array_map('trim', $tagsAsArray));
                 },
-                function ($tagsAsString): array {
+                static function ($tagsAsString): array {
                     if (null === $tagsAsString) {
                         return [];
                     }

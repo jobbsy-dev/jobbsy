@@ -16,13 +16,19 @@ final class WelcometotheJungleProviderTest extends TestCase
     public function test_retrieve(): void
     {
         // Arrange
-        $mockResponseList = new MockResponse(file_get_contents(__DIR__.'/data/wttj_list.html'));
+        /** @var string $body */
+        $body = file_get_contents(__DIR__.'/data/wttj_list.html');
+        $mockResponseList = new MockResponse($body);
 
         $httpClient1 = new MockHttpClient([$mockResponseList]);
         $goutteClient1 = new HttpBrowser($httpClient1);
 
-        $mockResponseJob1 = new MockResponse(file_get_contents(__DIR__.'/data/wttj_job1.html'));
-        $mockResponseJob2 = new MockResponse(file_get_contents(__DIR__.'/data/wttj_job2.html'));
+        /** @var string $bodyJob1 */
+        $bodyJob1 = file_get_contents(__DIR__.'/data/wttj_job1.html');
+        $mockResponseJob1 = new MockResponse($bodyJob1);
+        /** @var string $bodyJob2 */
+        $bodyJob2 = file_get_contents(__DIR__.'/data/wttj_job2.html');
+        $mockResponseJob2 = new MockResponse($bodyJob2);
         $httpClient2 = new MockHttpClient([
             $mockResponseJob1,
             $mockResponseJob2,

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Donation\Command\CreateDonationPaymentUrlCommand;
 use App\Message\CreateTweetMessage;
-use App\Message\Job\ClassifyMessage;
 use App\Shared\AsyncMessageInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\Mailer\Messenger\SendEmailMessage;

@@ -65,7 +65,7 @@ final class PoleEmploiApi
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
      *
-     * @return array<string, mixed|array>
+     * @return array<string, scalar|array>
      */
     public function search(array $queryParams = []): array
     {
@@ -73,16 +73,18 @@ final class PoleEmploiApi
 
         // Workaround here because this API does not accept DateTime format encoded
         if (\array_key_exists('minCreationDate', $queryParams) || \array_key_exists('maxCreationDate', $queryParams)) {
+            /** @var \DateTimeImmutable|null $maxCreationDate */
             $maxCreationDate = $queryParams['maxCreationDate'];
+            /** @var \DateTimeImmutable|null $minCreationDate */
             $minCreationDate = $queryParams['minCreationDate'];
 
-            $maxCreationDateQueryUrl = $maxCreationDate;
-            if ($maxCreationDate instanceof \DateTimeInterface) {
+            $maxCreationDateQueryUrl = null;
+            if (null !== $maxCreationDate) {
                 $maxCreationDateQueryUrl = $maxCreationDate->format('Y-m-d\TH:i:s\Z');
             }
 
-            $minCreationDateQueryUrl = $minCreationDate;
-            if ($minCreationDate instanceof \DateTimeInterface) {
+            $minCreationDateQueryUrl = null;
+            if (null !== $minCreationDate) {
                 $minCreationDateQueryUrl = $minCreationDate->format('Y-m-d\TH:i:s\Z');
             }
 

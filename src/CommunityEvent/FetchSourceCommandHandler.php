@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\CommunityEvent;
 
 use App\Entity\CommunityEvent\Event;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Intl\Countries;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
@@ -17,6 +18,7 @@ final readonly class FetchSourceCommandHandler
         private LoggerInterface $logger,
         private EventScraping $eventScraping,
         private EventRepositoryInterface $eventRepository,
+        private EntityManagerInterface $entityManager,
     ) {
     }
 
@@ -94,7 +96,7 @@ final readonly class FetchSourceCommandHandler
         }
 
         foreach ($events as $event) {
-            if (null === $event->getUrl()) {
+            if ('' === $event->getUrl()) {
                 continue;
             }
 
@@ -104,5 +106,7 @@ final readonly class FetchSourceCommandHandler
 
             $this->eventRepository->save($event);
         }
+
+        $this->entityManager->flush();
     }
 }

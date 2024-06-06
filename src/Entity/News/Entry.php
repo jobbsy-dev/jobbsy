@@ -31,17 +31,17 @@ class Entry
     #[ORM\Column(length: 255)]
     #[ApiProperty(types: ['https://schema.org/name'])]
     #[Groups(groups: ['entry:read'])]
-    private ?string $title = null;
+    private string $title = '';
 
     #[ORM\Column(length: 255, unique: true)]
     #[ApiProperty(types: ['https://schema.org/url'])]
     #[Groups(groups: ['entry:read'])]
-    private ?string $link = null;
+    private string $link = '';
 
     #[ORM\Column(type: Types::TEXT)]
     #[ApiProperty(types: ['https://schema.org/description'])]
     #[Groups(groups: ['entry:read'])]
-    private ?string $description = null;
+    private string $description = '';
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     #[Groups(groups: ['entry:read'])]
@@ -83,7 +83,7 @@ class Entry
         return $this;
     }
 
-    public function getLink(): ?string
+    public function getLink(): string
     {
         return $this->link;
     }

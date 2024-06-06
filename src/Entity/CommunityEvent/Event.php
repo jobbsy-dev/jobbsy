@@ -32,17 +32,17 @@ class Event
     #[Assert\NotBlank]
     #[Assert\Length(max: 255)]
     #[ApiProperty(types: ['https://schema.org/name'])]
-    private ?string $name = null;
+    private string $name = '';
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Assert\NotBlank]
     #[ApiProperty(types: ['https://schema.org/startDate'])]
-    private ?\DateTimeImmutable $startDate = null;
+    private \DateTimeImmutable $startDate;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     #[Assert\NotBlank]
     #[ApiProperty(types: ['https://schema.org/endDate'])]
-    private ?\DateTimeImmutable $endDate = null;
+    private \DateTimeImmutable $endDate;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[ApiProperty(types: ['https://schema.org/location'])]
@@ -64,7 +64,7 @@ class Event
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiProperty(types: ['https://schema.org/url'])]
-    private ?string $url = null;
+    private string $url = '';
 
     #[ORM\Column(type: Types::STRING, nullable: true, enumType: AttendanceMode::class)]
     #[Groups(['read'])]
@@ -79,6 +79,8 @@ class Event
 
         $this->id = $id;
         $this->createdAt = new \DateTimeImmutable();
+        $this->startDate = new \DateTimeImmutable();
+        $this->endDate = new \DateTimeImmutable();
     }
 
     public function getId(): UuidInterface
@@ -98,7 +100,7 @@ class Event
         return $this;
     }
 
-    public function getStartDate(): ?\DateTimeImmutable
+    public function getStartDate(): \DateTimeImmutable
     {
         return $this->startDate;
     }
@@ -110,7 +112,7 @@ class Event
         return $this;
     }
 
-    public function getEndDate(): ?\DateTimeImmutable
+    public function getEndDate(): \DateTimeImmutable
     {
         return $this->endDate;
     }
@@ -151,12 +153,12 @@ class Event
         return $this->createdAt;
     }
 
-    public function getUrl(): ?string
+    public function getUrl(): string
     {
         return $this->url;
     }
 
-    public function setUrl(?string $url): void
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }

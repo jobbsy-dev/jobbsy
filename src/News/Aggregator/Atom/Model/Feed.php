@@ -33,6 +33,7 @@ final class Feed
     {
         $document = new \DOMDocument();
         $document->loadXML($content);
+
         $xpath = new \DOMXPath($document);
 
         $xpath->registerNamespace('atom', 'http://www.w3.org/2005/Atom');

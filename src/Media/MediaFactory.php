@@ -17,6 +17,7 @@ final class MediaFactory
 
         $media->setName($filename);
         $media->setOriginalName($file->getClientOriginalName());
+
         $imageSize = getimagesize($file);
         /** @var int[] $dimensions */
         $dimensions = $imageSize ? array_splice($imageSize, 0, 2) : null;

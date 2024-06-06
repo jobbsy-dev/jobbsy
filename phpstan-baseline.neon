@@ -1,278 +1,33 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$string of function md5 expects string, int\\<0, max\\> given\\.$#"
-			count: 1
-			path: src/Broadcast/Twitter/TwitterApi.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function rawurlencode expects string, int\\<1, max\\>\\|string given\\.$#"
-			count: 2
-			path: src/Broadcast/Twitter/TwitterApi.php
-
-		-
 			message: "#^Method App\\\\CommunityEvent\\\\EventScraping\\:\\:fetch\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/CommunityEvent/EventScraping.php
 
 		-
-			message: "#^Cannot access offset 'email' on mixed\\.$#"
-			count: 1
-			path: src/Controller/JobController.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of class App\\\\Subscription\\\\SubscribeMailingListCommand constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/Controller/JobController.php
-
-		-
-			message: "#^Parameter \\#2 \\$amount of class App\\\\Donation\\\\Command\\\\CreateDonationPaymentUrlCommand constructor expects int, mixed given\\.$#"
-			count: 1
-			path: src/Controller/JobController.php
-
-		-
-			message: "#^Parameter \\#1 \\$abstract of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setAbstract\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$attendanceMode of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setAttendanceMode\\(\\) expects App\\\\CommunityEvent\\\\AttendanceMode, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$country of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setCountry\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$description of method App\\\\Entity\\\\News\\\\Entry\\:\\:setDescription\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$endDate of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setEndDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$link of method App\\\\Entity\\\\News\\\\Entry\\:\\:setLink\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$location of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setLocation\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$name of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setName\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$publishedAt of method App\\\\Entity\\\\News\\\\Entry\\:\\:setPublishedAt\\(\\) expects DateTimeImmutable\\|null, DateTimeImmutable\\|false given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$startDate of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setStartDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$tags of method App\\\\Entity\\\\Job\\:\\:setTags\\(\\) expects array\\<string\\>, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$title of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$title of method App\\\\Entity\\\\News\\\\Entry\\:\\:setTitle\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$url of method App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:setUrl\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#1 \\$uuid of static method Ramsey\\\\Uuid\\\\Uuid\\:\\:fromString\\(\\) expects string, mixed given\\.$#"
-			count: 3
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#2 \\$datetime of static method DateTimeImmutable\\:\\:createFromFormat\\(\\) expects string, mixed given\\.$#"
-			count: 3
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#2 \\$location of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#3 \\$employmentType of class App\\\\Entity\\\\Job constructor expects App\\\\Job\\\\EmploymentType, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#4 \\$organization of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Parameter \\#5 \\$url of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:\\$endDate type mapping mismatch\\: property can contain DateTimeImmutable\\|null but database expects DateTimeImmutable\\.$#"
-			count: 1
-			path: src/Entity/CommunityEvent/Event.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:\\$name type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
-			count: 1
-			path: src/Entity/CommunityEvent/Event.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:\\$startDate type mapping mismatch\\: property can contain DateTimeImmutable\\|null but database expects DateTimeImmutable\\.$#"
-			count: 1
-			path: src/Entity/CommunityEvent/Event.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Event\\:\\:\\$url type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
-			count: 1
-			path: src/Entity/CommunityEvent/Event.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\CommunityEvent\\\\Source\\:\\:\\$url type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
-			count: 1
-			path: src/Entity/CommunityEvent/Source.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\News\\\\Entry\\:\\:\\$description type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
-			count: 1
-			path: src/Entity/News/Entry.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\News\\\\Entry\\:\\:\\$link type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
-			count: 1
-			path: src/Entity/News/Entry.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\News\\\\Entry\\:\\:\\$title type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
-			count: 1
-			path: src/Entity/News/Entry.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\News\\\\Feed\\:\\:\\$name type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
-			count: 1
-			path: src/Entity/News/Feed.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\News\\\\Feed\\:\\:\\$type type mapping mismatch\\: property can contain App\\\\News\\\\Aggregator\\\\FeedType\\|null but database expects App\\\\News\\\\Aggregator\\\\FeedType\\.$#"
-			count: 1
-			path: src/Entity/News/Feed.php
-
-		-
-			message: "#^Property App\\\\Entity\\\\News\\\\Feed\\:\\:\\$url type mapping mismatch\\: property can contain string\\|null but database expects string\\.$#"
-			count: 1
-			path: src/Entity/News/Feed.php
-
-		-
-			message: "#^Property App\\\\Job\\\\Command\\\\PostJobOfferCommand\\:\\:\\$tags type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Job/Command/PostJobOfferCommand.php
-
-		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
+			message: "#^Method App\\\\Job\\\\PoleEmploi\\\\PoleEmploiApi\\:\\:search\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Job/PoleEmploi/PoleEmploiApi.php
 
 		-
-			message: "#^Parameter \\#3 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiApi.php
-
-		-
-			message: "#^Cannot access offset 'description' on mixed\\.$#"
+			message: "#^Cannot access offset 'entreprise' on array\\|bool\\|float\\|int\\|string\\.$#"
 			count: 1
 			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Cannot access offset 'entreprise' on mixed\\.$#"
-			count: 2
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'intitule' on mixed\\.$#"
+			message: "#^Cannot access offset 'intitule' on array\\|bool\\|float\\|int\\|string\\.$#"
 			count: 1
 			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Cannot access offset 'libelle' on mixed\\.$#"
-			count: 2
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'lieuTravail' on mixed\\.$#"
+			message: "#^Cannot access offset 'lieuTravail' on array\\|bool\\|float\\|int\\|string\\.$#"
 			count: 1
 			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Cannot access offset 'logo' on mixed\\.$#"
+			message: "#^Cannot access offset 'origineOffre' on array\\|bool\\|float\\|int\\|string\\.$#"
 			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'natureContrat' on mixed\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'nom' on mixed\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'origineOffre' on mixed\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'salaire' on mixed\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'secteurActiviteLibe…' on mixed\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'typeContrat' on mixed\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot access offset 'urlOrigine' on mixed\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Cannot cast mixed to string\\.$#"
-			count: 3
 			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
@@ -281,47 +36,7 @@ parameters:
 			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
 
 		-
-			message: "#^Parameter \\#1 \\$description of method App\\\\Entity\\\\Job\\:\\:setDescription\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\#1 \\$industry of method App\\\\Entity\\\\Job\\:\\:setIndustry\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\#1 \\$jobOffer of method App\\\\Job\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) expects array, mixed given\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\#1 \\$organizationImageUrl of method App\\\\Entity\\\\Job\\:\\:setOrganizationImageUrl\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\#1 \\$salary of method App\\\\Entity\\\\Job\\:\\:setSalary\\(\\) expects string\\|null, mixed given\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\$location of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\$organization of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\$title of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
-			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
-
-		-
-			message: "#^Parameter \\$url of class App\\\\Entity\\\\Job constructor expects string, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$jobOffer of method App\\\\Job\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) expects array, array\\|bool\\|float\\|int\\|string given\\.$#"
 			count: 1
 			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
 
@@ -411,11 +126,6 @@ parameters:
 			path: src/Mailjet/Model/SendCampaignDraft/SendCampaignDraftResponse.php
 
 		-
-			message: "#^Method App\\\\Mailjet\\\\Model\\\\TestCampaignDraft\\\\TestCampaignDraftRequest\\:\\:__construct\\(\\) has parameter \\$recipients with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Mailjet/Model/TestCampaignDraft/TestCampaignDraftRequest.php
-
-		-
 			message: "#^Method App\\\\Mailjet\\\\Model\\\\TestCampaignDraft\\\\TestCampaignDraftRequest\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Mailjet/Model/TestCampaignDraft/TestCampaignDraftRequest.php
@@ -446,16 +156,6 @@ parameters:
 			path: src/MessageHandler/Job/ClassifyHandler.php
 
 		-
-			message: "#^Method App\\\\News\\\\Aggregator\\\\AggregateNews\\:\\:__invoke\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/News/Aggregator/AggregateNews.php
-
-		-
-			message: "#^Method App\\\\News\\\\Aggregator\\\\FetchArticlesFromFeed\\:\\:__invoke\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/News/Aggregator/FetchArticlesFromFeed.php
-
-		-
 			message: "#^Method App\\\\Repository\\\\CommunityEvent\\\\EventRepository\\:\\:findPastEvents\\(\\) should return array\\<App\\\\Entity\\\\CommunityEvent\\\\Event\\> but returns mixed\\.$#"
 			count: 1
 			path: src/Repository/CommunityEvent/EventRepository.php
@@ -464,56 +164,6 @@ parameters:
 			message: "#^Method App\\\\Repository\\\\CommunityEvent\\\\EventRepository\\:\\:findUpcomingEvents\\(\\) should return array\\<App\\\\Entity\\\\CommunityEvent\\\\Event\\> but returns mixed\\.$#"
 			count: 1
 			path: src/Repository/CommunityEvent/EventRepository.php
-
-		-
-			message: "#^Method App\\\\Security\\\\User\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Security/User.php
-
-		-
-			message: "#^Property App\\\\Security\\\\User\\:\\:\\$roles type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Security/User.php
-
-		-
-			message: "#^Parameter \\#1 \\$contactListId of class App\\\\Mailjet\\\\Model\\\\ManageContact\\\\ManageContactRequest constructor expects int, mixed given\\.$#"
-			count: 1
-			path: src/Subscription/MailjetSubscriptionAdapter.php
-
-		-
-			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
-			count: 1
-			path: tests/CommunityEvent/EventScrapingTest.php
-
-		-
-			message: "#^Parameter \\$retrieveSessionResponse of class App\\\\Tests\\\\Mock\\\\MockStripeClient constructor expects string\\|null, string\\|false given\\.$#"
-			count: 2
-			path: tests/Controller/JobControllerTest.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: tests/Controller/JobControllerTest.php
-
-		-
-			message: "#^Cannot call method setTimezone\\(\\) on DateTimeImmutable\\|false\\.$#"
-			count: 2
-			path: tests/Job/PoleEmploi/PoleEmploiApiTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
-			count: 3
-			path: tests/Job/WelcometotheJungle/WelcometotheJungleClientTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
-			count: 3
-			path: tests/Job/WelcometotheJungle/WelcometotheJungleProviderTest.php
-
-		-
-			message: "#^Cannot access property \\$data on App\\\\Mailjet\\\\Model\\\\SendCampaignDraft\\\\SendCampaignDraftResponse\\|null\\.$#"
-			count: 1
-			path: tests/Mailjet/MailjetApiTest.php
 
 		-
 			message: "#^Method App\\\\Tests\\\\Mock\\\\MockStripeClient\\:\\:request\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
@@ -529,18 +179,3 @@ parameters:
 			message: "#^Method App\\\\Tests\\\\Mock\\\\MockStripeClient\\:\\:request\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Mock/MockStripeClient.php
-
-		-
-			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
-			count: 1
-			path: tests/News/Aggregator/Atom/ClientTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$body of class Symfony\\\\Component\\\\HttpClient\\\\Response\\\\MockResponse constructor expects iterable\\<string\\|Throwable\\>\\|string, string\\|false given\\.$#"
-			count: 2
-			path: tests/News/Aggregator/RSS/ClientTest.php
-
-		-
-			message: "#^Property App\\\\Tests\\\\Repository\\\\InMemoryJobRepository\\:\\:\\$jobs \\(array\\<string, App\\\\Entity\\\\Job\\>\\) does not accept array\\<int\\|string, App\\\\Entity\\\\Job\\>\\.$#"
-			count: 1
-			path: tests/Repository/InMemoryJobRepository.php

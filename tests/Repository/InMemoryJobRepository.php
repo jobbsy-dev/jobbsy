@@ -33,13 +33,13 @@ final class InMemoryJobRepository implements JobRepositoryInterface
         throw new JobNotFoundException();
     }
 
-    public function save(Job $entity, bool $flush = false): void
+    public function save(Job $job): void
     {
-        $this->jobs[] = $entity;
+        $this->jobs[(string) $job->getId()] = $job;
     }
 
-    public function remove(Job $entity, bool $flush = false): void
+    public function remove(Job $job): void
     {
-        unset($this->jobs[(string) $entity->getId()]);
+        unset($this->jobs[(string) $job->getId()]);
     }
 }

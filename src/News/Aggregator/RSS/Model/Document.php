@@ -34,6 +34,7 @@ final class Document
 
         $document = new \DOMDocument();
         $document->loadXML($content);
+
         $xpath = new \DOMXPath($document);
 
         $channelsNode = $xpath->query('/rss/channel');

@@ -52,7 +52,7 @@ final class JobCrudController extends AbstractCrudController
                 ->setChoices(['Types' => EmploymentType::cases()])
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', EmploymentType::class)
-                ->setFormTypeOption('choice_label', function (EmploymentType $enum): string {
+                ->setFormTypeOption('choice_label', static function (EmploymentType $enum): string {
                     return $enum->value;
                 }),
             ChoiceField::new('locationType')
@@ -60,7 +60,7 @@ final class JobCrudController extends AbstractCrudController
                 ->setChoices(['Location types' => LocationType::cases()])
                 ->setFormType(EnumType::class)
                 ->setFormTypeOption('class', LocationType::class)
-                ->setFormTypeOption('choice_label', function (LocationType $enum): string {
+                ->setFormTypeOption('choice_label', static function (LocationType $enum): string {
                     return $enum->value;
                 }),
             ArrayField::new('tags'),

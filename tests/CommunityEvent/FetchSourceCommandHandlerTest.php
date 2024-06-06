@@ -11,6 +11,7 @@ use App\Entity\CommunityEvent\Event;
 use App\Entity\CommunityEvent\Source;
 use App\Tests\Repository\InMemoryEventRepository;
 use App\Tests\Repository\InMemorySourceRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 use Ramsey\Uuid\Uuid;
@@ -41,6 +42,7 @@ final class FetchSourceCommandHandlerTest extends TestCase
             new NullLogger(),
             $scraper,
             $eventRepository,
+            $this->createMock(EntityManagerInterface::class),
         );
 
         // Act
@@ -54,6 +56,6 @@ final class FetchSourceCommandHandlerTest extends TestCase
         self::assertInstanceOf(Event::class, $meetup);
         self::assertSame('Backend User Group #21', $meetup->getName());
         self::assertSame('https://www.meetup.com/backendos/events/290348177/', $meetup->getUrl());
-        self::assertSame('2023-01-19T18:30+01:00', $meetup->getStartDate()?->format('Y-m-d\TH:iP'));
+        self::assertSame('2023-01-19T18:30+01:00', $meetup->getStartDate()->format('Y-m-d\TH:iP'));
     }
 }

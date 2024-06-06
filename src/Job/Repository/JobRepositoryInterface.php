@@ -9,7 +9,7 @@ interface JobRepositoryInterface
 {
     public function get(UuidInterface $id): Job;
 
-    public function save(Job $entity, bool $flush = false): void;
+    public function save(Job $job): void;
 
-    public function remove(Job $entity, bool $flush = false): void;
+    public function remove(Job $job): void;
 }

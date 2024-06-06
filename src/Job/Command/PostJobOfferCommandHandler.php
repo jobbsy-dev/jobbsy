@@ -7,6 +7,7 @@ use App\Job\Event\JobPostedEvent;
 use App\Job\Repository\JobRepositoryInterface;
 use App\Media\MediaFactory;
 use App\Media\MediaUploader;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final readonly class PostJobOfferCommandHandler
@@ -15,7 +16,8 @@ final readonly class PostJobOfferCommandHandler
         private JobRepositoryInterface $jobRepository,
         private EventDispatcherInterface $eventDispatcher,
         private MediaUploader $mediaUploader,
-        private MediaFactory $mediaFactory
+        private MediaFactory $mediaFactory,
+        private EntityManagerInterface $entityManager,
     ) {
     }
 
@@ -33,9 +35,12 @@ final readonly class PostJobOfferCommandHandler
 
         // Allow 1 month of boost on manual creation
         $job->pinUntil(new \DateTimeImmutable('+1 month'));
-        $this->jobRepository->save($job, true);
+
+        $this->jobRepository->save($job);
 
         $this->eventDispatcher->dispatch(new JobPostedEvent($job));
+
+        $this->entityManager->flush();
 
         return $job;
     }
