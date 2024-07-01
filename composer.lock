@@ -11285,20 +11285,21 @@
         },
         {
             "name": "twig/markdown-extra",
-            "version": "v3.8.0",
+            "version": "v3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/markdown-extra.git",
-                "reference": "b6e4954ab60030233df5d293886b5404558daac8"
+                "reference": "e4bf2419df819dcf9dc7a0b25dd8cd1092cbd86d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/markdown-extra/zipball/b6e4954ab60030233df5d293886b5404558daac8",
-                "reference": "b6e4954ab60030233df5d293886b5404558daac8",
+                "url": "https://api.github.com/repos/twigphp/markdown-extra/zipball/e4bf2419df819dcf9dc7a0b25dd8cd1092cbd86d",
+                "reference": "e4bf2419df819dcf9dc7a0b25dd8cd1092cbd86d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.5|^3",
                 "twig/twig": "^3.0"
             },
             "require-dev": {
@@ -11310,6 +11311,9 @@
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "Resources/functions.php"
+                ],
                 "psr-4": {
                     "Twig\\Extra\\Markdown\\": ""
                 },
@@ -11337,7 +11341,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/markdown-extra/tree/v3.8.0"
+                "source": "https://github.com/twigphp/markdown-extra/tree/v3.10.0"
             },
             "funding": [
                 {
@@ -11349,7 +11353,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-21T14:02:01+00:00"
+            "time": "2024-05-11T07:35:57+00:00"
         },
         {
             "name": "twig/string-extra",
