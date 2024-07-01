@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce044ac6f99db5fa9efa97dd67af1872",
+    "content-hash": "7e8ab3e1a7511a52407fd4927f504bdd",
     "packages": [
         {
             "name": "api-platform/core",
@@ -5179,16 +5179,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v13.13.0",
+            "version": "v15.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "8dc58bab25f222a74d1157d4ca9e9e48451dd0c1"
+                "reference": "96f0dbe9c2b5365d716f86d92a27feecca2cbaee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/8dc58bab25f222a74d1157d4ca9e9e48451dd0c1",
-                "reference": "8dc58bab25f222a74d1157d4ca9e9e48451dd0c1",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/96f0dbe9c2b5365d716f86d92a27feecca2cbaee",
+                "reference": "96f0dbe9c2b5365d716f86d92a27feecca2cbaee",
                 "shasum": ""
             },
             "require": {
@@ -5232,9 +5232,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v13.13.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v15.0.0"
             },
-            "time": "2024-02-29T20:22:15+00:00"
+            "time": "2024-06-24T23:05:11+00:00"
         },
         {
             "name": "symfony/asset",
