@@ -11194,22 +11194,22 @@
         },
         {
             "name": "twig/intl-extra",
-            "version": "v3.8.0",
+            "version": "v3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/intl-extra.git",
-                "reference": "7b3db67c700735f473a265a97e1adaeba3e6ca0c"
+                "reference": "693f6beb8ca91fc6323e01b3addf983812f65c93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/intl-extra/zipball/7b3db67c700735f473a265a97e1adaeba3e6ca0c",
-                "reference": "7b3db67c700735f473a265a97e1adaeba3e6ca0c",
+                "url": "https://api.github.com/repos/twigphp/intl-extra/zipball/693f6beb8ca91fc6323e01b3addf983812f65c93",
+                "reference": "693f6beb8ca91fc6323e01b3addf983812f65c93",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "symfony/intl": "^5.4|^6.0|^7.0",
-                "twig/twig": "^3.0"
+                "symfony/intl": "^5.4|^6.4|^7.0",
+                "twig/twig": "^3.10"
             },
             "require-dev": {
                 "symfony/phpunit-bridge": "^6.4|^7.0"
@@ -11242,7 +11242,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/intl-extra/tree/v3.8.0"
+                "source": "https://github.com/twigphp/intl-extra/tree/v3.10.0"
             },
             "funding": [
                 {
@@ -11254,7 +11254,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-21T17:27:48+00:00"
+            "time": "2024-05-11T07:35:57+00:00"
         },
         {
             "name": "twig/markdown-extra",
