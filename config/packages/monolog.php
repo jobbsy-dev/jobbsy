@@ -33,6 +33,7 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $mainHandler->excludedHttpCode()->code(403);
         $mainHandler->excludedHttpCode()->code(404);
         $mainHandler->excludedHttpCode()->code(405);
+        $mainHandler->excludedHttpCode()->code(406);
 
         $config->handler('group')
             ->type('group')
