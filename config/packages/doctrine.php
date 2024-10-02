@@ -11,6 +11,7 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
     $config->dbal()
         ->connection('default')
         ->url(env('DATABASE_URL')->resolve())
+        ->serverVersion('16')
         ->useSavepoints(true);
 
     $config->orm()
