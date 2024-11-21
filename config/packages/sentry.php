@@ -14,11 +14,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'dsn' => env('SENTRY_DSN'),
             'register_error_listener' => false,
             'register_error_handler' => false,
-            'ignore_exceptions' => [
-                NotFoundHttpException::class,
-                BadRequestException::class,
-                MethodNotAllowedHttpException::class,
-            ],
+            'options' => [
+                'ignore_exceptions' => [
+                    NotFoundHttpException::class,
+                    BadRequestException::class,
+                    MethodNotAllowedHttpException::class,
+                ],
+            ]
         ]);
     }
 };
