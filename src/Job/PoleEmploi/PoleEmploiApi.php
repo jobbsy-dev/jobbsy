@@ -88,7 +88,7 @@ final class PoleEmploiApi
                 $minCreationDateQueryUrl = $minCreationDate->format('Y-m-d\TH:i:s\Z');
             }
 
-            $url .= sprintf(
+            $url .= \sprintf(
                 '?minCreationDate=%s&maxCreationDate=%s',
                 $minCreationDateQueryUrl,
                 $maxCreationDateQueryUrl

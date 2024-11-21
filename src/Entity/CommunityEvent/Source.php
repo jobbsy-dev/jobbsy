@@ -20,9 +20,9 @@ class Source
     private string $url = '';
 
     public function __construct(
-        UuidInterface $id = null,
+        ?UuidInterface $id = null,
         #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-        public readonly \DateTimeImmutable $createdAt = new \DateTimeImmutable()
+        public readonly \DateTimeImmutable $createdAt = new \DateTimeImmutable(),
     ) {
         if (null === $id) {
             $id = Uuid::uuid4();

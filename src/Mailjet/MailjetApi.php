@@ -64,7 +64,7 @@ final readonly class MailjetApi
     }
 
     public function createCampaignDraft(
-        CreateCampaignDraftRequest $createCampaignDraftRequest
+        CreateCampaignDraftRequest $createCampaignDraftRequest,
     ): ?CreateCampaignDraftResponse {
         $response = $this->mailjetClient->request('POST', 'campaigndraft', [
             'json' => $createCampaignDraftRequest->toArray(),
@@ -80,9 +80,9 @@ final readonly class MailjetApi
     }
 
     public function createCampaignDraftContent(
-        CreateCampaignDraftContentRequest $createCampaignDraftContentRequest
+        CreateCampaignDraftContentRequest $createCampaignDraftContentRequest,
     ): ?CreateCampaignDraftContentResponse {
-        $url = sprintf('campaigndraft/%d/detailcontent', $createCampaignDraftContentRequest->campaignId);
+        $url = \sprintf('campaigndraft/%d/detailcontent', $createCampaignDraftContentRequest->campaignId);
         $response = $this->mailjetClient->request('POST', $url, [
             'headers' => [
                 'Content-Type' => 'application/json',
@@ -101,7 +101,7 @@ final readonly class MailjetApi
 
     public function sendCampaignDraft(SendCampaignDraftRequest $sendCampaignDraftRequest): ?SendCampaignDraftResponse
     {
-        $url = sprintf('campaigndraft/%d/send', $sendCampaignDraftRequest->campaignId);
+        $url = \sprintf('campaigndraft/%d/send', $sendCampaignDraftRequest->campaignId);
         $response = $this->mailjetClient->request('POST', $url);
 
         if (201 !== $response->getStatusCode()) {
@@ -115,7 +115,7 @@ final readonly class MailjetApi
 
     public function manageContact(ManageContactRequest $manageContactRequest): ?ManageContactResponse
     {
-        $url = sprintf('contactslist/%s/managecontact', $manageContactRequest->contactListId);
+        $url = \sprintf('contactslist/%s/managecontact', $manageContactRequest->contactListId);
         $response = $this->mailjetClient->request('POST', $url, [
             'json' => $manageContactRequest->toArray(),
         ]);
@@ -131,7 +131,7 @@ final readonly class MailjetApi
 
     public function testCampaignDraft(TestCampaignDraftRequest $request): ?TestCampaignDraftResponse
     {
-        $url = sprintf('campaigndraft/%d/test', $request->draftId);
+        $url = \sprintf('campaigndraft/%d/test', $request->draftId);
         $response = $this->mailjetClient->request('POST', $url, [
             'json' => $request->toArray(),
         ]);

@@ -37,7 +37,7 @@ final class SendWeeklyJobsLetterCommand extends Command
         #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
         private readonly string $commandRouterHost,
         #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
-        private readonly string $commandRouterScheme
+        private readonly string $commandRouterScheme,
     ) {
         parent::__construct();
     }
@@ -64,7 +64,7 @@ final class SendWeeklyJobsLetterCommand extends Command
         $context->setScheme($this->commandRouterScheme);
 
         $response = $this->mailjetApi->createCampaignDraft(new CreateCampaignDraftRequest(
-            sprintf('[%s] Weekly jobs letter', (new \DateTime())->format('W')),
+            \sprintf('[%s] Weekly jobs letter', (new \DateTime())->format('W')),
             $this->mailjetContactListId,
             'en_US',
             'hello@jobbsy.dev',

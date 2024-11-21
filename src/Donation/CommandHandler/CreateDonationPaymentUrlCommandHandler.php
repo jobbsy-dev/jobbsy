@@ -12,7 +12,7 @@ final readonly class CreateDonationPaymentUrlCommandHandler
 {
     public function __construct(
         private JobRepository $jobRepository,
-        private CreatePaymentUrlInterface $createPaymentUrl
+        private CreatePaymentUrlInterface $createPaymentUrl,
     ) {
     }
 

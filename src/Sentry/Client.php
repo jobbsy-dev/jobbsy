@@ -18,7 +18,7 @@ final readonly class Client
 
     public function checkIns(CheckInRequest $request): void
     {
-        $url = sprintf(
+        $url = \sprintf(
             'https://sentry.io/api/0/organizations/%s/monitors/%s/checkins/',
             $this->organizationSlug,
             $request->monitorSlug
@@ -26,7 +26,7 @@ final readonly class Client
 
         $this->httpClient->request('POST', $url, [
             'headers' => [
-                sprintf('Authorization: DSN %s', $this->dsn),
+                \sprintf('Authorization: DSN %s', $this->dsn),
             ],
             'json' => $request->payload(),
         ]);

@@ -91,7 +91,7 @@ final class JobControllerTest extends WebTestCase
         ApiRequestor::setHttpClient($mockStripeClient);
 
         $client = static::createClient();
-        $client->request('GET', sprintf('/job/%s/donation/success?session_id=10', AppFixtures::JOB_2_ID));
+        $client->request('GET', \sprintf('/job/%s/donation/success?session_id=10', AppFixtures::JOB_2_ID));
         self::assertResponseIsSuccessful();
 
         /** @var JobRepository $jobRepository */
@@ -112,7 +112,7 @@ final class JobControllerTest extends WebTestCase
         ApiRequestor::setHttpClient($mockStripeClient);
 
         $client = static::createClient();
-        $client->request('GET', sprintf('/job/%s/donation/success?session_id=10', AppFixtures::JOB_2_ID));
+        $client->request('GET', \sprintf('/job/%s/donation/success?session_id=10', AppFixtures::JOB_2_ID));
         self::assertResponseIsSuccessful();
 
         /** @var JobRepository $jobRepository */
@@ -140,7 +140,7 @@ final class JobControllerTest extends WebTestCase
     public function test_sponsor_job(): void
     {
         $client = static::createClient();
-        $client->request('GET', sprintf('/job/%s/sponsor', AppFixtures::JOB_1_ID));
+        $client->request('GET', \sprintf('/job/%s/sponsor', AppFixtures::JOB_1_ID));
         self::assertResponseIsSuccessful();
 
         /** @var string $createSessionResponse */

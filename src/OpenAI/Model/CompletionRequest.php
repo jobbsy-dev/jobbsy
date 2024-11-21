@@ -11,7 +11,7 @@ final readonly class CompletionRequest
         public string $model,
         public string|array $prompt,
         public float $temperature = 1,
-        public int $maxTokens = 16
+        public int $maxTokens = 16,
     ) {
     }
 

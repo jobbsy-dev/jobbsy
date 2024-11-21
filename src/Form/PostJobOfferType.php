@@ -32,7 +32,7 @@ final class PostJobOfferType extends AbstractType
                 'label' => 'form.label.employment_type',
                 'class' => EmploymentType::class,
                 'choice_label' => static function (EmploymentType $employmentType): string {
-                    return sprintf('employment_type.%s', $employmentType->value);
+                    return \sprintf('employment_type.%s', $employmentType->value);
                 },
             ])
             ->add('organization', TextType::class, [
@@ -75,7 +75,7 @@ final class PostJobOfferType extends AbstractType
                 'label' => false,
                 'class' => LocationType::class,
                 'choice_label' => static function (LocationType $locationType): string {
-                    return sprintf('location_type.%s', $locationType->value);
+                    return \sprintf('location_type.%s', $locationType->value);
                 },
             ])
         ;

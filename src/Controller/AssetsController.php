@@ -19,7 +19,7 @@ final class AssetsController extends AbstractController
     public function __construct(
         private readonly Server $glide,
         #[Autowire('%env(GLIDE_KEY)%')]
-        private readonly string $secret
+        private readonly string $secret,
     ) {
     }
 

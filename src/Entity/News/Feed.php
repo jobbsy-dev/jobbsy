@@ -46,7 +46,7 @@ class Feed implements \Stringable
     )]
     private ?UploadedFile $imageFile = null;
 
-    public function __construct(UuidInterface $id = null)
+    public function __construct(?UuidInterface $id = null)
     {
         if (null === $id) {
             $id = Uuid::uuid4();

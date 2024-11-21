@@ -30,7 +30,7 @@ final readonly class NotifyNewJobOfferSubscriber implements EventSubscriberInter
             return;
         }
 
-        $jobTitleText = sprintf("New job offer posted:\n*%s*", $job->getTitle());
+        $jobTitleText = \sprintf("New job offer posted:\n*%s*", $job->getTitle());
         $jobTitleSection = (new SlackSectionBlock())
             ->text($jobTitleText);
 

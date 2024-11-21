@@ -28,20 +28,20 @@ return RectorConfig::configure()
     ->withPhpSets(php83: true)
     ->withImportNames(importShortClasses: false, removeUnusedImports: true)
     ->withSkip([
-            LiteralGetToRequestClassConstantRector::class,
-            ClosureToArrowFunctionRector::class,
-            FlipTypeControlToUseExclusiveTypeRector::class,
-            SimplifyBoolIdenticalTrueRector::class,
-            ClassPropertyAssignToConstructorPromotionRector::class => [
-                __DIR__.'/src/Entity',
-            ],
-            FirstClassCallableRector::class => [
-                __DIR__.'/config',
-            ],
-            CallableThisArrayToAnonymousFunctionRector::class => [
-                __DIR__.'/config',
-            ],
-            AddOverrideAttributeToOverriddenMethodsRector::class,
-        ]
+        LiteralGetToRequestClassConstantRector::class,
+        ClosureToArrowFunctionRector::class,
+        FlipTypeControlToUseExclusiveTypeRector::class,
+        SimplifyBoolIdenticalTrueRector::class,
+        ClassPropertyAssignToConstructorPromotionRector::class => [
+            __DIR__.'/src/Entity',
+        ],
+        FirstClassCallableRector::class => [
+            __DIR__.'/config',
+        ],
+        CallableThisArrayToAnonymousFunctionRector::class => [
+            __DIR__.'/config',
+        ],
+        AddOverrideAttributeToOverriddenMethodsRector::class,
+    ]
     )
     ->withSkipPath(__DIR__.'/config/bundles.php');

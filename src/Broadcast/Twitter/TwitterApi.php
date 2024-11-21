@@ -21,7 +21,7 @@ final readonly class TwitterApi
         private string $accessToken,
         #[Autowire('%env(TWITTER_ACCESS_TOKEN_SECRET)%')]
         private string $tokenSecret,
-        private HttpClientInterface $httpClient
+        private HttpClientInterface $httpClient,
     ) {
     }
 
@@ -29,7 +29,7 @@ final readonly class TwitterApi
     {
         $method = 'POST';
         $payload = $tweet->toArray();
-        $url = sprintf('%s/tweets', self::BASE_URL);
+        $url = \sprintf('%s/tweets', self::BASE_URL);
         $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: $url);
 
         $response = $this->httpClient->request($method, $url, [
@@ -97,7 +97,7 @@ final readonly class TwitterApi
     public function deleteTweet(string $tweetId): bool
     {
         $method = 'DELETE';
-        $url = sprintf('%s/tweets/%s', self::BASE_URL, $tweetId);
+        $url = \sprintf('%s/tweets/%s', self::BASE_URL, $tweetId);
         $authorizationHeader = $this->buildAuthorizationHeader(method: $method, url: $url);
 
         $response = $this->httpClient->request($method, $url, [

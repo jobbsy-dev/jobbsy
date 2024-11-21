@@ -48,7 +48,7 @@ final class InMemoryEventRepository implements EventRepositoryInterface
         return []; // Todo
     }
 
-    public function findUpcomingEvents(int $limit = null): array
+    public function findUpcomingEvents(?int $limit = null): array
     {
         return []; // Todo
     }

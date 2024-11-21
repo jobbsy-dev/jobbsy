@@ -15,7 +15,7 @@ final readonly class FetchFeedCommandHandler
         private FeedRepositoryInterface $feedRepository,
         private FetchArticlesFromFeed $fetchArticlesFromFeed,
         private EntryRepositoryInterface $entryRepository,
-        private LoggerInterface $logger
+        private LoggerInterface $logger,
     ) {
     }
 
@@ -31,7 +31,7 @@ final readonly class FetchFeedCommandHandler
             $articles = $this->fetchArticlesFromFeed->__invoke($feed);
         } catch (\Throwable $throwable) {
             $this->logger->notice(
-                sprintf('Unable to fetch articles from feed "%s". Reason: %s', $feed->getName(), $throwable->getMessage()),
+                \sprintf('Unable to fetch articles from feed "%s". Reason: %s', $feed->getName(), $throwable->getMessage()),
                 [
                     'feedId' => $feed->getId(),
                     'feedUrl' => $feed->getUrl(),

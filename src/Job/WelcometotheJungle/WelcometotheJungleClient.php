@@ -68,7 +68,7 @@ final readonly class WelcometotheJungleClient
                     continue;
                 }
 
-                $locations[] = sprintf(
+                $locations[] = \sprintf(
                     '%s, %s',
                     html_entity_decode((string) $jobLocation['address']['addressLocality']),
                     ucfirst(Countries::getName($jobLocation['address']['addressCountry'])),
@@ -79,7 +79,7 @@ final readonly class WelcometotheJungleClient
         }
 
         if ('Place' === $data['jobLocation']['@type']) {
-            return sprintf(
+            return \sprintf(
                 '%s, %s',
                 html_entity_decode((string) $data['jobLocation']['address']['addressLocality']),
                 ucfirst(Countries::getName($data['jobLocation']['address']['addressCountry'])),

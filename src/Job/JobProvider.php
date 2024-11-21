@@ -11,7 +11,7 @@ final readonly class JobProvider implements JobProviderInterface
      */
     public function __construct(
         #[TaggedIterator(JobProviderInterface::class, exclude: self::class)]
-        private iterable $providers
+        private iterable $providers,
     ) {
     }
 
