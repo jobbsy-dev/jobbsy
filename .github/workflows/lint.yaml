@@ -22,20 +22,36 @@ jobs:
                   php-version: 8.3
                   tools: composer, symfony
 
-            - name: "Cache phpcsfixer"
-              uses: actions/cache@v4
-              with:
-                  path: var/.php-cs-fixer.cache
-                  key: phpcsfixer-${{ github.sha }}
-                  restore-keys: phpcsfixer-
-
             - name: "Composer install"
               uses: ramsey/composer-install@v3
               with:
                   working-directory: "tools/php-cs-fixer"
 
             - name: "PHP-CS-Fixer"
-              run: ./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff --dry-run
+              run: ./tools/bin/php-cs-fixer check
+
+    rector:
+        name: Rector
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Checkout code"
+              uses: actions/checkout@v4
+
+            - name: "Install PHP with extensions"
+              uses: shivammathur/setup-php@v2
+              with:
+                  coverage: "none"
+                  extensions: intl, ctype, iconv
+                  php-version: 8.3
+                  tools: composer, symfony
+
+            - name: "Composer install"
+              uses: ramsey/composer-install@v3
+              with:
+                  working-directory: "tools/rector"
+
+            - name: "Run rector"
+              run: ./tools/bin/rector
 
     linters:
         name: Linters
@@ -76,6 +92,3 @@ jobs:
 
             - name: PHPStan
               run: ./vendor/bin/phpstan analyze
-
-            - name: Rector
-              run: ./vendor/bin/rector process --dry-run

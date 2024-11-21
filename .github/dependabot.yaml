@@ -31,3 +31,12 @@ updates:
       labels:
           - "php"
           - "dependencies"
+
+    # Maintain dependencies for Rector
+    - package-ecosystem: "composer"
+      directory: "/tools/rector/"
+      schedule:
+          interval: "monthly"
+      labels:
+          - "php"
+          - "dependencies"
