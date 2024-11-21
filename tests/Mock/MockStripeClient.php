@@ -18,6 +18,7 @@ final readonly class MockStripeClient implements ClientInterface
         $headers,
         $params,
         $hasFile,
+        $apiMode = 'v1',
     ): array {
         $body = '{}';
 
