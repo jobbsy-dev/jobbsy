@@ -11,7 +11,7 @@ final readonly class CreateCampaignDraftRequest
         public string $senderEmail,
         public string $senderName,
         public string $subject,
-        public string $sender
+        public string $sender,
     ) {
     }
 

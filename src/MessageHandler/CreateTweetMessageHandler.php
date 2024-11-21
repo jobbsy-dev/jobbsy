@@ -15,7 +15,7 @@ final readonly class CreateTweetMessageHandler
     public function __construct(
         private JobRepository $jobRepository,
         private TwitterApi $twitterApi,
-        private EntityManagerInterface $em
+        private EntityManagerInterface $em,
     ) {
     }
 

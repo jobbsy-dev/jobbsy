@@ -16,7 +16,7 @@ final readonly class JobPostedTweet
             return '#'.$tag;
         }, $this->job->getTags());
 
-        $text = sprintf(
+        $text = \sprintf(
             "💻 %s\n🎸 %s\n📍 %s\n👉 %s\n\n%s",
             $this->job->getTitle(),
             $this->job->getOrganization(),

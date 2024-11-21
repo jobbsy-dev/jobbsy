@@ -43,7 +43,7 @@ final readonly class FetchSourceCommandHandler
                 $event->setName(html_entity_decode((string) $eventData['name']));
                 $event->setUrl($eventData['url']);
                 if (isset($eventData['description'])) {
-                    $event->setAbstract(sprintf(
+                    $event->setAbstract(\sprintf(
                         '%s...',
                         mb_substr(html_entity_decode((string) $eventData['description']), 0, 200))
                     );
@@ -86,7 +86,7 @@ final readonly class FetchSourceCommandHandler
             }
         } catch (\Throwable $throwable) {
             $this->logger->notice(
-                sprintf('Unable to fetch events from source "%s". Reason: %s', $source->getUrl(), $throwable->getMessage()),
+                \sprintf('Unable to fetch events from source "%s". Reason: %s', $source->getUrl(), $throwable->getMessage()),
                 [
                     'sourceId' => $source->getId(),
                 ]

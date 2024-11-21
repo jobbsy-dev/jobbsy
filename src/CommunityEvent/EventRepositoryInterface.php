@@ -25,7 +25,7 @@ interface EventRepositoryInterface
     /**
      * @return Event[]
      */
-    public function findUpcomingEvents(int $limit = null): array;
+    public function findUpcomingEvents(?int $limit = null): array;
 
     public function remove(Event $event): void;
 }

@@ -11,7 +11,7 @@ final readonly class AggregateNews
     public function __construct(
         private FeedRepository $feedRepository,
         private FetchArticlesFromFeed $fetchArticlesFromFeed,
-        private LoggerInterface $logger
+        private LoggerInterface $logger,
     ) {
     }
 

@@ -21,7 +21,7 @@ final class AggregateCommunityEventCommand extends Command
 {
     public function __construct(
         private readonly EventSourceRepository $sourceRepository,
-        private readonly MessageBusInterface $bus
+        private readonly MessageBusInterface $bus,
     ) {
         parent::__construct();
     }
@@ -34,7 +34,7 @@ final class AggregateCommunityEventCommand extends Command
 
         foreach ($sources as $source) {
             $this->bus->dispatch(new FetchSourceCommand($source->getId()));
-            $io->info(sprintf('Source "%s" fetching scheduled...', $source->getUrl()));
+            $io->info(\sprintf('Source "%s" fetching scheduled...', $source->getUrl()));
         }
 
         return Command::SUCCESS;

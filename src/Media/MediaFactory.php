@@ -12,8 +12,8 @@ final class MediaFactory
     {
         $media = new Media();
 
-        $filename = sprintf('%s.%s', ByteString::fromRandom(36), $file->guessExtension());
-        $path = sprintf('%s/%s', $pathPrefix, $filename);
+        $filename = \sprintf('%s.%s', ByteString::fromRandom(36), $file->guessExtension());
+        $path = \sprintf('%s/%s', $pathPrefix, $filename);
 
         $media->setName($filename);
         $media->setOriginalName($file->getClientOriginalName());

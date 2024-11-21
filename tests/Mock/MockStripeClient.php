@@ -8,7 +8,7 @@ final readonly class MockStripeClient implements ClientInterface
 {
     public function __construct(
         private ?string $createSessionResponse = null,
-        private ?string $retrieveSessionResponse = null
+        private ?string $retrieveSessionResponse = null,
     ) {
     }
 
@@ -17,7 +17,7 @@ final readonly class MockStripeClient implements ClientInterface
         $absUrl,
         $headers,
         $params,
-        $hasFile
+        $hasFile,
     ): array {
         $body = '{}';
 

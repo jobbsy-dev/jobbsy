@@ -15,7 +15,7 @@ final readonly class AccessToken
     public static function create(
         string $token,
         int $expiresIn,
-        \DateTimeImmutable $createAt = new \DateTimeImmutable()
+        \DateTimeImmutable $createAt = new \DateTimeImmutable(),
     ): self {
         return new self($token, $expiresIn, $createAt);
     }
@@ -27,6 +27,6 @@ final readonly class AccessToken
 
     public function hasExpired(): bool
     {
-        return new \DateTimeImmutable() > $this->createdAt->add(new \DateInterval(sprintf('PT%sS', $this->expiresIn)));
+        return new \DateTimeImmutable() > $this->createdAt->add(new \DateInterval(\sprintf('PT%sS', $this->expiresIn)));
     }
 }

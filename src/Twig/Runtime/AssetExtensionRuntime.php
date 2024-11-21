@@ -12,7 +12,7 @@ final readonly class AssetExtensionRuntime implements RuntimeExtensionInterface
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
         #[Autowire('%env(GLIDE_KEY)%')]
-        private string $secret
+        private string $secret,
     ) {
     }
 
@@ -22,7 +22,7 @@ final readonly class AssetExtensionRuntime implements RuntimeExtensionInterface
     public function assetUrl(
         string $path,
         array $parameters = [],
-        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
+        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH,
     ): string {
         $parameters['s'] = SignatureFactory::create($this->secret)->generateSignature($path, $parameters);
         $parameters['path'] = ltrim($path, '/');

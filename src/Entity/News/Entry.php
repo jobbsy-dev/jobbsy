@@ -56,7 +56,7 @@ class Entry
     #[ORM\JoinColumn(onDelete: 'SET NULL')]
     private ?Feed $feed = null;
 
-    public function __construct(UuidInterface $id = null)
+    public function __construct(?UuidInterface $id = null)
     {
         if (null === $id) {
             $id = Uuid::uuid4();

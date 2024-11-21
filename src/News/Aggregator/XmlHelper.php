@@ -7,8 +7,8 @@ final class XmlHelper
     public static function getNodeValue(
         \DOMXPath $xpath,
         string $query,
-        \DOMNode $element = null,
-        int $index = 0
+        ?\DOMNode $element = null,
+        int $index = 0,
     ): mixed {
         $nodeList = $xpath->query($query, $element);
 

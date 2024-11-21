@@ -21,7 +21,7 @@ final class AggregateNewsCommand extends Command
 {
     public function __construct(
         private readonly FeedRepository $feedRepository,
-        private readonly MessageBusInterface $bus
+        private readonly MessageBusInterface $bus,
     ) {
         parent::__construct();
     }
@@ -35,7 +35,7 @@ final class AggregateNewsCommand extends Command
         foreach ($feeds as $feed) {
             $this->bus->dispatch(new FetchFeedCommand($feed->getId()->toString()));
 
-            $io->info(sprintf('Feed "%s" fetching scheduled...', $feed->getName()));
+            $io->info(\sprintf('Feed "%s" fetching scheduled...', $feed->getName()));
         }
 
         return Command::SUCCESS;

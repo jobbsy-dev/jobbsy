@@ -93,7 +93,7 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
         $job = $this->find($id);
 
         if (null === $job) {
-            throw new JobNotFoundException(sprintf('Job with id "%s" not found.', $id));
+            throw new JobNotFoundException(\sprintf('Job with id "%s" not found.', $id));
         }
 
         return $job;
