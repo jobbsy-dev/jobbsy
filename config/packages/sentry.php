@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\HttpFoundation\Exception\BadRequestException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
@@ -17,7 +17,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'options' => [
                 'ignore_exceptions' => [
                     NotFoundHttpException::class,
-                    BadRequestException::class,
+                    BadRequestHttpException::class,
                     MethodNotAllowedHttpException::class,
                 ],
             ]
