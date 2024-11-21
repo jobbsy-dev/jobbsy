@@ -1,6 +1,6 @@
 SYMFONY_CLI=symfony
-PHP_CS_FIXER=php ./tools/php-cs-fixer/vendor/bin/php-cs-fixer
-RECTOR=php ./vendor/bin/rector
+PHP_CS_FIXER=php ./tools/bin/php-cs-fixer
+RECTOR=php ./tools/bin/rector
 PHP_STAN=php ./vendor/bin/phpstan
 CONSOLE=bin/console
 COMPOSER=composer

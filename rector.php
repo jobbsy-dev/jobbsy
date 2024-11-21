@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Rector\CodeQuality\Rector\Array_\CallableThisArrayToAnonymousFunctionRector;
 use Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector;
 use Rector\CodeQuality\Rector\Identical\SimplifyBoolIdenticalTrueRector;
 use Rector\Config\RectorConfig;
@@ -10,12 +9,10 @@ use Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php81\Rector\Array_\FirstClassCallableRector;
 use Rector\Php83\Rector\ClassMethod\AddOverrideAttributeToOverriddenMethodsRector;
-use Rector\Symfony\CodeQuality\Rector\MethodCall\LiteralGetToRequestClassConstantRector;
 
 return RectorConfig::configure()
     ->withPaths([
         __DIR__.'/src',
-        __DIR__.'/config',
         __DIR__.'/tests',
     ])
     ->withPreparedSets(
@@ -28,7 +25,6 @@ return RectorConfig::configure()
     ->withPhpSets(php83: true)
     ->withImportNames(importShortClasses: false, removeUnusedImports: true)
     ->withSkip([
-        LiteralGetToRequestClassConstantRector::class,
         ClosureToArrowFunctionRector::class,
         FlipTypeControlToUseExclusiveTypeRector::class,
         SimplifyBoolIdenticalTrueRector::class,
@@ -36,9 +32,6 @@ return RectorConfig::configure()
             __DIR__.'/src/Entity',
         ],
         FirstClassCallableRector::class => [
-            __DIR__.'/config',
-        ],
-        CallableThisArrayToAnonymousFunctionRector::class => [
             __DIR__.'/config',
         ],
         AddOverrideAttributeToOverriddenMethodsRector::class,
