@@ -1,10 +1,7 @@
 <?php
 
 declare(strict_types=1);
-
-use App\Doctrine\EventListener\FixPostgreSQLDefaultSchemaListener;
 use AsyncAws\S3\S3Client;
-use Doctrine\ORM\Tools\ToolEvents;
 use League\Glide\Server;
 use League\Glide\ServerFactory;
 use Monolog\Level;
