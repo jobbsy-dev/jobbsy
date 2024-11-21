@@ -28,7 +28,7 @@ final class FetchFeedCommandHandlerTest extends TestCase
         $entry->setLink('https://example.com');
 
         $fetchArticlesFromFeed = new InMemoryFetchArticlesFromFeed([$entry]);
-        $fetchArticlesFromFeedMain = new FetchArticlesFromFeed([$fetchArticlesFromFeed]);
+        $fetchArticlesFromFeedMain = new FetchArticlesFromFeed([$fetchArticlesFromFeed], new NullLogger());
         $entryRepository = new InMemoryEntryRepository();
 
         $handler = new FetchFeedCommandHandler(

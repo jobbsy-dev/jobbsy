@@ -4,6 +4,7 @@ namespace App\News\Aggregator;
 
 use App\Entity\News\Entry;
 use App\Entity\News\Feed;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 
 final readonly class FetchArticlesFromFeed
@@ -11,8 +12,11 @@ final readonly class FetchArticlesFromFeed
     /**
      * @param FetchArticlesFromFeedInterface[] $providers
      */
-    public function __construct(#[TaggedIterator(FetchArticlesFromFeedInterface::class)] private iterable $providers)
-    {
+    public function __construct(
+        #[TaggedIterator(FetchArticlesFromFeedInterface::class)]
+        private iterable $providers,
+        private LoggerInterface $logger,
+    ) {
     }
 
     /**
@@ -20,6 +24,11 @@ final readonly class FetchArticlesFromFeed
      */
     public function __invoke(Feed $feed): array
     {
+        $this->logger->info('Fetching articles from feed.', [
+            'feed' => $feed->getName(),
+            'feedUrl' => $feed->getUrl(),
+        ]);
+
         foreach ($this->providers as $provider) {
             if (false === $provider->supports($feed)) {
                 continue;

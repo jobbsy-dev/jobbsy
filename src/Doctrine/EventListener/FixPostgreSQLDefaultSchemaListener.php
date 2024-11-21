@@ -2,10 +2,15 @@
 
 namespace App\Doctrine\EventListener;
 
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
 use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Schema\PostgreSQLSchemaManager;
 use Doctrine\ORM\Tools\Event\GenerateSchemaEventArgs;
+use Doctrine\ORM\Tools\ToolEvents;
+use Symfony\Component\Validator\Constraints\When;
 
+#[When('dev')]
+#[AsDoctrineListener(ToolEvents::postGenerateSchema)]
 final class FixPostgreSQLDefaultSchemaListener
 {
     /**

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Sentry\Monolog\BreadcrumbHandler;
 use Sentry\State\HubInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Config\MonologConfig;
@@ -26,8 +27,8 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $mainHandler = $config->handler('main')
             ->type('fingers_crossed')
             ->actionLevel('error')
-            ->handler('group')
-            ->stopBuffering(false);
+            ->handler('nested')
+            ->bufferSize(50);
 
         $mainHandler->excludedHttpCode()->code(400);
         $mainHandler->excludedHttpCode()->code(403);
@@ -35,20 +36,20 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $mainHandler->excludedHttpCode()->code(405);
         $mainHandler->excludedHttpCode()->code(406);
 
-        $config->handler('group')
-            ->type('group')
-            ->members(['streamed', 'sentry']);
+        $config->handler('nested')
+            ->type('stream')
+            ->level('debug')
+            ->path('php://stderr');
+
+        $config->handler('sentry_breadcrumbs')
+            ->type('service')
+            ->id(BreadcrumbHandler::class);
 
         $config->handler('sentry')
             ->type('sentry')
             ->level('error')
             ->hubId(HubInterface::class)
             ->fillExtraContext(true);
-
-        $config->handler('streamed')
-            ->type('stream')
-            ->level('debug')
-            ->path('php://stderr');
 
         $config->handler('console')
             ->type('console')

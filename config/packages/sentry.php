@@ -2,11 +2,15 @@
 
 declare(strict_types=1);
 
-use Symfony\Config\SentryConfig;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
-return static function (SentryConfig $config): void {
-    $config->dsn(env('SENTRY_DSN'));
-    $config->registerErrorListener(false);
-    $config->registerErrorHandler(false);
+return static function (ContainerConfigurator $containerConfigurator): void {
+    if ('prod' === $containerConfigurator->env()) {
+        $containerConfigurator->extension('sentry', [
+            'dsn' => env('SENTRY_DSN'),
+            'register_error_listener' => false,
+            'register_error_handler' => false,
+        ]);
+    }
 };
