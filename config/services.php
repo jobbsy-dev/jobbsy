@@ -7,6 +7,9 @@ use AsyncAws\S3\S3Client;
 use Doctrine\ORM\Tools\ToolEvents;
 use League\Glide\Server;
 use League\Glide\ServerFactory;
+use Monolog\Level;
+use Sentry\Monolog\BreadcrumbHandler;
+use Sentry\State\HubInterface;
 use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\Clock\MockClock;
@@ -51,7 +54,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'max_image_size' => 2000*2000,
         ]);
 
-    $services
-        ->set(FixPostgreSQLDefaultSchemaListener::class)
-        ->tag('doctrine.event_listener', ['event' => ToolEvents::postGenerateSchema]);
+    if ('prod' === $containerConfigurator->env()) {
+        $services->set(BreadcrumbHandler::class)
+            ->args([
+                '$hub' => service(HubInterface::class),
+                '$level' => Level::Info->value,
+            ]);
+    }
 };
