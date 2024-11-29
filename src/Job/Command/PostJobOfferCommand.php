@@ -19,7 +19,7 @@ final class PostJobOfferCommand
     public string $location = '';
 
     #[Assert\NotBlank]
-    public EmploymentType $employmentType = EmploymentType::FULLTIME;
+    public ?EmploymentType $employmentType = EmploymentType::FULLTIME;
 
     #[Assert\NotBlank]
     #[Assert\Length(max: 255)]
