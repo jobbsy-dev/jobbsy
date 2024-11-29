@@ -19,7 +19,7 @@ final class PostJobOfferCommand
     public string $location = '';
 
     #[Assert\NotBlank]
-    public EmploymentType $employmentType = EmploymentType::FULLTIME;
+    public ?EmploymentType $employmentType = EmploymentType::FULLTIME;
 
     #[Assert\NotBlank]
     #[Assert\Length(max: 255)]
@@ -49,13 +49,16 @@ final class PostJobOfferCommand
     public string $contactEmail = '';
 
     #[Assert\NotBlank(allowNull: true)]
-    public LocationType $locationType = LocationType::REMOTE;
+    public ?LocationType $locationType = LocationType::REMOTE;
 
     #[Assert\GreaterThanOrEqual(0)]
     public ?int $donationAmount = null;
 
     public function toEntity(): Job
     {
+        \Webmozart\Assert\Assert::notNull($this->employmentType);
+        \Webmozart\Assert\Assert::notNull($this->locationType);
+
         $job = new Job(
             $this->title,
             $this->location,
