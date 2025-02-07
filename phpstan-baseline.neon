@@ -166,6 +166,11 @@ parameters:
 			path: src/Repository/CommunityEvent/EventRepository.php
 
 		-
+			message: "#^Method App\\\\Security\\\\User\\:\\:getUserIdentifier\\(\\) should return non\\-empty\\-string but returns string\\.$#"
+			count: 1
+			path: src/Security/User.php
+
+		-
 			message: "#^Method App\\\\Tests\\\\Mock\\\\MockStripeClient\\:\\:request\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Mock/MockStripeClient.php

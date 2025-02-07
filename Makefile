@@ -31,6 +31,9 @@ phpcsfix: tools-vendor					## Run cs fixer
 phpstan: vendor							## Run PHPStan
 	$(SYMFONY_CLI) $(PHP_STAN) analyse
 
+phpstan-baseline: vendor				## Run PHPStan
+	$(SYMFONY_CLI) $(PHP_STAN) analyse -b
+
 fixtures: vendor						## Load fixtures test env
 	$(SYMFONY_CLI) console doctrine:fixtures:load --env=test --no-interaction
 
