@@ -2512,16 +2512,16 @@
         },
         {
             "name": "knplabs/knp-components",
-            "version": "v5.1.0",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/knp-components.git",
-                "reference": "a1ccc001fd243670ca1e970356027a53d6fca2af"
+                "reference": "eabf39263fff305c0024820c3736e5b03e7edf50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/a1ccc001fd243670ca1e970356027a53d6fca2af",
-                "reference": "a1ccc001fd243670ca1e970356027a53d6fca2af",
+                "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/eabf39263fff305c0024820c3736e5b03e7edf50",
+                "reference": "eabf39263fff305c0024820c3736e5b03e7edf50",
                 "shasum": ""
             },
             "require": {
@@ -2593,22 +2593,22 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/knp-components/issues",
-                "source": "https://github.com/KnpLabs/knp-components/tree/v5.1.0"
+                "source": "https://github.com/KnpLabs/knp-components/tree/v5.2.0"
             },
-            "time": "2024-09-20T12:03:01+00:00"
+            "time": "2025-03-20T07:35:37+00:00"
         },
         {
             "name": "knplabs/knp-paginator-bundle",
-            "version": "v6.7.0",
+            "version": "v6.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "a346431b9f0cddac8cd03d63e70911b6bf70ffde"
+                "reference": "c3ba635cc61c8bc5de4656223d8664c4045e9fdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/a346431b9f0cddac8cd03d63e70911b6bf70ffde",
-                "reference": "a346431b9f0cddac8cd03d63e70911b6bf70ffde",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/c3ba635cc61c8bc5de4656223d8664c4045e9fdc",
+                "reference": "c3ba635cc61c8bc5de4656223d8664c4045e9fdc",
                 "shasum": ""
             },
             "require": {
@@ -2667,9 +2667,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/KnpPaginatorBundle/issues",
-                "source": "https://github.com/KnpLabs/KnpPaginatorBundle/tree/v6.7.0"
+                "source": "https://github.com/KnpLabs/KnpPaginatorBundle/tree/v6.8.0"
             },
-            "time": "2025-03-02T16:36:05+00:00"
+            "time": "2025-04-11T07:08:09+00:00"
         },
         {
             "name": "knplabs/knp-time-bundle",
