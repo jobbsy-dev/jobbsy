@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use League\Glide\Filesystem\FileNotFoundException;
 use League\Glide\Responses\SymfonyResponseFactory;
 use League\Glide\Server;
 use League\Glide\Signatures\SignatureException;
