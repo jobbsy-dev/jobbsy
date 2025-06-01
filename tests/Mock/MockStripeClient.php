@@ -19,6 +19,7 @@ final readonly class MockStripeClient implements ClientInterface
         $params,
         $hasFile,
         $apiMode = 'v1',
+        $maxNetworkRetries = null,
     ): array {
         $body = '{}';
 
