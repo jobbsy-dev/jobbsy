@@ -22,6 +22,9 @@ final readonly class CreateStripePaymentUrl implements CreatePaymentUrlInterface
     {
         Stripe::setApiKey($this->stripeApiKey);
 
+        /** @var string $customerEmail */
+        $customerEmail = $job->getContactEmail();
+
         $session = Session::create([
             'line_items' => [[
                 'price_data' => [
@@ -48,7 +51,7 @@ final readonly class CreateStripePaymentUrl implements CreatePaymentUrlInterface
             'tax_id_collection' => [
                 'enabled' => true,
             ],
-            'customer_email' => $job->getContactEmail(),
+            'customer_email' => $customerEmail,
         ]);
 
         if (null === ($url = $session->url)) {
