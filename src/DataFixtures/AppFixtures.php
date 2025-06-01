@@ -129,7 +129,7 @@ final class AppFixtures extends Fixture
          */
         foreach ($this->getNewsData() as [$id, $title, $link, $description, $publishedAt, $feedId]) {
             /** @var Feed $feed */
-            $feed = $this->getReference(\sprintf('feed-%s', $feedId));
+            $feed = $this->getReference(\sprintf('feed-%s', $feedId), Feed::class);
 
             $article = new Entry($id ? Uuid::fromString($id) : null);
             $article->setFeed($feed);
