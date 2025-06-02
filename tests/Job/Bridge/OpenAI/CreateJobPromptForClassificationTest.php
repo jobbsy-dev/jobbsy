@@ -5,13 +5,12 @@ namespace App\Tests\Job\Bridge\OpenAI;
 use App\Entity\Job;
 use App\Job\Bridge\OpenAI\CreateJobPromptForClassification;
 use App\Job\EmploymentType;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class CreateJobPromptForClassificationTest extends TestCase
 {
-    /**
-     * @dataProvider dataPrompt
-     */
+    #[DataProvider('dataPrompt')]
     public function test_create(string $description, string $expected): void
     {
         // Arrange

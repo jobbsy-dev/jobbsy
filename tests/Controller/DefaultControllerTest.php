@@ -2,13 +2,12 @@
 
 namespace App\Tests\Controller;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class DefaultControllerTest extends WebTestCase
 {
-    /**
-     * @dataProvider provideUrls
-     */
+    #[DataProvider('provideUrls')]
     public function test_url_is_ok(string $url): void
     {
         $client = static::createClient();
