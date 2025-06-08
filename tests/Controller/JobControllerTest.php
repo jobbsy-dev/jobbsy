@@ -55,7 +55,7 @@ final class JobControllerTest extends WebTestCase
         );
     }
 
-    public function test_create_job_offer_with_donation(): void
+    public function test_create_job_offer_with_donation(): never
     {
         $this->markTestSkipped('Donation disabled');
 

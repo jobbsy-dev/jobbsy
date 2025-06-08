@@ -6,6 +6,7 @@ use App\Job\PoleEmploi\PoleEmploiApi;
 use App\Job\PoleEmploi\PoleEmploiJobProvider;
 use App\Job\SearchParameters;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\NullLogger;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
@@ -71,7 +72,8 @@ final class PoleEmploiJobProviderTest extends TestCase
         );
         $poleEmploiProvider = new PoleEmploiJobProvider(
             $poleEmploiApi,
-            'clientId'
+            'clientId',
+            new NullLogger(),
         );
 
         // Act

@@ -7,6 +7,7 @@ use App\Job\EmploymentType;
 use App\Job\JobCollection;
 use App\Job\JobProviderInterface;
 use App\Job\SearchParameters;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 final readonly class PoleEmploiJobProvider implements JobProviderInterface
@@ -15,6 +16,7 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
         private PoleEmploiApi $api,
         #[Autowire('%env(POLE_EMPLOI_CLIENT_ID)%')]
         private string $poleEmploiClientId,
+        private LoggerInterface $logger,
     ) {
     }
 
@@ -28,7 +30,11 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
                 'o2dsoffre',
                 'application_'.$this->poleEmploiClientId,
             ]);
-        } catch (\Throwable) {
+        } catch (\Throwable $throwable) {
+            $this->logger->error('Error while authenticating pole emploi', [
+                'exception' => $throwable->getMessage(),
+            ]);
+
             return $jobs;
         }
 
@@ -39,7 +45,11 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
                 'maxCreationDate' => $parameters->to,
                 'origineOffre' => 1,
             ]);
-        } catch (\Throwable) {
+        } catch (\Throwable $throwable) {
+            $this->logger->error('Error while searching pole emploi', [
+                'exception' => $throwable->getMessage(),
+            ]);
+
             return $jobs;
         }
 
