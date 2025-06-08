@@ -33,7 +33,7 @@ final class PostJobOfferCommand
 
     #[Assert\NotBlank]
     #[Assert\Length(min: 5, max: 255)]
-    #[Assert\Url]
+    #[Assert\Url(requireTld: true)]
     public string $url = '';
 
     #[Assert\File(
