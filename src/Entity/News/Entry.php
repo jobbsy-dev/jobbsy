@@ -33,7 +33,7 @@ class Entry
     #[Groups(groups: ['entry:read'])]
     private string $title = '';
 
-    #[ORM\Column(length: 255, unique: true)]
+    #[ORM\Column(type: Types::TEXT, unique: true)]
     #[ApiProperty(types: ['https://schema.org/url'])]
     #[Groups(groups: ['entry:read'])]
     private string $link = '';

@@ -60,7 +60,7 @@ class Event
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: Types::STRING)]
+    #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank]
     #[Groups(['read'])]
     #[ApiProperty(types: ['https://schema.org/url'])]

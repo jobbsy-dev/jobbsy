@@ -1,0 +1,287 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DoctrineMigrations;
+
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+final class Version20250608170440 extends AbstractMigration
+{
+    public function getDescription(): string
+    {
+        return '';
+    }
+
+    public function up(Schema $schema): void
+    {
+        // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql(<<<'SQL'
+            ALTER TABLE entry ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE entry ALTER link TYPE TEXT
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE entry ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE entry ALTER published_at TYPE TIMESTAMP(0) WITH TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN entry.id IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN entry.feed_id IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN entry.created_at IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN entry.published_at IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER start_date TYPE DATE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER end_date TYPE DATE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER url TYPE TEXT
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN event.id IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN event.start_date IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN event.end_date IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN event.created_at IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE feed ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE feed ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE feed ALTER updated_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE feed ALTER image_dimensions TYPE TEXT
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN feed.id IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN feed.created_at IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN feed.updated_at IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN feed.image_dimensions IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER updated_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER pinned_until TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER published_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER organization_image_dimensions TYPE TEXT
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.id IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.created_at IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.updated_at IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.pinned_until IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.published_at IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.organization_image_dimensions IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE source ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE source ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN source.id IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN source.created_at IS ''
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE messenger_messages ALTER id DROP DEFAULT
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE messenger_messages ALTER id ADD GENERATED BY DEFAULT AS IDENTITY
+        SQL);
+    }
+
+    public function down(Schema $schema): void
+    {
+        // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql(<<<'SQL'
+            ALTER TABLE source ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE source ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN source.id IS '(DC2Type:uuid)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN source.created_at IS '(DC2Type:datetime_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE feed ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE feed ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE feed ALTER updated_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE feed ALTER image_dimensions TYPE TEXT
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN feed.id IS '(DC2Type:uuid)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN feed.created_at IS '(DC2Type:datetime_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN feed.updated_at IS '(DC2Type:datetime_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN feed.image_dimensions IS '(DC2Type:simple_array)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER start_date TYPE DATE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER end_date TYPE DATE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE event ALTER url TYPE VARCHAR(255)
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN event.id IS '(DC2Type:uuid)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN event.start_date IS '(DC2Type:date_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN event.end_date IS '(DC2Type:date_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN event.created_at IS '(DC2Type:datetime_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE messenger_messages ALTER id SET DEFAULT messenger_messages_id_seq
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE messenger_messages ALTER id DROP IDENTITY
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE entry ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE entry ALTER link TYPE VARCHAR(255)
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE entry ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE entry ALTER published_at TYPE TIMESTAMP(0) WITH TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN entry.id IS '(DC2Type:uuid)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN entry.created_at IS '(DC2Type:datetime_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN entry.published_at IS '(DC2Type:datetimetz_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN entry.feed_id IS '(DC2Type:uuid)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER id TYPE UUID
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER created_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER updated_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER pinned_until TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER published_at TYPE TIMESTAMP(0) WITHOUT TIME ZONE
+        SQL);
+        $this->addSql(<<<'SQL'
+            ALTER TABLE job ALTER organization_image_dimensions TYPE TEXT
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.id IS '(DC2Type:uuid)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.created_at IS '(DC2Type:datetime_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.updated_at IS '(DC2Type:datetime_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.pinned_until IS '(DC2Type:datetime_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.published_at IS '(DC2Type:datetime_immutable)'
+        SQL);
+        $this->addSql(<<<'SQL'
+            COMMENT ON COLUMN job.organization_image_dimensions IS '(DC2Type:simple_array)'
+        SQL);
+    }
+}

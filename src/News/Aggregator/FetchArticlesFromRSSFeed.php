@@ -28,7 +28,13 @@ final readonly class FetchArticlesFromRSSFeed implements FetchArticlesFromFeedIn
         foreach ($document->getChannels() as $channel) {
             foreach ($channel->getItems() as $item) {
                 $article = new Entry();
-                $article->setTitle(trim($item->title));
+
+                $title = trim($item->title);
+                if (mb_strlen($title) > 255) {
+                    continue;
+                }
+
+                $article->setTitle($title);
                 $article->setLink($item->link);
                 $article->setDescription(trim($item->description));
                 $article->setFeed($feed);
