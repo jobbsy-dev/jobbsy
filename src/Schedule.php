@@ -10,9 +10,8 @@ use Symfony\Contracts\Cache\CacheInterface;
 #[AsSchedule]
 class Schedule implements ScheduleProviderInterface
 {
-    public function __construct(
-        private readonly CacheInterface $cache,
-    ) {
+    public function __construct(private readonly CacheInterface $cache)
+    {
     }
 
     public function getSchedule(): SymfonySchedule
