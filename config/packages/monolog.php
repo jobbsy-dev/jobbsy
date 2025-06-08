@@ -48,6 +48,7 @@ return static function (MonologConfig $config, ContainerConfigurator $containerC
         $config->handler('sentry')
             ->type('sentry')
             ->level('error')
+            ->processPsr3Messages(true)
             ->hubId(HubInterface::class)
             ->fillExtraContext(true);
 
