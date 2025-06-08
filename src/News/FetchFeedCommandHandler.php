@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\News;
 
 use App\News\Aggregator\FetchArticlesFromFeed;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
@@ -16,6 +17,7 @@ final readonly class FetchFeedCommandHandler
         private FetchArticlesFromFeed $fetchArticlesFromFeed,
         private EntryRepositoryInterface $entryRepository,
         private LoggerInterface $logger,
+        private EntityManagerInterface $entityManager,
     ) {
     }
 
@@ -48,5 +50,7 @@ final readonly class FetchFeedCommandHandler
 
             $this->entryRepository->save($article);
         }
+
+        $this->entityManager->flush();
     }
 }

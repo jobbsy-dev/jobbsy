@@ -40,7 +40,13 @@ final readonly class FetchSourceCommandHandler
 
             foreach ($eventsData as $eventData) {
                 $event = new Event();
-                $event->setName(html_entity_decode((string) $eventData['name']));
+                $name = html_entity_decode((string) $eventData['name']);
+
+                if (mb_strlen($name) > 255) {
+                    continue;
+                }
+
+                $event->setName($name);
                 $event->setUrl($eventData['url']);
                 if (isset($eventData['description'])) {
                     $event->setAbstract(\sprintf(

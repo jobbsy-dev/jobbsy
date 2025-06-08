@@ -12,6 +12,7 @@ use App\News\FetchFeedCommandHandler;
 use App\Tests\News\Aggregator\InMemoryFetchArticlesFromFeed;
 use App\Tests\Repository\InMemoryEntryRepository;
 use App\Tests\Repository\InMemoryFeedRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 use Ramsey\Uuid\Uuid;
@@ -35,7 +36,8 @@ final class FetchFeedCommandHandlerTest extends TestCase
             $feedRepository,
             $fetchArticlesFromFeedMain,
             $entryRepository,
-            new NullLogger()
+            new NullLogger(),
+            $this->createMock(EntityManagerInterface::class),
         );
 
         // Act

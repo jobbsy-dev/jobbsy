@@ -27,13 +27,11 @@ final class EntryRepository extends ServiceEntityRepository implements EntryRepo
     public function save(Entry $entry): void
     {
         $this->getEntityManager()->persist($entry);
-        $this->getEntityManager()->flush();
     }
 
     public function remove(Entry $entry): void
     {
         $this->getEntityManager()->remove($entry);
-        $this->getEntityManager()->flush();
     }
 
     public function createQueryBuilderLastNews(): QueryBuilder
