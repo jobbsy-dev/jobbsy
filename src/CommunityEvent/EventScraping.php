@@ -40,7 +40,7 @@ final readonly class EventScraping
                     continue;
                 }
 
-                if (false === str_contains($url, $schema['organizer']['url'])) {
+                if (false === str_contains($schema['organizer']['url'], $url)) {
                     continue;
                 }
 

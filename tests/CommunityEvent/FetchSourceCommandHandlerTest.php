@@ -31,7 +31,7 @@ final class FetchSourceCommandHandlerTest extends TestCase
         $goutteClient = new HttpBrowser($mockClient);
 
         $source1 = new Source(Uuid::fromString('9a6db56c-97bd-49d6-85af-595d5a172a89'));
-        $source1->setUrl('https://www.meetup.com/backendos/events');
+        $source1->setUrl('https://www.meetup.com/backendos');
 
         $repository = new InMemorySourceRepository([$source1]);
         $eventRepository = new InMemoryEventRepository();

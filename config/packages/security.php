@@ -33,9 +33,7 @@ return static function (SecurityConfig $config, ContainerConfigurator $container
         ->httpBasic()
         ->realm('Secured Area');
 
-    $config->accessControl()
-        ->path('^/admin')
-        ->roles('ROLE_ADMIN');
+
 
     if ('test' === $containerConfigurator->env()) {
         $config
