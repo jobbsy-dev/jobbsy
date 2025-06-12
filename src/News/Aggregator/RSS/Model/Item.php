@@ -27,7 +27,7 @@ final readonly class Item
         if (null !== $publishDate) {
             $pubDate = \DateTimeImmutable::createFromFormat(
                 \DateTimeInterface::RFC2822,
-                trim($publishDate)
+                mb_trim($publishDate)
             );
             $pubDate = false !== $pubDate ? $pubDate : null;
         }

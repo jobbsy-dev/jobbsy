@@ -10,6 +10,8 @@ jobs:
     coding-style:
         name: Coding Style
         runs-on: ubuntu-latest
+        env:
+            PHP_CS_FIXER_IGNORE_ENV: 1
         steps:
             - name: "Checkout code"
               uses: actions/checkout@v4

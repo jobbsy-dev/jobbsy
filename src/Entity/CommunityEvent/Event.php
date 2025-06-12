@@ -193,7 +193,7 @@ class Event
             return false;
         }
 
-        return 'online' === mb_strtolower(trim($this->location));
+        return 'online' === mb_strtolower(mb_trim($this->location));
     }
 
     public function isMixed(): bool
@@ -206,6 +206,6 @@ class Event
             return false;
         }
 
-        return str_contains(mb_strtolower(trim($this->location)), 'online');
+        return str_contains(mb_strtolower(mb_trim($this->location)), 'online');
     }
 }

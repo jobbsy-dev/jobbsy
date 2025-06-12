@@ -34,7 +34,7 @@ final readonly class WelcometotheJungleClient
             $location = $this->getLocation($jobData);
 
             $data[] = [
-                'company' => html_entity_decode(trim((string) $jobData['hiringOrganization']['name'])),
+                'company' => html_entity_decode(mb_trim((string) $jobData['hiringOrganization']['name'])),
                 'companyLogo' => $jobData['hiringOrganization']['logo'] ?? null,
                 'url' => $url,
                 'title' => html_entity_decode((string) $jobData['title']),

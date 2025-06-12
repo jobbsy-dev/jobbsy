@@ -60,7 +60,7 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
 
             $location = $result['lieuTravail']['libelle'];
             if (str_contains((string) $location, '-')) {
-                $location = ucfirst(trim(explode('-', (string) $location)[1]));
+                $location = ucfirst(mb_trim(explode('-', (string) $location)[1]));
             }
 
             $employmentType = EmploymentType::FULLTIME;

@@ -25,7 +25,7 @@ final readonly class AssetExtensionRuntime implements RuntimeExtensionInterface
         int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH,
     ): string {
         $parameters['s'] = SignatureFactory::create($this->secret)->generateSignature($path, $parameters);
-        $parameters['path'] = ltrim($path, '/');
+        $parameters['path'] = mb_ltrim($path, '/');
 
         return $this->urlGenerator->generate('asset_url', $parameters, $referenceType);
     }

@@ -28,14 +28,14 @@ final readonly class FetchArticlesFromAtomFeed implements FetchArticlesFromFeedI
         foreach ($atomFeed->getEntries() as $entry) {
             $article = new Entry();
 
-            $title = trim($entry->title);
+            $title = mb_trim($entry->title);
             if (mb_strlen($title) > 255) {
                 continue;
             }
 
-            $article->setTitle(trim($entry->title));
+            $article->setTitle(mb_trim($entry->title));
             $article->setLink($entry->link);
-            $article->setDescription($entry->summary ? trim((string) $entry->summary) : trim((string) $entry->content));
+            $article->setDescription($entry->summary ? mb_trim((string) $entry->summary) : mb_trim((string) $entry->content));
             $article->setPublishedAt($entry->published);
             $article->setFeed($feed);
 

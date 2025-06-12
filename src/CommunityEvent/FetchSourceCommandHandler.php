@@ -74,7 +74,7 @@ final readonly class FetchSourceCommandHandler
                     if ('Place' === $eventData['location']['@type']) {
                         $event->setLocation(html_entity_decode((string) $eventData['location']['address']['addressLocality']));
 
-                        $countryName = strtoupper(html_entity_decode((string) $eventData['location']['address']['addressCountry']));
+                        $countryName = mb_strtoupper(html_entity_decode((string) $eventData['location']['address']['addressCountry']));
                         if (Countries::exists($countryName)) {
                             $event->setCountry($countryName);
                         } else {

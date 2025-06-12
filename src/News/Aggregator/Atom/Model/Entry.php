@@ -23,7 +23,7 @@ final readonly class Entry
         if (\is_string($publishedDate)) {
             $pubDate = \DateTimeImmutable::createFromFormat(
                 \DateTimeInterface::ATOM,
-                trim($publishedDate)
+                mb_trim($publishedDate)
             );
             $pubDate = false === $pubDate ? null : $pubDate;
         }
