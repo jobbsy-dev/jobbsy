@@ -15,6 +15,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 
+/**
+ * @extends AbstractCrudController<Event>
+ */
 final class EventCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
