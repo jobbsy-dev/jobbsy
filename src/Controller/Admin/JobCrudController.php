@@ -20,6 +20,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
+/**
+ * @extends AbstractCrudController<Job>
+ */
 final class JobCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string

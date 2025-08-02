@@ -14,6 +14,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
+/**
+ * @extends AbstractCrudController<Feed>
+ */
 final class FeedCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
