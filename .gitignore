@@ -8,8 +8,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-compose.override.yaml
-
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml

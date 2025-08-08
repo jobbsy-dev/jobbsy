@@ -42,6 +42,7 @@
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^2.1",
         "ramsey/uuid-doctrine": "^2.0",
+        "runtime/frankenphp-symfony": "^0.2.0",
         "sentry/sentry-symfony": "^5.0",
         "stripe/stripe-php": "^17.3",
         "symfony/asset": "7.3.*",
