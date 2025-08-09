@@ -78,7 +78,11 @@ jobs:
             url: https://jobbsy.dev
         strategy:
               matrix:
-                  applicationId: ["DOKPLOY_APPLICATION_ID", "DOKPLOY_WORKER_ID"]
+                  include:
+                      - name: app
+                        applicationId: DOKPLOY_APPLICATION_ID
+                      - name: worker
+                        applicationId: DOKPLOY_WORKER_ID
         steps:
             - name: Dokploy Deployment
               run: |
