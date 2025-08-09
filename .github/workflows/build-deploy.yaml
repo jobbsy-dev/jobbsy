@@ -78,7 +78,7 @@ jobs:
             url: https://jobbsy.dev
         strategy:
               matrix:
-                  applicationId: ["${{ secrets.DOKPLOY_APPLICATION_ID }}", "${{ secrets.DOKPLOY_WORKER_ID }}"]
+                  applicationId: ["DOKPLOY_APPLICATION_ID", "DOKPLOY_WORKER_ID"]
         steps:
             - name: Dokploy Deployment
               run: |
@@ -88,5 +88,5 @@ jobs:
                  -H 'x-api-key: ${{ secrets.DOKPLOY_AUTH_TOKEN }}' \
                  -H 'Content-Type: application/json' \
                  -d '{
-                    "applicationId": "${{ matrix.applicationId }}"
+                    "applicationId": "${{ secrets[matrix.applicationId] }}"
                  }'
