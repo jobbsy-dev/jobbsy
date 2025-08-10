@@ -69,28 +69,3 @@ jobs:
                   subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
                   subject-digest: ${{ steps.push.outputs.digest }}
                   push-to-registry: true
-
-    deploy:
-        runs-on: ubuntu-latest
-        needs: build-and-push-image
-        environment:
-            name: production
-            url: https://jobbsy.dev
-        strategy:
-              matrix:
-                  include:
-                      - name: app
-                        applicationId: DOKPLOY_APPLICATION_ID
-                      - name: worker
-                        applicationId: DOKPLOY_WORKER_ID
-        steps:
-            - name: Dokploy Deployment
-              run: |
-                 curl -X 'POST' \
-                 '${{ secrets.DOKPLOY_URL }}/api/application.deploy' \
-                 -H 'accept: application/json' \
-                 -H 'x-api-key: ${{ secrets.DOKPLOY_AUTH_TOKEN }}' \
-                 -H 'Content-Type: application/json' \
-                 -d '{
-                    "applicationId": "${{ secrets[matrix.applicationId] }}"
-                 }'
