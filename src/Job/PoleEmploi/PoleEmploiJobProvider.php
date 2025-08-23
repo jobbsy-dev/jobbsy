@@ -14,7 +14,7 @@ final readonly class PoleEmploiJobProvider implements JobProviderInterface
 {
     public function __construct(
         private PoleEmploiApi $api,
-        #[Autowire('%env(POLE_EMPLOI_CLIENT_ID)%')]
+        #[Autowire(env: 'POLE_EMPLOI_CLIENT_ID')]
         private string $poleEmploiClientId,
         private LoggerInterface $logger,
     ) {

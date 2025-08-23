@@ -7,9 +7,6 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 final readonly class TwitterApi
 {
-    /**
-     * @var string
-     */
     private const string BASE_URL = 'https://api.twitter.com/2';
 
     public function __construct(

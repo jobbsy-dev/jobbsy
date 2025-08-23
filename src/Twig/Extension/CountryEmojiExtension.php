@@ -7,9 +7,6 @@ use Twig\TwigFilter;
 
 final class CountryEmojiExtension extends AbstractExtension
 {
-    /**
-     * @var int
-     */
     private const int REGIONAL_OFFSET = 0x1F1A5;
 
     public function getFilters(): array

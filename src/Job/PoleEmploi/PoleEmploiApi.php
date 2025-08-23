@@ -39,7 +39,7 @@ final class PoleEmploiApi
             return;
         }
 
-        $response = $this->httpClient->request('POST', 'https://entreprise.francetravail.fr/connexion/oauth2/access_token', [
+        $response = $this->httpClient->request('POST', 'https://francetravail.io/connexion/oauth2/access_token', [
             'body' => [
                 'grant_type' => 'client_credentials',
                 'client_id' => $this->poleEmploiClientId,
