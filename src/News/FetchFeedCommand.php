@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\News;
 
-use App\Shared\AsyncMessageInterface;
+use Symfony\Component\Messenger\Attribute\AsMessage;
 
-final readonly class FetchFeedCommand implements AsyncMessageInterface
+#[AsMessage(transport: 'async')]
+final readonly class FetchFeedCommand
 {
     public function __construct(public string $feedId)
     {

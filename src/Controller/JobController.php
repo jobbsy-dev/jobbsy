@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Donation\Command\CreateDonationPaymentUrlCommand;
-use App\Donation\CommandHandler\CreateDonationPaymentUrlCommandHandler;
+use App\Donation\Command\CreateDonationPaymentUrlCommandHandler;
 use App\Entity\Job;
 use App\Form\PostJobOfferType;
 use App\Form\SponsorType;

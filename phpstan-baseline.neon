@@ -6,39 +6,39 @@ parameters:
 			path: src/CommunityEvent/EventScraping.php
 
 		-
-			message: "#^Method App\\\\Job\\\\PoleEmploi\\\\PoleEmploiApi\\:\\:search\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method App\\\\Job\\\\FranceTravail\\\\FranceTravailApi\\:\\:search\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiApi.php
+			path: src/Job/FranceTravail/FranceTravailApi.php
 
 		-
 			message: "#^Cannot access offset 'entreprise' on array\\|bool\\|float\\|int\\|string\\.$#"
 			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+			path: src/Job/FranceTravail/FranceTravailJobProvider.php
 
 		-
 			message: "#^Cannot access offset 'intitule' on array\\|bool\\|float\\|int\\|string\\.$#"
 			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+			path: src/Job/FranceTravail/FranceTravailJobProvider.php
 
 		-
 			message: "#^Cannot access offset 'lieuTravail' on array\\|bool\\|float\\|int\\|string\\.$#"
 			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+			path: src/Job/FranceTravail/FranceTravailJobProvider.php
 
 		-
 			message: "#^Cannot access offset 'origineOffre' on array\\|bool\\|float\\|int\\|string\\.$#"
 			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+			path: src/Job/FranceTravail/FranceTravailJobProvider.php
 
 		-
-			message: "#^Method App\\\\Job\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) has parameter \\$jobOffer with no value type specified in iterable type array\\.$#"
+			message: "#^Method App\\\\Job\\\\FranceTravail\\\\FranceTravailJobProvider\\:\\:isOfferCheckConditions\\(\\) has parameter \\$jobOffer with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+			path: src/Job/FranceTravail/FranceTravailJobProvider.php
 
 		-
-			message: "#^Parameter \\#1 \\$jobOffer of method App\\\\Job\\\\PoleEmploi\\\\PoleEmploiJobProvider\\:\\:isOfferCheckConditions\\(\\) expects array, array\\|bool\\|float\\|int\\|string given\\.$#"
+			message: "#^Parameter \\#1 \\$jobOffer of method App\\\\Job\\\\FranceTravail\\\\FranceTravailJobProvider\\:\\:isOfferCheckConditions\\(\\) expects array, array\\|bool\\|float\\|int\\|string given\\.$#"
 			count: 1
-			path: src/Job/PoleEmploi/PoleEmploiJobProvider.php
+			path: src/Job/FranceTravail/FranceTravailJobProvider.php
 
 		-
 			message: "#^Method App\\\\Job\\\\Scraping\\\\JobScraper\\:\\:scrap\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -143,17 +143,17 @@ parameters:
 		-
 			message: "#^Cannot access offset 'text' on mixed\\.$#"
 			count: 1
-			path: src/MessageHandler/Job/ClassifyHandler.php
+			path: src/MessageHandler/ClassifyHandler.php
 
 		-
 			message: "#^Cannot access offset 0 on mixed\\.$#"
 			count: 1
-			path: src/MessageHandler/Job/ClassifyHandler.php
+			path: src/MessageHandler/ClassifyHandler.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
-			path: src/MessageHandler/Job/ClassifyHandler.php
+			path: src/MessageHandler/ClassifyHandler.php
 
 		-
 			message: "#^Method App\\\\Repository\\\\CommunityEvent\\\\EventRepository\\:\\:findPastEvents\\(\\) should return array\\<App\\\\Entity\\\\CommunityEvent\\\\Event\\> but returns mixed\\.$#"

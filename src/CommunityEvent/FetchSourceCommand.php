@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\CommunityEvent;
 
-use App\Shared\AsyncMessageInterface;
+use Symfony\Component\Messenger\Attribute\AsMessage;
 
-final readonly class FetchSourceCommand implements AsyncMessageInterface
+#[AsMessage(transport: 'async')]
+final readonly class FetchSourceCommand
 {
     public function __construct(public string $sourceId)
     {

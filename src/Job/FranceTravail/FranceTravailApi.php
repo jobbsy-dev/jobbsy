@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Job\PoleEmploi;
+namespace App\Job\FranceTravail;
 
 use App\Job\AccessToken;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -11,7 +11,7 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-final class PoleEmploiApi
+final class FranceTravailApi
 {
     private ?AccessToken $accessToken = null;
 

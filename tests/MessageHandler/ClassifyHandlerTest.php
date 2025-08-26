@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Tests\MessageHandler\Job;
+namespace MessageHandler;
 
 use App\Entity\Job;
 use App\Job\EmploymentType;
-use App\Message\Job\ClassifyMessage;
-use App\MessageHandler\Job\ClassifyHandler;
+use App\Message\ClassifyMessage;
+use App\MessageHandler\ClassifyHandler;
 use App\OpenAI\Client;
 use App\Tests\Repository\InMemoryJobRepository;
 use Doctrine\ORM\EntityManagerInterface;

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Tests\Job\PoleEmploi;
+namespace App\Tests\Job\FranceTravail;
 
-use App\Job\PoleEmploi\PoleEmploiApi;
-use App\Job\PoleEmploi\PoleEmploiJobProvider;
+use App\Job\FranceTravail\FranceTravailApi;
+use App\Job\FranceTravail\FranceTravailJobProvider;
 use App\Job\SearchParameters;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-final class PoleEmploiJobProviderTest extends TestCase
+final class FranceTravailJobProviderTest extends TestCase
 {
     public function test_retrieve(): void
     {
@@ -67,10 +67,10 @@ final class PoleEmploiJobProviderTest extends TestCase
             $mockResponseAuthenticate,
             $mockResponseSearch,
         ]);
-        $poleEmploiApi = new PoleEmploiApi(
+        $poleEmploiApi = new FranceTravailApi(
             'clientId', 'clientSecret', $client
         );
-        $poleEmploiProvider = new PoleEmploiJobProvider(
+        $poleEmploiProvider = new FranceTravailJobProvider(
             $poleEmploiApi,
             'clientId',
             new NullLogger(),

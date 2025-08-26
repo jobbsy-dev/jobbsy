@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace App\ConsoleCommand;
 
 use App\Repository\JobRepository;
 use Symfony\Component\Console\Attribute\AsCommand;

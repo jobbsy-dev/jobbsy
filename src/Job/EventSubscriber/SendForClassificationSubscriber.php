@@ -3,7 +3,7 @@
 namespace App\Job\EventSubscriber;
 
 use App\Job\Event\JobPostedEvent;
-use App\Message\Job\ClassifyMessage;
+use App\Message\ClassifyMessage;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 

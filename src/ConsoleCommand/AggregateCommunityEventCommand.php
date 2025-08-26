@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace App\ConsoleCommand;
 
 use App\CommunityEvent\FetchSourceCommand;
 use App\Repository\CommunityEvent\SourceRepository as EventSourceRepository;

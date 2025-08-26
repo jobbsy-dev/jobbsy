@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Tests\Job\PoleEmploi;
+namespace App\Tests\Job\FranceTravail;
 
-use App\Job\PoleEmploi\PoleEmploiApi;
+use App\Job\FranceTravail\FranceTravailApi;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
-final class PoleEmploiApiTest extends TestCase
+final class FranceTravailApiTest extends TestCase
 {
     public function test_search_with_is_o8601_date_time_format(): void
     {
@@ -26,7 +26,7 @@ final class PoleEmploiApiTest extends TestCase
         $mockResponseSearch = new MockResponse(json_encode(['ok'], \JSON_THROW_ON_ERROR));
 
         $client = new MockHttpClient([$mockResponseSearch]);
-        $poleEmploiApi = new PoleEmploiApi('clientId', 'clientSecret', $client);
+        $poleEmploiApi = new FranceTravailApi('clientId', 'clientSecret', $client);
 
         // Act
         $poleEmploiApi->search([

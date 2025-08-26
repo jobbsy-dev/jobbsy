@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace App\ConsoleCommand;
 
 use App\Job\Event\JobPostedEvent;
 use App\Job\JobProvider;

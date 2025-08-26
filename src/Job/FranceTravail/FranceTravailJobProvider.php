@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Job\PoleEmploi;
+namespace App\Job\FranceTravail;
 
 use App\Entity\Job;
 use App\Job\EmploymentType;
@@ -10,10 +10,10 @@ use App\Job\SearchParameters;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
-final readonly class PoleEmploiJobProvider implements JobProviderInterface
+final readonly class FranceTravailJobProvider implements JobProviderInterface
 {
     public function __construct(
-        private PoleEmploiApi $api,
+        private FranceTravailApi $api,
         #[Autowire(env: 'POLE_EMPLOI_CLIENT_ID')]
         private string $poleEmploiClientId,
         private LoggerInterface $logger,

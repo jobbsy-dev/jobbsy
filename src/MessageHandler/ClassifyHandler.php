@@ -1,10 +1,10 @@
 <?php
 
-namespace App\MessageHandler\Job;
+namespace App\MessageHandler;
 
 use App\Job\Bridge\OpenAI\CreateJobPromptForClassification;
 use App\Job\Repository\JobRepositoryInterface;
-use App\Message\Job\ClassifyMessage;
+use App\Message\ClassifyMessage;
 use App\OpenAI\Client;
 use App\OpenAI\Model\CompletionRequest;
 use Doctrine\ORM\EntityManagerInterface;

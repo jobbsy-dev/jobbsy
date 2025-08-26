@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace App\ConsoleCommand;
 
 use App\News\FetchFeedCommand;
 use App\Repository\News\FeedRepository;

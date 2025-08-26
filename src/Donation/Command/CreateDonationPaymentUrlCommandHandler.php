@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Donation\CommandHandler;
+namespace App\Donation\Command;
 
 use App\Donation\Command\CreateDonationPaymentUrlCommand;
 use App\Donation\CreatePaymentUrlInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace App\ConsoleCommand;
 
 use App\Mailjet\MailjetApi;
 use App\Mailjet\Model\CreateCampaignDraft\CreateCampaignDraftRequest;
