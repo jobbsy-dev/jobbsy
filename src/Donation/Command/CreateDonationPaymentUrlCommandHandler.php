@@ -2,7 +2,6 @@
 
 namespace App\Donation\Command;
 
-use App\Donation\Command\CreateDonationPaymentUrlCommand;
 use App\Donation\CreatePaymentUrlInterface;
 use App\Repository\JobRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;

@@ -64,7 +64,7 @@ final class SendWeeklyJobsLetterCommand extends Command
         $context->setScheme($this->commandRouterScheme);
 
         $response = $this->mailjetApi->createCampaignDraft(new CreateCampaignDraftRequest(
-            \sprintf('[%s] Weekly jobs letter', (new \DateTime())->format('W')),
+            \sprintf('[%s] Weekly jobs letter', new \DateTime()->format('W')),
             $this->mailjetContactListId,
             'en_US',
             'hello@jobbsy.dev',

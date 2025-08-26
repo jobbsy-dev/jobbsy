@@ -18,15 +18,11 @@ lint:									## Lint the code
 	$(SYMFONY_CLI) console lint:xliff translations
 	$(SYMFONY_CLI) console lint:container --no-debug
 
-validate: lint phpstan rectify			## Validate the code, check composer.json and check security
-	$(SYMFONY_CLI) $(COMPOSER) validate --strict
-	$(SYMFONY_CLI) $(COMPOSER) audit
-
 migrate: vendor							## Run doctrine migrations
 	$(SYMFONY_CLI) console doctrine:migration:migrate
 
 phpcsfix: tools-vendor					## Run cs fixer
-	PHP_CS_FIXER_IGNORE_ENV=1 $(SYMFONY_CLI) $(PHP_CS_FIXER) fix
+	$(SYMFONY_CLI) $(PHP_CS_FIXER) fix
 
 phpstan: vendor							## Run PHPStan
 	$(SYMFONY_CLI) $(PHP_STAN) analyse
@@ -85,3 +81,7 @@ decrypt-vault:						## Decrypt Ansible vault
 
 encrypt-vault:						## Encrypt Ansible vault
 	ansible-vault encrypt .ansible/vault.yml --vault-password-file .ansible/.vault_pass
+
+quality: phpcsfix lint phpstan rectify test
+	$(SYMFONY_CLI) $(COMPOSER) validate --strict
+	$(SYMFONY_CLI) $(COMPOSER) audit
