@@ -11,9 +11,9 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 final readonly class CreateStripePaymentUrl implements CreatePaymentUrlInterface
 {
     public function __construct(
-        #[Autowire('%env(STRIPE_TAX_RATE_ID)%')]
+        #[Autowire(env: 'STRIPE_TAX_RATE_ID')]
         private string $taxRateId,
-        #[Autowire('%env(STRIPE_API_KEY)%')]
+        #[Autowire(env: 'STRIPE_API_KEY')]
         private string $stripeApiKey,
     ) {
     }

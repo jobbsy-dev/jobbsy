@@ -16,9 +16,9 @@ final class PoleEmploiApi
     private ?AccessToken $accessToken = null;
 
     public function __construct(
-        #[Autowire('%env(POLE_EMPLOI_CLIENT_ID)%')]
+        #[Autowire(env: 'POLE_EMPLOI_CLIENT_ID')]
         private readonly string $poleEmploiClientId,
-        #[Autowire('%env(POLE_EMPLOI_CLIENT_SECRET)%')]
+        #[Autowire(env: 'POLE_EMPLOI_CLIENT_SECRET')]
         private readonly string $poleEmploiClientSecret,
         private readonly HttpClientInterface $httpClient,
     ) {

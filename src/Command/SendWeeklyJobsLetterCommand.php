@@ -29,14 +29,14 @@ final class SendWeeklyJobsLetterCommand extends Command
         private readonly Environment $twig,
         private readonly JobRepository $jobRepository,
         private readonly MailjetApi $mailjetApi,
-        #[Autowire('%env(int:MAILJET_CONTACT_LIST_ID)%')]
+        #[Autowire(env: 'int:MAILJET_CONTACT_LIST_ID')]
         private readonly int $mailjetContactListId,
-        #[Autowire('%env(MAILJET_SENDER_ID)%')]
+        #[Autowire(env: 'MAILJET_SENDER_ID')]
         private readonly string $mailjetSenderId,
         private readonly RouterInterface $router,
-        #[Autowire('%env(COMMAND_ROUTER_HOST)%')]
+        #[Autowire(env: 'COMMAND_ROUTER_HOST')]
         private readonly string $commandRouterHost,
-        #[Autowire('%env(COMMAND_ROUTER_SCHEME)%')]
+        #[Autowire(env: 'COMMAND_ROUTER_SCHEME')]
         private readonly string $commandRouterScheme,
     ) {
         parent::__construct();

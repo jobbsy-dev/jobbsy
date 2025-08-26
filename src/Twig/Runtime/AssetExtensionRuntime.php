@@ -11,7 +11,7 @@ final readonly class AssetExtensionRuntime implements RuntimeExtensionInterface
 {
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
-        #[Autowire('%env(GLIDE_KEY)%')]
+        #[Autowire(env: 'GLIDE_KEY')]
         private string $secret,
     ) {
     }

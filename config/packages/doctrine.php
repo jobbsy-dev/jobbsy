@@ -16,7 +16,7 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
 
     $config->orm()
         ->autoGenerateProxyClasses(true)
-        ->enableLazyGhostObjects(true);
+        ->enableLazyGhostObjects(true)  ;
 
     $emDefault = $config->orm()->entityManager('default');
 

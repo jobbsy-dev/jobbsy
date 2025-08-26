@@ -31,7 +31,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 final class JobController extends AbstractController
 {
     public function __construct(
-        #[Autowire('%env(STRIPE_API_KEY)%')]
+        #[Autowire(env: 'STRIPE_API_KEY')]
         private readonly string $stripeApiKey,
         private readonly CreateDonationPaymentUrlCommandHandler $commandHandler,
         private readonly JobRepository $jobRepository,
@@ -150,7 +150,7 @@ final class JobController extends AbstractController
     public function subscribe(
         Request $request,
         SubscribeMailingListCommandHandler $handler,
-        #[Autowire('%env(MAILJET_CONTACT_LIST_ID)%')]
+        #[Autowire(env: 'MAILJET_CONTACT_LIST_ID')]
         int $mailjetListId,
     ): Response {
         $form = $this->createForm(SubscriptionType::class);

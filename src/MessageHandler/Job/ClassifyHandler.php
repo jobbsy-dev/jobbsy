@@ -19,7 +19,7 @@ final readonly class ClassifyHandler
     public function __construct(
         private Client $openAIClient,
         private JobRepositoryInterface $jobRepository,
-        #[Autowire('%env(OPENAI_API_COMPLETION_MODEL)%')]
+        #[Autowire(env: 'OPENAI_API_COMPLETION_MODEL')]
         private string $model,
         private LoggerInterface $logger,
         private EntityManagerInterface $entityManager,
