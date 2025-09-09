@@ -12,3 +12,5 @@ parameters:
         - var/cache/dev/Symfony/Config
     doctrine:
         objectManagerLoader: tests/object-manager.php
+    excludePaths:
+        - tests/object-manager.php
