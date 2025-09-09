@@ -10,8 +10,9 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\Service\ResetInterface;
 
-final class FranceTravailApi
+final class FranceTravailApi implements ResetInterface
 {
     private ?AccessToken $accessToken = null;
 
@@ -39,7 +40,7 @@ final class FranceTravailApi
             return;
         }
 
-        $response = $this->httpClient->request('POST', 'https://francetravail.io/connexion/oauth2/access_token', [
+        $response = $this->httpClient->request('POST', 'https://entreprise.francetravail.fr/connexion/oauth2/access_token', [
             'body' => [
                 'grant_type' => 'client_credentials',
                 'client_id' => $this->poleEmploiClientId,
@@ -108,5 +109,10 @@ final class FranceTravailApi
         $data = $response->toArray(false);
 
         return $data['resultats'] ?? [];
+    }
+
+    public function reset(): void
+    {
+        $this->accessToken = null;
     }
 }
