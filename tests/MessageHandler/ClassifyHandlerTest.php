@@ -1,6 +1,6 @@
 <?php
 
-namespace MessageHandler;
+namespace App\Tests\MessageHandler;
 
 use App\Entity\Job;
 use App\Job\EmploymentType;
