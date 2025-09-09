@@ -5,8 +5,14 @@ use AsyncAws\S3\S3Client;
 use League\Glide\Server;
 use League\Glide\ServerFactory;
 use Monolog\Level;
+use Monolog\Processor\IntrospectionProcessor;
+use Monolog\Processor\PsrLogMessageProcessor;
 use Sentry\Monolog\BreadcrumbHandler;
 use Sentry\State\HubInterface;
+use Symfony\Bridge\Monolog\Processor\ConsoleCommandProcessor;
+use Symfony\Bridge\Monolog\Processor\RouteProcessor;
+use Symfony\Bridge\Monolog\Processor\TokenProcessor;
+use Symfony\Bridge\Monolog\Processor\WebProcessor;
 use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\Clock\MockClock;
@@ -23,7 +29,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire();
 
     $services->load('App\\', '../src/')
-        ->exclude([__DIR__.'/../src/DependencyInjection/', __DIR__.'/../src/Entity/', __DIR__.'/../src/Kernel.php']);
+        ->exclude([
+            __DIR__.'/../src/DependencyInjection/',
+            __DIR__.'/../src/Entity/',
+            __DIR__.'/../src/Kernel.php'
+        ]);
 
     $services->set(ClockInterface::class, NativeClock::class);
 
@@ -50,6 +60,24 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'cache' => service('media.storage.memory'),
             'max_image_size' => 2000*2000,
         ]);
+
+    $services->set(TokenProcessor::class)
+        ->tag('monolog.processor');
+
+    $services->set(WebProcessor::class)
+        ->tag('monolog.processor');
+
+    $services->set(RouteProcessor::class)
+        ->tag('monolog.processor');
+
+    $services->set(ConsoleCommandProcessor::class)
+        ->tag('monolog.processor');
+
+    $services->set(IntrospectionProcessor::class)
+        ->tag('monolog.processor');
+
+    $services->set(PsrLogMessageProcessor::class)
+        ->tag('monolog.processor');
 
     if ('prod' === $containerConfigurator->env()) {
         $services->set(BreadcrumbHandler::class)
