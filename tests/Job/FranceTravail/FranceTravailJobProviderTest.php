@@ -71,7 +71,6 @@ final class FranceTravailJobProviderTest extends TestCase
             poleEmploiClientId: 'clientId',
             poleEmploiClientSecret: 'clientSecret',
             httpClient: $client,
-            logger: new NullLogger(),
         );
         $poleEmploiProvider = new FranceTravailJobProvider(
             $poleEmploiApi,

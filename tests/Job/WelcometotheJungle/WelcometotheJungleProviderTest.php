@@ -44,8 +44,8 @@ final class WelcometotheJungleProviderTest extends TestCase
 
         // Assert
         self::assertCount(2, $jobCollection->all());
-        self::assertSame('Développeur Symfony en télétravail F/H', $jobCollection->all()[0]->getTitle());
-        self::assertSame('AddixGroup', $jobCollection->all()[0]->getOrganization());
-        self::assertSame('Sophia Antipolis, France', $jobCollection->all()[0]->getLocation());
+        self::assertSame('Développeur Backend PHP / Symfony (H/F)', $jobCollection->all()[0]->getTitle());
+        self::assertSame('Famileo', $jobCollection->all()[0]->getOrganization());
+        self::assertSame('Saint-Malo, France', $jobCollection->all()[0]->getLocation());
     }
 }

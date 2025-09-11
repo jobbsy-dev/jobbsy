@@ -3,7 +3,7 @@
 <!-- https://docs.phpunit.de/en/11.5/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         cacheDirectory=".phpunit.cache"
+         cacheDirectory="var/.phpunit.cache"
          colors="true"
          failOnDeprecation="true"
          failOnNotice="true"

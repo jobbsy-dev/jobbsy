@@ -41,12 +41,13 @@ final class WelcometotheJungleClientTest extends TestCase
 
         // Assert
         self::assertCount(2, $data);
-        self::assertSame('AddixGroup', $data[0]['company']);
-        self::assertSame('Développeur Symfony en télétravail F/H', $data[0]['title']);
-        self::assertSame('Sophia Antipolis, France', $data[0]['location']);
 
-        self::assertSame("L'olivier Assurance", $data[1]['company']);
-        self::assertSame('Développeur Symfony', $data[1]['title']);
+        self::assertSame('Famileo', $data[0]['company']);
+        self::assertSame('Développeur Backend PHP / Symfony (H/F)', $data[0]['title']);
+        self::assertSame('Saint-Malo, France', $data[0]['location']);
+
+        self::assertSame('SociaNova', $data[1]['company']);
+        self::assertSame('Senior Développeur fullstack Symfony/Angular', $data[1]['title']);
         self::assertSame('Paris, France', $data[1]['location']);
     }
 }

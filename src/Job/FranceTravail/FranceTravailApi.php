@@ -3,7 +3,6 @@
 namespace App\Job\FranceTravail;
 
 use App\Job\AccessToken;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
@@ -23,7 +22,6 @@ final class FranceTravailApi implements ResetInterface
         #[Autowire(env: 'POLE_EMPLOI_CLIENT_SECRET')]
         private readonly string $poleEmploiClientSecret,
         private readonly HttpClientInterface $httpClient,
-        private readonly LoggerInterface $logger,
     ) {
     }
 
@@ -52,10 +50,6 @@ final class FranceTravailApi implements ResetInterface
             'query' => [
                 'realm' => '/partenaire',
             ],
-        ]);
-
-        $this->logger->info('Response content', [
-            'response' => $response->getContent(false),
         ]);
 
         $data = $response->toArray();

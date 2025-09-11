@@ -4,7 +4,6 @@ namespace App\Tests\Job\FranceTravail;
 
 use App\Job\FranceTravail\FranceTravailApi;
 use PHPUnit\Framework\TestCase;
-use Psr\Log\NullLogger;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
@@ -31,7 +30,6 @@ final class FranceTravailApiTest extends TestCase
             poleEmploiClientId: 'clientId',
             poleEmploiClientSecret: 'clientSecret',
             httpClient: $client,
-            logger: new NullLogger(),
         );
 
         // Act

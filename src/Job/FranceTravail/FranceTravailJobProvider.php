@@ -25,11 +25,14 @@ final readonly class FranceTravailJobProvider implements JobProviderInterface
         $jobs = new JobCollection();
 
         try {
-            $this->api->authenticate([
-                'api_offresdemploiv2',
-                'o2dsoffre',
-                'application_'.$this->poleEmploiClientId,
-            ]);
+            $this->api->authenticate(
+                scope: [
+                    'api_offresdemploiv2',
+                    'o2dsoffre',
+                    'application_'.$this->poleEmploiClientId,
+                ],
+                force: true
+            );
         } catch (\Throwable $throwable) {
             $this->logger->error('Error while authenticating pole emploi', [
                 'exception' => $throwable->getMessage(),
