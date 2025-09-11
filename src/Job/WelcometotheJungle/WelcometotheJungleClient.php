@@ -28,6 +28,10 @@ final readonly class WelcometotheJungleClient
         foreach ($urls as $url) {
             $jobData = $this->jobScraping->scrap($url);
 
+            if ([] === $jobData) {
+                continue;
+            }
+
             if ($this->shouldSkip($jobData)) {
                 continue;
             }

@@ -55,7 +55,7 @@ final class FranceTravailApi implements ResetInterface
         ]);
 
         $this->logger->info('Response content', [
-            'response' => $response->getContent(),
+            'response' => $response->getContent(false),
         ]);
 
         $data = $response->toArray();

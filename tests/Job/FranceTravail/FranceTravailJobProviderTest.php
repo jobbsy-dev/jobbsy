@@ -68,7 +68,10 @@ final class FranceTravailJobProviderTest extends TestCase
             $mockResponseSearch,
         ]);
         $poleEmploiApi = new FranceTravailApi(
-            'clientId', 'clientSecret', $client
+            poleEmploiClientId: 'clientId',
+            poleEmploiClientSecret: 'clientSecret',
+            httpClient: $client,
+            logger: new NullLogger(),
         );
         $poleEmploiProvider = new FranceTravailJobProvider(
             $poleEmploiApi,

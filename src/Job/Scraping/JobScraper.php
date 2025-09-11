@@ -16,7 +16,7 @@ final readonly class JobScraper
     {
         $crawler = $this->httpBrowser->request('GET', $url);
 
-        $structuredData = null;
+        $structuredData = [];
         foreach ($crawler->filter('script[type="application/ld+json"]') as $domElement) {
             /** @var array $decodedData */
             $decodedData = json_decode($domElement->textContent, true, 512, \JSON_THROW_ON_ERROR);

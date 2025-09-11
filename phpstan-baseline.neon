@@ -307,12 +307,6 @@ parameters:
 			path: src/Job/Scraping/JobScraper.php
 
 		-
-			message: '#^Method App\\Job\\Scraping\\JobScraper\:\:scrap\(\) should return array but returns array\|null\.$#'
-			identifier: return.type
-			count: 1
-			path: src/Job/Scraping/JobScraper.php
-
-		-
 			message: '#^PHPDoc tag @var for variable \$decodedData has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1

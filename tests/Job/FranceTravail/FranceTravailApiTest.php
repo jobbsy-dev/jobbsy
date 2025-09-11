@@ -4,6 +4,7 @@ namespace App\Tests\Job\FranceTravail;
 
 use App\Job\FranceTravail\FranceTravailApi;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\NullLogger;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
@@ -26,7 +27,12 @@ final class FranceTravailApiTest extends TestCase
         $mockResponseSearch = new MockResponse(json_encode(['ok'], \JSON_THROW_ON_ERROR));
 
         $client = new MockHttpClient([$mockResponseSearch]);
-        $poleEmploiApi = new FranceTravailApi('clientId', 'clientSecret', $client);
+        $poleEmploiApi = new FranceTravailApi(
+            poleEmploiClientId: 'clientId',
+            poleEmploiClientSecret: 'clientSecret',
+            httpClient: $client,
+            logger: new NullLogger(),
+        );
 
         // Act
         $poleEmploiApi->search([
