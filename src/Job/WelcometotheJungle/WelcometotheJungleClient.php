@@ -10,6 +10,7 @@ use Symfony\Component\Intl\Countries;
 final readonly class WelcometotheJungleClient
 {
     private const string URL = 'https://www.welcometothejungle.com/fr/pages/emploi-developpeur-symfony';
+    private const string SELECTOR = 'main ul li a';
 
     public function __construct(private HttpBrowser $httpBrowser, private JobScraper $jobScraping)
     {
@@ -19,7 +20,7 @@ final readonly class WelcometotheJungleClient
     {
         $crawler = $this->httpBrowser->request('GET', self::URL);
 
-        $urls = $crawler->filter('ol:nth-child(2) li header a')->each(static function (Crawler $crawler): string {
+        $urls = $crawler->filter(self::SELECTOR)->each(static function (Crawler $crawler): string {
             return $crawler->link()->getUri();
         });
 
