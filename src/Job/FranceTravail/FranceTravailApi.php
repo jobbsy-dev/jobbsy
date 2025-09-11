@@ -34,12 +34,8 @@ final class FranceTravailApi implements ResetInterface
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
      */
-    public function authenticate(array $scope = [], bool $force = false): void
+    public function authenticate(array $scope = []): void
     {
-        if (false === $force && (null !== $this->accessToken && false === $this->accessToken->hasExpired())) {
-            return;
-        }
-
         $response = $this->httpClient->request('POST', 'https://entreprise.francetravail.fr/connexion/oauth2/access_token', [
             'body' => [
                 'grant_type' => 'client_credentials',

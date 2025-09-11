@@ -31,7 +31,6 @@ final readonly class FranceTravailJobProvider implements JobProviderInterface
                     'o2dsoffre',
                     'application_'.$this->poleEmploiClientId,
                 ],
-                force: true
             );
         } catch (\Throwable $throwable) {
             $this->logger->error('Error while authenticating pole emploi', [
