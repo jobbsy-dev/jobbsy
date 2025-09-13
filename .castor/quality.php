@@ -10,6 +10,7 @@ use function Castor\io;
 use function Castor\variable;
 use function database\fixtures;
 use function database\reset as resetDatabase;
+use function docker\docker_compose;
 use function docker\docker_compose_run;
 use function docker\docker_exit_code;
 
@@ -59,11 +60,22 @@ function phpstan(
     bool $generateBaseline = false
 ): int
 {
+    $c = context()->withAllowFailure();
+
+    $command = [
+        'exec',
+    ];
+
+    $command[] = 'php';
+    $command[] = '/app/vendor/bin/phpstan';
+
     if ($generateBaseline) {
-        return docker_exit_code('/app/vendor/bin/phpstan -b');
+        $command[] = '-b';
     }
 
-    return docker_exit_code('/app/vendor/bin/phpstan');
+    $process = docker_compose($command, c: $c);
+
+    return $process->getExitCode() ?? 0;
 }
 
 #[AsTask(description: 'Composer audit', aliases: ['audit'])]
@@ -78,14 +90,18 @@ function phpunit(bool $withCoverage = false): int
     resetDatabase('test');
     fixtures(env: 'test');
 
-    if ($withCoverage) {
-        return docker_exit_code(
-            runCommand: '/app/bin/phpunit --coverage-html=var/coverage',
-            environmentVariables: ['XDEBUG_MODE' => 'coverage']
-        );
-    }
+    $c = context()->withAllowFailure();
 
-    return docker_exit_code('/app/bin/phpunit');
+    $command = [
+        'exec',
+    ];
+
+    $command[] = 'php';
+    $command[] = '/app/vendor/bin/phpunit';
+
+    $process = docker_compose($command, c: $c);
+
+    return $process->getExitCode() ?? 0;
 }
 
 #[AsTask(description: 'Run Rector', aliases: ['rector'])]

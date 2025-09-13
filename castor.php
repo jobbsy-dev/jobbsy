@@ -1,15 +1,11 @@
 <?php
 
-use Castor\Attribute\AsContext;
 use Castor\Attribute\AsTask;
-use Castor\Context;
-use Symfony\Component\Process\Process;
 
 use function Castor\context;
 use function Castor\import;
 use function Castor\io;
 use function Castor\load_dot_env;
-use function Castor\log;
 use function Castor\notify;
 use function Castor\run;
 use function database\migrate;

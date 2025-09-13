@@ -10,10 +10,10 @@ final class EventControllerTest extends WebTestCase
 {
     public function test_index(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         /** @var MockClock $clock */
-        $clock = static::getContainer()->get(ClockInterface::class);
+        $clock = self::getContainer()->get(ClockInterface::class);
         $clock->modify('2022-06-10');
 
         $client->request('GET', '/events');

@@ -8,7 +8,7 @@ final class NewsControllerTest extends WebTestCase
 {
     public function test_index(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $crawler = $client->request('GET', '/news');
 

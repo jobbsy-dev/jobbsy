@@ -14,7 +14,7 @@ final class JobControllerTest extends WebTestCase
 {
     public function test_list_jobs_offers(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $crawler = $client->request('GET', '/');
 
         self::assertResponseIsSuccessful();
@@ -33,7 +33,7 @@ final class JobControllerTest extends WebTestCase
 
     public function test_create_job_offer_without_donation(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', '/job/new');
         self::assertResponseIsSuccessful();
 
@@ -90,12 +90,12 @@ final class JobControllerTest extends WebTestCase
         );
         ApiRequestor::setHttpClient($mockStripeClient);
 
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', \sprintf('/job/%s/donation/success?session_id=10', AppFixtures::JOB_2_ID));
         self::assertResponseIsSuccessful();
 
         /** @var JobRepository $jobRepository */
-        $jobRepository = static::getContainer()->get(JobRepository::class);
+        $jobRepository = self::getContainer()->get(JobRepository::class);
         /** @var Job $job */
         $job = $jobRepository->find(AppFixtures::JOB_2_ID);
 
@@ -111,12 +111,12 @@ final class JobControllerTest extends WebTestCase
         );
         ApiRequestor::setHttpClient($mockStripeClient);
 
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', \sprintf('/job/%s/donation/success?session_id=10', AppFixtures::JOB_2_ID));
         self::assertResponseIsSuccessful();
 
         /** @var JobRepository $jobRepository */
-        $jobRepository = static::getContainer()->get(JobRepository::class);
+        $jobRepository = self::getContainer()->get(JobRepository::class);
         /** @var Job $job */
         $job = $jobRepository->find(AppFixtures::JOB_2_ID);
 
@@ -125,21 +125,21 @@ final class JobControllerTest extends WebTestCase
 
     public function test_job_donation_cancelled(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', '/job/donation/cancel');
         self::assertResponseIsSuccessful('Donation cancelled');
     }
 
     public function test_job_redirect(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', '/job/'.AppFixtures::JOB_1_ID);
         self::assertResponseRedirects('https://example.com?ref=jobbsy');
     }
 
     public function test_sponsor_job(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', \sprintf('/job/%s/sponsor', AppFixtures::JOB_1_ID));
         self::assertResponseIsSuccessful();
 
