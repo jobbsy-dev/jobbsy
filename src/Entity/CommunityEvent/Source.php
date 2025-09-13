@@ -9,6 +9,9 @@ use Ramsey\Uuid\Doctrine\UuidType;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
+/**
+ * @final
+ */
 #[ORM\Entity(repositoryClass: SourceRepository::class)]
 class Source
 {

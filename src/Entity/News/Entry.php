@@ -14,6 +14,9 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+/**
+ * @final
+ */
 #[ApiResource(
     types: ['https://schema.org/Article'],
     normalizationContext: ['groups' => ['entry:read']],

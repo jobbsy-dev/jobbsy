@@ -16,6 +16,9 @@ use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * @final
+ */
 #[ApiResource(
     types: ['https://schema.org/Event'],
     order: ['createdAt' => OrderFilterInterface::DIRECTION_DESC]

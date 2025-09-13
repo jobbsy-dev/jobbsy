@@ -19,6 +19,9 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+/**
+ * @final
+ */
 #[ApiResource(
     types: ['https://schema.org/JobPosting'],
     normalizationContext: ['groups' => ['read']],
