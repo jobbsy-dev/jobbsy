@@ -124,6 +124,6 @@ final readonly class FranceTravailJobProvider implements JobProviderInterface
 
     public function enabled(): bool
     {
-        return true;
+        return false;
     }
 }
