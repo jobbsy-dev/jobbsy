@@ -11,6 +11,7 @@ jobs:
         runs-on: 'ubuntu-latest'
         env:
             fail-fast: true
+            DATABASE_URL: postgresql://app:app@127.0.0.1:5432/main_test
         services:
             postgres:
                 image: postgres:16
