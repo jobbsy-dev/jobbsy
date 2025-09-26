@@ -73,6 +73,9 @@ jobs:
             - name: "Composer install"
               uses: ramsey/composer-install@v3
 
+            - name: Check composer is normalized
+              run: composer normalize --dry-run
+
             - name: Lint YAML files
               run: ./bin/console lint:yaml config --parse-tags
 

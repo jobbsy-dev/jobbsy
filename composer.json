@@ -1,18 +1,8 @@
 {
-    "type": "project",
-    "license": "proprietary",
     "name": "jobbsy-dev/jobbsy",
     "description": "Jobbsy, Job Board for Symfony",
-    "minimum-stability": "stable",
-    "prefer-stable": true,
-    "replace": {
-        "symfony/polyfill-ctype": "*",
-        "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*",
-        "symfony/polyfill-php73": "*",
-        "symfony/polyfill-php74": "*",
-        "symfony/polyfill-php80": "*"
-    },
+    "license": "proprietary",
+    "type": "project",
     "require": {
         "php": "^8.4.0",
         "ext-ctype": "*",
@@ -45,45 +35,45 @@
         "runtime/frankenphp-symfony": "^0.2.0",
         "sentry/sentry-symfony": "^5.0",
         "stripe/stripe-php": "^17.3",
-        "symfony/asset": "7.3.*",
-        "symfony/asset-mapper": "^7.0",
-        "symfony/browser-kit": "7.3.*",
-        "symfony/clock": "7.3.*",
-        "symfony/console": "7.3.*",
-        "symfony/css-selector": "7.3.*",
-        "symfony/doctrine-messenger": "7.3.*",
-        "symfony/dotenv": "7.3.*",
-        "symfony/expression-language": "7.3.*",
+        "symfony/asset": "^7.3",
+        "symfony/asset-mapper": "^7.3",
+        "symfony/browser-kit": "^7.3",
+        "symfony/clock": "^7.3",
+        "symfony/console": "^7.3",
+        "symfony/css-selector": "^7.3",
+        "symfony/doctrine-messenger": "^7.3",
+        "symfony/dotenv": "^7.3",
+        "symfony/expression-language": "^7.3",
         "symfony/flex": "^2",
-        "symfony/form": "7.3.*",
-        "symfony/framework-bundle": "7.3.*",
-        "symfony/html-sanitizer": "7.3.*",
-        "symfony/http-client": "7.3.*",
-        "symfony/intl": "7.3.*",
-        "symfony/mailer": "7.3.*",
-        "symfony/messenger": "7.3.*",
-        "symfony/mime": "7.3.*",
+        "symfony/form": "^7.3",
+        "symfony/framework-bundle": "^7.3",
+        "symfony/html-sanitizer": "^7.3",
+        "symfony/http-client": "^7.3",
+        "symfony/intl": "^7.3",
+        "symfony/mailer": "^7.3",
+        "symfony/messenger": "^7.3",
+        "symfony/mime": "^7.3",
         "symfony/monolog-bundle": "^3.0",
-        "symfony/notifier": "7.3.*",
-        "symfony/process": "7.3.*",
-        "symfony/property-access": "7.3.*",
-        "symfony/property-info": "7.3.*",
-        "symfony/runtime": "7.3.*",
-        "symfony/scheduler": "^7.0",
-        "symfony/security-bundle": "7.3.*",
-        "symfony/serializer": "7.3.*",
-        "symfony/slack-notifier": "7.3.*",
+        "symfony/notifier": "^7.3",
+        "symfony/process": "^7.3",
+        "symfony/property-access": "^7.3",
+        "symfony/property-info": "^7.3",
+        "symfony/runtime": "^7.3",
+        "symfony/scheduler": "^7.3",
+        "symfony/security-bundle": "^7.3",
+        "symfony/serializer": "^7.3",
+        "symfony/slack-notifier": "^7.3",
         "symfony/stimulus-bundle": "^2.13",
-        "symfony/string": "7.3.*",
-        "symfony/translation": "7.3.*",
-        "symfony/twig-bundle": "7.3.*",
-        "symfony/uid": "7.3.*",
-        "symfony/validator": "7.3.*",
-        "symfony/web-link": "7.3.*",
-        "symfony/yaml": "7.3.*",
+        "symfony/string": "^7.3",
+        "symfony/translation": "^7.3",
+        "symfony/twig-bundle": "^7.3",
+        "symfony/uid": "^7.3",
+        "symfony/validator": "^7.3",
+        "symfony/web-link": "^7.3",
+        "symfony/yaml": "^7.3",
         "symfonycasts/sass-bundle": "^0.8.1",
         "twbs/bootstrap": "^5.3",
-        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/extra-bundle": "^2.12 || ^3.0",
         "twig/intl-extra": "^3.4",
         "twig/markdown-extra": "^3.4",
         "twig/string-extra": "^3.4",
@@ -92,37 +82,32 @@
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^8.0",
+        "ergebnis/composer-normalize": "^2.48",
         "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-doctrine": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-symfony": "^2.0",
         "phpunit/phpunit": "^12.1",
-        "symfony/debug-bundle": "7.3.*",
+        "symfony/debug-bundle": "^7.3",
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^7.0",
-        "symfony/stopwatch": "7.0.*",
-        "symfony/web-profiler-bundle": "7.3.*"
+        "symfony/stopwatch": "^7.3",
+        "symfony/web-profiler-bundle": "^7.3"
     },
-    "config": {
-        "allow-plugins": {
-            "symfony/flex": true,
-            "symfony/runtime": true,
-            "php-http/discovery": true,
-            "phpstan/extension-installer": true
-        },
-        "optimize-autoloader": true,
-        "preferred-install": {
-            "*": "dist"
-        },
-        "sort-packages": true,
-        "platform": {
-            "php": "8.4"
-        },
-        "audit": {
-            "abandoned": "report"
-        }
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*"
     },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "App\\": "src/"
@@ -133,29 +118,49 @@
             "App\\Tests\\": "tests/"
         }
     },
-    "scripts": {
-        "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "importmap:install": "symfony-cmd",
-            "sass:build": "symfony-cmd"
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
         },
+        "audit": {
+            "abandoned": "report"
+        },
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.4"
+        },
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "endpoint": [
+                "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php/flex/main/index.json",
+                "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php-contrib/flex/main/index.json",
+                "flex://defaults"
+            ],
+            "require": "7.0.*"
+        }
+    },
+    "scripts": {
         "post-install-cmd": [
             "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
-    },
-    "conflict": {
-        "symfony/symfony": "*",
-        "symfony/asset-mapper": "7.0.4"
-    },
-    "extra": {
-        "symfony": {
-            "allow-contrib": false,
-            "require": "7.0.*",
-            "endpoint": ["https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php/flex/main/index.json", "https://raw.githubusercontent.com/schranz-php-recipes/symfony-recipes-php-contrib/flex/main/index.json", "flex://defaults"]
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "importmap:install": "symfony-cmd",
+            "sass:build": "symfony-cmd"
         }
     }
 }
