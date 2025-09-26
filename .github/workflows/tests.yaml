@@ -15,8 +15,8 @@ jobs:
             postgres:
                 image: postgres:16
                 env:
-                    POSTGRES_PASSWORD: main
-                    POSTGRES_USER: main
+                    POSTGRES_PASSWORD: app
+                    POSTGRES_USER: app
                     POSTGRES_DB: main_test
                 ports:
                     - 5432:5432
