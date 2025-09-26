@@ -42,12 +42,20 @@ final class WelcometotheJungleClientTest extends TestCase
         // Assert
         self::assertCount(2, $data);
 
+        $this->assertIsArray($data[0]);
+        $this->assertArrayHasKey('company', $data[0]);
         self::assertSame('Famileo', $data[0]['company']);
+        $this->assertArrayHasKey('title', $data[0]);
         self::assertSame('Développeur Backend PHP / Symfony (H/F)', $data[0]['title']);
+        $this->assertArrayHasKey('location', $data[0]);
         self::assertSame('Saint-Malo, France', $data[0]['location']);
 
+        $this->assertIsArray($data[1]);
+        $this->assertArrayHasKey('company', $data[1]);
         self::assertSame('SociaNova', $data[1]['company']);
+        $this->assertArrayHasKey('title', $data[1]);
         self::assertSame('Senior Développeur fullstack Symfony/Angular', $data[1]['title']);
+        $this->assertArrayHasKey('location', $data[1]);
         self::assertSame('Paris, France', $data[1]['location']);
     }
 }

@@ -70,7 +70,7 @@ class Feed implements \Stringable
         return $this->id;
     }
 
-    public function getUrl(): ?string
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -82,7 +82,7 @@ class Feed implements \Stringable
         return $this;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }

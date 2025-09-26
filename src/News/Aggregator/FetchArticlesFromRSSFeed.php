@@ -14,10 +14,6 @@ final readonly class FetchArticlesFromRSSFeed implements FetchArticlesFromFeedIn
 
     public function __invoke(Feed $feed): array
     {
-        if (null === $feed->getUrl()) {
-            return [];
-        }
-
         $document = $this->rssClient->get($feed->getUrl());
 
         if (null === $document) {

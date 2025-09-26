@@ -30,10 +30,6 @@ final readonly class FetchSourceCommandHandler
             return;
         }
 
-        if (null === $source->getUrl()) {
-            return;
-        }
-
         $events = [];
         try {
             $eventsData = $this->eventScraping->fetch($source->getUrl());

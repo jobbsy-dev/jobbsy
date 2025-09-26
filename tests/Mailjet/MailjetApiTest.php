@@ -45,6 +45,8 @@ final class MailjetApiTest extends TestCase
         // Assert
         self::assertSame('POST', $mockResponse->getRequestMethod());
         self::assertSame('https://example.com/contact', $mockResponse->getRequestUrl());
+        $this->assertArrayHasKey('headers', $mockResponse->getRequestOptions());
+        $this->assertIsArray($mockResponse->getRequestOptions()['headers']);
         self::assertContains(
             'Content-Type: application/json',
             $mockResponse->getRequestOptions()['headers']
@@ -85,6 +87,8 @@ final class MailjetApiTest extends TestCase
         // Assert
         self::assertSame('POST', $mockResponse->getRequestMethod());
         self::assertSame('https://example.com/listrecipient', $mockResponse->getRequestUrl());
+        $this->assertArrayHasKey('headers', $mockResponse->getRequestOptions());
+        $this->assertIsArray($mockResponse->getRequestOptions()['headers']);
         self::assertContains(
             'Content-Type: application/json',
             $mockResponse->getRequestOptions()['headers']
@@ -138,6 +142,8 @@ final class MailjetApiTest extends TestCase
         // Assert
         self::assertSame('POST', $mockResponse->getRequestMethod());
         self::assertSame('https://example.com/campaigndraft', $mockResponse->getRequestUrl());
+        $this->assertArrayHasKey('headers', $mockResponse->getRequestOptions());
+        $this->assertIsArray($mockResponse->getRequestOptions()['headers']);
         self::assertContains(
             'Content-Type: application/json',
             $mockResponse->getRequestOptions()['headers']

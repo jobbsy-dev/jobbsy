@@ -127,42 +127,6 @@ parameters:
 			path: src/ConsoleCommand/SendWeeklyJobsLetterCommand.php
 
 		-
-			message: '#^Method App\\Entity\\CommunityEvent\\Event\:\:getName\(\) never returns null so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: src/Entity/CommunityEvent/Event.php
-
-		-
-			message: '#^Method App\\Entity\\CommunityEvent\\Source\:\:getUrl\(\) never returns null so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: src/Entity/CommunityEvent/Source.php
-
-		-
-			message: '#^Method App\\Entity\\News\\Entry\:\:getDescription\(\) never returns null so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: src/Entity/News/Entry.php
-
-		-
-			message: '#^Method App\\Entity\\News\\Entry\:\:getTitle\(\) never returns null so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: src/Entity/News/Entry.php
-
-		-
-			message: '#^Method App\\Entity\\News\\Feed\:\:getName\(\) never returns null so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: src/Entity/News/Feed.php
-
-		-
-			message: '#^Method App\\Entity\\News\\Feed\:\:getUrl\(\) never returns null so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: src/Entity/News/Feed.php
-
-		-
 			message: '#^Class App\\Form\\PostJobOfferType extends generic class Symfony\\Component\\Form\\AbstractType but does not specify its types\: TData$#'
 			identifier: missingType.generics
 			count: 1
@@ -925,54 +889,6 @@ parameters:
 			path: src/Security/User.php
 
 		-
-			message: '#^Cannot access offset ''name'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: tests/CommunityEvent/EventScrapingTest.php
-
-		-
-			message: '#^Cannot access offset ''startDate'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: tests/CommunityEvent/EventScrapingTest.php
-
-		-
-			message: '#^Cannot access offset ''url'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: tests/CommunityEvent/EventScrapingTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''App\\\\Entity\\\\CommunityEvent\\\\Event'' and App\\Entity\\CommunityEvent\\Event will always evaluate to true\.$#'
-			identifier: staticMethod.alreadyNarrowedType
-			count: 1
-			path: tests/CommunityEvent/FetchSourceCommandHandlerTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with App\\Entity\\CommunityEvent\\Event will always evaluate to true\.$#'
-			identifier: staticMethod.alreadyNarrowedType
-			count: 1
-			path: tests/CommunityEvent/FetchSourceCommandHandlerTest.php
-
-		-
-			message: '#^Cannot access offset ''company'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: tests/Job/WelcometotheJungle/WelcometotheJungleClientTest.php
-
-		-
-			message: '#^Cannot access offset ''location'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: tests/Job/WelcometotheJungle/WelcometotheJungleClientTest.php
-
-		-
-			message: '#^Cannot access offset ''title'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: tests/Job/WelcometotheJungle/WelcometotheJungleClientTest.php
-
-		-
 			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertNotNull\(\) with App\\Mailjet\\Model\\SendCampaignDraft\\SendCampaignDraftResponse will always evaluate to true\.$#'
 			identifier: staticMethod.alreadyNarrowedType
 			count: 1
@@ -1005,7 +921,7 @@ parameters:
 		-
 			message: '#^Parameter \#2 \$haystack of static method PHPUnit\\Framework\\Assert\:\:assertContains\(\) expects iterable, mixed given\.$#'
 			identifier: argument.type
-			count: 5
+			count: 2
 			path: tests/Mailjet/MailjetApiTest.php
 
 		-

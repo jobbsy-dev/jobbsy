@@ -26,8 +26,12 @@ final class EventScrapingTest extends TestCase
         // Assert
         self::assertCount(1, $data);
         $meetupData = $data[0];
+        $this->assertIsArray($meetupData);
+        $this->assertArrayHasKey('name', $meetupData);
         self::assertSame('Backend User Group #21', $meetupData['name']);
+        $this->assertArrayHasKey('url', $meetupData);
         self::assertSame('https://www.meetup.com/backendos/events/290348177/', $meetupData['url']);
+        $this->assertArrayHasKey('startDate', $meetupData);
         self::assertSame('2023-01-19T18:30+01:00', $meetupData['startDate']);
     }
 }
