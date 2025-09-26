@@ -26,8 +26,7 @@ services:
         image: postgres:${POSTGRES_VERSION:-16}-alpine
         environment:
             POSTGRES_DB: ${POSTGRES_DB:-app}
-            # You should definitely change the password in production
-            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app}
             POSTGRES_USER: ${POSTGRES_USER:-app}
         healthcheck:
             test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}"]

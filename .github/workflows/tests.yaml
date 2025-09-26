@@ -11,12 +11,13 @@ jobs:
         runs-on: 'ubuntu-latest'
         env:
             fail-fast: true
+            DATABASE_URL: postgresql://app:app@127.0.0.1:5432/main_test
         services:
             postgres:
                 image: postgres:16
                 env:
-                    POSTGRES_PASSWORD: main
-                    POSTGRES_USER: main
+                    POSTGRES_PASSWORD: app
+                    POSTGRES_USER: app
                     POSTGRES_DB: main_test
                 ports:
                     - 5432:5432
