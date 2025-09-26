@@ -26,6 +26,11 @@ return static function (FrameworkConfig $config, ContainerConfigurator $containe
         ->baseUri('https://api.openai.com/v1/')
         ->authBearer(env('OPENAI_API_KEY'));
 
+    $config->httpClient()
+        ->scopedClient('github.client')
+        ->baseUri('https://api.github.com')
+        ->authBearer(env('GITHUB_API_TOKEN'));
+
     $config->session()
         ->handlerId(null)
         ->cookieSecure('auto')

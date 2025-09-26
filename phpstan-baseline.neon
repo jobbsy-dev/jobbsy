@@ -127,6 +127,42 @@ parameters:
 			path: src/ConsoleCommand/SendWeeklyJobsLetterCommand.php
 
 		-
+			message: '#^Method App\\Entity\\CommunityEvent\\Event\:\:getName\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Entity/CommunityEvent/Event.php
+
+		-
+			message: '#^Method App\\Entity\\CommunityEvent\\Source\:\:getUrl\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Entity/CommunityEvent/Source.php
+
+		-
+			message: '#^Method App\\Entity\\News\\Entry\:\:getDescription\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Entity/News/Entry.php
+
+		-
+			message: '#^Method App\\Entity\\News\\Entry\:\:getTitle\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Entity/News/Entry.php
+
+		-
+			message: '#^Method App\\Entity\\News\\Feed\:\:getName\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Entity/News/Feed.php
+
+		-
+			message: '#^Method App\\Entity\\News\\Feed\:\:getUrl\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: src/Entity/News/Feed.php
+
+		-
 			message: '#^Class App\\Form\\PostJobOfferType extends generic class Symfony\\Component\\Form\\AbstractType but does not specify its types\: TData$#'
 			identifier: missingType.generics
 			count: 1
@@ -299,6 +335,60 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/Job/FranceTravail/FranceTravailJobProvider.php
+
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/Job/GitHub/GitHubJobProvider.php
+
+		-
+			message: '#^Cannot access offset ''download_url'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Job/GitHub/GitHubJobProvider.php
+
+		-
+			message: '#^Cannot access offset ''html_url'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Job/GitHub/GitHubJobProvider.php
+
+		-
+			message: '#^Cannot access offset ''name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Job/GitHub/GitHubJobProvider.php
+
+		-
+			message: '#^Cannot access offset ''type'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Job/GitHub/GitHubJobProvider.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/Job/GitHub/GitHubJobProvider.php
+
+		-
+			message: '#^Parameter \#1 \$filename of function file_get_contents expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Job/GitHub/GitHubJobProvider.php
+
+		-
+			message: '#^Parameter \#2 \$subject of function preg_match_all expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Job/GitHub/GitHubJobProvider.php
+
+		-
+			message: '#^Parameter \$url of class App\\Entity\\Job constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Job/GitHub/GitHubJobProvider.php
 
 		-
 			message: '#^Method App\\Job\\Scraping\\JobScraper\:\:scrap\(\) return type has no value type specified in iterable type array\.$#'
