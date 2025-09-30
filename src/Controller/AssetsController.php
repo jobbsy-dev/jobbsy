@@ -23,7 +23,7 @@ final class AssetsController extends AbstractController
     }
 
     #[Route('/assets/{path}', name: 'asset_url', requirements: ['path' => '.+'], methods: ['GET'])]
-    #[Cache(maxage: 86400, smaxage: 86400)]
+    #[Cache(maxage: 86400, smaxage: 86400, public: true)]
     public function assets(string $path, Request $request): Response
     {
         $parameters = $request->query->all();
