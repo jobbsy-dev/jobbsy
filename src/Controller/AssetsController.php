@@ -11,6 +11,7 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\Cache;
+use Symfony\Component\HttpKernel\EventListener\AbstractSessionListener;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class AssetsController extends AbstractController
@@ -41,6 +42,7 @@ final class AssetsController extends AbstractController
         try {
             /** @var Response $response */
             $response = $this->glide->getImageResponse($path, $request->query->all());
+            $response->headers->set(AbstractSessionListener::NO_AUTO_CACHE_CONTROL_HEADER, 'true');
 
             return $response;
         } catch (\Throwable) {
