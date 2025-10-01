@@ -1,0 +1,14 @@
+name: reproduce-castor.yaml
+
+on:
+    pull_request:
+
+jobs:
+    reproduce-castor:
+        runs-on: macos-15
+        steps:
+            - name: Setup castor
+              uses: castor-php/setup-castor@v0.1.0
+
+            - name: Run castor version
+              run: castor --version
