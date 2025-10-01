@@ -7,6 +7,11 @@ jobs:
     reproduce-castor:
         runs-on: macos-15
         steps:
+            - name: "Install PHP with extensions"
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 8.4
+
             - name: Setup castor
               uses: castor-php/setup-castor@v0.1.0
 
