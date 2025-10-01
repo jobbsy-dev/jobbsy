@@ -5,7 +5,7 @@ on:
 
 jobs:
     reproduce-castor:
-        runs-on: macos-15
+        runs-on: macos-latest
         steps:
             - name: "Install PHP with extensions"
               uses: shivammathur/setup-php@v2
