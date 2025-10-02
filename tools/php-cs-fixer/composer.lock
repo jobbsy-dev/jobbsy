@@ -506,25 +506,24 @@
         },
         {
             "name": "pedrotroller/php-cs-custom-fixer",
-            "version": "v2.33.2",
+            "version": "v2.35.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers.git",
-                "reference": "4fc4686c7f342d3413352a0f65c0195b4021ecd2"
+                "reference": "d0688c597121b2e02a5d1be1f4c1c26a3841182c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PedroTroller/PhpCSFixer-Custom-Fixers/zipball/4fc4686c7f342d3413352a0f65c0195b4021ecd2",
-                "reference": "4fc4686c7f342d3413352a0f65c0195b4021ecd2",
+                "url": "https://api.github.com/repos/PedroTroller/PhpCSFixer-Custom-Fixers/zipball/d0688c597121b2e02a5d1be1f4c1c26a3841182c",
+                "reference": "d0688c597121b2e02a5d1be1f4c1c26a3841182c",
                 "shasum": ""
             },
             "require": {
-                "friendsofphp/php-cs-fixer": ">=3.59.3",
-                "php": "^8.1"
+                "friendsofphp/php-cs-fixer": "^3.87",
+                "php": "^8.3"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.60",
-                "phpspec/phpspec": "^7.0",
+                "phpspec/phpspec": "^8.0",
                 "sebastian/diff": "^4.0",
                 "twig/twig": "^3.3",
                 "webmozart/assert": "^1.10"
@@ -547,9 +546,9 @@
             "description": "PHP-CS-FIXER : my custom fixers",
             "support": {
                 "issues": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers/issues",
-                "source": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers/tree/v2.33.2"
+                "source": "https://github.com/PedroTroller/PhpCSFixer-Custom-Fixers/tree/v2.35.0"
             },
-            "time": "2024-11-16T10:02:50+00:00"
+            "time": "2025-09-25T09:12:55+00:00"
         },
         {
             "name": "psr/container",
