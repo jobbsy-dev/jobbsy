@@ -127,6 +127,24 @@ parameters:
 			path: src/ConsoleCommand/SendWeeklyJobsLetterCommand.php
 
 		-
+			message: '#^Instanceof between App\\Entity\\News\\Feed and App\\Entity\\News\\Feed will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/EasyAdmin/ReplaceMediaOnFeedUpdatedSubscriber.php
+
+		-
+			message: '#^Instanceof between App\\Entity\\Job and App\\Entity\\Job will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/EasyAdmin/ReplaceMediaOnJobUpdatedSubscriber.php
+
+		-
+			message: '#^Instanceof between App\\Entity\\News\\Feed and App\\Entity\\News\\Feed will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/EasyAdmin/UploadMediaOnFeedCreatedSubscriber.php
+
+		-
 			message: '#^Class App\\Form\\PostJobOfferType extends generic class Symfony\\Component\\Form\\AbstractType but does not specify its types\: TData$#'
 			identifier: missingType.generics
 			count: 1
