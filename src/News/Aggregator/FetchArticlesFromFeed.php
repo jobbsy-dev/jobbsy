@@ -5,7 +5,7 @@ namespace App\News\Aggregator;
 use App\Entity\News\Entry;
 use App\Entity\News\Feed;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
+use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 
 final readonly class FetchArticlesFromFeed
 {
@@ -13,7 +13,7 @@ final readonly class FetchArticlesFromFeed
      * @param FetchArticlesFromFeedInterface[] $providers
      */
     public function __construct(
-        #[TaggedIterator(FetchArticlesFromFeedInterface::class)]
+        #[AutowireIterator(FetchArticlesFromFeedInterface::class)]
         private iterable $providers,
         private LoggerInterface $logger,
     ) {

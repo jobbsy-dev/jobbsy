@@ -2,7 +2,7 @@
 
 namespace App\Job;
 
-use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
+use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 
 final readonly class JobProvider implements JobProviderInterface
 {
@@ -10,7 +10,7 @@ final readonly class JobProvider implements JobProviderInterface
      * @param JobProviderInterface[] $providers
      */
     public function __construct(
-        #[TaggedIterator(JobProviderInterface::class, exclude: self::class)]
+        #[AutowireIterator(JobProviderInterface::class, exclude: self::class)]
         private iterable $providers,
     ) {
     }
