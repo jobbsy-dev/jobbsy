@@ -80,8 +80,6 @@ final class JobCrudController extends AbstractCrudController
             DateTimeField::new('pinnedUntil')
                 ->setFormat('d/M/Y', 'none')
                 ->onlyOnForms(),
-            TextField::new('tweetId')
-                ->onlyOnForms(),
             TextField::new('contactEmail')
                 ->onlyOnForms(),
             TextField::new('industry')

@@ -92,9 +92,6 @@ class Job
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $pinnedUntil = null;
 
-    #[ORM\Column(type: Types::STRING, nullable: true)]
-    private ?string $tweetId = null;
-
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
     #[Groups(['read'])]
     #[ApiFilter(filterClass: DateFilter::class)]
@@ -264,16 +261,6 @@ class Job
     public function setPinnedUntil(?\DateTimeImmutable $pinnedUntil): void
     {
         $this->pinnedUntil = $pinnedUntil;
-    }
-
-    public function getTweetId(): ?string
-    {
-        return $this->tweetId;
-    }
-
-    public function setTweetId(?string $tweetId): void
-    {
-        $this->tweetId = $tweetId;
     }
 
     public function publish(?\DateTimeImmutable $publishedAt = null): void
