@@ -22,6 +22,12 @@ updates:
           symfony:
               patterns:
                   - "symfony/*"
+          phpstan:
+              patterns:
+                  - "phpstan/*"
+          twig:
+              patterns:
+                  - "twig/*"
 
     # Maintain dependencies for PHP CS Fixer
     - package-ecosystem: "composer"
