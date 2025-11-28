@@ -47,6 +47,7 @@ final class Feed
         $entries = $xpath->query('/atom:feed/atom:entry');
         Assert::isIterable($entries);
 
+        /** @var \DOMNode $entryNode */
         foreach ($entries as $entryNode) {
             $feed->addEntry(Entry::create($xpath, $entryNode));
         }
