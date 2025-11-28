@@ -84,7 +84,7 @@ final class PostJobOfferType extends AbstractType
             ->addModelTransformer(new CallbackTransformer(
                 static function ($tagsAsArray): string {
                     // transform the array to a string
-                    return implode(', ', array_map('trim', $tagsAsArray));
+                    return implode(', ', array_map(trim(...), $tagsAsArray));
                 },
                 static function ($tagsAsString): array {
                     if (null === $tagsAsString) {
@@ -92,7 +92,7 @@ final class PostJobOfferType extends AbstractType
                     }
 
                     // transform the string back to an array
-                    return array_filter(array_map('trim', explode(',', $tagsAsString)));
+                    return array_filter(array_map(trim(...), explode(',', $tagsAsString)));
                 }
             ))
         ;
