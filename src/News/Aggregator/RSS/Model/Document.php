@@ -2,8 +2,6 @@
 
 namespace App\News\Aggregator\RSS\Model;
 
-use Webmozart\Assert\Assert;
-
 final class Document
 {
     /**
@@ -42,8 +40,6 @@ final class Document
         if (false === $channelsNode) {
             return $rssDocument;
         }
-
-        Assert::isIterable($channelsNode);
 
         /** @var \DOMNode $channelNode */
         foreach ($channelsNode as $channelNode) {
