@@ -152,7 +152,7 @@ final class JobController extends AbstractController
         SubscribeMailingListCommandHandler $handler,
         #[Autowire(env: 'MAILJET_CONTACT_LIST_ID')]
         int $mailjetListId,
-    ): Response {
+    ): RedirectResponse {
         $form = $this->createForm(SubscriptionType::class);
         $form->handleRequest($request);
 

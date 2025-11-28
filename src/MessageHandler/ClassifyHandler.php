@@ -43,7 +43,7 @@ final readonly class ClassifyHandler
             return;
         }
 
-        $keywords = array_filter(array_map('trim', explode(',', (string) $result['choices'][0]['text'])));
+        $keywords = array_filter(array_map(trim(...), explode(',', (string) $result['choices'][0]['text'])));
 
         $job->setTags(\array_slice($keywords, 0, 5));
 
