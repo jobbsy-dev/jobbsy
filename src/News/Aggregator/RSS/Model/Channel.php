@@ -54,6 +54,7 @@ final class Channel
 
         Assert::isIterable($itemsNode);
 
+        /** @var \DOMNode $itemNode */
         foreach ($itemsNode as $itemNode) {
             $channel->addItem(Item::create($xpath, $itemNode));
         }

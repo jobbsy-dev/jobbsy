@@ -45,6 +45,7 @@ final class Document
 
         Assert::isIterable($channelsNode);
 
+        /** @var \DOMNode $channelNode */
         foreach ($channelsNode as $channelNode) {
             $rssDocument->addChannel(Channel::create($xpath, $channelNode));
         }
