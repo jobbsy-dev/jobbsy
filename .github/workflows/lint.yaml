@@ -14,7 +14,7 @@ jobs:
             PHP_CS_FIXER_IGNORE_ENV: 1
         steps:
             - name: "Checkout code"
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
 
             - name: "Install PHP with extensions"
               uses: shivammathur/setup-php@v2
@@ -37,7 +37,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: "Checkout code"
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
 
             - name: "Install PHP with extensions"
               uses: shivammathur/setup-php@v2
@@ -60,7 +60,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: "Checkout code"
-              uses: actions/checkout@v5
+              uses: actions/checkout@v6
 
             - name: "Install PHP with extensions"
               uses: shivammathur/setup-php@v2
