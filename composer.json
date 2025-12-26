@@ -51,7 +51,7 @@
         "symfony/mailer": "^8.0",
         "symfony/messenger": "^8.0",
         "symfony/mime": "^8.0",
-        "symfony/monolog-bundle": "^3.0",
+        "symfony/monolog-bundle": "^4.0",
         "symfony/notifier": "^8.0",
         "symfony/process": "^8.0",
         "symfony/property-access": "^8.0",
