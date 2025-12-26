@@ -33,9 +33,14 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
 
     if ('prod' === $containerConfigurator->env()) {
         $emDefault = $config->orm()->entityManager('default');
+        $emDefault->metadataCacheDriver()
+            ->type('pool')
+            ->pool('doctrine.system_cache_pool');
+
         $emDefault->queryCacheDriver()
             ->type('pool')
             ->pool('doctrine.system_cache_pool');
+
         $emDefault->resultCacheDriver()
             ->type('pool')
             ->pool('doctrine.result_cache_pool');
