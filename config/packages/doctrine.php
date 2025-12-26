@@ -33,7 +33,6 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
 
     if ('prod' === $containerConfigurator->env()) {
         $emDefault = $config->orm()->entityManager('default');
-        $config->orm()->autoGenerateProxyClasses(false);
         $emDefault->queryCacheDriver()
             ->type('pool')
             ->pool('doctrine.system_cache_pool');
