@@ -13,7 +13,6 @@
         "ext-intl": "*",
         "ext-mbstring": "*",
         "api-platform/core": "^4.0",
-        "doctrine/annotations": "^2.0",
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-fixtures-bundle": "^4.1",
         "doctrine/doctrine-migrations-bundle": "^3.2",
