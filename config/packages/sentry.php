@@ -15,6 +15,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'register_error_listener' => false,
             'register_error_handler' => false,
             'options' => [
+                'enable_logs' => true,
                 'ignore_exceptions' => [
                     NotFoundHttpException::class,
                     BadRequestHttpException::class,
