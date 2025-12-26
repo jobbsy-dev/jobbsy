@@ -11,12 +11,9 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
     $config->dbal()
         ->connection('default')
         ->url(env('DATABASE_URL')->resolve())
-        ->serverVersion('16')
-        ->useSavepoints(true);
+        ->serverVersion('16');
 
     $config->orm()
-        ->autoGenerateProxyClasses(true)
-        ->enableLazyGhostObjects(true)
         ->enableNativeLazyObjects(true)
     ;
 
@@ -25,8 +22,7 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
     $emDefault
         ->connection('default')
         ->namingStrategy('doctrine.orm.naming_strategy.underscore_number_aware')
-        ->autoMapping(true)
-        ->reportFieldsWhereDeclared(true);
+        ->autoMapping(true);
 
     $emDefault->mapping('App')
         ->isBundle(false)
@@ -37,7 +33,6 @@ return static function (DoctrineConfig $config, FrameworkConfig $frameworkConfig
 
     if ('prod' === $containerConfigurator->env()) {
         $emDefault = $config->orm()->entityManager('default');
-        $config->orm()->autoGenerateProxyClasses(false);
         $emDefault->queryCacheDriver()
             ->type('pool')
             ->pool('doctrine.system_cache_pool');
