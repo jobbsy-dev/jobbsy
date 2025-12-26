@@ -46,8 +46,7 @@ RUN install-php-extensions pdo_pgsql
 ###< recipes ###
 
 COPY --link frankenphp/conf.d/10-app.ini $PHP_INI_DIR/app.conf.d/
-COPY --link frankenphp/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
-RUN chmod 755 /usr/local/bin/docker-entrypoint
+COPY --link --chmod=755 frankenphp/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 COPY --link frankenphp/Caddyfile /etc/frankenphp/Caddyfile
 
 ENTRYPOINT ["docker-entrypoint"]
@@ -92,11 +91,10 @@ RUN set -eux; \
 	composer install --no-cache --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress
 
 # copy sources
-COPY --link . ./
-RUN rm -Rf frankenphp/
+COPY --link --exclude=frankenphp/ . ./
 
 RUN set -eux; \
-	mkdir -p var/cache var/log; \
+	mkdir -p var/cache var/log var/share; \
 	composer dump-autoload --classmap-authoritative --no-dev; \
 	composer dump-env prod; \
 	composer run-script --no-dev post-install-cmd; \
