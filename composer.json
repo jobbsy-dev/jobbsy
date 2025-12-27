@@ -76,7 +76,7 @@
         "twig/markdown-extra": "^3.4",
         "twig/string-extra": "^3.4",
         "twig/twig": "^3.8",
-        "webmozart/assert": "^1.10"
+        "webmozart/assert": "^2.0"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^8.0",
