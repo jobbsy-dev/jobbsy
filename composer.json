@@ -32,7 +32,7 @@
         "phpstan/phpdoc-parser": "^2.1",
         "ramsey/uuid-doctrine": "^2.0",
         "sentry/sentry-symfony": "^5.0",
-        "stripe/stripe-php": "^17.3",
+        "stripe/stripe-php": "^19.1",
         "symfony/asset": "^8.0",
         "symfony/asset-mapper": "^8.0",
         "symfony/browser-kit": "^8.0",
