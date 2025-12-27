@@ -3343,30 +3343,33 @@
         },
         {
             "name": "league/uri-components",
-            "version": "7.5.1",
+            "version": "7.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/uri-components.git",
-                "reference": "4aabf0e2f2f9421ffcacab35be33e4fb5e63c44f"
+                "reference": "005f8693ce8c1f16f80e88a05cbf08da04c1c374"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/uri-components/zipball/4aabf0e2f2f9421ffcacab35be33e4fb5e63c44f",
-                "reference": "4aabf0e2f2f9421ffcacab35be33e4fb5e63c44f",
+                "url": "https://api.github.com/repos/thephpleague/uri-components/zipball/005f8693ce8c1f16f80e88a05cbf08da04c1c374",
+                "reference": "005f8693ce8c1f16f80e88a05cbf08da04c1c374",
                 "shasum": ""
             },
             "require": {
-                "league/uri": "^7.5",
+                "league/uri": "^7.7",
                 "php": "^8.1"
             },
             "suggest": {
+                "bakame/aide-uri": "A polyfill for PHP8.1 until PHP8.4 to add support to PHP Native URI parser",
                 "ext-bcmath": "to improve IPV4 host parsing",
                 "ext-fileinfo": "to create Data URI from file contennts",
                 "ext-gmp": "to improve IPV4 host parsing",
                 "ext-intl": "to handle IDN host with the best performance",
                 "ext-mbstring": "to use the sorting algorithm of URLSearchParams",
                 "jeremykendall/php-domain-parser": "to resolve Public Suffix and Top Level Domain",
+                "league/uri-polyfill": "Needed to backport the PHP URI extension for older versions of PHP",
                 "php-64bit": "to improve IPV4 host parsing",
+                "rowbot/url": "to handle WHATWG URL",
                 "symfony/polyfill-intl-idn": "to handle IDN host via the Symfony polyfill if ext-intl is not present"
             },
             "type": "library",
@@ -3413,7 +3416,7 @@
                 "docs": "https://uri.thephpleague.com",
                 "forum": "https://thephpleague.slack.com",
                 "issues": "https://github.com/thephpleague/uri-src/issues",
-                "source": "https://github.com/thephpleague/uri-components/tree/7.5.1"
+                "source": "https://github.com/thephpleague/uri-components/tree/7.7.0"
             },
             "funding": [
                 {
@@ -3421,7 +3424,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-08T08:40:02+00:00"
+            "time": "2025-12-07T16:02:56+00:00"
         },
         {
             "name": "league/uri-interfaces",
@@ -14923,5 +14926,5 @@
     "platform-overrides": {
         "php": "8.4"
     },
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }
