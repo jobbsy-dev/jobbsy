@@ -15,7 +15,7 @@
         "api-platform/core": "^4.0",
         "doctrine/doctrine-bundle": "^3.0",
         "doctrine/doctrine-fixtures-bundle": "^4.1",
-        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.0",
         "dragonmantank/cron-expression": "^3.3",
         "easycorp/easyadmin-bundle": "^4.1",
