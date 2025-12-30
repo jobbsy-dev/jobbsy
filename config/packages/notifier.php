@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Config\FrameworkConfig;
+use Symfony\Component\DependencyInjection\Loader\Configurator\App;
+
 use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
-return static function (ContainerConfigurator $containerConfigurator, FrameworkConfig $framework): void {
-    $containerConfigurator->extension('framework', [
+return App::config([
+    'framework' => [
         'notifier' => [
             'channel_policy' => [
                 'urgent' => ['email'],
@@ -15,13 +15,10 @@ return static function (ContainerConfigurator $containerConfigurator, FrameworkC
                 'medium' => ['email'],
                 'low' => ['email'],
             ],
-            'admin_recipients' => [[
-                'email' => 'hello@jobbsy.dev',
-            ]],
+            'admin_recipients' => [['email' => 'hello@jobbsy.dev']],
+            'chatter_transports' => [
+                'slack' => env('SLACK_DSN'),
+            ],
         ],
-    ]);
-
-    $framework->notifier()
-        ->chatterTransport('slack', env('SLACK_DSN'))
-    ;
-};
+    ],
+]);

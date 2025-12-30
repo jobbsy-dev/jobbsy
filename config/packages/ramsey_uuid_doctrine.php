@@ -3,10 +3,14 @@
 declare(strict_types=1);
 
 use Ramsey\Uuid\Doctrine\UuidType;
-use Symfony\Config\DoctrineConfig;
+use Symfony\Component\DependencyInjection\Loader\Configurator\App;
 
-return static function (DoctrineConfig $config): void {
-    $config->dbal()
-        ->type('uuid')
-        ->class(UuidType::class);
-};
+return App::config([
+    'doctrine' => [
+        'dbal' => [
+            'types' => [
+                'uuid' => UuidType::class,
+            ],
+        ],
+    ],
+]);

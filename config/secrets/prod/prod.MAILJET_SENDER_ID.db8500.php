@@ -1,3 +1,5 @@
-<?php // prod.MAILJET_SENDER_ID.db8500 on Thu, 14 Jul 2022 14:04:27 +0000
+<?php
+
+// prod.MAILJET_SENDER_ID.db8500 on Thu, 14 Jul 2022 14:04:27 +0000
 
 return "d\xE2g\x1B\xA4\xBF\x28E\x90\x2F\x840O\x3F\x93\x03Ll\xA6j\x8CU\xCFnF\x1F\x90\xA1\xB7\xA7D\x7B0\x3C\xAE\xBF\x1B\xB9\xEF\xBF\xAB\xFE\xA8E1Ps\xAAD\xBA\xDAfC";

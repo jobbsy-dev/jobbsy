@@ -4,13 +4,16 @@ includes:
 parameters:
     level: max
     paths:
+        - config
         - src
         - tests
     symfony:
         containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
-    scanDirectories:
-        - var/cache/dev/Symfony/Config
+    scanFiles:
+        - vendor/symfony/dependency-injection/Loader/Configurator/ContainerConfigurator.php
     doctrine:
         objectManagerLoader: tests/object-manager.php
     excludePaths:
         - tests/object-manager.php
+    ignoreErrors:
+        - '#^Parameter \#1 \$config of static method Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\App\:\:config.*#'

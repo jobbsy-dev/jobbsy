@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\Loader\Configurator\App;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->extension('framework', [
+return App::config([
+    'framework' => [
         'asset_mapper' => [
             'paths' => ['assets/'],
         ],
-    ]);
-};
+    ],
+]);

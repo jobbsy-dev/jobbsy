@@ -2,9 +2,15 @@
 
 declare(strict_types=1);
 
-use Symfony\Config\FrameworkConfig;
+use Symfony\Component\DependencyInjection\Loader\Configurator\App;
 
-return static function (FrameworkConfig $config): void {
-    $config->validation()->emailValidationMode('html5');
-    $config->validation()->notCompromisedPassword()->enabled(false);
-};
+return App::config([
+    'framework' => [
+        'validation' => [
+            'email_validation_mode' => 'html5',
+            'not_compromised_password' => [
+                'enabled' => false,
+            ],
+        ],
+    ],
+]);

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\Loader\Configurator\App;
 
-return static function (ContainerConfigurator $configurator): void {
-    $configurator->extension('knp_paginator', [
+return App::config([
+    'knp_paginator' => [
         'template' => [
             'pagination' => 'default/pagination.html.twig',
-        ]
-    ]);
-};
+        ],
+    ],
+]);

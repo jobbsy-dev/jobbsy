@@ -18,6 +18,7 @@ use Symfony\Component\Clock\ClockInterface;
 use Symfony\Component\Clock\MockClock;
 use Symfony\Component\Clock\NativeClock;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
 use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
@@ -32,7 +33,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->exclude([
             __DIR__.'/../src/DependencyInjection/',
             __DIR__.'/../src/Entity/',
-            __DIR__.'/../src/Kernel.php'
+            __DIR__.'/../src/Kernel.php',
         ]);
 
     $services->set(ClockInterface::class, NativeClock::class);
@@ -50,7 +51,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'accessKeyId' => env('AWS_ACCESS_KEY_ID'),
                 'accessKeySecret' => env('AWS_ACCESS_KEY_SECRET'),
                 'region' => 'eu-west-3',
-            ]
+            ],
         ]);
 
     $services->set(Server::class)
@@ -58,7 +59,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->arg('$config', [
             'source' => service('media.storage'),
             'cache' => service('media.storage.memory'),
-            'max_image_size' => 2000*2000,
+            'max_image_size' => 2000 * 2000,
         ]);
 
     $services->set(TokenProcessor::class)
