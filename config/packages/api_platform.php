@@ -2,20 +2,21 @@
 
 declare(strict_types=1);
 
-use Symfony\Config\ApiPlatformConfig;
+use Symfony\Component\DependencyInjection\Loader\Configurator\App;
 
-return static function (ApiPlatformConfig $apiPlatformConfig): void {
-    $apiPlatformConfig
-        ->mapping([
-            'paths' => [__DIR__.'/../../src/Entity']
-        ])
-        ->paths([__DIR__.'/../../src/Entity']);
-
-    $apiPlatformConfig->patchFormats('json', ['mime_types' => ['application/merge-patch+json']]);
-    $apiPlatformConfig->swagger([
-        'versions' => [3]
-    ]);
-    $apiPlatformConfig->showWebby(false);
-    $apiPlatformConfig->title('Jobbsy API');
-    $apiPlatformConfig->version('0.1.0');
-};
+return App::config([
+    'api_platform' => [
+        'mapping' => [
+            'paths' => [__DIR__.'/../../src/Entity'],
+        ],
+        'patch_formats' => [
+            'json' => ['mime_types' => ['application/merge-patch+json']],
+        ],
+        'swagger' => [
+            'versions' => [3],
+        ],
+        'show_webby' => false,
+        'title' => 'Jobbsy API',
+        'version' => '0.1.0',
+    ],
+]);

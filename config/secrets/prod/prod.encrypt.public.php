@@ -1,3 +1,5 @@
-<?php // prod.encrypt.public on Sun, 06 Mar 2022 14:11:30 +0000
+<?php
+
+// prod.encrypt.public on Sun, 06 Mar 2022 14:11:30 +0000
 
 return "\xDEmC\xC8\xB9\xAC.\x27AM6\x25\x0A\x92\xFA\x93\x22hR\xED\xC1y\x96\x18~\x40\x0A-\x09\x85\x0D\x7D";

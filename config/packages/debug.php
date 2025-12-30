@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\Loader\Configurator\App;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    if ($containerConfigurator->env() === 'dev') {
-        $containerConfigurator->extension('debug', [
+return App::config([
+    'when@dev' => [
+        'debug' => [
             'dump_destination' => 'tcp://%env(VAR_DUMPER_SERVER)%',
-        ]);
-    }
-};
+        ],
+    ],
+]);

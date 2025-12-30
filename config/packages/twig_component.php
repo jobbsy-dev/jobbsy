@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\Loader\Configurator\App;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->extension('twig_component', [
+return App::config([
+    'twig_component' => [
         'anonymous_template_directory' => 'components/',
         'defaults' => [
             'App\Twig\Components\\' => 'components/',
         ],
-    ]);
-};
+    ],
+]);
