@@ -1,5 +1,0 @@
-all:
-    children:
-        webservers:
-            hosts:
-                web:
