@@ -69,3 +69,24 @@ jobs:
                   subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
                   subject-digest: ${{ steps.push.outputs.digest }}
                   push-to-registry: true
+
+    deploy:
+        needs: build-and-push-image
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                application:
+                    - ${{ secrets.DOKPLOY_APP_ID }}
+                    - ${{ secrets.DOKPLOY_WORKER_ID }}
+                    - ${{ secrets.DOKPLOY_SCHEDULER_ID }}
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Dokploy Deployment
+              uses: benbristow/dokploy-deploy-action@0.2.2
+              with:
+                  api_token: ${{ secrets.DOKPLOY_AUTH_TOKEN }}
+                  application_id: ${{ matrix.application }}
+                  dokploy_url: ${{ secrets.DOKPLOY_URL }}
+                  service_type: application
