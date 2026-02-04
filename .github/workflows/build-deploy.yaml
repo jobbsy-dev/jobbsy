@@ -78,11 +78,11 @@ jobs:
                 application: [app, worker, scheduler]
                 include:
                     - application: app
-                      app_id: ${{ secrets.DOKPLOY_APP_ID }}
+                      app_id: DOKPLOY_APP_ID
                     - application: worker
-                      app_id: ${{ secrets.DOKPLOY_WORKER_ID }}
+                      app_id: DOKPLOY_WORKER_ID
                     - application: scheduler
-                      app_id: ${{ secrets.DOKPLOY_SCHEDULER_ID }}
+                      app_id: DOKPLOY_SCHEDULER_ID
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
