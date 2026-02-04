@@ -10,10 +10,6 @@ concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
     cancel-in-progress: true
 
-environment:
-    name: production
-    url: https://jobbsy.dev
-
 # Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
     REGISTRY: ghcr.io
@@ -77,6 +73,9 @@ jobs:
     deploy:
         needs: build-and-push-image
         runs-on: ubuntu-latest
+        environment:
+            name: production
+            url: https://jobbsy.dev
         strategy:
             matrix:
                 application: [app, worker, scheduler]
