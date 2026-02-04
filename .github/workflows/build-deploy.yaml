@@ -75,10 +75,14 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                application:
-                    - ${{ secrets.DOKPLOY_APP_ID }}
-                    - ${{ secrets.DOKPLOY_WORKER_ID }}
-                    - ${{ secrets.DOKPLOY_SCHEDULER_ID }}
+                application: [app, worker, scheduler]
+                include:
+                    - application: app
+                      app_id: ${{ secrets.DOKPLOY_APP_ID }}
+                    - application: worker
+                      app_id: ${{ secrets.DOKPLOY_WORKER_ID }}
+                    - application: scheduler
+                      app_id: ${{ secrets.DOKPLOY_SCHEDULER_ID }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -87,6 +91,6 @@ jobs:
               uses: benbristow/dokploy-deploy-action@0.2.2
               with:
                   api_token: ${{ secrets.DOKPLOY_AUTH_TOKEN }}
-                  application_id: ${{ matrix.application }}
+                  application_id: ${{ secrets[matrix.app_id] }}
                   dokploy_url: ${{ secrets.DOKPLOY_URL }}
                   service_type: application
