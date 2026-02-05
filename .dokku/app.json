@@ -1,7 +1,0 @@
-{
-    "scripts": {
-        "dokku": {
-            "predeploy": "php bin/console asset-map:compile"
-        }
-    }
-}
