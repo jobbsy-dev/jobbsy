@@ -41,7 +41,7 @@ final class JobController extends AbstractController
     ) {
     }
 
-    #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET']), ]
+    #[Route('/', name: 'job_index', defaults: ['_format' => 'html'], methods: ['GET'])]
     public function index(): Response
     {
         return $this->render('job/index.html.twig', [
@@ -52,7 +52,7 @@ final class JobController extends AbstractController
         ]);
     }
 
-    #[Route('/rss.xml', name: 'job_rss', defaults: ['_format' => 'xml'], methods: ['GET']), ]
+    #[Route('/rss.xml', name: 'job_rss', defaults: ['_format' => 'xml'], methods: ['GET'])]
     public function rss(): Response
     {
         return $this->render('job/index.xml.twig', [
@@ -209,7 +209,7 @@ final class JobController extends AbstractController
         ]);
     }
 
-    #[Route('/symfony-location-{locationType}-jobs', name: 'job_location_type', methods: ['GET']), ]
+    #[Route('/symfony-location-{locationType}-jobs', name: 'job_location_type', methods: ['GET'])]
     public function jobsByLocationType(LocationType $locationType): Response
     {
         return $this->render('job/location_type.html.twig', [
@@ -218,7 +218,7 @@ final class JobController extends AbstractController
         ]);
     }
 
-    #[Route('/symfony-employment-{employmentType}-jobs', name: 'job_employment_type', methods: ['GET']), ]
+    #[Route('/symfony-employment-{employmentType}-jobs', name: 'job_employment_type', methods: ['GET'])]
     public function jobsByEmploymentType(EmploymentType $employmentType): Response
     {
         return $this->render('job/employment_type.html.twig', [

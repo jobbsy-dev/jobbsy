@@ -27,7 +27,7 @@ final class EventController extends AbstractController
         ]);
     }
 
-    #[Route('/events/rss.xml', name: 'event_rss', defaults: ['_format' => 'xml'], methods: ['GET']), ]
+    #[Route('/events/rss.xml', name: 'event_rss', defaults: ['_format' => 'xml'], methods: ['GET'])]
     public function rss(): Response
     {
         return $this->render('event/index.xml.twig', [
