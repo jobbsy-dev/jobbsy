@@ -41,7 +41,7 @@ final class NewsController extends AbstractController
         ]);
     }
 
-    #[Route('/news/rss.xml', name: 'news_rss', defaults: ['_format' => 'xml'], methods: ['GET']), ]
+    #[Route('/news/rss.xml', name: 'news_rss', defaults: ['_format' => 'xml'], methods: ['GET'])]
     public function rss(): Response
     {
         return $this->render('news/index.xml.twig', [
