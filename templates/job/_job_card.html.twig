@@ -32,7 +32,7 @@
                     </li>
                     <li class="d-flex align-items-center gap-1">
                         <i data-lucide="map-pin" class="fs-6"></i>
-                        {{ job.location }}
+                        {{ job.location|u.truncate(60, '...') }}
                         {% if job.locationType %}
                             | {{ ('location_type.' ~ job.locationType.value)|trans }}
                         {% endif %}
