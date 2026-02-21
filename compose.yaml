@@ -5,9 +5,25 @@ services:
         environment:
             SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
             DATABASE_URL: postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@database:5432/${POSTGRES_DB:-app}
+            FRANKENPHP_WORKER_CONFIG: watch
+            #CADDY_SERVER_EXTRA_DIRECTIVES: "tls /etc/caddy/certs/tls.pem /etc/caddy/certs/tls.key"
+            # See https://xdebug.org/docs/all_settings#mode
+            XDEBUG_MODE: "${XDEBUG_MODE:-off}"
+            APP_ENV: "${APP_ENV:-dev}"
         volumes:
             - caddy_data:/data
             - caddy_config:/config
+            #- ./frankenphp/certs:/etc/caddy/certs:ro
+            - ./:/app
+            - ./frankenphp/Caddyfile:/etc/frankenphp/Caddyfile:ro
+            - ./frankenphp/conf.d/20-app.dev.ini:/usr/local/etc/php/app.conf.d/20-app.dev.ini:ro
+        build:
+            context: .
+            target: frankenphp_dev
+        extra_hosts:
+            # Ensure that host.docker.internal is correctly defined on Linux
+            - host.docker.internal:host-gateway
+        tty: true
         ports:
             # HTTP
             - target: 80
@@ -23,11 +39,11 @@ services:
               protocol: udp
 
     database:
-        image: postgres:${POSTGRES_VERSION:-18}-alpine
+        image: postgres:18.1-alpine
         environment:
-            POSTGRES_DB: ${POSTGRES_DB:-app}
-            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app}
-            POSTGRES_USER: ${POSTGRES_USER:-app}
+            POSTGRES_DB: app
+            POSTGRES_PASSWORD: app
+            POSTGRES_USER: app
         volumes:
             - database_data:/var/lib/postgresql/data:rw
 

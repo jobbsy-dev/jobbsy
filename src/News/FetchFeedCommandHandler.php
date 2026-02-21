@@ -45,7 +45,7 @@ final readonly class FetchFeedCommandHandler
 
         $links = [];
         foreach ($articles as $article) {
-            if (in_array($article->getLink(), $links, true)) {
+            if (\in_array($article->getLink(), $links, true)) {
                 continue;
             }
 
