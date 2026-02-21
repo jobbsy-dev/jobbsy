@@ -1,6 +1,5 @@
 #syntax=docker/dockerfile:1
 
-# Versions
 FROM dunglas/frankenphp:1.11.2-php8.4 AS frankenphp_upstream
 
 # The different stages of this Dockerfile are meant to be built into separate images
