@@ -43,12 +43,18 @@ final readonly class FetchFeedCommandHandler
             return;
         }
 
+        $links = [];
         foreach ($articles as $article) {
+            if (in_array($article->getLink(), $links, true)) {
+                continue;
+            }
+
             if (null !== $this->entryRepository->ofLink($article->getLink())) {
                 continue;
             }
 
             $this->entryRepository->save($article);
+            $links[] = $article->getLink();
         }
 
         $this->entityManager->flush();
