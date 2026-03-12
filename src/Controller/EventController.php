@@ -38,7 +38,6 @@ final class EventController extends AbstractController
     #[Route('/events/{id}', name: 'event_redirect', methods: ['GET'])]
     public function event(Event $event): RedirectResponse
     {
-        /** @var string $eventUrl */
         $eventUrl = $event->getUrl();
         $uri = Modifier::from($eventUrl)->appendQuery('ref=jobbsy');
 
