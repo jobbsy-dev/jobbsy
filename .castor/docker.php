@@ -180,6 +180,7 @@ function docker_compose_run(
     $command = [
         'run',
         '--rm',
+        '--quiet',
     ];
 
     if ($noDeps) {
