@@ -34,7 +34,7 @@ jobs:
                   tools: composer
 
             - name: "Composer install"
-              uses: ramsey/composer-install@v3
+              uses: ramsey/composer-install@v4
 
             - name: "Init database"
               run: ./bin/console doctrine:database:create --env=test --if-not-exists
