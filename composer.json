@@ -28,7 +28,7 @@
         "league/glide-symfony": "^2.0",
         "league/uri-components": "^7.0",
         "nelmio/cors-bundle": "^2.2",
-        "phpdocumentor/reflection-docblock": "^5.3",
+        "phpdocumentor/reflection-docblock": "^6.0",
         "phpstan/phpdoc-parser": "^2.1",
         "ramsey/uuid-doctrine": "^2.0",
         "sentry/sentry-symfony": "^5.0",
