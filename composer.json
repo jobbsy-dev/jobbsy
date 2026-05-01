@@ -18,7 +18,7 @@
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.0",
         "dragonmantank/cron-expression": "^3.3",
-        "easycorp/easyadmin-bundle": "^4.1",
+        "easycorp/easyadmin-bundle": "^5.0",
         "knplabs/knp-paginator-bundle": "^6.0",
         "knplabs/knp-time-bundle": "^2.0",
         "league/commonmark": "^2.3",
