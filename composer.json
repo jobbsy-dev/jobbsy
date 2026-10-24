@@ -69,7 +69,7 @@
         "symfony/validator": "^8.0",
         "symfony/web-link": "^8.0",
         "symfony/yaml": "^8.0",
-        "symfonycasts/sass-bundle": "^0.9.0",
+        "symfonycasts/sass-bundle": "^0.10.0",
         "twbs/bootstrap": "^5.3",
         "twig/extra-bundle": "^2.12 || ^3.0",
         "twig/intl-extra": "^3.4",
