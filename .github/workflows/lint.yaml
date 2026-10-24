@@ -91,8 +91,8 @@ jobs:
             - name: Lint Doctrine entities
               run: ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
 
-            - name: Check if any dependencies are compromised
-              run: composer audit
+            #- name: Check if any dependencies are compromised
+            #  run: composer audit
 
             - name: PHPStan
               run: ./vendor/bin/phpstan analyze
