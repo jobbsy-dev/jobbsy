@@ -46,3 +46,11 @@ updates:
       labels:
           - "php"
           - "dependencies"
+
+    # Maintain dependencies for Docker
+    - package-ecosystem: "docker"
+      schedule:
+          interval: "monthly"
+      labels:
+          - "docker"
+          - "dependencies"
