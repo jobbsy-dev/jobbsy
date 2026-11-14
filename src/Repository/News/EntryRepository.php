@@ -37,7 +37,7 @@ final class EntryRepository extends ServiceEntityRepository implements EntryRepo
     public function createQueryBuilderLastNews(): QueryBuilder
     {
         return $this->createQueryBuilder('entry')
-            ->orderBy('entry.publishedAt', Criteria::DESC);
+            ->orderBy('entry.publishedAt', \SortDirection::Descending);
     }
 
     public function ofLink(string $link): ?Entry

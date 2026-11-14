@@ -42,7 +42,7 @@ final class EventRepository extends ServiceEntityRepository implements EventRepo
         return $this->createQueryBuilder('event')
             ->where('event.startDate >= :today')
             ->setParameter('today', $this->clock->now())
-            ->orderBy('event.startDate', Criteria::ASC)
+            ->orderBy('event.startDate', \SortDirection::Ascending)
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
@@ -56,7 +56,7 @@ final class EventRepository extends ServiceEntityRepository implements EventRepo
         return $this->createQueryBuilder('event')
             ->where('event.startDate < :today')
             ->setParameter('today', $this->clock->now())
-            ->orderBy('event.startDate', Criteria::DESC)
+            ->orderBy('event.startDate', \SortDirection::Descending)
             ->getQuery()
             ->getResult();
     }

@@ -38,7 +38,7 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
         return $qb
             ->where($qb->expr()->isNotNull('job.publishedAt'))
             ->andWhere($qb->expr()->isNull('job.pinnedUntil'))
-            ->addOrderBy('job.publishedAt', Criteria::DESC)
+            ->addOrderBy('job.publishedAt', \SortDirection::Descending)
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
@@ -53,7 +53,7 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
 
         return $qb
             ->where($qb->expr()->isNotNull('job.pinnedUntil'))
-            ->addOrderBy('job.publishedAt', Criteria::DESC)
+            ->addOrderBy('job.publishedAt', \SortDirection::Descending)
             ->getQuery()
             ->getResult();
     }
@@ -81,8 +81,8 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
             ->where('job.publishedAt > :lastWeek')
             ->andWhere($qb->expr()->isNotNull('job.publishedAt'))
             ->setParameter('lastWeek', new \DateTimeImmutable('-1 week'))
-            ->orderBy('job.publishedAt', Criteria::DESC)
-            ->addOrderBy('job.clickCount', Criteria::ASC)
+            ->orderBy('job.publishedAt', \SortDirection::Descending)
+            ->addOrderBy('job.clickCount', \SortDirection::Ascending)
             ->setMaxResults(10)
             ->getQuery()
             ->getResult();
@@ -120,7 +120,7 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
             ->where($qb->expr()->isNotNull('job.publishedAt'))
             ->andWhere('job.locationType = :locationType')
             ->setParameter('locationType', $locationType)
-            ->addOrderBy('job.publishedAt', Criteria::DESC)
+            ->addOrderBy('job.publishedAt', \SortDirection::Descending)
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
@@ -137,7 +137,7 @@ final class JobRepository extends ServiceEntityRepository implements JobReposito
             ->where($qb->expr()->isNotNull('job.publishedAt'))
             ->andWhere('job.employmentType = :employmentType')
             ->setParameter('employmentType', $employmentType)
-            ->addOrderBy('job.publishedAt', Criteria::DESC)
+            ->addOrderBy('job.publishedAt', \SortDirection::Descending)
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
