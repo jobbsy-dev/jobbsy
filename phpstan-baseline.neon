@@ -127,6 +127,12 @@ parameters:
 			path: src/ConsoleCommand/SendWeeklyJobsLetterCommand.php
 
 		-
+			message: '#^Cannot use array destructuring on mixed\.$#'
+			identifier: offsetAccess.nonArray
+			count: 3
+			path: src/DataFixtures/AppFixtures.php
+
+		-
 			message: '#^Instanceof between App\\Entity\\News\\Feed and App\\Entity\\News\\Feed will always evaluate to true\.$#'
 			identifier: instanceof.alwaysTrue
 			count: 1
